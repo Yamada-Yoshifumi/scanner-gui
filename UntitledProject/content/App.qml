@@ -11,16 +11,16 @@ Window {
     color: "#000000"
     title: "ScannerGUI"
 
-    Bootpage{
-        id: bootpage
-        width: parent.width
-        height: parent.height
-    }
 
-    Mainui{
-        id: mainpage
-        width: parent.width
-        height:parent.height
+    Loader {
+            id: mainLoader
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+                bottom: parent.bottom
+            }
+            source: "StackViewPage.qml"
     }
 }
 
@@ -29,3 +29,4 @@ Designer {
     D{i:0;formeditorZoom:0.2}
 }
 ##^##*/
+s

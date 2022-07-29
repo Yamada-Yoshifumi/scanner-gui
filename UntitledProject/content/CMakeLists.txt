@@ -7,7 +7,9 @@ qt6_add_qml_module(content
     VERSION 1.0
     QML_FILES
         App.qml
-        Screen01.ui.qml
+        Bootpage.qml
+        Mainui.qml
+        StackViewPage.qml
     RESOURCES
         fonts/fonts.txt
 )

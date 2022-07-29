@@ -33,15 +33,16 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Universal
 import QtQuick.Window
 
+
 Rectangle{
     id: boot_window
     x: 0
     y: 0
-    width: 1920
-    height: 1080
+    width: root.width
+    height: root.height
     color: "#000000"
     border.color: "#ffffff"
-    visible: false
+    visible: true
 
     Image {
         id: lidar
@@ -55,10 +56,15 @@ Rectangle{
     Timer {
         id: timer
         interval: 5000; running: true; repeat: false
-        onTriggered:{ if(text3.opacity === 0) text6.opacity = 1;
-                     if(text4.opacity === 0) text7.opacity = 1;
-                     if(text5.opacity === 0) text8.opacity = 1;
-                     reboot_button.opacity = 1;
+        onTriggered:{
+                    if(text3.opacity === 1 && text4.opacity === 1 && text5.opacity === 1)
+                        stackview.push( "Mainui.qml" )
+                    else{
+                        if(text3.opacity === 0) text6.opacity = 1;
+                        if(text4.opacity === 0) text7.opacity = 1;
+                        if(text5.opacity === 0) text8.opacity = 1;
+                        reboot_button.opacity = 1;
+                    }
         }
     }
 
@@ -191,6 +197,7 @@ Rectangle{
         opacity: 0
         Behavior on opacity { PropertyAnimation { duration: 1000 } }
         text: qsTr("Reboot")
+        onClicked: stackview.push( "Mainui.qml" )
         contentItem: Text {
             id: reboot_button_text
             color: reboot_button.down? "#463c3c" : "#b1b1b1"
@@ -213,6 +220,7 @@ Rectangle{
         }
 
     }
+
     states: [
         State {
             name: "boot failed"
