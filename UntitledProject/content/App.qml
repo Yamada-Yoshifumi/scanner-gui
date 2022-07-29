@@ -17,7 +17,7 @@ Window {
         height: parent.height
     }
 
-    MainUI{
+    Mainui{
         id: mainpage
         width: parent.width
         height:parent.height

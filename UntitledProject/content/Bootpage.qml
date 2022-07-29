@@ -49,7 +49,7 @@ Rectangle{
         y: 0
         width : parent.width
         height: parent.height * 3/4
-        source: "../../../Downloads/lidar.png"
+        source: "../src/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg"
     }
 
     Timer {
@@ -241,6 +241,6 @@ Rectangle{
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.125}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/

@@ -96,4 +96,6 @@ Project {
     supportedLanguages: ["en"]
     primaryLanguage: "en"
 
+
+    mainUiFile: "content/Mainui.qml"
 }
