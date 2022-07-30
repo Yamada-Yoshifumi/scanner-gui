@@ -24,9 +24,4 @@ Window {
     }
 }
 
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.2}
-}
-##^##*/
-s
+
