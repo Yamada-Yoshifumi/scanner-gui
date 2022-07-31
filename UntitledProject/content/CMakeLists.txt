@@ -11,6 +11,8 @@ qt6_add_qml_module(content
         Mainui.qml
         StackViewPage.qml
         IndicatorLED.qml
+        StackViewSettings.qml
+        SettingsUI.qml
     RESOURCES
         fonts/fonts.txt
 )

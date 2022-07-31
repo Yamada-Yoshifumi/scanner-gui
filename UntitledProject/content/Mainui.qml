@@ -221,6 +221,7 @@ visible: true
                 icon.height: Layout.preferredHeight
                 icon.width: Layout.preferredWidth
 
+                onClicked: stackview_settings.push( "SettingsUI.qml" )
 
                 background: Rectangle {
                     id: power_button_bg

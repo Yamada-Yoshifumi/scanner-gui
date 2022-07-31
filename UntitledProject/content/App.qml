@@ -11,7 +11,6 @@ Window {
     color: "#000000"
     title: "ScannerGUI"
 
-
     Loader {
             id: mainLoader
             anchors {
@@ -21,6 +20,18 @@ Window {
                 bottom: parent.bottom
             }
             source: "StackViewPage.qml"
+    }
+
+    Loader {
+        id: settingsLoader
+        anchors{
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            bottom: parent.bottom
+            leftMargin: 1800 * root.width / 2560;
+        }
+        source: "StackViewSettings.qml"
     }
 }
 
