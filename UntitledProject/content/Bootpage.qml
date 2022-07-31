@@ -55,7 +55,7 @@ Rectangle{
 
     Timer {
         id: timer
-        interval: 5000; running: true; repeat: false
+        interval: 1000; running: true; repeat: false
         onTriggered:{
                     if(text3.opacity === 1 && text4.opacity === 1 && text5.opacity === 1)
                         stackview.push( "Mainui.qml" )

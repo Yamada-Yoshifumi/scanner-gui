@@ -10,26 +10,47 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import UntitledProject
 
-Item {
-    width: 768
-    height: 768
 
-    property alias button: button
+Canvas {
+    id: mycanvas
+    scale: (root.width / 2560)
 
-    Canvas {
-        id: mycanvas
-        width: 768
-        height: 768
-        onPaint: {
-            var ctx = getContext("2d");
-            ctx.fillStyle = Qt.rgba(1, 0, 0, 1);
-            ctx.fillRect(0, 0, width, height);
-        }
+    antialiasing: true
+    canvasWindow: Qt.rect( 0, 0, width, height);
+    canvasSize: Qt.size( width,height );
+
+    onCanvasWindowChanged: {requestPaint();}
+
+    onPaint: squircle();
+
+    function squircle(led_color = "green"){
+
+        var ctx = getContext("2d");
+
+        ctx.fillStyle = '#343434';
+        ctx.fillRect(0, 0, mycanvas.width, mycanvas.height);
+
+        var x = mycanvas.width/2,
+            y = mycanvas.height/2,
+            // Radii of the white glow.
+            innerRadius = 3,
+            outerRadius = 10,
+            // Radius of the entire circle.
+            radius = 15;
+
+        var gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
+        gradient.addColorStop(0, 'white');
+        gradient.addColorStop(1, led_color);
+
+        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+
+        ctx.fillStyle = gradient;
+        ctx.fill();
     }
 }
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}
+    D{i:0;autoSize:true;formeditorZoom:0.66;height:480;width:640}
 }
 ##^##*/

@@ -5,8 +5,8 @@ Window {
     id: root
     width: 2560
     height: 1600
-    minimumHeight: 720
-    minimumWidth: 1280
+    minimumHeight: 480
+    minimumWidth: 640
     visible: true
     color: "#000000"
     title: "ScannerGUI"
@@ -25,3 +25,9 @@ Window {
 }
 
 
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.125}
+}
+##^##*/
