@@ -38,12 +38,10 @@ Rectangle{
     id: boot_window
     x: 0
     y: 0
-    width: root.width
-    height: root.height
+    width: parent.width
+    height: parent.height
     color: "#000000"
     border.color: "#ffffff"
-    visible: true
-
     Image {
         id: lidar
         x: 0

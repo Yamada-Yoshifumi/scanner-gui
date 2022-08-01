@@ -20,6 +20,44 @@ Window {
                 bottom: parent.bottom
             }
             source: "StackViewPage.qml"
+
+            NumberAnimation {
+                        id: animation_right
+                        target: mainLoader.item
+                        property: "anchors.rightMargin"
+                        from: 0
+                        to: settingsLoader.width
+                        duration: 300
+                        easing.type: Easing.InExpo
+                    }
+            NumberAnimation {
+                        id: animation_bottom
+                        target: mainLoader.item
+                        property: "anchors.bottomMargin"
+                        from: 0
+                        to: settingsLoader.width * root.height/ root.width
+                        duration: 300
+                        easing.type: Easing.InExpo
+                    }
+            NumberAnimation {
+                        id: animation_bottom_reverse
+                        target: mainLoader.item
+                        property: "anchors.bottomMargin"
+                        from: settingsLoader.width * root.height/ root.width
+                        to: 0
+                        duration: 300
+                        easing.type: Easing.InExpo
+                    }
+            NumberAnimation {
+                        id: animation_right_reverse
+                        target: mainLoader.item
+                        property: "anchors.rightMargin"
+                        from: settingsLoader.width
+                        to: 0
+                        duration: 300
+                        easing.type: Easing.InExpo
+                    }
+
     }
 
     Loader {
@@ -33,6 +71,7 @@ Window {
         }
         source: "StackViewSettings.qml"
     }
+
 }
 
 

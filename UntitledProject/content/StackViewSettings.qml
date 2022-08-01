@@ -7,7 +7,34 @@ Item {
     StackView {
         id: stackview_settings
         anchors.fill: parent
-        initialItem: "SettingsUI.qml"
+        initialItem: "SettingsInit.qml"
+        /*
+        pushEnter: Transition {
+
+                duration: 300
+
+        }
+        pushExit: Transition {
+            PropertyAnimation {
+                property: "opacity"
+                from: 1
+                to:0
+                duration: 300
+            }
+        }
+        popEnter: Transition {
+
+                duration: 300
+
+        }
+        popExit: Transition {
+            PropertyAnimation {
+                property: "opacity"
+                from: 1
+                to:0
+                duration: 300
+            }
+        }*/
     }
 }
 

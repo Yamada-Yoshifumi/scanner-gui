@@ -13,6 +13,7 @@ qt6_add_qml_module(UntitledProjectApp
         content/IndicatorLED.qml
         content/StackViewSettings.qml
         content/SettingsUI.qml
+        content/SettingsInit.qml
 )
 
 add_subdirectory(content)

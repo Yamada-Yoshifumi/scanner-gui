@@ -13,19 +13,14 @@ import UntitledProject
 
 Canvas {
     id: mycanvas
-    scale: (root.width / 2560)
 
     antialiasing: true
-    canvasWindow: Qt.rect( 0, 0, width, height);
-    canvasSize: Qt.size( width,height );
-
-    onCanvasWindowChanged: {requestPaint();}
 
     onPaint: squircle();
 
     function squircle(led_color = "green"){
-
         var ctx = getContext("2d");
+        ctx.reset();
 
         ctx.fillStyle = '#343434';
         ctx.fillRect(0, 0, mycanvas.width, mycanvas.height);
@@ -33,10 +28,10 @@ Canvas {
         var x = mycanvas.width/2,
             y = mycanvas.height/2,
             // Radii of the white glow.
-            innerRadius = 3,
-            outerRadius = 10,
+            innerRadius = mycanvas.width/50,
+            outerRadius = mycanvas.width/20,
             // Radius of the entire circle.
-            radius = 15;
+            radius = mycanvas.width/20;
 
         var gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
         gradient.addColorStop(0, 'white');

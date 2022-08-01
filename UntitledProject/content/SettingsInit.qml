@@ -2,43 +2,34 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import UntitledProject
 
-
 Rectangle {
     width: 800 * root.width / 2560
     height: root.height
-    color: "#343434"
-    border.color: "#ffffff"
+    visible: false
+    color: "#00ffffff"
+    border.color: "#00ffffff"
 
-    Text {
-        x: parent.x
-        y: parent.y
-        width: parent.width
-
-        color: "#ffffff"
-        text: "Settings"
-        horizontalAlignment: Text.AlignHCenter
-        font.pointSize: 30 * root.width/ 2560
-        font.styleName: "Bold"
-
-    }
     Button {
         id: settings_toggle_button
         anchors{
-            left: parent.left
+            right: parent.right
             top: parent.top
             topMargin: parent.height/2 - 128 * root.height/ 1600
         }
         icon.name: "settings"
-        icon.source: "../src/close-window-128.gif"
+        icon.source: "../src/settings-17-128.gif"
         icon.color: "#620b66"
         icon.width: 64* root.width/ 2560
         icon.height: 64* root.height/ 1600
 
 
-        onClicked: {stackview_settings.pop();
-                    animation_right_reverse.running = true;
-                    animation_bottom_reverse.running = true;
-                    }
+        onClicked: {stackview_settings.push( "SettingsUI.qml" );
+                    animation_right.running = true;
+                    animation_bottom.running = true;
+                    //mainLoader.anchors.bottomMargin = settingsLoader.width * root.height/ root.width;
+
+                 }
+
         background: Rectangle {
             id: power_button_bg
             color: parent.down? "#b1b1b1" : "#00fbfbfb"
@@ -49,4 +40,3 @@ Rectangle {
 
     }
 }
-
