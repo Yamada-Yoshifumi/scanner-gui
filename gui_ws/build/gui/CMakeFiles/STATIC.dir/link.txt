@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,libSTATIC.so -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libSTATIC.so CMakeFiles/STATIC.dir/STATIC_autogen/mocs_compilation.cpp.o 

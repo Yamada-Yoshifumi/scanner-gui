@@ -1,0 +1,29 @@
+{
+	"BUILD_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen",
+	"CMAKE_BINARY_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui",
+	"CMAKE_SOURCE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src",
+	"INCLUDE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Mainui.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsInit.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsUI.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/App.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Bootpage.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewSettings.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/IndicatorLED.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewPage.qml"
+	],
+	"LOCK_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/AutoRcc_Resource_ACDZA3JY2K_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "Resource" ],
+	"OUTPUT_CHECKSUM" : "ACDZA3JY2K",
+	"OUTPUT_NAME" : "qrc_Resource.cpp",
+	"RCC_EXECUTABLE" : "/home/ameyasu/Qt/6.3.1/gcc_64/./libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/AutoRcc_Resource_ACDZA3JY2K_Used.txt",
+	"SOURCE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Resource.qrc",
+	"VERBOSITY" : 0
+}

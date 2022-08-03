@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>App.qml</file>
+        <file>Bootpage.qml</file>
+        <file>IndicatorLED.qml</file>
+        <file>Mainui.qml</file>
+        <file>SettingsInit.qml</file>
+        <file>SettingsUI.qml</file>
+        <file>StackViewPage.qml</file>
+        <file>StackViewSettings.qml</file>
+    </qresource>
+</RCC>

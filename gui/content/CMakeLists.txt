@@ -21,4 +21,6 @@ qt6_add_qml_module(content
         images/power-button.png
         images/ros_rviz.png
         images/settings-17-128.gif
+        images/fullscreen.svg
+        images/exit_fullscreen.png
 )

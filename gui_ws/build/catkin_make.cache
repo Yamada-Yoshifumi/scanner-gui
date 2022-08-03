@@ -1,0 +1,2 @@
+gui:velodyne_simulator/velodyne_description:velodyne_simulator/velodyne_gazebo_plugins:velodyne_simulator/velodyne_simulator
+-DCATKIN_DEVEL_PREFIX=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ameyasu/QTprojects/scanner-gui/gui_ws/install -G Unix Makefiles
