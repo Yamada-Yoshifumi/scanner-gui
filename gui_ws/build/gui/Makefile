@@ -56,40 +56,6 @@ CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -102,6 +68,39 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -111,6 +110,18 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -123,17 +134,6 @@ install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,94 +168,94 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-gui/CMakeFiles/gui_tooling.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/gui_tooling.dir/rule
-.PHONY : gui/CMakeFiles/gui_tooling.dir/rule
+gui/CMakeFiles/scanner_gui.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/scanner_gui.dir/rule
+.PHONY : gui/CMakeFiles/scanner_gui.dir/rule
 
 # Convenience name for target.
-gui_tooling: gui/CMakeFiles/gui_tooling.dir/rule
+scanner_gui: gui/CMakeFiles/scanner_gui.dir/rule
 
-.PHONY : gui_tooling
+.PHONY : scanner_gui
 
 # fast build rule for target.
-gui_tooling/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui_tooling.dir/build.make gui/CMakeFiles/gui_tooling.dir/build
-.PHONY : gui_tooling/fast
+scanner_gui/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/build
+.PHONY : scanner_gui/fast
 
 # Convenience name for target.
-gui/CMakeFiles/all_qmltyperegistrations.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/all_qmltyperegistrations.dir/rule
-.PHONY : gui/CMakeFiles/all_qmltyperegistrations.dir/rule
+gui/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : gui/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-all_qmltyperegistrations: gui/CMakeFiles/all_qmltyperegistrations.dir/rule
+std_msgs_generate_messages_py: gui/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
-.PHONY : all_qmltyperegistrations
+.PHONY : std_msgs_generate_messages_py
 
 # fast build rule for target.
-all_qmltyperegistrations/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/all_qmltyperegistrations.dir/build.make gui/CMakeFiles/all_qmltyperegistrations.dir/build
-.PHONY : all_qmltyperegistrations/fast
+std_msgs_generate_messages_py/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/std_msgs_generate_messages_py.dir/build.make gui/CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-gui/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : gui/CMakeFiles/roscpp_generate_messages_py.dir/rule
+gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+.PHONY : gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_py: gui/CMakeFiles/roscpp_generate_messages_py.dir/rule
+std_msgs_generate_messages_nodejs: gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : roscpp_generate_messages_py
+.PHONY : std_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/roscpp_generate_messages_py.dir/build.make gui/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
+std_msgs_generate_messages_nodejs/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+.PHONY : std_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-.PHONY : gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_nodejs: gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+std_msgs_generate_messages_lisp: gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : roscpp_generate_messages_nodejs
+.PHONY : std_msgs_generate_messages_lisp
 
 # fast build rule for target.
-roscpp_generate_messages_nodejs/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-.PHONY : roscpp_generate_messages_nodejs/fast
+std_msgs_generate_messages_lisp/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-gui/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : gui/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+gui/CMakeFiles/STATIC.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/STATIC.dir/rule
+.PHONY : gui/CMakeFiles/STATIC.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_eus: gui/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+STATIC: gui/CMakeFiles/STATIC.dir/rule
 
-.PHONY : std_msgs_generate_messages_eus
+.PHONY : STATIC
 
 # fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make gui/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
+STATIC/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/STATIC.dir/build.make gui/CMakeFiles/STATIC.dir/build
+.PHONY : STATIC/fast
 
 # Convenience name for target.
-gui/CMakeFiles/all_qmllint.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/all_qmllint.dir/rule
-.PHONY : gui/CMakeFiles/all_qmllint.dir/rule
+gui/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : gui/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-all_qmllint: gui/CMakeFiles/all_qmllint.dir/rule
+roscpp_generate_messages_cpp: gui/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
-.PHONY : all_qmllint
+.PHONY : roscpp_generate_messages_cpp
 
 # fast build rule for target.
-all_qmllint/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/all_qmllint.dir/build.make gui/CMakeFiles/all_qmllint.dir/build
-.PHONY : all_qmllint/fast
+roscpp_generate_messages_cpp/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make gui/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
 
 # Convenience name for target.
 gui/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
@@ -273,19 +273,109 @@ roscpp_generate_messages_eus/fast:
 .PHONY : roscpp_generate_messages_eus/fast
 
 # Convenience name for target.
-gui/CMakeFiles/gui_other_files.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/gui_other_files.dir/rule
-.PHONY : gui/CMakeFiles/gui_other_files.dir/rule
+gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-gui_other_files: gui/CMakeFiles/gui_other_files.dir/rule
+rosgraph_msgs_generate_messages_nodejs: gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : gui_other_files
+.PHONY : rosgraph_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-gui_other_files/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui_other_files.dir/build.make gui/CMakeFiles/gui_other_files.dir/build
-.PHONY : gui_other_files/fast
+rosgraph_msgs_generate_messages_nodejs/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+gui/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : gui/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_py: gui/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+.PHONY : roscpp_generate_messages_py
+
+# fast build rule for target.
+roscpp_generate_messages_py/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/roscpp_generate_messages_py.dir/build.make gui/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
+
+# Convenience name for target.
+gui/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : gui/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_eus: gui/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+
+.PHONY : std_msgs_generate_messages_eus
+
+# fast build rule for target.
+std_msgs_generate_messages_eus/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make gui/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+.PHONY : gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_nodejs: gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+
+.PHONY : roscpp_generate_messages_nodejs
+
+# fast build rule for target.
+roscpp_generate_messages_nodejs/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make gui/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+.PHONY : roscpp_generate_messages_nodejs/fast
+
+# Convenience name for target.
+gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_cpp: gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_cpp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_cpp: gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : std_msgs_generate_messages_cpp
+
+# fast build rule for target.
+std_msgs_generate_messages_cpp/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_eus: gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_eus
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_eus/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 gui/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
@@ -301,21 +391,6 @@ rosgraph_msgs_generate_messages_lisp: gui/CMakeFiles/rosgraph_msgs_generate_mess
 rosgraph_msgs_generate_messages_lisp/fast:
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make gui/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-gui/CMakeFiles/gui_automoc_json_extraction.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/gui_automoc_json_extraction.dir/rule
-.PHONY : gui/CMakeFiles/gui_automoc_json_extraction.dir/rule
-
-# Convenience name for target.
-gui_automoc_json_extraction: gui/CMakeFiles/gui_automoc_json_extraction.dir/rule
-
-.PHONY : gui_automoc_json_extraction
-
-# fast build rule for target.
-gui_automoc_json_extraction/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui_automoc_json_extraction.dir/build.make gui/CMakeFiles/gui_automoc_json_extraction.dir/build
-.PHONY : gui_automoc_json_extraction/fast
 
 # Convenience name for target.
 gui/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
@@ -348,214 +423,19 @@ rosgraph_msgs_generate_messages_py/fast:
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-gui/CMakeFiles/gui.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/gui.dir/rule
-.PHONY : gui/CMakeFiles/gui.dir/rule
+gui/CMakeFiles/scanner_gui_autogen.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/scanner_gui_autogen.dir/rule
+.PHONY : gui/CMakeFiles/scanner_gui_autogen.dir/rule
 
 # Convenience name for target.
-gui: gui/CMakeFiles/gui.dir/rule
+scanner_gui_autogen: gui/CMakeFiles/scanner_gui_autogen.dir/rule
 
-.PHONY : gui
+.PHONY : scanner_gui_autogen
 
 # fast build rule for target.
-gui/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/build
-.PHONY : gui/fast
-
-# Convenience name for target.
-gui/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : gui/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_cpp: gui/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make gui/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
-
-# Convenience name for target.
-gui/CMakeFiles/STATIC.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/STATIC.dir/rule
-.PHONY : gui/CMakeFiles/STATIC.dir/rule
-
-# Convenience name for target.
-STATIC: gui/CMakeFiles/STATIC.dir/rule
-
-.PHONY : STATIC
-
-# fast build rule for target.
-STATIC/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/STATIC.dir/build.make gui/CMakeFiles/STATIC.dir/build
-.PHONY : STATIC/fast
-
-# Convenience name for target.
-gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make gui/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make gui/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make gui/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-gui/CMakeFiles/gui_qmltyperegistration.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/gui_qmltyperegistration.dir/rule
-.PHONY : gui/CMakeFiles/gui_qmltyperegistration.dir/rule
-
-# Convenience name for target.
-gui_qmltyperegistration: gui/CMakeFiles/gui_qmltyperegistration.dir/rule
-
-.PHONY : gui_qmltyperegistration
-
-# fast build rule for target.
-gui_qmltyperegistration/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui_qmltyperegistration.dir/build.make gui/CMakeFiles/gui_qmltyperegistration.dir/build
-.PHONY : gui_qmltyperegistration/fast
-
-# Convenience name for target.
-gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make gui/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-gui/CMakeFiles/gui_qmllint.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/gui_qmllint.dir/rule
-.PHONY : gui/CMakeFiles/gui_qmllint.dir/rule
-
-# Convenience name for target.
-gui_qmllint: gui/CMakeFiles/gui_qmllint.dir/rule
-
-.PHONY : gui_qmllint
-
-# fast build rule for target.
-gui_qmllint/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui_qmllint.dir/build.make gui/CMakeFiles/gui_qmllint.dir/build
-.PHONY : gui_qmllint/fast
-
-# Convenience name for target.
-gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-.PHONY : gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_nodejs: gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-std_msgs_generate_messages_nodejs/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make gui/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-.PHONY : std_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-gui/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : gui/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: gui/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/std_msgs_generate_messages_py.dir/build.make gui/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-gui/CMakeFiles/scanner_gui.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/scanner_gui.dir/rule
-.PHONY : gui/CMakeFiles/scanner_gui.dir/rule
-
-# Convenience name for target.
-scanner_gui: gui/CMakeFiles/scanner_gui.dir/rule
-
-.PHONY : scanner_gui
-
-# fast build rule for target.
-scanner_gui/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/build
-.PHONY : scanner_gui/fast
-
-# Convenience name for target.
-gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make gui/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-gui/CMakeFiles/gui_autogen.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/gui_autogen.dir/rule
-.PHONY : gui/CMakeFiles/gui_autogen.dir/rule
-
-# Convenience name for target.
-gui_autogen: gui/CMakeFiles/gui_autogen.dir/rule
-
-.PHONY : gui_autogen
-
-# fast build rule for target.
-gui_autogen/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui_autogen.dir/build.make gui/CMakeFiles/gui_autogen.dir/build
-.PHONY : gui_autogen/fast
+scanner_gui_autogen/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui_autogen.dir/build.make gui/CMakeFiles/scanner_gui_autogen.dir/build
+.PHONY : scanner_gui_autogen/fast
 
 # Convenience name for target.
 gui/CMakeFiles/STATIC_autogen.dir/rule:
@@ -571,318 +451,6 @@ STATIC_autogen: gui/CMakeFiles/STATIC_autogen.dir/rule
 STATIC_autogen/fast:
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/STATIC_autogen.dir/build.make gui/CMakeFiles/STATIC_autogen.dir/build
 .PHONY : STATIC_autogen/fast
-
-# Convenience name for target.
-gui/CMakeFiles/scanner_gui_autogen.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/scanner_gui_autogen.dir/rule
-.PHONY : gui/CMakeFiles/scanner_gui_autogen.dir/rule
-
-# Convenience name for target.
-scanner_gui_autogen: gui/CMakeFiles/scanner_gui_autogen.dir/rule
-
-.PHONY : scanner_gui_autogen
-
-# fast build rule for target.
-scanner_gui_autogen/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui_autogen.dir/build.make gui/CMakeFiles/scanner_gui_autogen.dir/build
-.PHONY : scanner_gui_autogen/fast
-
-.rcc/qmlcache/gui_qmlcache_loader.o: .rcc/qmlcache/gui_qmlcache_loader.cpp.o
-
-.PHONY : .rcc/qmlcache/gui_qmlcache_loader.o
-
-# target to build an object file
-.rcc/qmlcache/gui_qmlcache_loader.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.o
-.PHONY : .rcc/qmlcache/gui_qmlcache_loader.cpp.o
-
-.rcc/qmlcache/gui_qmlcache_loader.i: .rcc/qmlcache/gui_qmlcache_loader.cpp.i
-
-.PHONY : .rcc/qmlcache/gui_qmlcache_loader.i
-
-# target to preprocess a source file
-.rcc/qmlcache/gui_qmlcache_loader.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.i
-.PHONY : .rcc/qmlcache/gui_qmlcache_loader.cpp.i
-
-.rcc/qmlcache/gui_qmlcache_loader.s: .rcc/qmlcache/gui_qmlcache_loader.cpp.s
-
-.PHONY : .rcc/qmlcache/gui_qmlcache_loader.s
-
-# target to generate assembly for a file
-.rcc/qmlcache/gui_qmlcache_loader.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.s
-.PHONY : .rcc/qmlcache/gui_qmlcache_loader.cpp.s
-
-.rcc/qmlcache/gui_scanner-gui/App_qml.o: .rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/App_qml.o
-
-# target to build an object file
-.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o
-.PHONY : .rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o
-
-.rcc/qmlcache/gui_scanner-gui/App_qml.i: .rcc/qmlcache/gui_scanner-gui/App_qml.cpp.i
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/App_qml.i
-
-# target to preprocess a source file
-.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.i
-.PHONY : .rcc/qmlcache/gui_scanner-gui/App_qml.cpp.i
-
-.rcc/qmlcache/gui_scanner-gui/App_qml.s: .rcc/qmlcache/gui_scanner-gui/App_qml.cpp.s
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/App_qml.s
-
-# target to generate assembly for a file
-.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.s
-.PHONY : .rcc/qmlcache/gui_scanner-gui/App_qml.cpp.s
-
-.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.o: .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.o
-
-# target to build an object file
-.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o
-
-.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.i: .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.i
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.i
-
-# target to preprocess a source file
-.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.i
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.i
-
-.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.s: .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.s
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.s
-
-# target to generate assembly for a file
-.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.s
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.s
-
-.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.o: .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.o
-
-# target to build an object file
-.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o
-.PHONY : .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o
-
-.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.i: .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.i
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.i
-
-# target to preprocess a source file
-.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.i
-.PHONY : .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.i
-
-.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.s: .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.s
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.s
-
-# target to generate assembly for a file
-.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.s
-.PHONY : .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.s
-
-.rcc/qmlcache/gui_scanner-gui/Mainui_qml.o: .rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Mainui_qml.o
-
-# target to build an object file
-.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o
-
-.rcc/qmlcache/gui_scanner-gui/Mainui_qml.i: .rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.i
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Mainui_qml.i
-
-# target to preprocess a source file
-.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.i
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.i
-
-.rcc/qmlcache/gui_scanner-gui/Mainui_qml.s: .rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.s
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Mainui_qml.s
-
-# target to generate assembly for a file
-.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.s
-.PHONY : .rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.s
-
-.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.o: .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.o
-
-# target to build an object file
-.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o
-
-.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.i: .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.i
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.i
-
-# target to preprocess a source file
-.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.i
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.i
-
-.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.s: .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.s
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.s
-
-# target to generate assembly for a file
-.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.s
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.s
-
-.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.o: .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.o
-
-# target to build an object file
-.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o
-
-.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.i: .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.i
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.i
-
-# target to preprocess a source file
-.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.i
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.i
-
-.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.s: .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.s
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.s
-
-# target to generate assembly for a file
-.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.s
-.PHONY : .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.s
-
-.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.o: .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.o
-
-# target to build an object file
-.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o
-
-.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.i: .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.i
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.i
-
-# target to preprocess a source file
-.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.i
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.i
-
-.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.s: .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.s
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.s
-
-# target to generate assembly for a file
-.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.s
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.s
-
-.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.o: .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.o
-
-# target to build an object file
-.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o
-
-.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.i: .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.i
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.i
-
-# target to preprocess a source file
-.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.i
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.i
-
-.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.s: .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.s
-
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.s
-
-# target to generate assembly for a file
-.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.s
-.PHONY : .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.s
-
-.rcc/qrc_gui_raw_qml_0.o: .rcc/qrc_gui_raw_qml_0.cpp.o
-
-.PHONY : .rcc/qrc_gui_raw_qml_0.o
-
-# target to build an object file
-.rcc/qrc_gui_raw_qml_0.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.o
-.PHONY : .rcc/qrc_gui_raw_qml_0.cpp.o
-
-.rcc/qrc_gui_raw_qml_0.i: .rcc/qrc_gui_raw_qml_0.cpp.i
-
-.PHONY : .rcc/qrc_gui_raw_qml_0.i
-
-# target to preprocess a source file
-.rcc/qrc_gui_raw_qml_0.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.i
-.PHONY : .rcc/qrc_gui_raw_qml_0.cpp.i
-
-.rcc/qrc_gui_raw_qml_0.s: .rcc/qrc_gui_raw_qml_0.cpp.s
-
-.PHONY : .rcc/qrc_gui_raw_qml_0.s
-
-# target to generate assembly for a file
-.rcc/qrc_gui_raw_qml_0.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.s
-.PHONY : .rcc/qrc_gui_raw_qml_0.cpp.s
-
-.rcc/qrc_qmake_gui.o: .rcc/qrc_qmake_gui.cpp.o
-
-.PHONY : .rcc/qrc_qmake_gui.o
-
-# target to build an object file
-.rcc/qrc_qmake_gui.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.o
-.PHONY : .rcc/qrc_qmake_gui.cpp.o
-
-.rcc/qrc_qmake_gui.i: .rcc/qrc_qmake_gui.cpp.i
-
-.PHONY : .rcc/qrc_qmake_gui.i
-
-# target to preprocess a source file
-.rcc/qrc_qmake_gui.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.i
-.PHONY : .rcc/qrc_qmake_gui.cpp.i
-
-.rcc/qrc_qmake_gui.s: .rcc/qrc_qmake_gui.cpp.s
-
-.PHONY : .rcc/qrc_qmake_gui.s
-
-# target to generate assembly for a file
-.rcc/qrc_qmake_gui.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.s
-.PHONY : .rcc/qrc_qmake_gui.cpp.s
 
 STATIC_autogen/mocs_compilation.o: STATIC_autogen/mocs_compilation.cpp.o
 
@@ -910,60 +478,6 @@ STATIC_autogen/mocs_compilation.s: STATIC_autogen/mocs_compilation.cpp.s
 STATIC_autogen/mocs_compilation.cpp.s:
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/STATIC.dir/build.make gui/CMakeFiles/STATIC.dir/STATIC_autogen/mocs_compilation.cpp.s
 .PHONY : STATIC_autogen/mocs_compilation.cpp.s
-
-gui_autogen/mocs_compilation.o: gui_autogen/mocs_compilation.cpp.o
-
-.PHONY : gui_autogen/mocs_compilation.o
-
-# target to build an object file
-gui_autogen/mocs_compilation.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/gui_autogen/mocs_compilation.cpp.o
-.PHONY : gui_autogen/mocs_compilation.cpp.o
-
-gui_autogen/mocs_compilation.i: gui_autogen/mocs_compilation.cpp.i
-
-.PHONY : gui_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-gui_autogen/mocs_compilation.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/gui_autogen/mocs_compilation.cpp.i
-.PHONY : gui_autogen/mocs_compilation.cpp.i
-
-gui_autogen/mocs_compilation.s: gui_autogen/mocs_compilation.cpp.s
-
-.PHONY : gui_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-gui_autogen/mocs_compilation.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/gui_autogen/mocs_compilation.cpp.s
-.PHONY : gui_autogen/mocs_compilation.cpp.s
-
-gui_qmltyperegistrations.o: gui_qmltyperegistrations.cpp.o
-
-.PHONY : gui_qmltyperegistrations.o
-
-# target to build an object file
-gui_qmltyperegistrations.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.o
-.PHONY : gui_qmltyperegistrations.cpp.o
-
-gui_qmltyperegistrations.i: gui_qmltyperegistrations.cpp.i
-
-.PHONY : gui_qmltyperegistrations.i
-
-# target to preprocess a source file
-gui_qmltyperegistrations.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.i
-.PHONY : gui_qmltyperegistrations.cpp.i
-
-gui_qmltyperegistrations.s: gui_qmltyperegistrations.cpp.s
-
-.PHONY : gui_qmltyperegistrations.s
-
-# target to generate assembly for a file
-gui_qmltyperegistrations.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.s
-.PHONY : gui_qmltyperegistrations.cpp.s
 
 scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.o: scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o
 
@@ -1025,7 +539,6 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/src/main.cpp.o
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
@@ -1035,7 +548,6 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/src/main.cpp.i
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
@@ -1045,7 +557,6 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/gui.dir/build.make gui/CMakeFiles/gui.dir/src/main.cpp.s
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
@@ -1055,83 +566,35 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install"
-	@echo "... gui_tooling"
-	@echo "... all_qmltyperegistrations"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... roscpp_generate_messages_nodejs"
-	@echo "... std_msgs_generate_messages_eus"
-	@echo "... all_qmllint"
-	@echo "... edit_cache"
-	@echo "... roscpp_generate_messages_eus"
+	@echo "... install/local"
 	@echo "... rebuild_cache"
-	@echo "... gui_other_files"
+	@echo "... edit_cache"
+	@echo "... test"
+	@echo "... scanner_gui"
+	@echo "... std_msgs_generate_messages_py"
+	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... list_install_components"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... STATIC"
+	@echo "... roscpp_generate_messages_cpp"
+	@echo "... roscpp_generate_messages_eus"
+	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... install"
+	@echo "... std_msgs_generate_messages_eus"
+	@echo "... roscpp_generate_messages_nodejs"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... install/strip"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... gui_automoc_json_extraction"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... gui"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... STATIC"
-	@echo "... install/local"
-	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... gui_qmltyperegistration"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... list_install_components"
-	@echo "... gui_qmllint"
-	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... std_msgs_generate_messages_py"
-	@echo "... install/strip"
-	@echo "... scanner_gui"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... test"
-	@echo "... gui_autogen"
-	@echo "... STATIC_autogen"
 	@echo "... scanner_gui_autogen"
-	@echo "... .rcc/qmlcache/gui_qmlcache_loader.o"
-	@echo "... .rcc/qmlcache/gui_qmlcache_loader.i"
-	@echo "... .rcc/qmlcache/gui_qmlcache_loader.s"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/App_qml.o"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/App_qml.i"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/App_qml.s"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.o"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.i"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.s"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.o"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.i"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.s"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/Mainui_qml.o"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/Mainui_qml.i"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/Mainui_qml.s"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.o"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.i"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.s"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.o"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.i"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.s"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.o"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.i"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.s"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.o"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.i"
-	@echo "... .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.s"
-	@echo "... .rcc/qrc_gui_raw_qml_0.o"
-	@echo "... .rcc/qrc_gui_raw_qml_0.i"
-	@echo "... .rcc/qrc_gui_raw_qml_0.s"
-	@echo "... .rcc/qrc_qmake_gui.o"
-	@echo "... .rcc/qrc_qmake_gui.i"
-	@echo "... .rcc/qrc_qmake_gui.s"
+	@echo "... STATIC_autogen"
 	@echo "... STATIC_autogen/mocs_compilation.o"
 	@echo "... STATIC_autogen/mocs_compilation.i"
 	@echo "... STATIC_autogen/mocs_compilation.s"
-	@echo "... gui_autogen/mocs_compilation.o"
-	@echo "... gui_autogen/mocs_compilation.i"
-	@echo "... gui_autogen/mocs_compilation.s"
-	@echo "... gui_qmltyperegistrations.o"
-	@echo "... gui_qmltyperegistrations.i"
-	@echo "... gui_qmltyperegistrations.s"
 	@echo "... scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.o"
 	@echo "... scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.i"
 	@echo "... scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.s"

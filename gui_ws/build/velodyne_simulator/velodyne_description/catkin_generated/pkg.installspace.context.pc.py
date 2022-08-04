@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "velodyne_description"
 PROJECT_SPACE_DIR = "/home/ameyasu/QTprojects/scanner-gui/gui_ws/install"
-PROJECT_VERSION = "1.0.12"
+PROJECT_VERSION = "1.0.11"

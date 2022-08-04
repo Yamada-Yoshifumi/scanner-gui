@@ -8,5 +8,13 @@
         <file>SettingsUI.qml</file>
         <file>StackViewPage.qml</file>
         <file>StackViewSettings.qml</file>
+        <file>images/close-window-128.gif</file>
+        <file>images/exit_fullscreen.png</file>
+        <file>images/fullscreen.svg</file>
+        <file>images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg</file>
+        <file>images/power-button.png</file>
+        <file>images/ros_rviz.png</file>
+        <file>images/settings-17-128.gif</file>
+        <file>fonts/fonts.txt</file>
     </qresource>
 </RCC>

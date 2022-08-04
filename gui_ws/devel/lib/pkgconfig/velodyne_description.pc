@@ -2,7 +2,7 @@ prefix=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel
 
 Name: velodyne_description
 Description: Description of velodyne_description
-Version: 1.0.12
+Version: 1.0.11
 Cflags: 
 Libs: -L${prefix}/lib 
 Requires: 

@@ -1,0 +1,7 @@
+set(velodyne_control_SETUP_PY_SETUP_MODULE "distutils.core")
+set(velodyne_control_SETUP_PY_VERSION "1.2.6")
+set(velodyne_control_SETUP_PY_SCRIPTS "")
+set(velodyne_control_SETUP_PY_PACKAGES "velodyne_control")
+set(velodyne_control_SETUP_PY_PACKAGE_DIRS "src/velodyne_control")
+set(velodyne_control_SETUP_PY_MODULES "")
+set(velodyne_control_SETUP_PY_MODULE_DIRS "")

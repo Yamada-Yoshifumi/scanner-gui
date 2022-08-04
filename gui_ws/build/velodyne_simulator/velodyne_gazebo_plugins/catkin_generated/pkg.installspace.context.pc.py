@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "roscpp;sensor_msgs;gazebo_ros".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "-lgazebo_ros_velodyne_laser;-lgazebo_ros_velodyne_gpu_laser".split(';') if "-lgazebo_ros_velodyne_laser;-lgazebo_ros_velodyne_gpu_laser" != "" else []
 PROJECT_NAME = "velodyne_gazebo_plugins"
 PROJECT_SPACE_DIR = "/home/ameyasu/QTprojects/scanner-gui/gui_ws/install"
-PROJECT_VERSION = "1.0.12"
+PROJECT_VERSION = "1.0.11"

@@ -1,5 +1,5 @@
 set(_CATKIN_CURRENT_PACKAGE "velodyne_simulator")
-set(velodyne_simulator_VERSION "1.0.12")
+set(velodyne_simulator_VERSION "1.0.11")
 set(velodyne_simulator_MAINTAINER "Kevin Hallenbeck <khallenbeck@dataspeedinc.com>")
 set(velodyne_simulator_PACKAGE_FORMAT "2")
 set(velodyne_simulator_BUILD_DEPENDS )

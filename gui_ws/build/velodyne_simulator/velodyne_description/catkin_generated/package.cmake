@@ -1,5 +1,5 @@
 set(_CATKIN_CURRENT_PACKAGE "velodyne_description")
-set(velodyne_description_VERSION "1.0.12")
+set(velodyne_description_VERSION "1.0.11")
 set(velodyne_description_MAINTAINER "Kevin Hallenbeck <khallenbeck@dataspeedinc.com>")
 set(velodyne_description_PACKAGE_FORMAT "2")
 set(velodyne_description_BUILD_DEPENDS )

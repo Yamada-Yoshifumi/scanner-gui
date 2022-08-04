@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 8.0.0, 2022-08-04T12:19:45. -->
+<!-- Written by QtCreator 8.0.0, 2022-08-04T15:47:42. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -131,7 +131,7 @@
      <value type="QString">PATH=/opt/ros/noetic/bin:/home/ameyasu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
      <value type="QString">PKG_CONFIG_PATH=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig</value>
      <value type="QString">PWD=/home/ameyasu/QTprojects/scanner-gui/gui_ws</value>
-     <value type="QString">PYTHONPATH=/opt/ros/noetic/lib/python3/dist-packages</value>
+     <value type="QString">PYTHONPATH=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/python3/dist-packages:/opt/ros/noetic/lib/python3/dist-packages</value>
      <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/share/common-lisp:/home/ameyasu/catkin_ws/devel/share/common-lisp</value>
      <value type="QString">ROS_DISTRO=noetic</value>
      <value type="QString">ROS_ETC_DIR=/opt/ros/noetic/etc/ros</value>
@@ -140,7 +140,7 @@
      <value type="QString">ROS_PYTHON_VERSION=3</value>
      <value type="QString">ROS_ROOT=/opt/ros/noetic/share/ros</value>
      <value type="QString">ROS_VERSION=1</value>
-     <value type="QString">SHLVL=562</value>
+     <value type="QString">SHLVL=648</value>
      <value type="QString">TERM=xterm</value>
      <value type="QString">_=/usr/bin/env</value>
     </valuelist>

@@ -73,22 +73,7 @@
 	],
 	"MOC_PREDEFS_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
-	"MOC_SKIP" : 
-	[
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qrc_gui_raw_qml_0.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qrc_qmake_gui.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/STATIC_autogen/mocs_compilation.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_autogen/mocs_compilation.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_qmltyperegistrations.cpp"
-	],
+	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
 	"PARSE_CACHE_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/ParseCache.txt",

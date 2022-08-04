@@ -266,12 +266,6 @@ QtQml/qqml.h
 QtQml/qqmlmoduleregistration.h
 -
 
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp
-QGuiApplication
--
-QQmlApplicationEngine
--
-
 /home/ameyasu/Qt/6.3.1/gcc_64/include/QtCore/QMetaType
 qmetatype.h
 /home/ameyasu/Qt/6.3.1/gcc_64/include/QtCore/qmetatype.h
@@ -1232,10 +1226,6 @@ QtNetwork/qtnetwork-config.h
 QtNetwork/qtnetworkexports.h
 -
 
-/home/ameyasu/Qt/6.3.1/gcc_64/include/QtQml/QQmlApplicationEngine
-qqmlapplicationengine.h
-/home/ameyasu/Qt/6.3.1/gcc_64/include/QtQml/qqmlapplicationengine.h
-
 /home/ameyasu/Qt/6.3.1/gcc_64/include/QtQml/qjsengine.h
 QtCore/qmetatype.h
 -
@@ -1312,16 +1302,6 @@ QtCore/qversionnumber.h
 QtCore/qurl.h
 -
 QtQml/qtqmlglobal.h
--
-
-/home/ameyasu/Qt/6.3.1/gcc_64/include/QtQml/qqmlapplicationengine.h
-QtQml/qqmlengine.h
--
-QtCore/qurl.h
--
-QtCore/qobject.h
--
-QtCore/qlist.h
 -
 
 /home/ameyasu/Qt/6.3.1/gcc_64/include/QtQml/qqmlcomponent.h

@@ -18,7 +18,8 @@
 		"QT_QML_LIB",
 		"ROSCONSOLE_BACKEND_LOG4CXX",
 		"ROS_BUILD_SHARED_LIBS=1",
-		"ROS_PACKAGE_NAME=\"gui\""
+		"ROS_PACKAGE_NAME=\"gui\"",
+		"gui_EXPORTS"
 	],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -82,7 +83,8 @@
 		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp",
 		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qrc_gui_raw_qml_0.cpp",
 		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qrc_qmake_gui.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_qmltyperegistrations.cpp"
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_qmltyperegistrations.cpp",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/guiplugin_autogen/mocs_compilation.cpp"
 	],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
@@ -95,10 +97,6 @@
 	[
 		[
 			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_qmlcache_loader.cpp",
-			"Mu"
-		],
-		[
-			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp",
 			"Mu"
 		]
 	],

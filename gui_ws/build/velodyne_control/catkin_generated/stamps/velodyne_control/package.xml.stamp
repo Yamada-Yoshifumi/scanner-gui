@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>velodyne_control</name>
+  <version>1.2.6</version>
+  <description>
+    Control movement of Lidar in simulation
+  </description>
+  <license>BSD</license>
+  <author>Ameyasu</author>
+  <maintainer email="yuanhan2001@gmail.com">Ameyasu</maintainer>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>geometry_msgs</depend>
+</package>

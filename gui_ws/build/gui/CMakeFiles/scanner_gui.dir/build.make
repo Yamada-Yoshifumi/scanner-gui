@@ -60,13 +60,21 @@ include gui/CMakeFiles/scanner_gui.dir/flags.make
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Resource.qrc
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: gui/CMakeFiles/scanner_gui_autogen.dir/AutoRcc_Resource_ACDZA3JY2K_Info.json
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Mainui.qml
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsInit.qml
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsUI.qml
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/App.qml
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Bootpage.qml
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewSettings.qml
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/IndicatorLED.qml
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsInit.qml
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/App.qml
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewSettings.qml
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewPage.qml
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/fonts/fonts.txt
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/close-window-128.gif
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/power-button.png
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/ros_rviz.png
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/exit_fullscreen.png
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/settings-17-128.gif
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/fullscreen.svg
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/./libexec/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for scanner-gui/Resource.qrc"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E cmake_autorcc /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/AutoRcc_Resource_ACDZA3JY2K_Info.json 

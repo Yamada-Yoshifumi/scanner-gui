@@ -1,5 +1,5 @@
 set(_CATKIN_CURRENT_PACKAGE "velodyne_gazebo_plugins")
-set(velodyne_gazebo_plugins_VERSION "1.0.12")
+set(velodyne_gazebo_plugins_VERSION "1.0.11")
 set(velodyne_gazebo_plugins_MAINTAINER "Kevin Hallenbeck <khallenbeck@dataspeedinc.com>")
 set(velodyne_gazebo_plugins_PACKAGE_FORMAT "2")
 set(velodyne_gazebo_plugins_BUILD_DEPENDS "roscpp" "sensor_msgs" "tf" "gazebo_ros")

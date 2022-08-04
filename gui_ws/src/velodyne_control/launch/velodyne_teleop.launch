@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="velodyne_control" type="velodyne_teleop" name="velodyne_teleop"  output="screen">
+  </node>
+</launch>

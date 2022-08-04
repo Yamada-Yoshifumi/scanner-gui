@@ -8,13 +8,21 @@
 	"INPUTS" : 
 	[
 		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Mainui.qml",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsInit.qml",
 		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsUI.qml",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/App.qml",
 		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Bootpage.qml",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewSettings.qml",
 		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/IndicatorLED.qml",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewPage.qml"
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsInit.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/App.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewSettings.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewPage.qml",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/fonts/fonts.txt",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/close-window-128.gif",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/power-button.png",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/ros_rviz.png",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/exit_fullscreen.png",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/settings-17-128.gif",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/fullscreen.svg"
 	],
 	"LOCK_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/AutoRcc_Resource_ACDZA3JY2K_Lock.lock",
 	"MULTI_CONFIG" : false,
