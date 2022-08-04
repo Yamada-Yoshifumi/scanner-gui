@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/gui_qmltyperegistration"
-  "gui.qmltypes"
+  "gui/gui.qmltypes"
   "gui_qmltyperegistrations.cpp"
   "meta_types/qt6gui_metatypes.json"
   "meta_types/qt6gui_metatypes.json.gen"

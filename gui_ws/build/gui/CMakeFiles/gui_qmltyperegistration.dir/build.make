@@ -54,22 +54,22 @@ CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
 include gui/CMakeFiles/gui_qmltyperegistration.dir/progress.make
 
 gui/CMakeFiles/gui_qmltyperegistration: gui/gui_qmltyperegistrations.cpp
-gui/CMakeFiles/gui_qmltyperegistration: gui/gui.qmltypes
+gui/CMakeFiles/gui_qmltyperegistration: gui/gui/gui.qmltypes
 
 
 gui/gui_qmltyperegistrations.cpp: gui/qmltypes/gui_foreign_types.txt
 gui/gui_qmltyperegistrations.cpp: gui/meta_types/qt6gui_metatypes.json
 gui/gui_qmltyperegistrations.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/./libexec/qmltyperegistrar
-gui/gui_qmltyperegistrations.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6qml_relwithdebinfo_metatypes.json
 gui/gui_qmltyperegistrations.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6core_relwithdebinfo_metatypes.json
+gui/gui_qmltyperegistrations.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6qml_relwithdebinfo_metatypes.json
 gui/gui_qmltyperegistrations.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6network_relwithdebinfo_metatypes.json
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic QML type registration for target gui"
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmltyperegistrar --generate-qmltypes=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui.qmltypes --import-name=gui --major-version=1 --minor-version=0 @/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmltypes/gui_foreign_types.txt -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_qmltyperegistrations.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/meta_types/qt6gui_metatypes.json
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmltyperegistrar --generate-qmltypes=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui/gui.qmltypes --import-name=gui --major-version=1 --minor-version=0 @/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmltypes/gui_foreign_types.txt -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_qmltyperegistrations.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/meta_types/qt6gui_metatypes.json
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E make_directory /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.generated
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E touch /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.generated/gui.qmltypes
 
-gui/gui.qmltypes: gui/gui_qmltyperegistrations.cpp
-	@$(CMAKE_COMMAND) -E touch_nocreate gui/gui.qmltypes
+gui/gui/gui.qmltypes: gui/gui_qmltyperegistrations.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate gui/gui/gui.qmltypes
 
 gui/meta_types/qt6gui_metatypes.json.gen: /home/ameyasu/Qt/6.3.1/gcc_64/./libexec/moc
 gui/meta_types/qt6gui_metatypes.json.gen: gui/meta_types/gui_json_file_list.txt
@@ -82,7 +82,7 @@ gui/meta_types/qt6gui_metatypes.json: gui/meta_types/qt6gui_metatypes.json.gen
 
 gui_qmltyperegistration: gui/CMakeFiles/gui_qmltyperegistration
 gui_qmltyperegistration: gui/gui_qmltyperegistrations.cpp
-gui_qmltyperegistration: gui/gui.qmltypes
+gui_qmltyperegistration: gui/gui/gui.qmltypes
 gui_qmltyperegistration: gui/meta_types/qt6gui_metatypes.json.gen
 gui_qmltyperegistration: gui/meta_types/qt6gui_metatypes.json
 gui_qmltyperegistration: gui/CMakeFiles/gui_qmltyperegistration.dir/build.make

@@ -87,8 +87,7 @@
 		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qrc_qmake_gui.cpp",
 		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/STATIC_autogen/mocs_compilation.cpp",
 		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_autogen/mocs_compilation.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_qmltyperegistrations.cpp",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/guiplugin_autogen/mocs_compilation.cpp"
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_qmltyperegistrations.cpp"
 	],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,

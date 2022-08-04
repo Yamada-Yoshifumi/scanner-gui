@@ -546,8 +546,8 @@ extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[] = {
         wrapCall(aotContext, dataPtr, argumentsPtr, [](const QQmlPrivate::AOTCompiledContext *aotContext, void **argumentsPtr) {
 Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
-QObject *r2;
 QVariant r2_1;
+QObject *r2;
 // generate_LoadQmlContextPropertyLookup
 {
 while (!aotContext->loadScopeObjectPropertyLookup(10, &r2)) {
@@ -588,8 +588,8 @@ return r2_1;
         wrapCall(aotContext, dataPtr, argumentsPtr, [](const QQmlPrivate::AOTCompiledContext *aotContext, void **argumentsPtr) {
 Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
-QObject *r2;
 QVariant r2_1;
+QObject *r2;
 // generate_LoadQmlContextPropertyLookup
 {
 while (!aotContext->loadScopeObjectPropertyLookup(12, &r2)) {

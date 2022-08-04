@@ -11,9 +11,9 @@ list(APPEND CMAKE_PREFIX_PATH "~/Qt/6.3.1/gcc_64")
 find_package(Qt6 6.2 COMPONENTS Quick Gui REQUIRED)
 qt_add_library(STATIC)
 
-#qt_add_executable(qt-gui
-#    src/main.cpp
-#)
+qt_add_executable(gui
+    src/main.cpp
+)
 
 qt6_add_qml_module(gui
     URI gui

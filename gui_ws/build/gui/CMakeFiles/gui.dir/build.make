@@ -69,18 +69,18 @@ gui/meta_types/qt6gui_metatypes.json: gui/meta_types/qt6gui_metatypes.json.gen
 gui/gui_qmltyperegistrations.cpp: gui/qmltypes/gui_foreign_types.txt
 gui/gui_qmltyperegistrations.cpp: gui/meta_types/qt6gui_metatypes.json
 gui/gui_qmltyperegistrations.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/./libexec/qmltyperegistrar
-gui/gui_qmltyperegistrations.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6qml_relwithdebinfo_metatypes.json
 gui/gui_qmltyperegistrations.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6core_relwithdebinfo_metatypes.json
+gui/gui_qmltyperegistrations.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6qml_relwithdebinfo_metatypes.json
 gui/gui_qmltyperegistrations.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6network_relwithdebinfo_metatypes.json
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic QML type registration for target gui"
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmltyperegistrar --generate-qmltypes=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui.qmltypes --import-name=gui --major-version=1 --minor-version=0 @/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmltypes/gui_foreign_types.txt -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_qmltyperegistrations.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/meta_types/qt6gui_metatypes.json
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmltyperegistrar --generate-qmltypes=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui/gui.qmltypes --import-name=gui --major-version=1 --minor-version=0 @/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmltypes/gui_foreign_types.txt -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_qmltyperegistrations.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/meta_types/qt6gui_metatypes.json
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E make_directory /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.generated
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E touch /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.generated/gui.qmltypes
 
-gui/gui.qmltypes: gui/gui_qmltyperegistrations.cpp
-	@$(CMAKE_COMMAND) -E touch_nocreate gui/gui.qmltypes
+gui/gui/gui.qmltypes: gui/gui_qmltyperegistrations.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate gui/gui/gui.qmltypes
 
-gui/.rcc/qrc_qmake_gui.cpp: gui/qmldir
+gui/.rcc/qrc_qmake_gui.cpp: gui/gui/qmldir
 gui/.rcc/qrc_qmake_gui.cpp: gui/.rcc/qmake_gui.qrc
 gui/.rcc/qrc_qmake_gui.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/./libexec/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Running rcc for resource qmake_gui"
@@ -97,81 +97,81 @@ gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/lib
 gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/App.qml
 gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp: gui/.rcc/qmake_gui.qrc
 gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp: gui/.rcc/gui_raw_qml_0.qrc
-gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp: gui/gui.qmltypes
-gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp: gui/qmldir
+gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp: gui/gui/gui.qmltypes
+gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp: gui/gui/qmldir
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating .rcc/qmlcache/gui_scanner-gui/App_qml.cpp"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E make_directory /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/App.qml -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/App.qml
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/App.qml -I /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/App.qml
 
 gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen
 gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Bootpage.qml
 gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp: gui/.rcc/qmake_gui.qrc
 gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp: gui/.rcc/gui_raw_qml_0.qrc
-gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp: gui/gui.qmltypes
-gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp: gui/qmldir
+gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp: gui/gui/gui.qmltypes
+gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp: gui/gui/qmldir
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating .rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E make_directory /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/Bootpage.qml -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Bootpage.qml
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/Bootpage.qml -I /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Bootpage.qml
 
 gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen
 gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Mainui.qml
 gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp: gui/.rcc/qmake_gui.qrc
 gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp: gui/.rcc/gui_raw_qml_0.qrc
-gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp: gui/gui.qmltypes
-gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp: gui/qmldir
+gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp: gui/gui/gui.qmltypes
+gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp: gui/gui/qmldir
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating .rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E make_directory /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/Mainui.qml -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Mainui.qml
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/Mainui.qml -I /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Mainui.qml
 
 gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen
 gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewPage.qml
 gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp: gui/.rcc/qmake_gui.qrc
 gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp: gui/.rcc/gui_raw_qml_0.qrc
-gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp: gui/gui.qmltypes
-gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp: gui/qmldir
+gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp: gui/gui/gui.qmltypes
+gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp: gui/gui/qmldir
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating .rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E make_directory /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/StackViewPage.qml -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewPage.qml
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/StackViewPage.qml -I /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewPage.qml
 
 gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen
 gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/IndicatorLED.qml
 gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp: gui/.rcc/qmake_gui.qrc
 gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp: gui/.rcc/gui_raw_qml_0.qrc
-gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp: gui/gui.qmltypes
-gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp: gui/qmldir
+gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp: gui/gui/gui.qmltypes
+gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp: gui/gui/qmldir
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating .rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E make_directory /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/IndicatorLED.qml -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/IndicatorLED.qml
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/IndicatorLED.qml -I /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/IndicatorLED.qml
 
 gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen
 gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewSettings.qml
 gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp: gui/.rcc/qmake_gui.qrc
 gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp: gui/.rcc/gui_raw_qml_0.qrc
-gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp: gui/gui.qmltypes
-gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp: gui/qmldir
+gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp: gui/gui/gui.qmltypes
+gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp: gui/gui/qmldir
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating .rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E make_directory /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/StackViewSettings.qml -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewSettings.qml
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/StackViewSettings.qml -I /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewSettings.qml
 
 gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen
 gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsUI.qml
 gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp: gui/.rcc/qmake_gui.qrc
 gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp: gui/.rcc/gui_raw_qml_0.qrc
-gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp: gui/gui.qmltypes
-gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp: gui/qmldir
+gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp: gui/gui/gui.qmltypes
+gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp: gui/gui/qmldir
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating .rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E make_directory /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/SettingsUI.qml -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsUI.qml
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/SettingsUI.qml -I /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsUI.qml
 
 gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen
 gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsInit.qml
 gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp: gui/.rcc/qmake_gui.qrc
 gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp: gui/.rcc/gui_raw_qml_0.qrc
-gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp: gui/gui.qmltypes
-gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp: gui/qmldir
+gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp: gui/gui/gui.qmltypes
+gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp: gui/gui/qmldir
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating .rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E make_directory /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/SettingsInit.qml -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsInit.qml
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /home/ameyasu/Qt/6.3.1/gcc_64/libexec/qmlcachegen --resource-path /gui/scanner-gui/SettingsInit.qml -I /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui -i /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui/qmldir --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmake_gui.qrc --resource /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/gui_raw_qml_0.qrc -o /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsInit.qml
 
 gui/.rcc/qrc_gui_raw_qml_0.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/App.qml
 gui/.rcc/qrc_gui_raw_qml_0.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Bootpage.qml
@@ -207,9 +207,22 @@ gui/CMakeFiles/gui.dir/gui_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gui.dir/gui_autogen/mocs_compilation.cpp.s"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_autogen/mocs_compilation.cpp -o CMakeFiles/gui.dir/gui_autogen/mocs_compilation.cpp.s
 
+gui/CMakeFiles/gui.dir/src/main.cpp.o: gui/CMakeFiles/gui.dir/flags.make
+gui/CMakeFiles/gui.dir/src/main.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object gui/CMakeFiles/gui.dir/src/main.cpp.o"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/src/main.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp
+
+gui/CMakeFiles/gui.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gui.dir/src/main.cpp.i"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp > CMakeFiles/gui.dir/src/main.cpp.i
+
+gui/CMakeFiles/gui.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gui.dir/src/main.cpp.s"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp -o CMakeFiles/gui.dir/src/main.cpp.s
+
 gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.o: gui/gui_qmltyperegistrations.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/gui_qmltyperegistrations.cpp
 
 gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.i: cmake_force
@@ -222,7 +235,7 @@ gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.s: cmake_force
 
 gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.o: gui/.rcc/qrc_qmake_gui.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qrc_qmake_gui.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.i: cmake_force
@@ -235,7 +248,7 @@ gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.s: cmake_force
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.o: gui/.rcc/qmlcache/gui_qmlcache_loader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_qmlcache_loader.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.i: cmake_force
@@ -248,7 +261,7 @@ gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.s: cmake_force
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o: gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.i: cmake_force
@@ -261,7 +274,7 @@ gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.s: cmake_force
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o: gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.i: cmake_force
@@ -274,7 +287,7 @@ gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.s: cmake_f
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o: gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.i: cmake_force
@@ -287,7 +300,7 @@ gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.s: cmake_for
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o: gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.i: cmake_force
@@ -300,7 +313,7 @@ gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.s: cm
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o: gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.i: cmake_force
@@ -313,7 +326,7 @@ gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.s: cma
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o: gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.i: cmake_force
@@ -326,7 +339,7 @@ gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.s
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o: gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.i: cmake_force
@@ -339,7 +352,7 @@ gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.s: cmake
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o: gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.i: cmake_force
@@ -352,7 +365,7 @@ gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.s: cma
 
 gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.o: gui/CMakeFiles/gui.dir/flags.make
 gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.o: gui/.rcc/qrc_gui_raw_qml_0.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/.rcc/qrc_gui_raw_qml_0.cpp
 
 gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.i: cmake_force
@@ -366,6 +379,7 @@ gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.s: cmake_force
 # Object files for target gui
 gui_OBJECTS = \
 "CMakeFiles/gui.dir/gui_autogen/mocs_compilation.cpp.o" \
+"CMakeFiles/gui.dir/src/main.cpp.o" \
 "CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.o" \
 "CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.o" \
 "CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.o" \
@@ -382,29 +396,30 @@ gui_OBJECTS = \
 # External object files for target gui
 gui_EXTERNAL_OBJECTS =
 
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/gui_autogen/mocs_compilation.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/build.make
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Qml.so.6.3.1
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Network.so.6.3.1
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Core.so.6.3.1
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so: gui/CMakeFiles/gui.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Linking CXX shared library /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so"
+gui/gui: gui/CMakeFiles/gui.dir/gui_autogen/mocs_compilation.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/src/main.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/gui_qmltyperegistrations.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qrc_qmake_gui.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_qmlcache_loader.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Bootpage_qml.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/Mainui_qml.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewPage_qml.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/IndicatorLED_qml.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/StackViewSettings_qml.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsUI_qml.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qmlcache/gui_scanner-gui/SettingsInit_qml.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/.rcc/qrc_gui_raw_qml_0.cpp.o
+gui/gui: gui/CMakeFiles/gui.dir/build.make
+gui/gui: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Qml.so.6.3.1
+gui/gui: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Network.so.6.3.1
+gui/gui: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Core.so.6.3.1
+gui/gui: gui/CMakeFiles/gui.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Linking CXX executable gui"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gui.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-gui/CMakeFiles/gui.dir/build: /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgui.so
+gui/CMakeFiles/gui.dir/build: gui/gui
 
 .PHONY : gui/CMakeFiles/gui.dir/build
 
@@ -415,7 +430,7 @@ gui/CMakeFiles/gui.dir/clean:
 gui/CMakeFiles/gui.dir/depend: gui/meta_types/qt6gui_metatypes.json.gen
 gui/CMakeFiles/gui.dir/depend: gui/meta_types/qt6gui_metatypes.json
 gui/CMakeFiles/gui.dir/depend: gui/gui_qmltyperegistrations.cpp
-gui/CMakeFiles/gui.dir/depend: gui/gui.qmltypes
+gui/CMakeFiles/gui.dir/depend: gui/gui/gui.qmltypes
 gui/CMakeFiles/gui.dir/depend: gui/.rcc/qrc_qmake_gui.cpp
 gui/CMakeFiles/gui.dir/depend: gui/.rcc/qmlcache/gui_qmlcache_loader.cpp
 gui/CMakeFiles/gui.dir/depend: gui/.rcc/qmlcache/gui_scanner-gui/App_qml.cpp

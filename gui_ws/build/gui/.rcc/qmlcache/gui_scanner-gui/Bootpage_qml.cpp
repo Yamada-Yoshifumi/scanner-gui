@@ -2654,8 +2654,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -2719,8 +2719,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 int r9;
 double r10;
 double r7;
@@ -2838,8 +2838,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -2903,8 +2903,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 80;
@@ -2962,8 +2962,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 80;
@@ -3043,8 +3043,8 @@ return r2;
         wrapCall(aotContext, dataPtr, argumentsPtr, [](const QQmlPrivate::AOTCompiledContext *aotContext, void **argumentsPtr) {
 Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
-QObject *r2;
 bool r2_1;
+QObject *r2;
 // generate_LoadQmlContextPropertyLookup
 while (!aotContext->loadContextIdLookup(45, &r2)) {
 aotContext->setInstructionPointer(2);
@@ -3114,8 +3114,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 2269;
@@ -3173,8 +3173,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 120;
@@ -3232,8 +3232,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 30;
@@ -3290,8 +3290,8 @@ return QJSNumberCoercion::toInteger(r2);
 Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -3343,8 +3343,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -3441,8 +3441,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 80;
@@ -3500,8 +3500,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 int r9;
 double r10;
 double r7;
@@ -3619,8 +3619,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -3684,8 +3684,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 60;
@@ -3743,8 +3743,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 int r9;
 double r10;
 double r7;
@@ -3862,8 +3862,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -3927,8 +3927,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 60;
@@ -3985,8 +3985,8 @@ return QJSNumberCoercion::toInteger(r2);
 Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -4038,8 +4038,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -4103,8 +4103,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 60;
@@ -4161,8 +4161,8 @@ return QJSNumberCoercion::toInteger(r2);
 Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -4214,8 +4214,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -4279,8 +4279,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 60;
@@ -4338,8 +4338,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 int r9;
 double r10;
 double r7;
@@ -4457,8 +4457,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -4522,8 +4522,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 60;
@@ -4581,8 +4581,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 int r9;
 double r10;
 double r7;
@@ -4700,8 +4700,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -4765,8 +4765,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 60;
@@ -4824,8 +4824,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 while (!aotContext->loadContextIdLookup(115, &r2)) {
@@ -4887,8 +4887,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 double r7;
 // generate_LoadQmlContextPropertyLookup
 {
@@ -4952,8 +4952,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 200;
@@ -5011,8 +5011,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2;
-QObject *r2_1;
 int r2_2;
+QObject *r2_1;
 int r7;
 // generate_MoveConst
 r7 = 50;
@@ -5068,9 +5068,9 @@ return r2;
         wrapCall(aotContext, dataPtr, argumentsPtr, [](const QQmlPrivate::AOTCompiledContext *aotContext, void **argumentsPtr) {
 Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
-QObject *r2;
 bool r2_2;
 QString r2_1;
+QObject *r2;
 // generate_LoadQmlContextPropertyLookup
 while (!aotContext->loadContextIdLookup(125, &r2)) {
 aotContext->setInstructionPointer(2);
@@ -5129,8 +5129,8 @@ return QVariant::fromValue(r2_1);
         wrapCall(aotContext, dataPtr, argumentsPtr, [](const QQmlPrivate::AOTCompiledContext *aotContext, void **argumentsPtr) {
 Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
-QObject *r2;
 QString r2_1;
+QObject *r2;
 // generate_LoadQmlContextPropertyLookup
 while (!aotContext->loadContextIdLookup(127, &r2)) {
 aotContext->setInstructionPointer(2);
@@ -5266,8 +5266,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 int r7;
 // generate_MoveConst
 r7 = 30;
@@ -5325,8 +5325,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 int r7;
 // generate_MoveConst
 r7 = 200;
@@ -5384,8 +5384,8 @@ Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
 double r2_1;
-QObject *r2;
 int r2_2;
+QObject *r2;
 int r7;
 // generate_MoveConst
 r7 = 50;
@@ -5442,10 +5442,10 @@ return r2_1;
 Q_UNUSED(aotContext);
 Q_UNUSED(argumentsPtr);
 double r8;
-double r2_3;
-QObject *r2;
 bool r2_1;
+double r2_3;
 int r2_2;
+QObject *r2;
 double r9;
 double r7;
 // generate_LoadQmlContextPropertyLookup
