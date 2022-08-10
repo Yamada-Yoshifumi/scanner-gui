@@ -1,15 +1,13 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
-Window {
+Rectangle {
     id: root
-    width: 2560
-    height: 1600
-    minimumHeight: 480
-    minimumWidth: 640
+    width: 1280
+    height: 720
+
     visible: true
     color: "#000000"
-    title: "ScannerGUI"
 
     Loader {
             id: mainLoader
@@ -26,8 +24,8 @@ Window {
                         target: mainLoader.item
                         property: "anchors.rightMargin"
                         from: 0
-                        to: settingsLoader.width
-                        duration: 300
+                        to: root.width * 1 / 2
+                        duration: 100
                         easing.type: Easing.InExpo
                     }
             NumberAnimation {
@@ -35,26 +33,26 @@ Window {
                         target: mainLoader.item
                         property: "anchors.bottomMargin"
                         from: 0
-                        to: settingsLoader.width * root.height/ root.width
-                        duration: 300
+                        to: root.height * 1 / 2
+                        duration: 100
                         easing.type: Easing.InExpo
                     }
             NumberAnimation {
                         id: animation_bottom_reverse
                         target: mainLoader.item
                         property: "anchors.bottomMargin"
-                        from: settingsLoader.width * root.height/ root.width
+                        from: root.height * 1 / 2
                         to: 0
-                        duration: 300
+                        duration: 100
                         easing.type: Easing.InExpo
                     }
             NumberAnimation {
                         id: animation_right_reverse
                         target: mainLoader.item
                         property: "anchors.rightMargin"
-                        from: settingsLoader.width
+                        from: root.width * 1 / 2
                         to: 0
-                        duration: 300
+                        duration: 100
                         easing.type: Easing.InExpo
                     }
 

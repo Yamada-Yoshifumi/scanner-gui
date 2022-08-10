@@ -9,7 +9,7 @@ Rectangle {
     border.color: "#00ffffff"
 
     Button {
-        id: settings_toggle_button
+        id: settings_open_button
         anchors{
             right: parent.right
             top: parent.top
@@ -20,9 +20,20 @@ Rectangle {
         icon.color: "#620b66"
         icon.width: 64* root.width/ 2560
         icon.height: 64* root.height/ 1600
+        /*
+        OpacityAnimator {
+               id: out_animator
+               target: settings_open_button;
+               from: 1;
+               to: 0;
+               duration: 100
+               running: false
+           }
+        */
 
-
-        onClicked: {stackview_settings.push( "SettingsUI.qml" );
+        onClicked: {
+                    //out_animator.running = true;
+                    stackview_settings.push( "SettingsUI.qml" );
                     animation_right.running = true;
                     animation_bottom.running = true;
                     //mainLoader.anchors.bottomMargin = settingsLoader.width * root.height/ root.width;

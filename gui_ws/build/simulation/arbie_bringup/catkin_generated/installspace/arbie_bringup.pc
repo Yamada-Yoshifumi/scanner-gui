@@ -1,8 +1,0 @@
-prefix=/home/ameyasu/QTprojects/scanner-gui/gui_ws/install
-
-Name: arbie_bringup
-Description: Description of arbie_bringup
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

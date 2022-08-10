@@ -1,2 +1,2 @@
-gui:velodyne_control:velodyne_simulator/velodyne_description:velodyne_simulator/velodyne_gazebo_plugins:velodyne_simulator/velodyne_simulator
--DCATKIN_DEVEL_PREFIX=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ameyasu/QTprojects/scanner-gui/gui_ws/install -G Unix Makefiles
+gui:librviz_tutorial:velodyne_control:velodyne_simulator/velodyne_description:velodyne_simulator/velodyne_gazebo_plugins:velodyne_simulator/velodyne_simulator
+-G CodeBlocks - Unix Makefiles -DCMAKE_BUILD_TYPE=Debug -DCATKIN_DEVEL_PREFIX=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ameyasu/QTprojects/scanner-gui/gui_ws/install

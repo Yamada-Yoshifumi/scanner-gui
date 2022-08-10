@@ -1,7 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
-
 Rectangle {
     width: 800 * root.width / 2560
     height: root.height
@@ -21,7 +20,7 @@ Rectangle {
 
     }
     Button {
-        id: settings_toggle_button
+        id: settings_close_button
         anchors{
             left: parent.left
             top: parent.top
@@ -32,9 +31,19 @@ Rectangle {
         icon.color: "#620b66"
         icon.width: 64* root.width/ 2560
         icon.height: 64* root.height/ 1600
-
-
-        onClicked: {stackview_settings.pop();
+        /*
+        OpacityAnimator {
+               id: in_animator
+               target: settings_open_button;
+               from: 0;
+               to: 1;
+               duration: 500
+               running: false
+           }
+        */
+        onClicked: {
+                    //in_animator.running = true;
+                    stackview_settings.pop();
                     animation_right_reverse.running = true;
                     animation_bottom_reverse.running = true;
                     }

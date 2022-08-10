@@ -59,25 +59,25 @@ include gui/CMakeFiles/scanner_gui.dir/flags.make
 
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Resource.qrc
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: gui/CMakeFiles/scanner_gui_autogen.dir/AutoRcc_Resource_ACDZA3JY2K_Info.json
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Mainui.qml
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsUI.qml
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Bootpage.qml
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/IndicatorLED.qml
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsInit.qml
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewPage.qml
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/App.qml
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewSettings.qml
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/StackViewPage.qml
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/fonts/fonts.txt
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/close-window-128.gif
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/power-button.png
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/ros_rviz.png
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/IndicatorLED.qml
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsUI.qml
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Bootpage.qml
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Mainui.qml
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/SettingsInit.qml
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/exit_fullscreen.png
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/settings-17-128.gif
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/close-window-128.gif
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/ros_rviz.png
 gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/fullscreen.svg
-gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/Qt/6.3.1/gcc_64/./libexec/rcc
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/images/power-button.png
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/fonts/fonts.txt
+gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp: /home/ameyasu/Qt/5.15.2/gcc_64/bin/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for scanner-gui/Resource.qrc"
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E cmake_autorcc /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/AutoRcc_Resource_ACDZA3JY2K_Info.json 
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E cmake_autorcc /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/AutoRcc_Resource_ACDZA3JY2K_Info.json Debug
 
 gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.o: gui/CMakeFiles/scanner_gui.dir/flags.make
 gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.o: gui/scanner_gui_autogen/mocs_compilation.cpp
@@ -92,22 +92,48 @@ gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.s: cmake
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.s"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/mocs_compilation.cpp -o CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.s
 
-gui/CMakeFiles/scanner_gui.dir/src/main.cpp.o: gui/CMakeFiles/scanner_gui.dir/flags.make
-gui/CMakeFiles/scanner_gui.dir/src/main.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object gui/CMakeFiles/scanner_gui.dir/src/main.cpp.o"
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanner_gui.dir/src/main.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp
+gui/CMakeFiles/scanner_gui.dir/main.cpp.o: gui/CMakeFiles/scanner_gui.dir/flags.make
+gui/CMakeFiles/scanner_gui.dir/main.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object gui/CMakeFiles/scanner_gui.dir/main.cpp.o"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanner_gui.dir/main.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/main.cpp
 
-gui/CMakeFiles/scanner_gui.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scanner_gui.dir/src/main.cpp.i"
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp > CMakeFiles/scanner_gui.dir/src/main.cpp.i
+gui/CMakeFiles/scanner_gui.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scanner_gui.dir/main.cpp.i"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/main.cpp > CMakeFiles/scanner_gui.dir/main.cpp.i
 
-gui/CMakeFiles/scanner_gui.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanner_gui.dir/src/main.cpp.s"
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp -o CMakeFiles/scanner_gui.dir/src/main.cpp.s
+gui/CMakeFiles/scanner_gui.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanner_gui.dir/main.cpp.s"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/main.cpp -o CMakeFiles/scanner_gui.dir/main.cpp.s
+
+gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.o: gui/CMakeFiles/scanner_gui.dir/flags.make
+gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.o"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanner_gui.dir/mainwindow.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.cpp
+
+gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scanner_gui.dir/mainwindow.cpp.i"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.cpp > CMakeFiles/scanner_gui.dir/mainwindow.cpp.i
+
+gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanner_gui.dir/mainwindow.cpp.s"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.cpp -o CMakeFiles/scanner_gui.dir/mainwindow.cpp.s
+
+gui/CMakeFiles/scanner_gui.dir/myviz.cpp.o: gui/CMakeFiles/scanner_gui.dir/flags.make
+gui/CMakeFiles/scanner_gui.dir/myviz.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object gui/CMakeFiles/scanner_gui.dir/myviz.cpp.o"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanner_gui.dir/myviz.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp
+
+gui/CMakeFiles/scanner_gui.dir/myviz.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scanner_gui.dir/myviz.cpp.i"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp > CMakeFiles/scanner_gui.dir/myviz.cpp.i
+
+gui/CMakeFiles/scanner_gui.dir/myviz.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanner_gui.dir/myviz.cpp.s"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp -o CMakeFiles/scanner_gui.dir/myviz.cpp.s
 
 gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o: gui/CMakeFiles/scanner_gui.dir/flags.make
 gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o: gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp
 
 gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.i: cmake_force
@@ -121,17 +147,51 @@ gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.s
 # Object files for target scanner_gui
 scanner_gui_OBJECTS = \
 "CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/scanner_gui.dir/src/main.cpp.o" \
+"CMakeFiles/scanner_gui.dir/main.cpp.o" \
+"CMakeFiles/scanner_gui.dir/mainwindow.cpp.o" \
+"CMakeFiles/scanner_gui.dir/myviz.cpp.o" \
 "CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o"
 
 # External object files for target scanner_gui
 scanner_gui_EXTERNAL_OBJECTS =
 
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.o
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/src/main.cpp.o
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/main.cpp.o
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.o
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/myviz.cpp.o
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/build.make
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Quick.so.6.3.1
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5QuickWidgets.so.5.15.2
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/librviz.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libOgreOverlay.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libOgreMain.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libGLX.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libGLU.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libimage_transport.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libinteractive_markers.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/liblaser_geometry.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libtf.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libresource_retriever.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libtf2_ros.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libactionlib.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libmessage_filters.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libtf2.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/liburdf.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/liburdfdom_sensor.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/liburdfdom_model_state.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/liburdfdom_model.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/liburdfdom_world.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libtinyxml.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libclass_loader.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libPocoFoundation.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libroslib.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/librospack.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.71.0
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/librosconsole_bridge.so
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /opt/ros/noetic/lib/libroscpp.so
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libpthread.so
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.71.0
@@ -149,16 +209,15 @@ scanner_gui_EXTERNAL_OBJECTS =
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6QmlModels.so.6.3.1
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Qml.so.6.3.1
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Network.so.6.3.1
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6OpenGL.so.6.3.1
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Gui.so.6.3.1
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libGLX.so
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /usr/lib/x86_64-linux-gnu/libOpenGL.so
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/6.3.1/gcc_64/lib/libQt6Core.so.6.3.1
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5Widgets.so.5.15.2
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5Quick.so.5.15.2
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5Gui.so.5.15.2
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5QmlModels.so.5.15.2
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5Qml.so.5.15.2
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5Network.so.5.15.2
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5Core.so.5.15.2
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scanner_gui.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

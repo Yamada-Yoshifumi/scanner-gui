@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
 include gui/CMakeFiles/scanner_gui_autogen.dir/progress.make
 
 gui/CMakeFiles/scanner_gui_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target scanner_gui"
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E cmake_autogen /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/AutogenInfo.json ""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target scanner_gui"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E cmake_autogen /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/AutogenInfo.json Debug
 
 scanner_gui_autogen: gui/CMakeFiles/scanner_gui_autogen
 scanner_gui_autogen: gui/CMakeFiles/scanner_gui_autogen.dir/build.make

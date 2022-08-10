@@ -29,8 +29,8 @@
 
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import QtQuick.Controls.Universal
-import QtQuick.Window
+import QtQuick.Controls.Universal 2.15
+import QtQuick.Window 2.15
 
 
 Rectangle{
@@ -187,6 +187,7 @@ Rectangle{
 
     Button {
         id: reboot_button
+        objectName: "reboot_button"
         x: boot_window.width * 2 / 5
         y: parent.height * 9/10
         width: 200* boot_window.width / 2560
@@ -194,7 +195,11 @@ Rectangle{
         opacity: 0
         Behavior on opacity { PropertyAnimation { duration: 1000 } }
         text: qsTr("Reboot")
-        onClicked: stackview.push( "Mainui.qml" )
+        signal qmlSignal(string obj)
+        onClicked: {
+            reboot_button.qmlSignal("rviz ready to show");
+            stackview.push( "Mainui.qml" );
+            }
         contentItem: Text {
             id: reboot_button_text
             color: reboot_button.down? "#463c3c" : "#b1b1b1"

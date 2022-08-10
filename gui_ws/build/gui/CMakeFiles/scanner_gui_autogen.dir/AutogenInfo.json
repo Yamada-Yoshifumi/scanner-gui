@@ -5,7 +5,19 @@
 	"CMAKE_CURRENT_SOURCE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
 	"CMAKE_SOURCE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src",
-	"HEADERS" : [],
+	"HEADERS" : 
+	[
+		[
+			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.h",
+			"MU",
+			"EWIEGA46WW/moc_mainwindow.cpp"
+		],
+		[
+			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.h",
+			"MU",
+			"EWIEGA46WW/moc_myviz.cpp"
+		]
+	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/include",
 	"MOC_COMPILATION_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/mocs_compilation.cpp",
@@ -14,12 +26,11 @@
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_NETWORK_LIB",
-		"QT_NO_DEBUG",
-		"QT_OPENGL_LIB",
-		"QT_QMLINTEGRATION_LIB",
 		"QT_QMLMODELS_LIB",
 		"QT_QML_LIB",
+		"QT_QUICKWIDGETS_LIB",
 		"QT_QUICK_LIB",
+		"QT_WIDGETS_LIB",
 		"ROSCONSOLE_BACKEND_LOG4CXX",
 		"ROS_BUILD_SHARED_LIBS=1",
 		"ROS_PACKAGE_NAME=\"gui\""
@@ -35,16 +46,19 @@
 	[
 		"/opt/ros/noetic/include",
 		"/opt/ros/noetic/include/xmlrpcpp",
-		"/home/ameyasu/Qt/6.3.1/gcc_64/include/QtGui",
-		"/home/ameyasu/Qt/6.3.1/gcc_64/include",
-		"/home/ameyasu/Qt/6.3.1/gcc_64/include/QtCore",
-		"/home/ameyasu/Qt/6.3.1/gcc_64/mkspecs/linux-g++",
-		"/home/ameyasu/Qt/6.3.1/gcc_64/include/QtQuick",
-		"/home/ameyasu/Qt/6.3.1/gcc_64/include/QtQml",
-		"/home/ameyasu/Qt/6.3.1/gcc_64/include/QtQmlIntegration",
-		"/home/ameyasu/Qt/6.3.1/gcc_64/include/QtNetwork",
-		"/home/ameyasu/Qt/6.3.1/gcc_64/include/QtQmlModels",
-		"/home/ameyasu/Qt/6.3.1/gcc_64/include/QtOpenGL",
+		"/usr/include/eigen3",
+		"/usr/include/OGRE/Overlay",
+		"/usr/include/OGRE",
+		"/home/ameyasu/Qt/5.15.2/gcc_64/include",
+		"/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQml",
+		"/home/ameyasu/Qt/5.15.2/gcc_64/include/QtNetwork",
+		"/home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore",
+		"/home/ameyasu/Qt/5.15.2/gcc_64/mkspecs/linux-g++",
+		"/home/ameyasu/Qt/5.15.2/gcc_64/include/QtWidgets",
+		"/home/ameyasu/Qt/5.15.2/gcc_64/include/QtGui",
+		"/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQuick",
+		"/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQmlModels",
+		"/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQuickWidgets",
 		"/usr/include",
 		"/usr/include/c++/9",
 		"/usr/include/x86_64-linux-gnu/c++/9",
@@ -53,14 +67,7 @@
 		"/usr/local/include",
 		"/usr/include/x86_64-linux-gnu"
 	],
-	"MOC_MACRO_NAMES" : 
-	[
-		"Q_OBJECT",
-		"Q_GADGET",
-		"Q_GADGET_EXPORT",
-		"Q_NAMESPACE",
-		"Q_NAMESPACE_EXPORT"
-	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
 	"MOC_OPTIONS" : [],
 	"MOC_PATH_PREFIX" : true,
 	"MOC_PREDEFS_CMD" : 
@@ -77,16 +84,22 @@
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
 	"PARSE_CACHE_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/ParseCache.txt",
-	"QT_MOC_EXECUTABLE" : "/home/ameyasu/Qt/6.3.1/gcc_64/./libexec/moc",
-	"QT_UIC_EXECUTABLE" : "",
-	"QT_VERSION_MAJOR" : 6,
+	"QT_MOC_EXECUTABLE" : "/home/ameyasu/Qt/5.15.2/gcc_64/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/home/ameyasu/Qt/5.15.2/gcc_64/bin/uic",
+	"QT_VERSION_MAJOR" : 5,
 	"SETTINGS_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/main.cpp", "MU" ],
 		[
-			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/src/main.cpp",
-			"Mu"
-		]
+			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.cpp",
+			"MU"
+		],
+		[ "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp", "MU" ]
 	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
 	"VERBOSITY" : 0
 }

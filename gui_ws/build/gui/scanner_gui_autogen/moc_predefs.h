@@ -52,12 +52,9 @@
 #define __INT8_C(c) c
 #define __INT_LEAST8_WIDTH__ 8
 #define __UINT_LEAST64_MAX__ 0xffffffffffffffffUL
-#define QT_OPENGL_LIB 1
 #define __SHRT_MAX__ 0x7fff
 #define __LDBL_MAX__ 1.18973149535723176502126385303097021e+4932L
 #define __FLT64X_MAX_10_EXP__ 4932
-#define QT_QMLINTEGRATION_LIB 1
-#define QT_NO_DEBUG 1
 #define __UINT_LEAST8_MAX__ 0xff
 #define __GCC_ATOMIC_BOOL_LOCK_FREE 2
 #define __FLT128_DENORM_MIN__ 6.47517511943802511092443895822764655e-4966F128
@@ -103,6 +100,7 @@
 #define __SIZEOF_LONG__ 8
 #define __STDC_IEC_559__ 1
 #define __STDC_ISO_10646__ 201706L
+#define QT_QUICKWIDGETS_LIB 1
 #define __UINT16_C(c) c
 #define __PTRDIFF_WIDTH__ 64
 #define __DECIMAL_DIG__ 21
@@ -136,6 +134,7 @@
 #define __FLT32X_HAS_DENORM__ 1
 #define __INT_FAST16_TYPE__ long int
 #define __LDBL_HAS_DENORM__ 1
+#define QT_WIDGETS_LIB 1
 #define __cplusplus 201402L
 #define __cpp_ref_qualifiers 200710
 #define __DEC128_MAX__ 9.999999999999999999999999999999999E6144DL

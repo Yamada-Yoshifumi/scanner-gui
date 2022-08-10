@@ -1,8 +1,0 @@
-prefix=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel
-
-Name: scanner-gui
-Description: Description of scanner-gui
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: roscpp std_msgs

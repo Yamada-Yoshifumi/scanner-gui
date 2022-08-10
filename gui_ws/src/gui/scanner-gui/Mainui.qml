@@ -1,9 +1,11 @@
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import QtQuick.Layouts
-import QtQuick.Controls.Universal
-import QtQuick.Window
-
+import QtQuick.Layouts 1.3
+import QtQuick.Controls.Universal 2.15
+import QtQuick.Window 2.15
+import QtMultimedia 5.15
+//import MyRviz 1.0
 
 Rectangle{
 
@@ -14,48 +16,15 @@ x: 0
 y: 0
 color: "#423e3e"
 
-    Rectangle{
-        id: rviz_window
+Rectangle{
+    id: rviz_window
         x: 0
         y: 0
         width: parent.width * 2 / 3
         height: parent.height * 2 / 3
-        Image {
-            id: rviz_image
-            x: 0
-            y: 0
-            width : parent.width
-            height: parent.height
-            source: "./images/ros_rviz.png"
-        }
-
-        Button {
-            id: fullscreen_toggle_button
-            anchors{
-                right: parent.right
-                bottom: parent.bottom
-            }
-            icon.name: "fullscreen_toggle"
-            icon.source: "./images/fullscreen.svg"
-            icon.color: "#620b66"
-            icon.width: 64* root.width/ 2560
-            icon.height: 64* root.height/ 1600
-
-
-            onClicked: {
-                fullscreen_animation_x.running = true;
-                fullscreen_animation_y.running = true;
-            }
-
-            background: Rectangle {
-                id: fullscreen_button_bg
-                color: parent.down? "#b1b1b1" : "#00fbfbfb"
-                radius: 10
-                border.color: "#3afbfbfb"
-
-            }
-
-        }
+        color: "#00000000"
+        border.color: "#00000000"
+        /*
         NumberAnimation {
                     id: fullscreen_animation_x
                     target: rviz_window
@@ -92,15 +61,58 @@ color: "#423e3e"
                     duration: 300
                     easing.type: Easing.InExpo
                 }
+                */
+        /*
+        Button {
+                    id: fullscreen_toggle_button
+                    anchors{
+                        right: parent.right
+                        bottom: parent.bottom
+                    }
+                    icon.name: "fullscreen_toggle"
+                    icon.source: "./images/fullscreen.svg"
+                    icon.color: "#620b66"
+                    icon.width: 64* root.width/ 2560
+                    icon.height: 64* root.height/ 1600
 
+
+                    onClicked: {
+                        fullscreen_animation_x.running = true;
+                        fullscreen_animation_y.running = true;
+                    }
+
+                    background: Rectangle {
+                        id: fullscreen_button_bg
+                        color: parent.down? "#b1b1b1" : "#00fbfbfb"
+                        radius: 10
+                        border.color: "#3afbfbfb"
+
+                    }
+        }
+        */
+     }
+
+    Rectangle{
+        id: status_section
+        x: rviz_window.x + 5
+        y: rviz_window.height + 5
+        width: rviz_window.width * 2 / 3
+        color: "#00000000"
+        border.color: "#ffffff"
+        height: (parent.height - rviz_window.height - 10)
+        radius: 10
     }
+
     Rectangle {
         id: status_topbar
-        x: rviz_window.x
-        y: rviz_window.height
-        width: rviz_window.width * 2 / 3
+        x: status_section.x + 5
+        y: status_section.y + 5
+        width: status_section.width - 10
+        height: status_section.height/6
         color: "#343434"
-        height: (parent.height - rviz_window.height)/6
+        border.color: "#00000000"
+        radius: 10
+
         Text{
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
@@ -114,10 +126,10 @@ color: "#423e3e"
     RowLayout {
 
         id: status_power
-        x: rviz_window.x
+        x: status_topbar.x
         y: status_topbar.y + status_topbar.height
         width: status_topbar.width
-        height: (parent.height - rviz_window.height - status_topbar.height)
+        height: (status_section.height - status_topbar.height - 15)
         spacing: 5
 
         ColumnLayout{
@@ -130,9 +142,9 @@ color: "#423e3e"
 
             Rectangle {
                 Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.31
-                Layout.maximumHeight: parent.height*0.31
-                id: lidar_status_text
+                Layout.preferredHeight: parent.height*0.30
+                Layout.maximumHeight: parent.height*0.30
+                radius: 10
                 Text {
                     anchors.fill: parent
                     text: "Lidar"
@@ -147,10 +159,29 @@ color: "#423e3e"
 
             IndicatorLED{
                 Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.31
-                Layout.maximumHeight: parent.height*0.31
+                Layout.preferredHeight: parent.height*0.30
+                Layout.maximumHeight: parent.height*0.30
                 id: lidar_status
                 onPaint: squircle("green");
+            }
+
+            Rectangle {
+                id: lidar_status_text
+                Layout.fillWidth: true
+                Layout.preferredHeight: parent.height*0.20
+                Layout.maximumHeight: parent.height*0.20
+
+                Text {
+                    anchors.fill: parent
+                    text: "online"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    font.pointSize: 15* ui_page.width/ 2560
+                    color: "#948e8e"
+                }
+
+                color: "#423e3e"
+                border.color: "#423e3e"
             }
 
 
@@ -165,8 +196,8 @@ color: "#423e3e"
 
             Rectangle {
                 Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.31
-                id: imu_status_text
+                Layout.preferredHeight: parent.height*0.30
+                radius: 10
                 Text {
                     anchors.fill: parent
                     text: "IMU"
@@ -181,9 +212,28 @@ color: "#423e3e"
 
             IndicatorLED{
                 Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.31
+                Layout.preferredHeight: parent.height*0.30
                 id: imu_status
                 onPaint: squircle("green");
+            }
+
+            Rectangle {
+                id: imu_status_text
+                Layout.fillWidth: true
+                Layout.preferredHeight: parent.height*0.20
+                Layout.maximumHeight: parent.height*0.20
+
+                Text {
+                    anchors.fill: parent
+                    text: "online"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    font.pointSize: 15* ui_page.width/ 2560
+                    color: "#948e8e"
+                }
+
+                color: "#423e3e"
+                border.color: "#423e3e"
             }
 
         }
@@ -197,8 +247,8 @@ color: "#423e3e"
 
             Rectangle {
                 Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.31
-                id: camera_status_text
+                Layout.preferredHeight: parent.height*0.30
+                radius: 10
                 Text {
                     anchors.fill: parent
                     text: "Camera"
@@ -213,21 +263,42 @@ color: "#423e3e"
 
             IndicatorLED{
                 Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.31
+                Layout.preferredHeight: parent.height*0.30
                 id: camera_status
                 onPaint: squircle("yellow");
+            }
+
+            Rectangle {
+                id: camera_status_text
+                Layout.fillWidth: true
+                Layout.preferredHeight: parent.height*0.20
+                Layout.maximumHeight: parent.height*0.20
+
+                Text {
+                    anchors.fill: parent
+                    text: "offline"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    font.pointSize: 15* ui_page.width/ 2560
+                    color: "#948e8e"
+                }
+
+                color: "#423e3e"
+                border.color: "#423e3e"
             }
 
         }
 
     }
 
+
+
     Rectangle {
         id: power_button_frame
-        x: status_topbar.x + status_topbar.width + 5
-        y: status_topbar.y + 5
-        width: rviz_window.width - status_topbar.width - 10
-        height: parent.height - rviz_window.height - 10
+        x: status_section.width + 10
+        y: status_section.y
+        width: rviz_window.width * 1 / 3
+        height: rviz_window.height * 1 / 3 - 10
         color: "#00000000"
         border.color: "#00000000"
         Button {
@@ -236,8 +307,8 @@ color: "#423e3e"
             icon.name: "power-button"
             icon.source: "./images/power-button.png"
             icon.color: "#620b66"
-            icon.width: 128* root.width/ 2560
-            icon.height: 128* root.height/ 1600
+            icon.width: 128* ui_page.width/ 2560
+            icon.height: 128* ui_page.height/ 1600
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
 
@@ -251,33 +322,51 @@ color: "#423e3e"
                 border.color: "#3afbfbfb"
 
             }
-
         }
     }
 
-    Rectangle {
-        id: camera_stream
+    Item {
+        id: videoOutput
         x: rviz_window.width + 5
         y: 0
         width: parent.width - x
         height: (parent.height - 10) / 2
-        color: "#000000"
-        border.color: "#ffffff"
-        Text{
-            text: "This is going to be a camera stream"
-            font.styleName: "Regular"
-            width: parent.width
-            height: parent.height
-            color: "#ffffff"
-        }
+        Camera {
+                id: camera
+
+                imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
+
+                exposure {
+                    exposureCompensation: -1.0
+                    exposureMode: Camera.ExposurePortrait
+                }
+
+                flash.mode: Camera.FlashRedEyeReduction
+
+                imageCapture {
+                    onImageCaptured: {
+                        photoPreview.source = preview  // Show the preview in an Image
+                    }
+                }
+            }
+
+            VideoOutput {
+                source: camera
+                anchors.fill: parent
+                focus : visible // to receive focus and capture key events when visible
+            }
+
+            Image {
+                id: photoPreview
+            }
     }
 
     Rectangle {
         id: log_terminal
         x: rviz_window.width + 5
-        y: camera_stream.height + 10
+        y: rviz_window.height + 5
         width: parent.width - x
-        height: camera_stream.height
+        height: status_power.height
         color: "#000000"
         border.color: "#ffffff"
         Text{
@@ -288,6 +377,7 @@ color: "#423e3e"
             color: "#ffffff"
         }
     }
+    /*
     states: [
         State {
             name: "fullscreen"
@@ -308,8 +398,5 @@ color: "#423e3e"
             name: "power_on"
         }
     ]
-
-
+    */
 }
-
-

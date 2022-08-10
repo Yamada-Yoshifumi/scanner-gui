@@ -6,10 +6,17 @@ add_compile_options(-std=c++14)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-list(APPEND CMAKE_PREFIX_PATH "~/Qt/6.3.1/gcc_64")
-find_package(Qt6 6.2 COMPONENTS Quick Gui REQUIRED)
-qt_add_library(STATIC)
+list(APPEND CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64")
+
+find_package(catkin COMPONENTS rviz roscpp std_msgs REQUIRED)
+catkin_package()
+include_directories(${catkin_INCLUDE_DIRS})
+link_directories(${catkin_LIBRARY_DIRS})
+
+find_package(Qt5 REQUIRED Qml Quick Gui Core Widgets QuickWidgets)
+
 
 #qt6_add_qml_module(gui
 #    URI gui
@@ -34,23 +41,42 @@ qt_add_library(STATIC)
 #        scanner-gui/images/exit_fullscreen.png
 #)
 
-find_package(catkin REQUIRED COMPONENTS
-    roscpp
-    std_msgs
-)
-
-catkin_package(CATKIN_DEPENDS
-    roscpp
-    std_msgs
-)
-
-include_directories(
-    ${catkin_INCLUDE_DIRS}
-)
-
+#target_compile_definitions(scanner_gui
+#    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 add_executable(scanner_gui
+    main.cpp
+    mainwindow.ui
+    mainwindow.h
+    mainwindow.cpp
+    myviz.h
+    myviz.cpp
     scanner-gui/Resource.qrc
-    src/main.cpp
 )
 
-target_link_libraries(scanner_gui PRIVATE Qt6::Gui Qt6::Quick ${catkin_LIBRARIES})
+#set_target_properties(scanner_gui PROPERTIES
+#    WIN32_EXECUTABLE TRUE
+#    MACOSX_BUNDLE TRUE
+#)
+
+#target_compile_definitions(scanner_gui
+#    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
+target_link_libraries(scanner_gui Qt5::Qml Qt5::Widgets Qt5::Gui Qt5::Quick Qt5::QuickWidgets ${catkin_LIBRARIES})
+
+#add_qml_module(MyRviz
+#    URI MyRviz
+#    VERSION 1.0
+#    SOURCES myviz.h myviz.cpp
+#)
+
+#target_link_libraries(MyRviz PRIVATE Qt6::Core Qt6::Qml Qt6::Widgets Qt6::Gui Qt6::Quick ${catkin_LIBRARIES})
+
+#target_include_directories(MyRvizplugin
+#     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+#)
+
+#target_link_libraries(scanner_gui PRIVATE MyRviz)
+#install(TARGETS MyRviz
+#    RUNTIME DESTINATION "${INSTALL_EXAMPLEDIR}"
+#    BUNDLE DESTINATION "${INSTALL_EXAMPLEDIR}"
+#    LIBRARY DESTINATION "${INSTALL_EXAMPLEDIR}"
+#)

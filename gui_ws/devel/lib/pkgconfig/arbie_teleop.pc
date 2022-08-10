@@ -1,8 +1,0 @@
-prefix=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel
-
-Name: arbie_teleop
-Description: Description of arbie_teleop
-Version: 0.0.0
-Cflags: -I/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/simulation/arbie_teleop/include
-Libs: -L${prefix}/lib 
-Requires: geometry_msgs roscpp rospy std_msgs

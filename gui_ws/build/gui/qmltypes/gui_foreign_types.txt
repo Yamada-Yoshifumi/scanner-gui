@@ -1,1 +1,0 @@
---foreign-types=/home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6qml_relwithdebinfo_metatypes.json,/home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6core_relwithdebinfo_metatypes.json,/home/ameyasu/Qt/6.3.1/gcc_64/lib/metatypes/qt6network_relwithdebinfo_metatypes.json
