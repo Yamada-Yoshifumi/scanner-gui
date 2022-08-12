@@ -5,9 +5,10 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
-subdirs("velodyne_simulator/velodyne_description")
-subdirs("velodyne_simulator/velodyne_simulator")
-subdirs("gui")
+subdirs("ros_srv")
+subdirs("velodyne_simulator")
 subdirs("librviz_tutorial")
 subdirs("velodyne_control")
-subdirs("velodyne_simulator/velodyne_gazebo_plugins")
+subdirs("velodyne_description")
+subdirs("velodyne_gazebo_plugins")
+subdirs("gui")

@@ -35,15 +35,12 @@
 #include <QQuickView>
 #include <QQuickItem>
 #include <QtQml>
-
 #include <QtWidgets/QPushButton>
 
 #include "rviz/visualization_manager.h"
 #include "rviz/render_panel.h"
 #include "rviz/display.h"
-
 #include "myviz.h"
-//#include "mainwindow.h"
 
 // BEGIN_TUTORIAL
 // Constructor for MyViz.  This does most of the work of the class.
@@ -99,8 +96,6 @@ MyViz::MyViz( QWidget* parent )
     // Initialize the slider values.
     this->setThickness( 10 );
     this->setCellSize( 10 );
-
-    //connect(fullscreen_button, &QPushButton::clicked, this, MainWindow::getInstance()->fullscreenToggle());
 
 }
 

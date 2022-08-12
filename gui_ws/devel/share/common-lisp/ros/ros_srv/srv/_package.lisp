@@ -1,0 +1,10 @@
+(cl:defpackage ros_srv-srv
+  (:use )
+  (:export
+   "VELODYNESWITCH"
+   "<VELODYNESWITCH-REQUEST>"
+   "VELODYNESWITCH-REQUEST"
+   "<VELODYNESWITCH-RESPONSE>"
+   "VELODYNESWITCH-RESPONSE"
+  ))
+

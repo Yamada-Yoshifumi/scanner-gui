@@ -195,10 +195,12 @@ Rectangle{
         opacity: 0
         Behavior on opacity { PropertyAnimation { duration: 1000 } }
         text: qsTr("Reboot")
-        signal qmlSignal(string obj)
+        signal rvizRenderSignal(string obj)
         onClicked: {
-            reboot_button.qmlSignal("rviz ready to show");
+
             stackview.push( "Mainui.qml" );
+            reboot_button.rvizRenderSignal("rviz ready to show");
+
             }
         contentItem: Text {
             id: reboot_button_text

@@ -6,4 +6,6 @@
         output="screen"
         cwd="node"
     />
+    <include file="$(find velodyne_description)/launch/hardware_interface.launch" >
+    </include>
 </launch>

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<launch>
+	<node
+            name="velodyne_interface"
+	    pkg="velodyne_description"
+            type="velodyne_interface"
+	  />
+</launch>

@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/main.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui.dir/main.cpp.o"
   "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.o"
   "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui.dir/myviz.cpp.o"
+  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui.dir/roshandler.cpp.o"
   "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o"
   "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/mocs_compilation.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.o"
   )
@@ -30,6 +31,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "gui/scanner_gui_autogen/include"
+  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include"
+  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"

@@ -16,6 +16,11 @@
 			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.h",
 			"MU",
 			"EWIEGA46WW/moc_myviz.cpp"
+		],
+		[
+			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.h",
+			"MU",
+			"EWIEGA46WW/moc_roshandler.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -44,6 +49,8 @@
 	],
 	"MOC_INCLUDES" : 
 	[
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include",
+		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include",
 		"/opt/ros/noetic/include",
 		"/opt/ros/noetic/include/xmlrpcpp",
 		"/usr/include/eigen3",
@@ -95,7 +102,11 @@
 			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.cpp",
 			"MU"
 		],
-		[ "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp", "MU" ]
+		[ "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp", "MU" ],
+		[
+			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.cpp",
+			"MU"
+		]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

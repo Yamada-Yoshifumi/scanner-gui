@@ -5,7 +5,6 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls.Universal 2.15
 import QtQuick.Window 2.15
 import QtMultimedia 5.15
-//import MyRviz 1.0
 
 Rectangle{
 
@@ -303,7 +302,7 @@ Rectangle{
         border.color: "#00000000"
         Button {
             id: power_button
-
+            objectName: "power_button"
             icon.name: "power-button"
             icon.source: "./images/power-button.png"
             icon.color: "#620b66"
@@ -311,12 +310,14 @@ Rectangle{
             icon.height: 128* ui_page.height/ 1600
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-
-            onClicked: {
+            signal powerSignal(string obj)
+            onClicked:{
+                power_button.powerSignal("system power on command");
             }
 
             background: Rectangle {
                 id: power_button_bg
+                objectName: "power_button_bg"
                 color: parent.down? "#b1b1b1" : "#423e3e"
                 radius: 10
                 border.color: "#3afbfbfb"

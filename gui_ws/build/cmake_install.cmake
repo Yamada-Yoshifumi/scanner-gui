@@ -131,12 +131,13 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gtest/cmake_install.cmake")
-  include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_simulator/velodyne_description/cmake_install.cmake")
-  include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_simulator/velodyne_simulator/cmake_install.cmake")
-  include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/cmake_install.cmake")
+  include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/ros_srv/cmake_install.cmake")
+  include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_simulator/cmake_install.cmake")
   include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/cmake_install.cmake")
   include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_control/cmake_install.cmake")
-  include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_simulator/velodyne_gazebo_plugins/cmake_install.cmake")
+  include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/cmake_install.cmake")
+  include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_gazebo_plugins/cmake_install.cmake")
+  include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/cmake_install.cmake")
 
 endif()
 

@@ -131,9 +131,22 @@ gui/CMakeFiles/scanner_gui.dir/myviz.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanner_gui.dir/myviz.cpp.s"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp -o CMakeFiles/scanner_gui.dir/myviz.cpp.s
 
+gui/CMakeFiles/scanner_gui.dir/roshandler.cpp.o: gui/CMakeFiles/scanner_gui.dir/flags.make
+gui/CMakeFiles/scanner_gui.dir/roshandler.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object gui/CMakeFiles/scanner_gui.dir/roshandler.cpp.o"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanner_gui.dir/roshandler.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.cpp
+
+gui/CMakeFiles/scanner_gui.dir/roshandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scanner_gui.dir/roshandler.cpp.i"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.cpp > CMakeFiles/scanner_gui.dir/roshandler.cpp.i
+
+gui/CMakeFiles/scanner_gui.dir/roshandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scanner_gui.dir/roshandler.cpp.s"
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.cpp -o CMakeFiles/scanner_gui.dir/roshandler.cpp.s
+
 gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o: gui/CMakeFiles/scanner_gui.dir/flags.make
 gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o: gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o -c /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp
 
 gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.i: cmake_force
@@ -150,6 +163,7 @@ scanner_gui_OBJECTS = \
 "CMakeFiles/scanner_gui.dir/main.cpp.o" \
 "CMakeFiles/scanner_gui.dir/mainwindow.cpp.o" \
 "CMakeFiles/scanner_gui.dir/myviz.cpp.o" \
+"CMakeFiles/scanner_gui.dir/roshandler.cpp.o" \
 "CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o"
 
 # External object files for target scanner_gui
@@ -159,6 +173,7 @@ scanner_gui_EXTERNAL_OBJECTS =
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/main.cpp.o
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.o
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/myviz.cpp.o
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/roshandler.cpp.o
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/build.make
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5QuickWidgets.so.5.15.2
@@ -217,7 +232,7 @@ scanner_gui_EXTERNAL_OBJECTS =
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5Network.so.5.15.2
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: /home/ameyasu/Qt/5.15.2/gcc_64/lib/libQt5Core.so.5.15.2
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui: gui/CMakeFiles/scanner_gui.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui"
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/scanner_gui.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

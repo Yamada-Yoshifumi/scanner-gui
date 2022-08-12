@@ -20,7 +20,8 @@
   <depend>roscpp</depend>
   <depend>std_msgs</depend>
   <depend>rviz</depend>
-
+  <depend>velodyne_description</depend>
+  <depend>ros_srv</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

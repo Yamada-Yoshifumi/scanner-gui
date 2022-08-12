@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(gui)
 
-add_compile_options(-std=c++14)
+add_compile_options(-std=c++17)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -10,8 +10,8 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 list(APPEND CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64")
 
-find_package(catkin COMPONENTS rviz roscpp std_msgs REQUIRED)
-catkin_package()
+find_package(catkin COMPONENTS rviz roscpp std_msgs velodyne_description ros_srv REQUIRED)
+catkin_package( CATKIN_DEPENDS std_msgs roscpp velodyne_description ros_srv)
 include_directories(${catkin_INCLUDE_DIRS})
 link_directories(${catkin_LIBRARY_DIRS})
 
@@ -50,6 +50,8 @@ add_executable(scanner_gui
     mainwindow.cpp
     myviz.h
     myviz.cpp
+    roshandler.h
+    roshandler.cpp
     scanner-gui/Resource.qrc
 )
 

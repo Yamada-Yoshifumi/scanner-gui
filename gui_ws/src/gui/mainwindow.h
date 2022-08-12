@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QGridLayout>
 #include "myviz.h"
+#include <qtimer.h>
+#include "roshandler.h"
 
 namespace Ui {
 class MainWindow;
@@ -14,10 +16,12 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 signals:
-    void qmlSignal(QString);
+    void rvizRenderSignal(QString);
 
 private:
     Ui::MainWindow *ui;
+    QTimer *ros_timer;
+    ros::NodeHandlePtr n_;
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -25,12 +29,17 @@ public:
     void resizeEvent(QResizeEvent* event);
     QQuickView *qmlView;
     QGridLayout* central_widget_layout;
+    QObject *power_button;
     QWidget *container;
     MyViz* myviz;
+    ROSHandler* roshandler;
+    bool power_toggled = false;
 
 public Q_SLOTS:
     void createRVizEvent();
     void fullscreenToggle();
+    void spinOnce();
+    void systemOn();
 
 };
 

@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/scanner_gui.dir/main.cpp.o"
   "CMakeFiles/scanner_gui.dir/mainwindow.cpp.o"
   "CMakeFiles/scanner_gui.dir/myviz.cpp.o"
+  "CMakeFiles/scanner_gui.dir/roshandler.cpp.o"
   "CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o"
   "CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.o"
   "scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp"

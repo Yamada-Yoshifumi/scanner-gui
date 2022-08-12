@@ -4,18 +4,21 @@
 //#include <QGuiApplication>
 #include "mainwindow.h"
 #include <ros/ros.h>
+#include <QQuickView>
+#include <QQuickItem>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include <QtQml>
 
-MainWindow* mainwindow;
 
 int main(int argc, char **argv)
 {
-    if( !ros::isInitialized() )
-    {
-        ros::init( argc, argv, "myviz", ros::init_options::AnonymousName );
-    }
-
+    ros::init( argc, argv, "qt_gui");
     QApplication app( argc, argv );
-    mainwindow = new MainWindow();
+
+    system("killall -9 gzserver");
+
+    MainWindow* mainwindow = new MainWindow();
     mainwindow->setStyleSheet("background-color : #620b66");
     mainwindow->show();
 
