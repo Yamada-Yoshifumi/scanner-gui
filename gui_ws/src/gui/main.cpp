@@ -1,6 +1,7 @@
 #include <QQmlApplicationEngine>
 #include <QApplication>
 #include <QQuickWidget>
+
 //#include <QGuiApplication>
 #include "mainwindow.h"
 #include <ros/ros.h>
@@ -9,16 +10,39 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QtQml>
+#include <QThread>
 
+
+
+class ROSThread: public QThread{
+    MainWindow *mainwindow;
+
+public:
+    explicit ROSThread(MainWindow *mainwindow_)
+        : QThread(), mainwindow(mainwindow_) {}
+    void run() override{
+        QObject *item = mainwindow->qmlView->rootObject();
+        QObject* power_button = item->findChild<QObject*>("power_button");
+        ROSHandler *roshandler;
+        connect(power_button, SIGNAL(powerSignal(QString)), roshandler, SLOT(roshandler->systemPowerOn));
+        exec();
+    }
+};
 
 int main(int argc, char **argv)
 {
     ros::init( argc, argv, "qt_gui");
+    ros::NodeHandlePtr n_;
+    n_.reset(new ros::NodeHandle("~"));
+
     QApplication app( argc, argv );
 
-    system("killall -9 gzserver");
-
     MainWindow* mainwindow = new MainWindow();
+    ROSHandler* roshandler = new ROSHandler(*n_);
+
+    auto thread = new ROSThread(mainwindow);
+    thread->start();
+
     mainwindow->setStyleSheet("background-color : #620b66");
     mainwindow->show();
 

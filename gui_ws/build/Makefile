@@ -1390,17 +1390,17 @@ myviz_autogen/fast:
 .PHONY : myviz_autogen/fast
 
 #=============================================================================
-# Target rules for targets named velodyne_interface
+# Target rules for targets named hardware_signal
 
 # Build rule for target.
-velodyne_interface: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 velodyne_interface
-.PHONY : velodyne_interface
+hardware_signal: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hardware_signal
+.PHONY : hardware_signal
 
 # fast build rule for target.
-velodyne_interface/fast:
-	$(MAKE) -f velodyne_description/CMakeFiles/velodyne_interface.dir/build.make velodyne_description/CMakeFiles/velodyne_interface.dir/build
-.PHONY : velodyne_interface/fast
+hardware_signal/fast:
+	$(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/build
+.PHONY : hardware_signal/fast
 
 #=============================================================================
 # Target rules for targets named trajectory_msgs_generate_messages_py
@@ -1650,30 +1650,30 @@ trajectory_msgs_generate_messages_cpp/fast:
 .PHONY : trajectory_msgs_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named scanner_gui
+# Target rules for targets named qt_gui
 
 # Build rule for target.
-scanner_gui: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 scanner_gui
-.PHONY : scanner_gui
+qt_gui: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 qt_gui
+.PHONY : qt_gui
 
 # fast build rule for target.
-scanner_gui/fast:
-	$(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/build
-.PHONY : scanner_gui/fast
+qt_gui/fast:
+	$(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/build
+.PHONY : qt_gui/fast
 
 #=============================================================================
-# Target rules for targets named scanner_gui_autogen
+# Target rules for targets named qt_gui_autogen
 
 # Build rule for target.
-scanner_gui_autogen: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 scanner_gui_autogen
-.PHONY : scanner_gui_autogen
+qt_gui_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 qt_gui_autogen
+.PHONY : qt_gui_autogen
 
 # fast build rule for target.
-scanner_gui_autogen/fast:
-	$(MAKE) -f gui/CMakeFiles/scanner_gui_autogen.dir/build.make gui/CMakeFiles/scanner_gui_autogen.dir/build
-.PHONY : scanner_gui_autogen/fast
+qt_gui_autogen/fast:
+	$(MAKE) -f gui/CMakeFiles/qt_gui_autogen.dir/build.make gui/CMakeFiles/qt_gui_autogen.dir/build
+.PHONY : qt_gui_autogen/fast
 
 # Help Target
 help:
@@ -1782,7 +1782,7 @@ help:
 	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... myviz_autogen"
-	@echo "... velodyne_interface"
+	@echo "... hardware_signal"
 	@echo "... trajectory_msgs_generate_messages_py"
 	@echo "... trajectory_msgs_generate_messages_eus"
 	@echo "... dynamic_reconfigure_generate_messages_cpp"
@@ -1802,8 +1802,8 @@ help:
 	@echo "... gazebo_msgs_generate_messages_nodejs"
 	@echo "... gazebo_msgs_generate_messages_eus"
 	@echo "... trajectory_msgs_generate_messages_cpp"
-	@echo "... scanner_gui"
-	@echo "... scanner_gui_autogen"
+	@echo "... qt_gui"
+	@echo "... qt_gui_autogen"
 .PHONY : help
 
 

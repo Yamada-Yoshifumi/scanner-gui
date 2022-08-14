@@ -68,6 +68,18 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -123,18 +135,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # The main all target
 all: cmake_check_build_system
 	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/progress.marks
@@ -168,34 +168,34 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-gui/CMakeFiles/scanner_gui.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/scanner_gui.dir/rule
-.PHONY : gui/CMakeFiles/scanner_gui.dir/rule
+gui/CMakeFiles/qt_gui.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/qt_gui.dir/rule
+.PHONY : gui/CMakeFiles/qt_gui.dir/rule
 
 # Convenience name for target.
-scanner_gui: gui/CMakeFiles/scanner_gui.dir/rule
+qt_gui: gui/CMakeFiles/qt_gui.dir/rule
 
-.PHONY : scanner_gui
+.PHONY : qt_gui
 
 # fast build rule for target.
-scanner_gui/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/build
-.PHONY : scanner_gui/fast
+qt_gui/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/build
+.PHONY : qt_gui/fast
 
 # Convenience name for target.
-gui/CMakeFiles/scanner_gui_autogen.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/scanner_gui_autogen.dir/rule
-.PHONY : gui/CMakeFiles/scanner_gui_autogen.dir/rule
+gui/CMakeFiles/qt_gui_autogen.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 gui/CMakeFiles/qt_gui_autogen.dir/rule
+.PHONY : gui/CMakeFiles/qt_gui_autogen.dir/rule
 
 # Convenience name for target.
-scanner_gui_autogen: gui/CMakeFiles/scanner_gui_autogen.dir/rule
+qt_gui_autogen: gui/CMakeFiles/qt_gui_autogen.dir/rule
 
-.PHONY : scanner_gui_autogen
+.PHONY : qt_gui_autogen
 
 # fast build rule for target.
-scanner_gui_autogen/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui_autogen.dir/build.make gui/CMakeFiles/scanner_gui_autogen.dir/build
-.PHONY : scanner_gui_autogen/fast
+qt_gui_autogen/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui_autogen.dir/build.make gui/CMakeFiles/qt_gui_autogen.dir/build
+.PHONY : qt_gui_autogen/fast
 
 main.o: main.cpp.o
 
@@ -203,7 +203,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/main.cpp.o
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -212,7 +212,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/main.cpp.i
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -221,7 +221,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/main.cpp.s
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 mainwindow.o: mainwindow.cpp.o
@@ -230,7 +230,7 @@ mainwindow.o: mainwindow.cpp.o
 
 # target to build an object file
 mainwindow.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.o
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/mainwindow.cpp.o
 .PHONY : mainwindow.cpp.o
 
 mainwindow.i: mainwindow.cpp.i
@@ -239,7 +239,7 @@ mainwindow.i: mainwindow.cpp.i
 
 # target to preprocess a source file
 mainwindow.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.i
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/mainwindow.cpp.i
 .PHONY : mainwindow.cpp.i
 
 mainwindow.s: mainwindow.cpp.s
@@ -248,7 +248,7 @@ mainwindow.s: mainwindow.cpp.s
 
 # target to generate assembly for a file
 mainwindow.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/mainwindow.cpp.s
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/mainwindow.cpp.s
 .PHONY : mainwindow.cpp.s
 
 myviz.o: myviz.cpp.o
@@ -257,7 +257,7 @@ myviz.o: myviz.cpp.o
 
 # target to build an object file
 myviz.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/myviz.cpp.o
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/myviz.cpp.o
 .PHONY : myviz.cpp.o
 
 myviz.i: myviz.cpp.i
@@ -266,7 +266,7 @@ myviz.i: myviz.cpp.i
 
 # target to preprocess a source file
 myviz.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/myviz.cpp.i
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/myviz.cpp.i
 .PHONY : myviz.cpp.i
 
 myviz.s: myviz.cpp.s
@@ -275,8 +275,62 @@ myviz.s: myviz.cpp.s
 
 # target to generate assembly for a file
 myviz.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/myviz.cpp.s
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/myviz.cpp.s
 .PHONY : myviz.cpp.s
+
+qt_gui_autogen/ACDZA3JY2K/qrc_Resource.o: qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o
+
+.PHONY : qt_gui_autogen/ACDZA3JY2K/qrc_Resource.o
+
+# target to build an object file
+qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o
+.PHONY : qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o
+
+qt_gui_autogen/ACDZA3JY2K/qrc_Resource.i: qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.i
+
+.PHONY : qt_gui_autogen/ACDZA3JY2K/qrc_Resource.i
+
+# target to preprocess a source file
+qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.i:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.i
+.PHONY : qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.i
+
+qt_gui_autogen/ACDZA3JY2K/qrc_Resource.s: qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.s
+
+.PHONY : qt_gui_autogen/ACDZA3JY2K/qrc_Resource.s
+
+# target to generate assembly for a file
+qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.s:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.s
+.PHONY : qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.s
+
+qt_gui_autogen/mocs_compilation.o: qt_gui_autogen/mocs_compilation.cpp.o
+
+.PHONY : qt_gui_autogen/mocs_compilation.o
+
+# target to build an object file
+qt_gui_autogen/mocs_compilation.cpp.o:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/qt_gui_autogen/mocs_compilation.cpp.o
+.PHONY : qt_gui_autogen/mocs_compilation.cpp.o
+
+qt_gui_autogen/mocs_compilation.i: qt_gui_autogen/mocs_compilation.cpp.i
+
+.PHONY : qt_gui_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+qt_gui_autogen/mocs_compilation.cpp.i:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/qt_gui_autogen/mocs_compilation.cpp.i
+.PHONY : qt_gui_autogen/mocs_compilation.cpp.i
+
+qt_gui_autogen/mocs_compilation.s: qt_gui_autogen/mocs_compilation.cpp.s
+
+.PHONY : qt_gui_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+qt_gui_autogen/mocs_compilation.cpp.s:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/qt_gui_autogen/mocs_compilation.cpp.s
+.PHONY : qt_gui_autogen/mocs_compilation.cpp.s
 
 roshandler.o: roshandler.cpp.o
 
@@ -284,7 +338,7 @@ roshandler.o: roshandler.cpp.o
 
 # target to build an object file
 roshandler.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/roshandler.cpp.o
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/roshandler.cpp.o
 .PHONY : roshandler.cpp.o
 
 roshandler.i: roshandler.cpp.i
@@ -293,7 +347,7 @@ roshandler.i: roshandler.cpp.i
 
 # target to preprocess a source file
 roshandler.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/roshandler.cpp.i
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/roshandler.cpp.i
 .PHONY : roshandler.cpp.i
 
 roshandler.s: roshandler.cpp.s
@@ -302,62 +356,8 @@ roshandler.s: roshandler.cpp.s
 
 # target to generate assembly for a file
 roshandler.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/roshandler.cpp.s
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/roshandler.cpp.s
 .PHONY : roshandler.cpp.s
-
-scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.o: scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o
-
-.PHONY : scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.o
-
-# target to build an object file
-scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o
-.PHONY : scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o
-
-scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.i: scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.i
-
-.PHONY : scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.i
-
-# target to preprocess a source file
-scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.i
-.PHONY : scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.i
-
-scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.s: scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.s
-
-.PHONY : scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.s
-
-# target to generate assembly for a file
-scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.s
-.PHONY : scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.s
-
-scanner_gui_autogen/mocs_compilation.o: scanner_gui_autogen/mocs_compilation.cpp.o
-
-.PHONY : scanner_gui_autogen/mocs_compilation.o
-
-# target to build an object file
-scanner_gui_autogen/mocs_compilation.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.o
-.PHONY : scanner_gui_autogen/mocs_compilation.cpp.o
-
-scanner_gui_autogen/mocs_compilation.i: scanner_gui_autogen/mocs_compilation.cpp.i
-
-.PHONY : scanner_gui_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-scanner_gui_autogen/mocs_compilation.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.i
-.PHONY : scanner_gui_autogen/mocs_compilation.cpp.i
-
-scanner_gui_autogen/mocs_compilation.s: scanner_gui_autogen/mocs_compilation.cpp.s
-
-.PHONY : scanner_gui_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-scanner_gui_autogen/mocs_compilation.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/scanner_gui.dir/build.make gui/CMakeFiles/scanner_gui.dir/scanner_gui_autogen/mocs_compilation.cpp.s
-.PHONY : scanner_gui_autogen/mocs_compilation.cpp.s
 
 # Help Target
 help:
@@ -366,14 +366,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
+	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... install/local"
-	@echo "... scanner_gui"
-	@echo "... scanner_gui_autogen"
+	@echo "... qt_gui"
+	@echo "... qt_gui_autogen"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -383,15 +383,15 @@ help:
 	@echo "... myviz.o"
 	@echo "... myviz.i"
 	@echo "... myviz.s"
+	@echo "... qt_gui_autogen/ACDZA3JY2K/qrc_Resource.o"
+	@echo "... qt_gui_autogen/ACDZA3JY2K/qrc_Resource.i"
+	@echo "... qt_gui_autogen/ACDZA3JY2K/qrc_Resource.s"
+	@echo "... qt_gui_autogen/mocs_compilation.o"
+	@echo "... qt_gui_autogen/mocs_compilation.i"
+	@echo "... qt_gui_autogen/mocs_compilation.s"
 	@echo "... roshandler.o"
 	@echo "... roshandler.i"
 	@echo "... roshandler.s"
-	@echo "... scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.o"
-	@echo "... scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.i"
-	@echo "... scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.s"
-	@echo "... scanner_gui_autogen/mocs_compilation.o"
-	@echo "... scanner_gui_autogen/mocs_compilation.i"
-	@echo "... scanner_gui_autogen/mocs_compilation.s"
 .PHONY : help
 
 

@@ -168,46 +168,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-velodyne_description/CMakeFiles/velodyne_interface.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/CMakeFiles/velodyne_interface.dir/rule
-.PHONY : velodyne_description/CMakeFiles/velodyne_interface.dir/rule
+velodyne_description/CMakeFiles/hardware_signal.dir/rule:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/CMakeFiles/hardware_signal.dir/rule
+.PHONY : velodyne_description/CMakeFiles/hardware_signal.dir/rule
 
 # Convenience name for target.
-velodyne_interface: velodyne_description/CMakeFiles/velodyne_interface.dir/rule
+hardware_signal: velodyne_description/CMakeFiles/hardware_signal.dir/rule
 
-.PHONY : velodyne_interface
+.PHONY : hardware_signal
 
 # fast build rule for target.
-velodyne_interface/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/velodyne_interface.dir/build.make velodyne_description/CMakeFiles/velodyne_interface.dir/build
-.PHONY : velodyne_interface/fast
-
-src/hardwareswitch.o: src/hardwareswitch.cpp.o
-
-.PHONY : src/hardwareswitch.o
-
-# target to build an object file
-src/hardwareswitch.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/velodyne_interface.dir/build.make velodyne_description/CMakeFiles/velodyne_interface.dir/src/hardwareswitch.cpp.o
-.PHONY : src/hardwareswitch.cpp.o
-
-src/hardwareswitch.i: src/hardwareswitch.cpp.i
-
-.PHONY : src/hardwareswitch.i
-
-# target to preprocess a source file
-src/hardwareswitch.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/velodyne_interface.dir/build.make velodyne_description/CMakeFiles/velodyne_interface.dir/src/hardwareswitch.cpp.i
-.PHONY : src/hardwareswitch.cpp.i
-
-src/hardwareswitch.s: src/hardwareswitch.cpp.s
-
-.PHONY : src/hardwareswitch.s
-
-# target to generate assembly for a file
-src/hardwareswitch.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/velodyne_interface.dir/build.make velodyne_description/CMakeFiles/velodyne_interface.dir/src/hardwareswitch.cpp.s
-.PHONY : src/hardwareswitch.cpp.s
+hardware_signal/fast:
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/build
+.PHONY : hardware_signal/fast
 
 src/main.o: src/main.cpp.o
 
@@ -215,7 +188,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/velodyne_interface.dir/build.make velodyne_description/CMakeFiles/velodyne_interface.dir/src/main.cpp.o
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -224,7 +197,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/velodyne_interface.dir/build.make velodyne_description/CMakeFiles/velodyne_interface.dir/src/main.cpp.i
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -233,7 +206,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/velodyne_interface.dir/build.make velodyne_description/CMakeFiles/velodyne_interface.dir/src/main.cpp.s
+	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -249,10 +222,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... velodyne_interface"
-	@echo "... src/hardwareswitch.o"
-	@echo "... src/hardwareswitch.i"
-	@echo "... src/hardwareswitch.s"
+	@echo "... hardware_signal"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

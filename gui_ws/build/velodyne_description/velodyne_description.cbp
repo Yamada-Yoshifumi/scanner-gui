@@ -17,8 +17,8 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="velodyne_interface">
-				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description/velodyne_interface" prefix_auto="0" extension_auto="0"/>
+			<Target title="hardware_signal">
+				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description/hardware_signal" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -36,14 +36,14 @@
 					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 velodyne_interface"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 hardware_signal"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="velodyne_interface/fast">
-				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description/velodyne_interface" prefix_auto="0" extension_auto="0"/>
+			<Target title="hardware_signal/fast">
+				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description/hardware_signal" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -61,18 +61,15 @@
 					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 velodyne_interface/fast"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 hardware_signal/fast"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/src/hardwareswitch.cpp">
-			<Option target="velodyne_interface"/>
-		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/src/main.cpp">
-			<Option target="velodyne_interface"/>
+			<Option target="hardware_signal"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

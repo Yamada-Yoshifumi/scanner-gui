@@ -643,7 +643,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "librviz_tutorial/CMakeFiles/std_srvs_generate_messages_lisp.dir/DependInfo.cmake"
   "librviz_tutorial/CMakeFiles/std_srvs_generate_messages_nodejs.dir/DependInfo.cmake"
   "librviz_tutorial/CMakeFiles/myviz_autogen.dir/DependInfo.cmake"
-  "velodyne_description/CMakeFiles/velodyne_interface.dir/DependInfo.cmake"
+  "velodyne_description/CMakeFiles/hardware_signal.dir/DependInfo.cmake"
   "velodyne_gazebo_plugins/CMakeFiles/trajectory_msgs_generate_messages_py.dir/DependInfo.cmake"
   "velodyne_gazebo_plugins/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/DependInfo.cmake"
   "velodyne_gazebo_plugins/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/DependInfo.cmake"
@@ -663,6 +663,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "velodyne_gazebo_plugins/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/DependInfo.cmake"
   "velodyne_gazebo_plugins/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/DependInfo.cmake"
   "velodyne_gazebo_plugins/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/DependInfo.cmake"
-  "gui/CMakeFiles/scanner_gui.dir/DependInfo.cmake"
-  "gui/CMakeFiles/scanner_gui_autogen.dir/DependInfo.cmake"
+  "gui/CMakeFiles/qt_gui.dir/DependInfo.cmake"
+  "gui/CMakeFiles/qt_gui_autogen.dir/DependInfo.cmake"
   )

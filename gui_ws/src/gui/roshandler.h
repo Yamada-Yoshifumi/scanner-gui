@@ -5,8 +5,9 @@
 #include <QMainWindow>
 #include "ros_srv/VelodyneSwitch.h"
 
-class ROSHandler
+class ROSHandler: public QObject
 {
+    Q_OBJECT;
     private:
 
         ros::ServiceClient velodyneSwitchClient;
@@ -14,9 +15,12 @@ class ROSHandler
 
     public:
         ROSHandler(ros::NodeHandle &n);
-        bool systemPowerOn();
+
         bool systemPowerOff();
         bool velodyneOn();
+
+    public Q_SLOTS:
+        void systemPowerOn();
 };
 
 #endif // ROSHANDLER_H

@@ -1,32 +1,34 @@
 #include <ros/ros.h>
 #include "roshandler.h"
 #include "ros_srv/VelodyneSwitch.h"
+#include <QQuickView>
+#include <QQuickItem>
+#include <QtQml>
 
 ROSHandler::ROSHandler(ros::NodeHandle &n)
+
 {
-    velodyneSwitchClient = n.serviceClient<ros_srv::VelodyneSwitch>("velodyneSwitch");
+    velodyneSwitchClient = n.serviceClient<ros_srv::VelodyneSwitch>("/hardware_signal/velodyneSwitch");
 }
 
 bool ROSHandler::systemPowerOff(){
     return false;
 }
 
-bool ROSHandler::systemPowerOn(){
-    return velodyneOn();
+void ROSHandler::systemPowerOn(){
+    bool success = velodyneOn();
 }
 
 bool ROSHandler::velodyneOn(){
     velodynePowerSrv.request.command = 1;
-    velodyneSwitchClient.call(velodynePowerSrv);
 
     if (velodyneSwitchClient.call(velodynePowerSrv))
     {
-        ROS_INFO("service called");
         return velodynePowerSrv.response.success;
     }
     else
     {
-        ROS_INFO("service unreachable");
+        ROS_INFO("Service Unreachable");
         return false;
     }
 }

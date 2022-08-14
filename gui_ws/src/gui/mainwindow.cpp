@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "ros/ros.h"
 #include <QQuickView>
 #include <QQuickItem>
 #include <QHBoxLayout>
@@ -8,6 +7,8 @@
 #include <QtQml>
 #include <QGraphicsOpacityEffect>
 #include <QColor>
+#include <QThread>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -44,14 +45,14 @@ MainWindow::MainWindow(QWidget *parent) :
     power_button = item->findChild<QObject*>("power_button");
     connect( myviz->fullscreen_button, &QPushButton::clicked, this, &MainWindow::fullscreenToggle);
     connect( reboot_button, SIGNAL(rvizRenderSignal(QString)), this, SLOT(createRVizEvent()));
+    connect(power_button, SIGNAL(powerSignal(QString)), this, SLOT(systemOn()));
 
-    n_.reset(new ros::NodeHandle("qt_gui"));
+    n_.reset(new ros::NodeHandle("~"));
     ros_timer = new QTimer(this);
     connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
     ros_timer->start(20);
 
-    roshandler = new ROSHandler(*n_);
-
+    //roshandler = new ROSHandler(*n_);
 }
 
 MainWindow::~MainWindow()
@@ -91,8 +92,10 @@ void MainWindow::createRVizEvent()
 
 void MainWindow::systemOn()
 {
-    bool success = roshandler->systemPowerOn();
-
+    ROS_INFO("1");
+    //bool success = roshandler->systemPowerOn();
+    roshandler->systemPowerOn();
+    /*ROS_INFO("2");
     QObject *item = qmlView->rootObject();
     QObject *power_button_bg = item->findChild<QObject*>("power_button_bg");
 
@@ -103,7 +106,8 @@ void MainWindow::systemOn()
     else{
         QColor color(Qt::red);
         power_button_bg -> setProperty("color", color);
-    }
+    }*/
+
 }
 
 void MainWindow::fullscreenToggle()

@@ -1195,8 +1195,8 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="velodyne_interface">
-				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description/velodyne_interface" prefix_auto="0" extension_auto="0"/>
+			<Target title="hardware_signal">
+				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description/hardware_signal" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -1214,14 +1214,14 @@
 					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 velodyne_interface"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 hardware_signal"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="velodyne_interface/fast">
-				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description/velodyne_interface" prefix_auto="0" extension_auto="0"/>
+			<Target title="hardware_signal/fast">
+				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description/hardware_signal" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -1239,7 +1239,7 @@
 					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 velodyne_interface/fast"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 hardware_signal/fast"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/Makefile&quot;  VERBOSE=1 clean"/>
@@ -1613,8 +1613,8 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_gazebo_plugins/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="scanner_gui">
-				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui" prefix_auto="0" extension_auto="0"/>
+			<Target title="qt_gui">
+				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/qt_gui" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -1631,7 +1631,7 @@
 					<Add option="-DQT_QUICK_LIB"/>
 					<Add option="-DQT_QMLMODELS_LIB"/>
 					<Add option="-DQT_QUICKWIDGETS_LIB"/>
-					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/include"/>
+					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/include"/>
 					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include"/>
 					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include"/>
 					<Add directory="/opt/ros/noetic/include"/>
@@ -1651,14 +1651,14 @@
 					<Add directory="/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQuickWidgets"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 scanner_gui"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 qt_gui"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="scanner_gui/fast">
-				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/scanner_gui" prefix_auto="0" extension_auto="0"/>
+			<Target title="qt_gui/fast">
+				<Option output="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui/qt_gui" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/gui"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -1675,7 +1675,7 @@
 					<Add option="-DQT_QUICK_LIB"/>
 					<Add option="-DQT_QMLMODELS_LIB"/>
 					<Add option="-DQT_QUICKWIDGETS_LIB"/>
-					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/include"/>
+					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/include"/>
 					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include"/>
 					<Add directory="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include"/>
 					<Add directory="/opt/ros/noetic/include"/>
@@ -1695,61 +1695,61 @@
 					<Add directory="/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQuickWidgets"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 scanner_gui/fast"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 qt_gui/fast"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="scanner_gui_autogen">
+			<Target title="qt_gui_autogen">
 				<Option working_dir="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 scanner_gui_autogen"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 qt_gui_autogen"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp">
-			<Option target="scanner_gui"/>
+		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp">
+			<Option target="qt_gui"/>
 		</Unit>
-		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.rule">
-			<Option target="scanner_gui"/>
+		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.rule">
+			<Option target="qt_gui"/>
 		</Unit>
-		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/scanner_gui_autogen/mocs_compilation.cpp">
-			<Option target="scanner_gui"/>
+		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/mocs_compilation.cpp">
+			<Option target="qt_gui"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/mocs_compilation.cpp">
 			<Option target="myviz"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/main.cpp">
-			<Option target="scanner_gui"/>
+			<Option target="qt_gui"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.cpp">
-			<Option target="scanner_gui"/>
+			<Option target="qt_gui"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.h">
-			<Option target="scanner_gui"/>
+			<Option target="qt_gui"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.ui">
-			<Option target="scanner_gui"/>
+			<Option target="qt_gui"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp">
-			<Option target="scanner_gui"/>
+			<Option target="qt_gui"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.h">
-			<Option target="scanner_gui"/>
+			<Option target="qt_gui"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.cpp">
-			<Option target="scanner_gui"/>
+			<Option target="qt_gui"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.h">
-			<Option target="scanner_gui"/>
+			<Option target="qt_gui"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/scanner-gui/Resource.qrc">
-			<Option target="scanner_gui"/>
+			<Option target="qt_gui"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/main.cpp">
 			<Option target="myviz"/>
@@ -1760,11 +1760,8 @@
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h">
 			<Option target="myviz"/>
 		</Unit>
-		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/src/hardwareswitch.cpp">
-			<Option target="velodyne_interface"/>
-		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/src/main.cpp">
-			<Option target="velodyne_interface"/>
+			<Option target="hardware_signal"/>
 		</Unit>
 		<Unit filename="/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_gazebo_plugins/src/GazeboRosVelodyneLaser.cpp">
 			<Option target="gazebo_ros_velodyne_laser"/>

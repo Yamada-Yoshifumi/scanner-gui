@@ -16,7 +16,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 signals:
-    void rvizRenderSignal(QString);
+    static void rvizRenderSignal(QString);
+    static void powerSignal(QString);
 
 private:
     Ui::MainWindow *ui;

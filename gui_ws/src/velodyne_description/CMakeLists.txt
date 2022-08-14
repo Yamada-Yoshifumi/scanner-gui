@@ -19,9 +19,8 @@ include_directories(
   include
 )
 
-add_executable(velodyne_interface
+add_executable(hardware_signal
     src/main.cpp
-    src/hardwareswitch.cpp
 )
 
-target_link_libraries(velodyne_interface ${catkin_LIBRARIES})
+target_link_libraries(hardware_signal ${catkin_LIBRARIES})
