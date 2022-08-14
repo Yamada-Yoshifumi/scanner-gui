@@ -16,13 +16,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 signals:
-    static void rvizRenderSignal(QString);
-    static void powerSignal(QString);
+    void rvizRenderSignal(QString);
+    //void powerSignal(QString);
 
 private:
     Ui::MainWindow *ui;
     QTimer *ros_timer;
-    ros::NodeHandlePtr n_;
+    //ros::NodeHandlePtr n_;
 
 public:
     MainWindow(QWidget *parent = nullptr);

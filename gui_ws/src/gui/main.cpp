@@ -17,15 +17,31 @@
 class ROSThread: public QThread{
     MainWindow *mainwindow;
 
+private:
+    ros::NodeHandlePtr n_;
+    QTimer *ros_timer;
+
 public:
-    explicit ROSThread(MainWindow *mainwindow_)
-        : QThread(), mainwindow(mainwindow_) {}
+    explicit ROSThread(MainWindow *mainwindow_, ros::NodeHandle &n)
+        : QThread(), mainwindow(mainwindow_) { n_.reset(&n);}
     void run() override{
         QObject *item = mainwindow->qmlView->rootObject();
         QObject* power_button = item->findChild<QObject*>("power_button");
-        ROSHandler *roshandler;
+        ROSHandler *roshandler = new ROSHandler(*n_);
         connect(power_button, SIGNAL(powerSignal(QString)), roshandler, SLOT(roshandler->systemPowerOn));
+
+        n_.reset(new ros::NodeHandle("~"));
+        ros_timer = new QTimer(this);
+        connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
+        ros_timer->start(20);
         exec();
+    }
+    void spinOnce(){
+        if(ros::ok()){
+            ros::spinOnce();
+        }
+        else
+            QApplication::quit();
     }
 };
 
@@ -38,9 +54,8 @@ int main(int argc, char **argv)
     QApplication app( argc, argv );
 
     MainWindow* mainwindow = new MainWindow();
-    ROSHandler* roshandler = new ROSHandler(*n_);
 
-    auto thread = new ROSThread(mainwindow);
+    auto thread = new ROSThread(mainwindow, *n_);
     thread->start();
 
     mainwindow->setStyleSheet("background-color : #620b66");

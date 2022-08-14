@@ -6,6 +6,32 @@
 
 #IncludeRegexTransform: 
 
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/EWIEGA46WW/moc_mainwindow.cpp
+memory
+-
+../../../../src/gui/mainwindow.h
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.h
+QtCore/qbytearray.h
+-
+QtCore/qmetatype.h
+-
+
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/EWIEGA46WW/moc_roshandler.cpp
+memory
+-
+../../../../src/gui/roshandler.h
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.h
+QtCore/qbytearray.h
+-
+QtCore/qmetatype.h
+-
+
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/mocs_compilation.cpp
+EWIEGA46WW/moc_mainwindow.cpp
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/EWIEGA46WW/moc_mainwindow.cpp
+EWIEGA46WW/moc_roshandler.cpp
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/EWIEGA46WW/moc_roshandler.cpp
+
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitch.h
 ros/service_traits.h
 -
@@ -46,6 +72,36 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/main.cpp
+QQmlApplicationEngine
+-
+QApplication
+-
+QQuickWidget
+-
+mainwindow.h
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.h
+ros/ros.h
+-
+QQuickView
+-
+QQuickItem
+-
+QHBoxLayout
+-
+QPushButton
+-
+QtQml
+-
+QThread
+-
+QQuickView
+-
+mainwindow.h
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.h
+ui_mainwindow.h
+/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/ui_mainwindow.h
+
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.cpp
 mainwindow.h
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.h
@@ -64,6 +120,8 @@ QtQml
 QGraphicsOpacityEffect
 -
 QColor
+-
+QThread
 -
 
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.h
@@ -161,6 +219,10 @@ qstring.h
 /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/QStringList
 qstringlist.h
 /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/qstringlist.h
+
+/home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/QThread
+qthread.h
+/home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/qthread.h
 
 /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/QUrl
 qurl.h
@@ -3220,6 +3282,10 @@ QtNetwork/qabstractsocket.h
 QtNetwork/qhostaddress.h
 -
 
+/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQml/QQmlApplicationEngine
+qqmlapplicationengine.h
+/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQml/qqmlapplicationengine.h
+
 /home/ameyasu/Qt/5.15.2/gcc_64/include/QtQml/QQmlEngine
 qqmlengine.h
 /home/ameyasu/Qt/5.15.2/gcc_64/include/QtQml/qqmlengine.h
@@ -3642,6 +3708,26 @@ QtQml/qtqmlglobal.h
 QtGui/qtguiglobal.h
 -
 QtQuick/qtquick-config.h
+-
+
+/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQuickWidgets/QQuickWidget
+qquickwidget.h
+/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQuickWidgets/qquickwidget.h
+
+/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQuickWidgets/qquickwidget.h
+QtWidgets/qwidget.h
+-
+QtQuick/qquickwindow.h
+-
+QtCore/qurl.h
+-
+QtQuickWidgets/qtquickwidgetsglobal.h
+-
+QtGui/qimage.h
+-
+
+/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQuickWidgets/qtquickwidgetsglobal.h
+QtCore/qglobal.h
 -
 
 /home/ameyasu/Qt/5.15.2/gcc_64/include/QtWidgets/QApplication

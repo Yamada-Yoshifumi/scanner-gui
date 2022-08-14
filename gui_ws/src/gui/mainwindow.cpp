@@ -45,12 +45,12 @@ MainWindow::MainWindow(QWidget *parent) :
     power_button = item->findChild<QObject*>("power_button");
     connect( myviz->fullscreen_button, &QPushButton::clicked, this, &MainWindow::fullscreenToggle);
     connect( reboot_button, SIGNAL(rvizRenderSignal(QString)), this, SLOT(createRVizEvent()));
-    connect(power_button, SIGNAL(powerSignal(QString)), this, SLOT(systemOn()));
+    //connect(power_button, SIGNAL(powerSignal(QString)), this, SLOT(systemOn()));
 
-    n_.reset(new ros::NodeHandle("~"));
-    ros_timer = new QTimer(this);
-    connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
-    ros_timer->start(20);
+    //n_.reset(new ros::NodeHandle("~"));
+    //ros_timer = new QTimer(this);
+    //connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
+    //ros_timer->start(20);
 
     //roshandler = new ROSHandler(*n_);
 }

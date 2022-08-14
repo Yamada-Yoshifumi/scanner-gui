@@ -3,6 +3,7 @@
  uic:ui_mainwindow.h
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.h
+ mmc:Q_OBJECT
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.cpp
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.h
 /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/main.cpp
