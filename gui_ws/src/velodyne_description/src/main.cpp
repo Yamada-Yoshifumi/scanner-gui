@@ -43,8 +43,9 @@ int main(int argc, char **argv) {
     n_.reset(new ros::NodeHandle("~"));
     n_->setCallbackQueue(&callback_queue);
     callback_queue.callAvailable(ros::WallDuration());
+
     ros::ServiceServer velodyneSwitchService = n_->advertiseService("velodyneSwitch", velodyneSwitch);
-    ros::MultiThreadedSpinner spinner(3);
+    ros::MultiThreadedSpinner spinner(4);
     spinner.spin(&callback_queue);
 
     return 0;

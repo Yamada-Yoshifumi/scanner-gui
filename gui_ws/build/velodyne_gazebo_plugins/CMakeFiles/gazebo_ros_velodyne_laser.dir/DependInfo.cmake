@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_gazebo_plugins/src/GazeboRosVelodyneLaser.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_gazebo_plugins/CMakeFiles/gazebo_ros_velodyne_laser.dir/src/GazeboRosVelodyneLaser.cpp.o"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_gazebo_plugins/src/GazeboRosVelodyneLaser.cpp" "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_gazebo_plugins/CMakeFiles/gazebo_ros_velodyne_laser.dir/src/GazeboRosVelodyneLaser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -30,7 +30,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_gazebo_plugins/include"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_gazebo_plugins/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/gazebo-11"

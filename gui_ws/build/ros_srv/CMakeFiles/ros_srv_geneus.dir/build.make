@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/src
+CMAKE_SOURCE_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
+CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 
 # Utility rule file for ros_srv_geneus.
 
@@ -63,10 +63,10 @@ ros_srv/CMakeFiles/ros_srv_geneus.dir/build: ros_srv_geneus
 .PHONY : ros_srv/CMakeFiles/ros_srv_geneus.dir/build
 
 ros_srv/CMakeFiles/ros_srv_geneus.dir/clean:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/ros_srv && $(CMAKE_COMMAND) -P CMakeFiles/ros_srv_geneus.dir/cmake_clean.cmake
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv && $(CMAKE_COMMAND) -P CMakeFiles/ros_srv_geneus.dir/cmake_clean.cmake
 .PHONY : ros_srv/CMakeFiles/ros_srv_geneus.dir/clean
 
 ros_srv/CMakeFiles/ros_srv_geneus.dir/depend:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTprojects/scanner-gui/gui_ws/src /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/ros_srv /home/ameyasu/QTprojects/scanner-gui/gui_ws/build /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/ros_srv /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/ros_srv/CMakeFiles/ros_srv_geneus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTProjects/scanner-gui/gui_ws/src /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv /home/ameyasu/QTProjects/scanner-gui/gui_ws/build /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/CMakeFiles/ros_srv_geneus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ros_srv/CMakeFiles/ros_srv_geneus.dir/depend
 

@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ameyasu/QTprojects/scanner-gui/gui_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/ameyasu/QTProjects/scanner-gui/gui_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

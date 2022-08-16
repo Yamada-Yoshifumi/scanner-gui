@@ -5,7 +5,8 @@
 #include <QGridLayout>
 #include "myviz.h"
 #include <qtimer.h>
-#include "roshandler.h"
+#include <ros/ros.h>
+#include "sensor_msgs/PointCloud2.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,30 +18,43 @@ class MainWindow : public QMainWindow
 
 signals:
     void rvizRenderSignal(QString);
-    //void powerSignal(QString);
+    void powerButtonPressed();
+    void powerSignal(QString);
 
 private:
     Ui::MainWindow *ui;
     QTimer *ros_timer;
-    //ros::NodeHandlePtr n_;
+    QTimer *velodyne_timer;
+    QTimer *imu_timer;
+    QTimer *camera_timer;
+    ros::NodeHandlePtr n_;
+    ros::Subscriber velodynesub;
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void resizeEvent(QResizeEvent* event);
+    void paintStatus();
+    void updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg);
     QQuickView *qmlView;
     QGridLayout* central_widget_layout;
     QObject *power_button;
+    QObject *power_button_bg;
+    QObject *velodyne_indicator;
+    QObject *lidar_canvas;
     QWidget *container;
+    bool velodyne_status = false;
     MyViz* myviz;
-    ROSHandler* roshandler;
+    //ROSHandler* roshandler;
     bool power_toggled = false;
 
 public Q_SLOTS:
     void createRVizEvent();
     void fullscreenToggle();
+    void resetVelodyneStatus();
     void spinOnce();
-    void systemOn();
+    void powerClickedEmit();
+    //void systemOn();
 
 };
 

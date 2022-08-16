@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/src
+CMAKE_SOURCE_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
+CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 
 # Utility rule file for roscpp_generate_messages_nodejs.
 
@@ -63,10 +63,10 @@ librviz_tutorial/CMakeFiles/roscpp_generate_messages_nodejs.dir/build: roscpp_ge
 .PHONY : librviz_tutorial/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
 
 librviz_tutorial/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial && $(CMAKE_COMMAND) -P CMakeFiles/roscpp_generate_messages_nodejs.dir/cmake_clean.cmake
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial && $(CMAKE_COMMAND) -P CMakeFiles/roscpp_generate_messages_nodejs.dir/cmake_clean.cmake
 .PHONY : librviz_tutorial/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 
 librviz_tutorial/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTprojects/scanner-gui/gui_ws/src /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial /home/ameyasu/QTprojects/scanner-gui/gui_ws/build /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/roscpp_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTProjects/scanner-gui/gui_ws/src /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial /home/ameyasu/QTProjects/scanner-gui/gui_ws/build /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/roscpp_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : librviz_tutorial/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend
 

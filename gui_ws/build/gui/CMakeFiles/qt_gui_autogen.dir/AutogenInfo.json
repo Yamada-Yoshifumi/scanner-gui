@@ -1,31 +1,31 @@
 {
-	"BUILD_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen",
-	"CMAKE_BINARY_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui",
+	"BUILD_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui/qt_gui_autogen",
+	"CMAKE_BINARY_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
-	"CMAKE_SOURCE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src",
+	"CMAKE_SOURCE_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src",
 	"HEADERS" : 
 	[
 		[
-			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.h",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp"
 		],
 		[
-			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.h",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/myviz.h",
 			"MU",
 			"EWIEGA46WW/moc_myviz.cpp"
 		],
 		[
-			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.h",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/roshandler.h",
 			"MU",
 			"EWIEGA46WW/moc_roshandler.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"QT_CORE_LIB",
@@ -49,8 +49,8 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include",
-		"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include",
+		"/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include",
+		"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/include",
 		"/opt/ros/noetic/include",
 		"/opt/ros/noetic/include/xmlrpcpp",
 		"/usr/include/eigen3",
@@ -85,26 +85,26 @@
 		"-c",
 		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui/qt_gui_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
-	"PARSE_CACHE_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/qt_gui_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui/CMakeFiles/qt_gui_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/home/ameyasu/Qt/5.15.2/gcc_64/bin/moc",
 	"QT_UIC_EXECUTABLE" : "/home/ameyasu/Qt/5.15.2/gcc_64/bin/uic",
 	"QT_VERSION_MAJOR" : 5,
-	"SETTINGS_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/qt_gui_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui/CMakeFiles/qt_gui_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/main.cpp", "MU" ],
+		[ "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/main.cpp", "MU" ],
 		[
-			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/mainwindow.cpp",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/mainwindow.cpp",
 			"MU"
 		],
-		[ "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/myviz.cpp", "MU" ],
+		[ "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/myviz.cpp", "MU" ],
 		[
-			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui/roshandler.cpp",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/roshandler.cpp",
 			"MU"
 		]
 	],

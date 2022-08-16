@@ -1,8 +1,8 @@
-# Install script for directory: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial
+# Install script for directory: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ameyasu/QTprojects/scanner-gui/gui_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/ameyasu/QTProjects/scanner-gui/gui_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/catkin_generated/installspace/librviz_tutorial.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/catkin_generated/installspace/librviz_tutorial.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/librviz_tutorial/cmake" TYPE FILE FILES
-    "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/catkin_generated/installspace/librviz_tutorialConfig.cmake"
-    "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/catkin_generated/installspace/librviz_tutorialConfig-version.cmake"
+    "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/catkin_generated/installspace/librviz_tutorialConfig.cmake"
+    "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/catkin_generated/installspace/librviz_tutorialConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/librviz_tutorial" TYPE FILE FILES "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/librviz_tutorial" TYPE FILE FILES "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -59,7 +59,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librviz_tutorial/myviz"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/librviz_tutorial" TYPE EXECUTABLE FILES "/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/librviz_tutorial/myviz")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/librviz_tutorial" TYPE EXECUTABLE FILES "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/librviz_tutorial/myviz")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librviz_tutorial/myviz" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librviz_tutorial/myviz")
     file(RPATH_CHANGE

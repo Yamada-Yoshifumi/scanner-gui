@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/src
+CMAKE_SOURCE_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
+CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 
 # Utility rule file for myviz_autogen.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
 include librviz_tutorial/CMakeFiles/myviz_autogen.dir/progress.make
 
 librviz_tutorial/CMakeFiles/myviz_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target myviz"
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial && /usr/bin/cmake -E cmake_autogen /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz_autogen.dir/AutogenInfo.json Debug
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target myviz"
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial && /usr/bin/cmake -E cmake_autogen /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz_autogen.dir/AutogenInfo.json Debug
 
 myviz_autogen: librviz_tutorial/CMakeFiles/myviz_autogen
 myviz_autogen: librviz_tutorial/CMakeFiles/myviz_autogen.dir/build.make
@@ -68,10 +68,10 @@ librviz_tutorial/CMakeFiles/myviz_autogen.dir/build: myviz_autogen
 .PHONY : librviz_tutorial/CMakeFiles/myviz_autogen.dir/build
 
 librviz_tutorial/CMakeFiles/myviz_autogen.dir/clean:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial && $(CMAKE_COMMAND) -P CMakeFiles/myviz_autogen.dir/cmake_clean.cmake
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial && $(CMAKE_COMMAND) -P CMakeFiles/myviz_autogen.dir/cmake_clean.cmake
 .PHONY : librviz_tutorial/CMakeFiles/myviz_autogen.dir/clean
 
 librviz_tutorial/CMakeFiles/myviz_autogen.dir/depend:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTprojects/scanner-gui/gui_ws/src /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial /home/ameyasu/QTprojects/scanner-gui/gui_ws/build /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTProjects/scanner-gui/gui_ws/src /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial /home/ameyasu/QTProjects/scanner-gui/gui_ws/build /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : librviz_tutorial/CMakeFiles/myviz_autogen.dir/depend
 

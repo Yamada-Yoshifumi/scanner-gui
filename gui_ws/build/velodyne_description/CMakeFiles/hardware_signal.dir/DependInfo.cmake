@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/src/main.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.o"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/src/main.cpp" "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,13 +17,13 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"
   "/usr/include/OGRE/Overlay"
   "/usr/include/OGRE"
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/include"
   )
 
 # Targets to which this target links.

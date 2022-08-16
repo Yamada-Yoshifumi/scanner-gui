@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/src
+CMAKE_SOURCE_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
+CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 
 # Utility rule file for _catkin_empty_exported_target.
 
@@ -63,10 +63,10 @@ velodyne_simulator/CMakeFiles/_catkin_empty_exported_target.dir/build: _catkin_e
 .PHONY : velodyne_simulator/CMakeFiles/_catkin_empty_exported_target.dir/build
 
 velodyne_simulator/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_simulator && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_simulator && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
 .PHONY : velodyne_simulator/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 velodyne_simulator/CMakeFiles/_catkin_empty_exported_target.dir/depend:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTprojects/scanner-gui/gui_ws/src /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_simulator /home/ameyasu/QTprojects/scanner-gui/gui_ws/build /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_simulator /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_simulator/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTProjects/scanner-gui/gui_ws/src /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_simulator /home/ameyasu/QTProjects/scanner-gui/gui_ws/build /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_simulator /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_simulator/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : velodyne_simulator/CMakeFiles/_catkin_empty_exported_target.dir/depend
 

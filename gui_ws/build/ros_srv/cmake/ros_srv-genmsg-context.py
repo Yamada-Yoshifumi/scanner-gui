@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = ""
-services_str = "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv"
+services_str = "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv"
 pkg_name = "ros_srv"
 dependencies_str = "std_msgs;geometry_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

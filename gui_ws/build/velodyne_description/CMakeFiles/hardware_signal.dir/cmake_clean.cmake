@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description/hardware_signal"
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/velodyne_description/hardware_signal.pdb"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/velodyne_description/hardware_signal"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/velodyne_description/hardware_signal.pdb"
   "CMakeFiles/hardware_signal.dir/src/main.cpp.o"
 )
 

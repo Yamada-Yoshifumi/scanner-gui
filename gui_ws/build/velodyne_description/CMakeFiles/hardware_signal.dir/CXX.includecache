@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitch.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitch.h
 ros/service_traits.h
 -
 ros_srv/VelodyneSwitchRequest.h
@@ -14,7 +14,7 @@ ros_srv/VelodyneSwitchRequest.h
 ros_srv/VelodyneSwitchResponse.h
 -
 
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitchRequest.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitchRequest.h
 string
 -
 vector
@@ -30,7 +30,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitchResponse.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitchResponse.h
 string
 -
 vector
@@ -46,7 +46,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include/roslaunchmanager.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/include/roslaunchmanager.h
 unistd.h
 -
 signal.h
@@ -70,21 +70,21 @@ algorithm
 numeric
 -
 ros/ros.h
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include/ros/ros.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/include/ros/ros.h
 ros/console.h
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include/ros/console.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/include/ros/console.h
 rospack/rospack.h
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include/rospack/rospack.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/include/rospack/rospack.h
 
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/src/main.cpp
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/src/main.cpp
 ros/ros.h
 -
 ros/callback_queue.h
 -
 roslaunchmanager.h
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/src/roslaunchmanager.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/src/roslaunchmanager.h
 ros_srv/VelodyneSwitch.h
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/src/ros_srv/VelodyneSwitch.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/src/ros_srv/VelodyneSwitch.h
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h

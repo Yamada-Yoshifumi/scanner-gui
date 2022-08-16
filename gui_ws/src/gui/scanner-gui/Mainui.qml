@@ -161,7 +161,9 @@ Rectangle{
                 Layout.preferredHeight: parent.height*0.30
                 Layout.maximumHeight: parent.height*0.30
                 id: lidar_status
-                onPaint: squircle("green");
+                objectName: "lidar_status"
+                colour: "red"
+                onPaint: squircle();
             }
 
             Rectangle {
@@ -213,7 +215,8 @@ Rectangle{
                 Layout.fillWidth: true
                 Layout.preferredHeight: parent.height*0.30
                 id: imu_status
-                onPaint: squircle("green");
+                colour: "red"
+                onPaint: squircle();
             }
 
             Rectangle {
@@ -264,7 +267,8 @@ Rectangle{
                 Layout.fillWidth: true
                 Layout.preferredHeight: parent.height*0.30
                 id: camera_status
-                onPaint: squircle("yellow");
+                colour: "red"
+                onPaint: squircle();
             }
 
             Rectangle {

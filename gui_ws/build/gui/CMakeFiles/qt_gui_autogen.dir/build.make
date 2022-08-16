@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/src
+CMAKE_SOURCE_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
+CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 
 # Utility rule file for qt_gui_autogen.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
 include gui/CMakeFiles/qt_gui_autogen.dir/progress.make
 
 gui/CMakeFiles/qt_gui_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target qt_gui"
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E cmake_autogen /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/qt_gui_autogen.dir/AutogenInfo.json Debug
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target qt_gui"
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui && /usr/bin/cmake -E cmake_autogen /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui/CMakeFiles/qt_gui_autogen.dir/AutogenInfo.json Debug
 
 qt_gui_autogen: gui/CMakeFiles/qt_gui_autogen
 qt_gui_autogen: gui/CMakeFiles/qt_gui_autogen.dir/build.make
@@ -68,10 +68,10 @@ gui/CMakeFiles/qt_gui_autogen.dir/build: qt_gui_autogen
 .PHONY : gui/CMakeFiles/qt_gui_autogen.dir/build
 
 gui/CMakeFiles/qt_gui_autogen.dir/clean:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui && $(CMAKE_COMMAND) -P CMakeFiles/qt_gui_autogen.dir/cmake_clean.cmake
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui && $(CMAKE_COMMAND) -P CMakeFiles/qt_gui_autogen.dir/cmake_clean.cmake
 .PHONY : gui/CMakeFiles/qt_gui_autogen.dir/clean
 
 gui/CMakeFiles/qt_gui_autogen.dir/depend:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTprojects/scanner-gui/gui_ws/src /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/gui /home/ameyasu/QTprojects/scanner-gui/gui_ws/build /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/gui/CMakeFiles/qt_gui_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTProjects/scanner-gui/gui_ws/src /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui /home/ameyasu/QTProjects/scanner-gui/gui_ws/build /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui/CMakeFiles/qt_gui_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : gui/CMakeFiles/qt_gui_autogen.dir/depend
 

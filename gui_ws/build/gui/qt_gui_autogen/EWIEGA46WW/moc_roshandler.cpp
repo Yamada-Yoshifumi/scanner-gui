@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ROSHandler_t {
     QByteArrayData data[3];
-    char stringdata0[26];
+    char stringdata0[30];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,11 +33,11 @@ struct qt_meta_stringdata_ROSHandler_t {
 static const qt_meta_stringdata_ROSHandler_t qt_meta_stringdata_ROSHandler = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "ROSHandler"
-QT_MOC_LITERAL(1, 11, 13), // "systemPowerOn"
-QT_MOC_LITERAL(2, 25, 0) // ""
+QT_MOC_LITERAL(1, 11, 17), // "systemPowerToggle"
+QT_MOC_LITERAL(2, 29, 0) // ""
 
     },
-    "ROSHandler\0systemPowerOn\0"
+    "ROSHandler\0systemPowerToggle\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +58,7 @@ static const uint qt_meta_data_ROSHandler[] = {
        1,    0,   19,    2, 0x0a /* Public */,
 
  // slots: parameters
-    QMetaType::Void,
+    QMetaType::Bool,
 
        0        // eod
 };
@@ -69,11 +69,11 @@ void ROSHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<ROSHandler *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->systemPowerOn(); break;
+        case 0: { bool _r = _t->systemPowerToggle();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject ROSHandler::staticMetaObject = { {

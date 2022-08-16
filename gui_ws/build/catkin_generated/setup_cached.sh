@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD='/home/ameyasu/QTprojects/scanner-gui/gui_ws/build'
+export PWD='/home/ameyasu/QTProjects/scanner-gui/gui_ws/build'

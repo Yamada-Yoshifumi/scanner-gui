@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=c++17
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"velodyne_description\"
 
-CXX_INCLUDES = -I/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/OGRE/Overlay -I/usr/include/OGRE -I/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include 
+CXX_INCLUDES = -I/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/OGRE/Overlay -I/usr/include/OGRE -I/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/include 
 

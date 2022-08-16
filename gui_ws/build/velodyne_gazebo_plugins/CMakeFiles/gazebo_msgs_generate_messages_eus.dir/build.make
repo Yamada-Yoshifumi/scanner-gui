@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/src
+CMAKE_SOURCE_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
+CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 
 # Utility rule file for gazebo_msgs_generate_messages_eus.
 
@@ -63,10 +63,10 @@ velodyne_gazebo_plugins/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/build: 
 .PHONY : velodyne_gazebo_plugins/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/build
 
 velodyne_gazebo_plugins/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/clean:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_gazebo_plugins && $(CMAKE_COMMAND) -P CMakeFiles/gazebo_msgs_generate_messages_eus.dir/cmake_clean.cmake
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_gazebo_plugins && $(CMAKE_COMMAND) -P CMakeFiles/gazebo_msgs_generate_messages_eus.dir/cmake_clean.cmake
 .PHONY : velodyne_gazebo_plugins/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/clean
 
 velodyne_gazebo_plugins/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/depend:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTprojects/scanner-gui/gui_ws/src /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_gazebo_plugins /home/ameyasu/QTprojects/scanner-gui/gui_ws/build /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_gazebo_plugins /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_gazebo_plugins/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ameyasu/QTProjects/scanner-gui/gui_ws/src /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_gazebo_plugins /home/ameyasu/QTProjects/scanner-gui/gui_ws/build /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_gazebo_plugins /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_gazebo_plugins/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : velodyne_gazebo_plugins/CMakeFiles/gazebo_msgs_generate_messages_eus.dir/depend
 

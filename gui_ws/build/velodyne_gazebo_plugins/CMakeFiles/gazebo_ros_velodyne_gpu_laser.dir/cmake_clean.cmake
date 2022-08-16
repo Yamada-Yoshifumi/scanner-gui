@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgazebo_ros_velodyne_gpu_laser.pdb"
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib/libgazebo_ros_velodyne_gpu_laser.so"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/libgazebo_ros_velodyne_gpu_laser.pdb"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/libgazebo_ros_velodyne_gpu_laser.so"
   "CMakeFiles/gazebo_ros_velodyne_gpu_laser.dir/src/GazeboRosVelodyneLaser.cpp.o"
 )
 

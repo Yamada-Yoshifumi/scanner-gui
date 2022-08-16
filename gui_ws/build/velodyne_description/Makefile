@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/src
+CMAKE_SOURCE_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ameyasu/QTprojects/scanner-gui/gui_ws/build
+CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,14 +137,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_description/CMakeFiles/progress.marks
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ameyasu/QTprojects/scanner-gui/gui_ws/build/CMakeFiles 0
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_description/CMakeFiles/progress.marks
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/clean
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/clean
 .PHONY : clean
 
 # The main clean target
@@ -154,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/preinstall
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/preinstall
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 velodyne_description/CMakeFiles/hardware_signal.dir/rule:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/CMakeFiles/hardware_signal.dir/rule
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f CMakeFiles/Makefile2 velodyne_description/CMakeFiles/hardware_signal.dir/rule
 .PHONY : velodyne_description/CMakeFiles/hardware_signal.dir/rule
 
 # Convenience name for target.
@@ -179,7 +179,7 @@ hardware_signal: velodyne_description/CMakeFiles/hardware_signal.dir/rule
 
 # fast build rule for target.
 hardware_signal/fast:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/build
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/build
 .PHONY : hardware_signal/fast
 
 src/main.o: src/main.cpp.o
@@ -188,7 +188,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.o
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -197,7 +197,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.i
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -206,7 +206,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.s
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f velodyne_description/CMakeFiles/hardware_signal.dir/build.make velodyne_description/CMakeFiles/hardware_signal.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -237,6 +237,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/ameyasu/QTprojects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

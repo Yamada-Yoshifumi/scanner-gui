@@ -1,8 +1,8 @@
-prefix=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel
+prefix=/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel
 
 Name: ros_srv
 Description: Description of ros_srv
 Version: 0.0.0
-Cflags: -I/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/include
+Cflags: -I/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include
 Libs: -L${prefix}/lib 
 Requires: std_msgs geometry_msgs

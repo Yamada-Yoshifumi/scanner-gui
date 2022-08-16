@@ -3,7 +3,7 @@
 
 librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o: librviz_tutorial/myviz_autogen/UVLADIE3JM/moc_myviz.cpp
 librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o: librviz_tutorial/myviz_autogen/mocs_compilation.cpp
-librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h
+librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h
 librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h
 librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h
 librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/qatomic.h
@@ -108,8 +108,8 @@ librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o: /hom
 librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h
 librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtWidgets/qwidget.h
 
-librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/main.cpp
-librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h
+librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/main.cpp
+librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h
 librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h
 librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h
 librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/qatomic.h
@@ -278,8 +278,8 @@ librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o: /opt/ros/noetic/include/ro
 librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
 librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcValue.h
 
-librviz_tutorial/CMakeFiles/myviz.dir/src/myviz.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.cpp
-librviz_tutorial/CMakeFiles/myviz.dir/src/myviz.cpp.o: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h
+librviz_tutorial/CMakeFiles/myviz.dir/src/myviz.cpp.o: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.cpp
+librviz_tutorial/CMakeFiles/myviz.dir/src/myviz.cpp.o: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h
 librviz_tutorial/CMakeFiles/myviz.dir/src/myviz.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/QMap
 librviz_tutorial/CMakeFiles/myviz.dir/src/myviz.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/QObject
 librviz_tutorial/CMakeFiles/myviz.dir/src/myviz.cpp.o: /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/QSet

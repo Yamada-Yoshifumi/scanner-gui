@@ -1,8 +1,8 @@
-# Install script for directory: /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_control
+# Install script for directory: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_control
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ameyasu/QTprojects/scanner-gui/gui_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/ameyasu/QTProjects/scanner-gui/gui_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,29 +38,29 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  include("/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_control/catkin_generated/safe_execute_install.cmake")
+  include("/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_control/catkin_generated/safe_execute_install.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_control/catkin_generated/installspace/velodyne_control.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_control/catkin_generated/installspace/velodyne_control.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/velodyne_control/cmake" TYPE FILE FILES
-    "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_control/catkin_generated/installspace/velodyne_controlConfig.cmake"
-    "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_control/catkin_generated/installspace/velodyne_controlConfig-version.cmake"
+    "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_control/catkin_generated/installspace/velodyne_controlConfig.cmake"
+    "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_control/catkin_generated/installspace/velodyne_controlConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/velodyne_control" TYPE FILE FILES "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_control/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/velodyne_control" TYPE FILE FILES "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_control/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/velodyne_control" TYPE PROGRAM FILES "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/velodyne_control/catkin_generated/installspace/velodyne_teleop")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/velodyne_control" TYPE PROGRAM FILES "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/velodyne_control/catkin_generated/installspace/velodyne_teleop")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/velodyne_control" TYPE DIRECTORY FILES "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_control/launch")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/velodyne_control" TYPE DIRECTORY FILES "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_control/launch")
 endif()
 

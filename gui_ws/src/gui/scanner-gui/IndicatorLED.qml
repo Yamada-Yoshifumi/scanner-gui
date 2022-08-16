@@ -17,7 +17,11 @@ Canvas {
 
     onPaint: squircle();
 
-    function squircle(led_color = "green"){
+    property string colour: "green"
+
+    onColourChanged: requestPaint();
+
+    function squircle(){
         var ctx = getContext("2d");
         ctx.reset();
 
@@ -34,7 +38,7 @@ Canvas {
 
         var gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
         gradient.addColorStop(0, 'white');
-        gradient.addColorStop(1, led_color);
+        gradient.addColorStop(1, colour);
 
         ctx.arc(x, y, radius, 0, 2 * Math.PI);
 

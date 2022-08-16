@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "qnamespace.h"
 #include "ui_mainwindow.h"
 #include <QQuickView>
 #include <QQuickItem>
@@ -7,7 +8,7 @@
 #include <QtQml>
 #include <QGraphicsOpacityEffect>
 #include <QColor>
-#include <QThread>
+#include <sensor_msgs/PointCloud2.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -16,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
     ui->setupUi(this);
-
     qmlView = new QQuickView();
     qmlView->setSource(QUrl(QStringLiteral("qrc:/qml/App.qml")));
 
@@ -43,22 +43,27 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject *item = qmlView->rootObject();
     QObject *reboot_button = item->findChild<QObject*>("reboot_button");
     power_button = item->findChild<QObject*>("power_button");
+    power_button_bg = item->findChild<QObject*>("power_button_bg");
+    velodyne_timer = new QTimer();
+    velodyne_timer->start(1000);
+    ros_timer = new QTimer();
+    ros_timer->start(200);
+    n_.reset(new ros::NodeHandle("status"));
+
+    std::string velodyne_points;
+    n_->param<std::string>("velodyne_points", velodyne_points, "/velodyne_points");
+    velodynesub = n_->subscribe<sensor_msgs::PointCloud2>(velodyne_points, 1, &MainWindow::updateVelodyneStatus, this);
+
+    connect(velodyne_timer, SIGNAL(timeout()), this, SLOT(resetVelodyneStatus()));
+    connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
     connect( myviz->fullscreen_button, &QPushButton::clicked, this, &MainWindow::fullscreenToggle);
     connect( reboot_button, SIGNAL(rvizRenderSignal(QString)), this, SLOT(createRVizEvent()));
-    //connect(power_button, SIGNAL(powerSignal(QString)), this, SLOT(systemOn()));
-
-    //n_.reset(new ros::NodeHandle("~"));
-    //ros_timer = new QTimer(this);
-    //connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
-    //ros_timer->start(20);
-
-    //roshandler = new ROSHandler(*n_);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete ros_timer;
+    delete velodyne_timer;
 }
 
 void MainWindow::spinOnce(){
@@ -87,27 +92,46 @@ void MainWindow::createRVizEvent()
         power_button,
         SIGNAL(powerSignal(QString)),
         this,
-        SLOT(systemOn()));
+        SLOT(powerClickedEmit()));
 }
 
-void MainWindow::systemOn()
-{
-    ROS_INFO("1");
-    //bool success = roshandler->systemPowerOn();
-    roshandler->systemPowerOn();
-    /*ROS_INFO("2");
-    QObject *item = qmlView->rootObject();
-    QObject *power_button_bg = item->findChild<QObject*>("power_button_bg");
+void MainWindow::powerClickedEmit(){
+    emit powerButtonPressed();
+}
 
-    if(success){
+void MainWindow::updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg){
+    velodyne_timer->start(1000);
+    velodyne_status = true;
+    ROS_INFO("update velodyne");
+    paintStatus();
+}
+
+void MainWindow::resetVelodyneStatus(){
+    velodyne_status = false;
+    ROS_INFO("reset velodyne");
+    if(power_button_bg != nullptr)
+        paintStatus();
+}
+
+void MainWindow::paintStatus(){
+    QObject *item = qmlView->rootObject();
+    power_button_bg = item->findChild<QObject*>("power_button_bg");
+    lidar_canvas = item->findChild<QObject*>("lidar_status");
+    if(velodyne_status){
+        ROS_INFO("good status");
         QColor color(Qt::green);
         power_button_bg -> setProperty("color", color);
     }
     else{
+        ROS_INFO("bad status");
         QColor color(Qt::red);
         power_button_bg -> setProperty("color", color);
-    }*/
-
+    }
+    if(velodyne_status){
+        lidar_canvas -> setProperty("colour", "green");
+    }
+    else
+        lidar_canvas -> setProperty("colour", "red");
 }
 
 void MainWindow::fullscreenToggle()

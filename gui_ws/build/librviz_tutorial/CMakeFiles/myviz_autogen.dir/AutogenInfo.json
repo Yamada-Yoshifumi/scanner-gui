@@ -1,21 +1,21 @@
 {
-	"BUILD_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen",
-	"CMAKE_BINARY_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial",
+	"BUILD_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen",
+	"CMAKE_BINARY_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
-	"CMAKE_SOURCE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src",
+	"CMAKE_SOURCE_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src",
 	"HEADERS" : 
 	[
 		[
-			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h",
 			"Mu",
 			"UVLADIE3JM/moc_myviz.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"QT_CORE_LIB",
@@ -64,24 +64,24 @@
 		"-c",
 		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
-	"PARSE_CACHE_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/home/ameyasu/Qt/5.15.2/gcc_64/bin/moc",
 	"QT_UIC_EXECUTABLE" : "",
 	"QT_VERSION_MAJOR" : 5,
-	"SETTINGS_FILE" : "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/main.cpp",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/main.cpp",
 			"Mu"
 		],
 		[
-			"/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.cpp",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.cpp",
 			"Mu"
 		]
 	],

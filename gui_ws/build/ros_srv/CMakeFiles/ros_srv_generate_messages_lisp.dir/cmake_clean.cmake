@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv/VelodyneSwitch.lisp"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv/VelodyneSwitch.lisp"
   "CMakeFiles/ros_srv_generate_messages_lisp"
 )
 

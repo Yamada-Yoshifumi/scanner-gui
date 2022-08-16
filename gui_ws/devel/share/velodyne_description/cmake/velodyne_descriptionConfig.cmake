@@ -67,14 +67,14 @@ set(velodyne_description_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(velodyne_description_SOURCE_PREFIX /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description)
-  set(velodyne_description_DEVEL_PREFIX /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel)
+  set(velodyne_description_SOURCE_PREFIX /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description)
+  set(velodyne_description_DEVEL_PREFIX /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel)
   set(velodyne_description_INSTALL_PREFIX "")
   set(velodyne_description_PREFIX ${velodyne_description_DEVEL_PREFIX})
 else()
   set(velodyne_description_SOURCE_PREFIX "")
   set(velodyne_description_DEVEL_PREFIX "")
-  set(velodyne_description_INSTALL_PREFIX /home/ameyasu/QTprojects/scanner-gui/gui_ws/install)
+  set(velodyne_description_INSTALL_PREFIX /home/ameyasu/QTProjects/scanner-gui/gui_ws/install)
   set(velodyne_description_PREFIX ${velodyne_description_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(velodyne_description_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include " STREQUAL " ")
+if(NOT "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/include " STREQUAL " ")
   set(velodyne_description_INCLUDE_DIRS "")
-  set(_include_dirs "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/include")
+  set(_include_dirs "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/include")
   if(NOT "https://bitbucket.org/dataspeedinc/velodyne_simulator/issues " STREQUAL " ")
     set(_report "Check the issue tracker 'https://bitbucket.org/dataspeedinc/velodyne_simulator/issues' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://wiki.ros.org/velodyne_description " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/inc
         message(FATAL_ERROR "Project 'velodyne_description' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'velodyne_description' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/velodyne_description/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'velodyne_description' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/velodyne_description/${idir}'.  ${_report}")
     endif()
     _list_append_unique(velodyne_description_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib;/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib;/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

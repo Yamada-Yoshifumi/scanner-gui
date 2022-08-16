@@ -1,2 +1,2 @@
 gui:librviz_tutorial:ros_srv:velodyne_control:velodyne_description:velodyne_gazebo_plugins:velodyne_simulator
--DCATKIN_DEVEL_PREFIX=/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ameyasu/QTprojects/scanner-gui/gui_ws/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ameyasu/QTProjects/scanner-gui/gui_ws/install -G Unix Makefiles

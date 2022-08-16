@@ -67,14 +67,14 @@ set(librviz_tutorial_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(librviz_tutorial_SOURCE_PREFIX /home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial)
-  set(librviz_tutorial_DEVEL_PREFIX /home/ameyasu/QTprojects/scanner-gui/gui_ws/devel)
+  set(librviz_tutorial_SOURCE_PREFIX /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial)
+  set(librviz_tutorial_DEVEL_PREFIX /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel)
   set(librviz_tutorial_INSTALL_PREFIX "")
   set(librviz_tutorial_PREFIX ${librviz_tutorial_DEVEL_PREFIX})
 else()
   set(librviz_tutorial_SOURCE_PREFIX "")
   set(librviz_tutorial_DEVEL_PREFIX "")
-  set(librviz_tutorial_INSTALL_PREFIX /home/ameyasu/QTprojects/scanner-gui/gui_ws/install)
+  set(librviz_tutorial_INSTALL_PREFIX /home/ameyasu/QTProjects/scanner-gui/gui_ws/install)
   set(librviz_tutorial_PREFIX ${librviz_tutorial_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/ameyasu/QTprojects/scanner-gui/gui_ws/install/lib;/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/ameyasu/QTProjects/scanner-gui/gui_ws/install/lib;/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

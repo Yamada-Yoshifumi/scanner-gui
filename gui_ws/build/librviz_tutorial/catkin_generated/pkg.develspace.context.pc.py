@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "librviz_tutorial"
-PROJECT_SPACE_DIR = "/home/ameyasu/QTprojects/scanner-gui/gui_ws/devel"
+PROJECT_SPACE_DIR = "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel"
 PROJECT_VERSION = "0.11.0"

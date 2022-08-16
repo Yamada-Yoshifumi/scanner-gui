@@ -6,21 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/UVLADIE3JM/moc_myviz.cpp
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/UVLADIE3JM/moc_myviz.cpp
 memory
 -
 ../../../../src/librviz_tutorial/src/myviz.h
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/mocs_compilation.cpp
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/mocs_compilation.cpp
 UVLADIE3JM/moc_myviz.cpp
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/UVLADIE3JM/moc_myviz.cpp
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/UVLADIE3JM/moc_myviz.cpp
 
-/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.h
 QWidget
 -
 

@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/mocs_compilation.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o"
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/main.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o"
-  "/home/ameyasu/QTprojects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.cpp" "/home/ameyasu/QTprojects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz.dir/src/myviz.cpp.o"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/myviz_autogen/mocs_compilation.cpp" "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz.dir/myviz_autogen/mocs_compilation.cpp.o"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/main.cpp" "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz.dir/src/main.cpp.o"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/librviz_tutorial/src/myviz.cpp" "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/librviz_tutorial/CMakeFiles/myviz.dir/src/myviz.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
