@@ -45,9 +45,9 @@ MainWindow::MainWindow(QWidget *parent) :
     power_button = item->findChild<QObject*>("power_button");
     power_button_bg = item->findChild<QObject*>("power_button_bg");
     velodyne_timer = new QTimer();
-    velodyne_timer->start(1000);
+    velodyne_timer->start(500);
     ros_timer = new QTimer();
-    ros_timer->start(200);
+    ros_timer->start(100);
     n_.reset(new ros::NodeHandle("status"));
 
     std::string velodyne_points;
@@ -100,15 +100,13 @@ void MainWindow::powerClickedEmit(){
 }
 
 void MainWindow::updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg){
-    velodyne_timer->start(1000);
-    velodyne_status = true;
-    ROS_INFO("update velodyne");
+    velodyne_timer->start(500);
+    velodyne_status = 1;
     paintStatus();
 }
 
 void MainWindow::resetVelodyneStatus(){
-    velodyne_status = false;
-    ROS_INFO("reset velodyne");
+    velodyne_status = 0;
     if(power_button_bg != nullptr)
         paintStatus();
 }
@@ -117,17 +115,15 @@ void MainWindow::paintStatus(){
     QObject *item = qmlView->rootObject();
     power_button_bg = item->findChild<QObject*>("power_button_bg");
     lidar_canvas = item->findChild<QObject*>("lidar_status");
-    if(velodyne_status){
-        ROS_INFO("good status");
+    if(velodyne_status == 1){
         QColor color(Qt::green);
         power_button_bg -> setProperty("color", color);
     }
     else{
-        ROS_INFO("bad status");
         QColor color(Qt::red);
         power_button_bg -> setProperty("color", color);
     }
-    if(velodyne_status){
+    if(velodyne_status == 1){
         lidar_canvas -> setProperty("colour", "green");
     }
     else

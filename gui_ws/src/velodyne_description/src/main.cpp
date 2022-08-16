@@ -2,38 +2,59 @@
 #include <ros/callback_queue.h>
 #include "roslaunchmanager.h"
 #include "ros_srv/VelodyneSwitch.h"
+#include <thread>
+
+ROSLaunchManager ros_launch_manager;
+pid_t hardware_launcher;
+
+void velodyneOnThread(){
+    try {
+        hardware_launcher = ros_launch_manager.start(
+            "velodyne_description", "simulation.launch");
+    }
+    catch (std::exception const &exception) {
+        ROS_WARN("%s", exception.what());
+        ros_launch_manager.stop(hardware_launcher, SIGINT);
+    }
+}
+/*
+void velodyneOffThread(){
+    try {
+        ros_launch_manager.stop(hardware_launcher, SIGINT);
+    }
+    catch (std::exception const &exception) {
+        ROS_WARN("%s", exception.what());
+    }
+
+}
+*/
 
 bool velodyneSwitch(ros_srv::VelodyneSwitch::Request &req, ros_srv::VelodyneSwitch::Response &res)
 {
-    ROSLaunchManager ros_launch_manager;
-    pid_t hardware_interface;
     res.success = true;
+
     if (req.command == 1){
-        try {
-            hardware_interface = ros_launch_manager.start(
-                "velodyne_description", "robot_simulation.launch");
-        }
-        catch (std::exception const &exception) {
-            ROS_WARN("%s", exception.what());
-            ros_launch_manager.stop(hardware_interface, SIGINT);
-            return res.success;
-        }
-        return res.success;
+        ROS_INFO("Power on request received");
+        std::thread t(velodyneOnThread);
+        t.detach();
     }
     else if (req.command == 0){
-        try {
-            ros_launch_manager.stop(hardware_interface, SIGINT);
+        ROS_INFO("Shut Down request received");
+        try{
+            system("rosnode kill joint_state_publisher");
+            system("rosnode kill robot_state_publisher");
+            system("rosnode kill gazebo");
+            system("killall -9 gzserver");
+            ros_launch_manager.stop(hardware_launcher, SIGINT);
         }
         catch (std::exception const &exception) {
             ROS_WARN("%s", exception.what());
-            return res.success;
         }
-        return res.success;
     }
     else{
         ROS_INFO("no command received");
-        return res.success;
     }
+    return true;
 }
 
 int main(int argc, char **argv) {

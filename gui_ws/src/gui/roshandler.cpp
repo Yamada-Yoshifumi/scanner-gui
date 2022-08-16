@@ -12,8 +12,8 @@ ROSHandler::ROSHandler()
 {
     //velodyne_timer = new QTimer();
     //velodyne_timer->start(1000);
-    //ros_timer = new QTimer();
-    //ros_timer->start(200);
+    ros_timer = new QTimer();
+    ros_timer->start(200);
     n_.reset(new ros::NodeHandle("ros_handler"));
 
 
@@ -22,8 +22,9 @@ ROSHandler::ROSHandler()
     //n_->param<std::string>("velodyne_points", velodyne_points, "/velodyne_points");
     //velodynesub = n_->subscribe<sensor_msgs::PointCloud2>(velodyne_points, 1, &ROSHandler::updateVelodyneStatus, this);
     //connect(velodyne_timer, SIGNAL(timeout()), this, SLOT(resetVelodyneStatus()));
+    connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
 }
-/*
+
 void ROSHandler::spinOnce(){
     if(ros::ok()){
         ros::spinOnce();
@@ -31,25 +32,26 @@ void ROSHandler::spinOnce(){
     else
         QApplication::quit();
 }
-*/
-bool ROSHandler::systemPowerToggle(){
-    bool success = velodyneOn();
-    return success;
-}
 
-bool ROSHandler::velodyneOn(){
-    velodynePowerSrv.request.command = velodyneCmd;
-
-    if (velodyneSwitchClient.call(velodynePowerSrv))
-    {
-        return velodynePowerSrv.response.success;
-    }
+void ROSHandler::systemPowerToggle(){
+    if (velodyneCmd == 1)
+        velodyneOn();
     else
-    {
-        ROS_INFO("Service Unreachable");
-        return false;
-    }
+        velodyneOff();
 }
+
+void ROSHandler::velodyneOn(){
+    velodynePowerSrv.request.command = 1;
+
+    velodyneSwitchClient.call(velodynePowerSrv);
+}
+
+void ROSHandler::velodyneOff(){
+    velodynePowerSrv.request.command = 0;
+
+    velodyneSwitchClient.call(velodynePowerSrv);
+}
+
 
 /*
 void ROSHandler::updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg){

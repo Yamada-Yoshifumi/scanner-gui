@@ -43,7 +43,7 @@ public:
     QObject *velodyne_indicator;
     QObject *lidar_canvas;
     QWidget *container;
-    bool velodyne_status = false;
+    int velodyne_status = 0;
     MyViz* myviz;
     //ROSHandler* roshandler;
     bool power_toggled = false;

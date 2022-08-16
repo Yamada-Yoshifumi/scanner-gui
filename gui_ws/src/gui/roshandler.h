@@ -15,19 +15,21 @@ class ROSHandler: public QObject
         ros::ServiceClient velodyneSwitchClient;
         ros_srv::VelodyneSwitch velodynePowerSrv;
         //ros::Subscriber velodynesub;
-        //QTimer *ros_timer;
+        QTimer *ros_timer;
         //QTimer *velodyne_timer;
         ros::NodeHandlePtr n_;
 
     public:
         ROSHandler();
         int velodyneCmd = 1;
-        bool velodyneOn();
+        void velodyneOn();
+        void velodyneOff();
         //void updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg);
 
     public Q_SLOTS:
-        bool systemPowerToggle();
+        void systemPowerToggle();
         //void resetVelodyneStatus();
+        void spinOnce();
 
 };
 
