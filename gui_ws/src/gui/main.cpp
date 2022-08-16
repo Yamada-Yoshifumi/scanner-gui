@@ -21,6 +21,7 @@ class PowerThread: public QThread{
     private:
         QTimer *thread_timer;
         int current_velodyne_status = 0;
+        int current_imu_status = 0;
 
     public:
 
@@ -30,8 +31,11 @@ class PowerThread: public QThread{
         void spinThreadOnce(){
             if (current_velodyne_status != mainwindow->velodyne_status){
                 current_velodyne_status = mainwindow->velodyne_status;
-
                 roshandler->velodyneCmd = (mainwindow->velodyne_status == 1) ? 0 : 1;
+            }
+            if (current_imu_status != mainwindow->imu_status){
+                current_imu_status = mainwindow->imu_status;
+                roshandler->imuCmd = (mainwindow->imu_status == 1) ? 0 : 1;
             }
         }
 
@@ -95,6 +99,8 @@ int main(int argc, char **argv)
     power_thread->start();
 
     app.exec();
+    system("rosnode kill gazebo");
+    system("killall -9 gzserver");
     delete mainwindow;
     delete power_thread;
 }

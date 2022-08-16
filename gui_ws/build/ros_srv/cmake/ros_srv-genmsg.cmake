@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "ros_srv: 0 messages, 1 services")
+message(STATUS "ros_srv: 0 messages, 2 services")
 
 set(MSG_I_FLAGS "-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg")
 
@@ -22,6 +22,11 @@ add_custom_target(_ros_srv_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ros_srv" "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv" ""
 )
 
+get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv" NAME_WE)
+add_custom_target(_ros_srv_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "ros_srv" "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv" ""
+)
+
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
@@ -32,6 +37,12 @@ add_custom_target(_ros_srv_generate_messages_check_deps_${_filename}
 ### Generating Services
 _generate_srv_cpp(ros_srv
   "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ros_srv
+)
+_generate_srv_cpp(ros_srv
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/ros_srv
@@ -51,6 +62,8 @@ add_dependencies(ros_srv_generate_messages ros_srv_generate_messages_cpp)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv" NAME_WE)
 add_dependencies(ros_srv_generate_messages_cpp _ros_srv_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv" NAME_WE)
+add_dependencies(ros_srv_generate_messages_cpp _ros_srv_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(ros_srv_gencpp)
@@ -65,6 +78,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ros_srv_generate_messages_cpp)
 ### Generating Services
 _generate_srv_eus(ros_srv
   "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ros_srv
+)
+_generate_srv_eus(ros_srv
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/ros_srv
@@ -84,6 +103,8 @@ add_dependencies(ros_srv_generate_messages ros_srv_generate_messages_eus)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv" NAME_WE)
 add_dependencies(ros_srv_generate_messages_eus _ros_srv_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv" NAME_WE)
+add_dependencies(ros_srv_generate_messages_eus _ros_srv_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(ros_srv_geneus)
@@ -98,6 +119,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ros_srv_generate_messages_eus)
 ### Generating Services
 _generate_srv_lisp(ros_srv
   "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ros_srv
+)
+_generate_srv_lisp(ros_srv
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/ros_srv
@@ -117,6 +144,8 @@ add_dependencies(ros_srv_generate_messages ros_srv_generate_messages_lisp)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv" NAME_WE)
 add_dependencies(ros_srv_generate_messages_lisp _ros_srv_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv" NAME_WE)
+add_dependencies(ros_srv_generate_messages_lisp _ros_srv_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(ros_srv_genlisp)
@@ -131,6 +160,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS ros_srv_generate_messages_lisp)
 ### Generating Services
 _generate_srv_nodejs(ros_srv
   "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ros_srv
+)
+_generate_srv_nodejs(ros_srv
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/ros_srv
@@ -150,6 +185,8 @@ add_dependencies(ros_srv_generate_messages ros_srv_generate_messages_nodejs)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv" NAME_WE)
 add_dependencies(ros_srv_generate_messages_nodejs _ros_srv_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv" NAME_WE)
+add_dependencies(ros_srv_generate_messages_nodejs _ros_srv_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(ros_srv_gennodejs)
@@ -168,6 +205,12 @@ _generate_srv_py(ros_srv
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ros_srv
 )
+_generate_srv_py(ros_srv
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/ros_srv
+)
 
 ### Generating Module File
 _generate_module_py(ros_srv
@@ -182,6 +225,8 @@ add_dependencies(ros_srv_generate_messages ros_srv_generate_messages_py)
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv" NAME_WE)
+add_dependencies(ros_srv_generate_messages_py _ros_srv_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv" NAME_WE)
 add_dependencies(ros_srv_generate_messages_py _ros_srv_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

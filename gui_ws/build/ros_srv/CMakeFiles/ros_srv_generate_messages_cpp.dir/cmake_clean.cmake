@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/ImuSwitch.h"
   "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitch.h"
   "CMakeFiles/ros_srv_generate_messages_cpp"
 )

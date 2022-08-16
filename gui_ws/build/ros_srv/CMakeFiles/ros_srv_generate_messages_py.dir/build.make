@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 include ros_srv/CMakeFiles/ros_srv_generate_messages_py.dir/progress.make
 
 ros_srv/CMakeFiles/ros_srv_generate_messages_py: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/_VelodyneSwitch.py
+ros_srv/CMakeFiles/ros_srv_generate_messages_py: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/_ImuSwitch.py
 ros_srv/CMakeFiles/ros_srv_generate_messages_py: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/__init__.py
 
 
@@ -62,13 +63,20 @@ ros_srv/CMakeFiles/ros_srv_generate_messages_py: /home/ameyasu/QTProjects/scanne
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code from SRV ros_srv/VelodyneSwitch"
 	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p ros_srv -o /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv
 
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/_ImuSwitch.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/_ImuSwitch.py: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python code from SRV ros_srv/ImuSwitch"
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p ros_srv -o /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv
+
 /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/__init__.py: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/_VelodyneSwitch.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python srv __init__.py for ros_srv"
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/__init__.py: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/_ImuSwitch.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python srv __init__.py for ros_srv"
 	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv --initpy
 
 ros_srv_generate_messages_py: ros_srv/CMakeFiles/ros_srv_generate_messages_py
 ros_srv_generate_messages_py: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/_VelodyneSwitch.py
+ros_srv_generate_messages_py: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/_ImuSwitch.py
 ros_srv_generate_messages_py: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/__init__.py
 ros_srv_generate_messages_py: ros_srv/CMakeFiles/ros_srv_generate_messages_py.dir/build.make
 

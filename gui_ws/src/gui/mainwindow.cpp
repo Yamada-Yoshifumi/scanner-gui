@@ -46,15 +46,24 @@ MainWindow::MainWindow(QWidget *parent) :
     power_button_bg = item->findChild<QObject*>("power_button_bg");
     velodyne_timer = new QTimer();
     velodyne_timer->start(500);
+    imu_timer = new QTimer();
+    imu_timer->start(500);
     ros_timer = new QTimer();
     ros_timer->start(100);
     n_.reset(new ros::NodeHandle("status"));
 
     std::string velodyne_points;
     n_->param<std::string>("velodyne_points", velodyne_points, "/velodyne_points");
+    std::string imu_odom;
+    n_->param<std::string>("imu_odom", imu_odom, "/odom");
+
     velodynesub = n_->subscribe<sensor_msgs::PointCloud2>(velodyne_points, 1, &MainWindow::updateVelodyneStatus, this);
+    imusub = n_->subscribe<nav_msgs::Odometry>(imu_odom, 1, &MainWindow::updateImuStatus, this);
+
+    connect(imu_timer, SIGNAL(timeout()), this, SLOT(resetImuStatus()));
 
     connect(velodyne_timer, SIGNAL(timeout()), this, SLOT(resetVelodyneStatus()));
+
     connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
     connect( myviz->fullscreen_button, &QPushButton::clicked, this, &MainWindow::fullscreenToggle);
     connect( reboot_button, SIGNAL(rvizRenderSignal(QString)), this, SLOT(createRVizEvent()));
@@ -64,6 +73,8 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete velodyne_timer;
+    delete ros_timer;
+    delete imu_timer;
 }
 
 void MainWindow::spinOnce(){
@@ -105,8 +116,20 @@ void MainWindow::updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &ms
     paintStatus();
 }
 
+void MainWindow::updateImuStatus(const nav_msgs::OdometryConstPtr &msg){
+    imu_timer->start(500);
+    imu_status = 1;
+    paintStatus();
+}
+
 void MainWindow::resetVelodyneStatus(){
     velodyne_status = 0;
+    if(power_button_bg != nullptr)
+        paintStatus();
+}
+
+void MainWindow::resetImuStatus(){
+    imu_status = 0;
     if(power_button_bg != nullptr)
         paintStatus();
 }
@@ -115,8 +138,14 @@ void MainWindow::paintStatus(){
     QObject *item = qmlView->rootObject();
     power_button_bg = item->findChild<QObject*>("power_button_bg");
     lidar_canvas = item->findChild<QObject*>("lidar_status");
-    if(velodyne_status == 1){
+    imu_canvas = item->findChild<QObject*>("imu_status");
+    if(velodyne_status == 1 && imu_status == 1){
         QColor color(Qt::green);
+        power_button_bg -> setProperty("color", color);
+    }
+    else if(velodyne_status == 1 || imu_status == 1)
+    {
+        QColor color(Qt::yellow);
         power_button_bg -> setProperty("color", color);
     }
     else{
@@ -128,6 +157,11 @@ void MainWindow::paintStatus(){
     }
     else
         lidar_canvas -> setProperty("colour", "red");
+    if(imu_status == 1){
+        imu_canvas -> setProperty("colour", "green");
+    }
+    else
+        imu_canvas -> setProperty("colour", "red");
 }
 
 void MainWindow::fullscreenToggle()

@@ -18,6 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(
     FILES
         VelodyneSwitch.srv
+        ImuSwitch.srv
 )
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)
 

@@ -215,6 +215,7 @@ Rectangle{
                 Layout.fillWidth: true
                 Layout.preferredHeight: parent.height*0.30
                 id: imu_status
+                objectName: "imu_status"
                 colour: "red"
                 onPaint: squircle();
             }

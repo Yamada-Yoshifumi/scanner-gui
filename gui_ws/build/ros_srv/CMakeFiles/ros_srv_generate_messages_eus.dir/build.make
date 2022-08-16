@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 include ros_srv/CMakeFiles/ros_srv_generate_messages_eus.dir/progress.make
 
 ros_srv/CMakeFiles/ros_srv_generate_messages_eus: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/srv/VelodyneSwitch.l
+ros_srv/CMakeFiles/ros_srv_generate_messages_eus: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/srv/ImuSwitch.l
 ros_srv/CMakeFiles/ros_srv_generate_messages_eus: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/manifest.l
 
 
@@ -62,12 +63,18 @@ ros_srv/CMakeFiles/ros_srv_generate_messages_eus: /home/ameyasu/QTProjects/scann
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from ros_srv/VelodyneSwitch.srv"
 	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p ros_srv -o /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/srv
 
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/srv/ImuSwitch.l: /opt/ros/noetic/lib/geneus/gen_eus.py
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/srv/ImuSwitch.l: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from ros_srv/ImuSwitch.srv"
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p ros_srv -o /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/srv
+
 /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for ros_srv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for ros_srv"
 	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv ros_srv std_msgs geometry_msgs
 
 ros_srv_generate_messages_eus: ros_srv/CMakeFiles/ros_srv_generate_messages_eus
 ros_srv_generate_messages_eus: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/srv/VelodyneSwitch.l
+ros_srv_generate_messages_eus: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/srv/ImuSwitch.l
 ros_srv_generate_messages_eus: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/manifest.l
 ros_srv_generate_messages_eus: ros_srv/CMakeFiles/ros_srv_generate_messages_eus.dir/build.make
 

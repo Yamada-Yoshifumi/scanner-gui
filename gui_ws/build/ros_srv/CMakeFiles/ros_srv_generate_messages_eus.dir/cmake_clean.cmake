@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/manifest.l"
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/srv/ImuSwitch.l"
   "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/roseus/ros/ros_srv/srv/VelodyneSwitch.l"
   "CMakeFiles/ros_srv_generate_messages_eus"
 )

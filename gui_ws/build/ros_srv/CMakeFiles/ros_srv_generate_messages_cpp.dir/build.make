@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 include ros_srv/CMakeFiles/ros_srv_generate_messages_cpp.dir/progress.make
 
 ros_srv/CMakeFiles/ros_srv_generate_messages_cpp: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitch.h
+ros_srv/CMakeFiles/ros_srv_generate_messages_cpp: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/ImuSwitch.h
 
 
 /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitch.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
@@ -63,8 +64,16 @@ ros_srv/CMakeFiles/ros_srv_generate_messages_cpp: /home/ameyasu/QTProjects/scann
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from ros_srv/VelodyneSwitch.srv"
 	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv && /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p ros_srv -o /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv -e /opt/ros/noetic/share/gencpp/cmake/..
 
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/ImuSwitch.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/ImuSwitch.h: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/ImuSwitch.h: /opt/ros/noetic/share/gencpp/msg.h.template
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/ImuSwitch.h: /opt/ros/noetic/share/gencpp/srv.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from ros_srv/ImuSwitch.srv"
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv && /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p ros_srv -o /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv -e /opt/ros/noetic/share/gencpp/cmake/..
+
 ros_srv_generate_messages_cpp: ros_srv/CMakeFiles/ros_srv_generate_messages_cpp
 ros_srv_generate_messages_cpp: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/VelodyneSwitch.h
+ros_srv_generate_messages_cpp: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/include/ros_srv/ImuSwitch.h
 ros_srv_generate_messages_cpp: ros_srv/CMakeFiles/ros_srv_generate_messages_cpp.dir/build.make
 
 .PHONY : ros_srv_generate_messages_cpp

@@ -22,6 +22,7 @@ class ROSHandler: public QObject
     public:
         ROSHandler();
         int velodyneCmd = 1;
+        int imuCmd = 1;
         void velodyneOn();
         void velodyneOff();
         //void updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg);

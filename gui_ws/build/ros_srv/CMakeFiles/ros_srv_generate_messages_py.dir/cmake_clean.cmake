@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/_ImuSwitch.py"
   "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/_VelodyneSwitch.py"
   "/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/lib/python3/dist-packages/ros_srv/srv/__init__.py"
   "CMakeFiles/ros_srv_generate_messages_py"

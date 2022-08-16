@@ -285,17 +285,17 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
-# Target rules for targets named ros_srv_genpy
+# Target rules for targets named geometry_msgs_generate_messages_cpp
 
 # Build rule for target.
-ros_srv_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_genpy
-.PHONY : ros_srv_genpy
+geometry_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_cpp
+.PHONY : geometry_msgs_generate_messages_cpp
 
 # fast build rule for target.
-ros_srv_genpy/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_genpy.dir/build.make ros_srv/CMakeFiles/ros_srv_genpy.dir/build
-.PHONY : ros_srv_genpy/fast
+geometry_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make ros_srv/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named ros_srv_gennodejs
@@ -311,199 +311,17 @@ ros_srv_gennodejs/fast:
 .PHONY : ros_srv_gennodejs/fast
 
 #=============================================================================
-# Target rules for targets named ros_srv_generate_messages_nodejs
+# Target rules for targets named geometry_msgs_generate_messages_py
 
 # Build rule for target.
-ros_srv_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages_nodejs
-.PHONY : ros_srv_generate_messages_nodejs
+geometry_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_py
+.PHONY : geometry_msgs_generate_messages_py
 
 # fast build rule for target.
-ros_srv_generate_messages_nodejs/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages_nodejs.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages_nodejs.dir/build
-.PHONY : ros_srv_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named ros_srv_generate_messages_lisp
-
-# Build rule for target.
-ros_srv_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages_lisp
-.PHONY : ros_srv_generate_messages_lisp
-
-# fast build rule for target.
-ros_srv_generate_messages_lisp/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages_lisp.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages_lisp.dir/build
-.PHONY : ros_srv_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named ros_srv_generate_messages_eus
-
-# Build rule for target.
-ros_srv_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages_eus
-.PHONY : ros_srv_generate_messages_eus
-
-# fast build rule for target.
-ros_srv_generate_messages_eus/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages_eus.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages_eus.dir/build
-.PHONY : ros_srv_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named std_msgs_generate_messages_cpp
-
-# Build rule for target.
-std_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_cpp
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make ros_srv/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named ros_srv_genlisp
-
-# Build rule for target.
-ros_srv_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_genlisp
-.PHONY : ros_srv_genlisp
-
-# fast build rule for target.
-ros_srv_genlisp/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_genlisp.dir/build.make ros_srv/CMakeFiles/ros_srv_genlisp.dir/build
-.PHONY : ros_srv_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named std_msgs_generate_messages_lisp
-
-# Build rule for target.
-std_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_lisp
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make ros_srv/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named std_msgs_generate_messages_nodejs
-
-# Build rule for target.
-std_msgs_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_nodejs
-.PHONY : std_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-std_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make ros_srv/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-.PHONY : std_msgs_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named std_msgs_generate_messages_py
-
-# Build rule for target.
-std_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_py
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/std_msgs_generate_messages_py.dir/build.make ros_srv/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named ros_srv_geneus
-
-# Build rule for target.
-ros_srv_geneus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_geneus
-.PHONY : ros_srv_geneus
-
-# fast build rule for target.
-ros_srv_geneus/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_geneus.dir/build.make ros_srv/CMakeFiles/ros_srv_geneus.dir/build
-.PHONY : ros_srv_geneus/fast
-
-#=============================================================================
-# Target rules for targets named ros_srv_gencpp
-
-# Build rule for target.
-ros_srv_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_gencpp
-.PHONY : ros_srv_gencpp
-
-# fast build rule for target.
-ros_srv_gencpp/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_gencpp.dir/build.make ros_srv/CMakeFiles/ros_srv_gencpp.dir/build
-.PHONY : ros_srv_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named ros_srv_generate_messages_cpp
-
-# Build rule for target.
-ros_srv_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages_cpp
-.PHONY : ros_srv_generate_messages_cpp
-
-# fast build rule for target.
-ros_srv_generate_messages_cpp/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages_cpp.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages_cpp.dir/build
-.PHONY : ros_srv_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named ros_srv_generate_messages_py
-
-# Build rule for target.
-ros_srv_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages_py
-.PHONY : ros_srv_generate_messages_py
-
-# fast build rule for target.
-ros_srv_generate_messages_py/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages_py.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages_py.dir/build
-.PHONY : ros_srv_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named geometry_msgs_generate_messages_eus
-
-# Build rule for target.
-geometry_msgs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_eus
-.PHONY : geometry_msgs_generate_messages_eus
-
-# fast build rule for target.
-geometry_msgs_generate_messages_eus/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make ros_srv/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
-.PHONY : geometry_msgs_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named _ros_srv_generate_messages_check_deps_VelodyneSwitch
-
-# Build rule for target.
-_ros_srv_generate_messages_check_deps_VelodyneSwitch: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _ros_srv_generate_messages_check_deps_VelodyneSwitch
-.PHONY : _ros_srv_generate_messages_check_deps_VelodyneSwitch
-
-# fast build rule for target.
-_ros_srv_generate_messages_check_deps_VelodyneSwitch/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/_ros_srv_generate_messages_check_deps_VelodyneSwitch.dir/build.make ros_srv/CMakeFiles/_ros_srv_generate_messages_check_deps_VelodyneSwitch.dir/build
-.PHONY : _ros_srv_generate_messages_check_deps_VelodyneSwitch/fast
-
-#=============================================================================
-# Target rules for targets named std_msgs_generate_messages_eus
-
-# Build rule for target.
-std_msgs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_eus
-.PHONY : std_msgs_generate_messages_eus
-
-# fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make ros_srv/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
+geometry_msgs_generate_messages_py/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make ros_srv/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+.PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_lisp
@@ -519,30 +337,147 @@ geometry_msgs_generate_messages_lisp/fast:
 .PHONY : geometry_msgs_generate_messages_lisp/fast
 
 #=============================================================================
-# Target rules for targets named geometry_msgs_generate_messages_py
+# Target rules for targets named std_msgs_generate_messages_eus
 
 # Build rule for target.
-geometry_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_py
-.PHONY : geometry_msgs_generate_messages_py
+std_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_eus
+.PHONY : std_msgs_generate_messages_eus
 
 # fast build rule for target.
-geometry_msgs_generate_messages_py/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make ros_srv/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
-.PHONY : geometry_msgs_generate_messages_py/fast
+std_msgs_generate_messages_eus/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make ros_srv/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named geometry_msgs_generate_messages_cpp
+# Target rules for targets named ros_srv_generate_messages_py
 
 # Build rule for target.
-geometry_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_cpp
-.PHONY : geometry_msgs_generate_messages_cpp
+ros_srv_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages_py
+.PHONY : ros_srv_generate_messages_py
 
 # fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make ros_srv/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
+ros_srv_generate_messages_py/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages_py.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages_py.dir/build
+.PHONY : ros_srv_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named ros_srv_generate_messages
+
+# Build rule for target.
+ros_srv_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages
+.PHONY : ros_srv_generate_messages
+
+# fast build rule for target.
+ros_srv_generate_messages/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages.dir/build
+.PHONY : ros_srv_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_py
+
+# Build rule for target.
+std_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_py
+.PHONY : std_msgs_generate_messages_py
+
+# fast build rule for target.
+std_msgs_generate_messages_py/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/std_msgs_generate_messages_py.dir/build.make ros_srv/CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named _ros_srv_generate_messages_check_deps_ImuSwitch
+
+# Build rule for target.
+_ros_srv_generate_messages_check_deps_ImuSwitch: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _ros_srv_generate_messages_check_deps_ImuSwitch
+.PHONY : _ros_srv_generate_messages_check_deps_ImuSwitch
+
+# fast build rule for target.
+_ros_srv_generate_messages_check_deps_ImuSwitch/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/_ros_srv_generate_messages_check_deps_ImuSwitch.dir/build.make ros_srv/CMakeFiles/_ros_srv_generate_messages_check_deps_ImuSwitch.dir/build
+.PHONY : _ros_srv_generate_messages_check_deps_ImuSwitch/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_lisp
+
+# Build rule for target.
+std_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_lisp
+.PHONY : std_msgs_generate_messages_lisp
+
+# fast build rule for target.
+std_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make ros_srv/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named _ros_srv_generate_messages_check_deps_VelodyneSwitch
+
+# Build rule for target.
+_ros_srv_generate_messages_check_deps_VelodyneSwitch: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _ros_srv_generate_messages_check_deps_VelodyneSwitch
+.PHONY : _ros_srv_generate_messages_check_deps_VelodyneSwitch
+
+# fast build rule for target.
+_ros_srv_generate_messages_check_deps_VelodyneSwitch/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/_ros_srv_generate_messages_check_deps_VelodyneSwitch.dir/build.make ros_srv/CMakeFiles/_ros_srv_generate_messages_check_deps_VelodyneSwitch.dir/build
+.PHONY : _ros_srv_generate_messages_check_deps_VelodyneSwitch/fast
+
+#=============================================================================
+# Target rules for targets named geometry_msgs_generate_messages_eus
+
+# Build rule for target.
+geometry_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_eus
+.PHONY : geometry_msgs_generate_messages_eus
+
+# fast build rule for target.
+geometry_msgs_generate_messages_eus/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make ros_srv/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+.PHONY : geometry_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_nodejs
+
+# Build rule for target.
+std_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_nodejs
+.PHONY : std_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+std_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make ros_srv/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+.PHONY : std_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named ros_srv_genlisp
+
+# Build rule for target.
+ros_srv_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_genlisp
+.PHONY : ros_srv_genlisp
+
+# fast build rule for target.
+ros_srv_genlisp/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_genlisp.dir/build.make ros_srv/CMakeFiles/ros_srv_genlisp.dir/build
+.PHONY : ros_srv_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_cpp
+
+# Build rule for target.
+std_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_cpp
+.PHONY : std_msgs_generate_messages_cpp
+
+# fast build rule for target.
+std_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make ros_srv/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_nodejs
@@ -558,17 +493,95 @@ geometry_msgs_generate_messages_nodejs/fast:
 .PHONY : geometry_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named ros_srv_generate_messages
+# Target rules for targets named ros_srv_generate_messages_cpp
 
 # Build rule for target.
-ros_srv_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages
-.PHONY : ros_srv_generate_messages
+ros_srv_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages_cpp
+.PHONY : ros_srv_generate_messages_cpp
 
 # fast build rule for target.
-ros_srv_generate_messages/fast:
-	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages.dir/build
-.PHONY : ros_srv_generate_messages/fast
+ros_srv_generate_messages_cpp/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages_cpp.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages_cpp.dir/build
+.PHONY : ros_srv_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named ros_srv_gencpp
+
+# Build rule for target.
+ros_srv_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_gencpp
+.PHONY : ros_srv_gencpp
+
+# fast build rule for target.
+ros_srv_gencpp/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_gencpp.dir/build.make ros_srv/CMakeFiles/ros_srv_gencpp.dir/build
+.PHONY : ros_srv_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named ros_srv_generate_messages_eus
+
+# Build rule for target.
+ros_srv_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages_eus
+.PHONY : ros_srv_generate_messages_eus
+
+# fast build rule for target.
+ros_srv_generate_messages_eus/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages_eus.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages_eus.dir/build
+.PHONY : ros_srv_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named ros_srv_generate_messages_lisp
+
+# Build rule for target.
+ros_srv_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages_lisp
+.PHONY : ros_srv_generate_messages_lisp
+
+# fast build rule for target.
+ros_srv_generate_messages_lisp/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages_lisp.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages_lisp.dir/build
+.PHONY : ros_srv_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named ros_srv_geneus
+
+# Build rule for target.
+ros_srv_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_geneus
+.PHONY : ros_srv_geneus
+
+# fast build rule for target.
+ros_srv_geneus/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_geneus.dir/build.make ros_srv/CMakeFiles/ros_srv_geneus.dir/build
+.PHONY : ros_srv_geneus/fast
+
+#=============================================================================
+# Target rules for targets named ros_srv_generate_messages_nodejs
+
+# Build rule for target.
+ros_srv_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_generate_messages_nodejs
+.PHONY : ros_srv_generate_messages_nodejs
+
+# fast build rule for target.
+ros_srv_generate_messages_nodejs/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_generate_messages_nodejs.dir/build.make ros_srv/CMakeFiles/ros_srv_generate_messages_nodejs.dir/build
+.PHONY : ros_srv_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named ros_srv_genpy
+
+# Build rule for target.
+ros_srv_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_srv_genpy
+.PHONY : ros_srv_genpy
+
+# fast build rule for target.
+ros_srv_genpy/fast:
+	$(MAKE) -f ros_srv/CMakeFiles/ros_srv_genpy.dir/build.make ros_srv/CMakeFiles/ros_srv_genpy.dir/build
+.PHONY : ros_srv_genpy/fast
 
 #=============================================================================
 # Target rules for targets named _catkin_empty_exported_target
@@ -1697,28 +1710,29 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
-	@echo "... ros_srv_genpy"
-	@echo "... ros_srv_gennodejs"
-	@echo "... ros_srv_generate_messages_nodejs"
-	@echo "... ros_srv_generate_messages_lisp"
-	@echo "... ros_srv_generate_messages_eus"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... ros_srv_genlisp"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... std_msgs_generate_messages_py"
-	@echo "... ros_srv_geneus"
-	@echo "... ros_srv_gencpp"
-	@echo "... ros_srv_generate_messages_cpp"
-	@echo "... ros_srv_generate_messages_py"
-	@echo "... geometry_msgs_generate_messages_eus"
-	@echo "... _ros_srv_generate_messages_check_deps_VelodyneSwitch"
-	@echo "... std_msgs_generate_messages_eus"
-	@echo "... geometry_msgs_generate_messages_lisp"
-	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... geometry_msgs_generate_messages_cpp"
-	@echo "... geometry_msgs_generate_messages_nodejs"
+	@echo "... ros_srv_gennodejs"
+	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... geometry_msgs_generate_messages_lisp"
+	@echo "... std_msgs_generate_messages_eus"
+	@echo "... ros_srv_generate_messages_py"
 	@echo "... ros_srv_generate_messages"
+	@echo "... std_msgs_generate_messages_py"
+	@echo "... _ros_srv_generate_messages_check_deps_ImuSwitch"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... _ros_srv_generate_messages_check_deps_VelodyneSwitch"
+	@echo "... geometry_msgs_generate_messages_eus"
+	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... ros_srv_genlisp"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... geometry_msgs_generate_messages_nodejs"
+	@echo "... ros_srv_generate_messages_cpp"
+	@echo "... ros_srv_gencpp"
+	@echo "... ros_srv_generate_messages_eus"
+	@echo "... ros_srv_generate_messages_lisp"
+	@echo "... ros_srv_geneus"
+	@echo "... ros_srv_generate_messages_nodejs"
+	@echo "... ros_srv_genpy"
 	@echo "... _catkin_empty_exported_target"
 	@echo "... nav_msgs_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_cpp"

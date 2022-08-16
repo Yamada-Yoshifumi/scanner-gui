@@ -17,17 +17,6 @@ void velodyneOnThread(){
         ros_launch_manager.stop(hardware_launcher, SIGINT);
     }
 }
-/*
-void velodyneOffThread(){
-    try {
-        ros_launch_manager.stop(hardware_launcher, SIGINT);
-    }
-    catch (std::exception const &exception) {
-        ROS_WARN("%s", exception.what());
-    }
-
-}
-*/
 
 bool velodyneSwitch(ros_srv::VelodyneSwitch::Request &req, ros_srv::VelodyneSwitch::Response &res)
 {

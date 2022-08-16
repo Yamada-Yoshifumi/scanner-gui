@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/ameyasu/QTProjects/scanner-gui/gui_ws/build
 include ros_srv/CMakeFiles/ros_srv_generate_messages_lisp.dir/progress.make
 
 ros_srv/CMakeFiles/ros_srv_generate_messages_lisp: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv/VelodyneSwitch.lisp
+ros_srv/CMakeFiles/ros_srv_generate_messages_lisp: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv/ImuSwitch.lisp
 
 
 /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv/VelodyneSwitch.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
@@ -61,8 +62,14 @@ ros_srv/CMakeFiles/ros_srv_generate_messages_lisp: /home/ameyasu/QTProjects/scan
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from ros_srv/VelodyneSwitch.srv"
 	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/VelodyneSwitch.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p ros_srv -o /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv
 
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv/ImuSwitch.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
+/home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv/ImuSwitch.lisp: /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from ros_srv/ImuSwitch.srv"
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ameyasu/QTProjects/scanner-gui/gui_ws/src/ros_srv/srv/ImuSwitch.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p ros_srv -o /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv
+
 ros_srv_generate_messages_lisp: ros_srv/CMakeFiles/ros_srv_generate_messages_lisp
 ros_srv_generate_messages_lisp: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv/VelodyneSwitch.lisp
+ros_srv_generate_messages_lisp: /home/ameyasu/QTProjects/scanner-gui/gui_ws/devel/share/common-lisp/ros/ros_srv/srv/ImuSwitch.lisp
 ros_srv_generate_messages_lisp: ros_srv/CMakeFiles/ros_srv_generate_messages_lisp.dir/build.make
 
 .PHONY : ros_srv_generate_messages_lisp
