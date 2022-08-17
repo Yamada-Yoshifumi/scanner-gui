@@ -19,7 +19,8 @@ Canvas {
 
     property string colour: "green"
 
-    onColourChanged: requestPaint();
+    onColourChanged: {requestPaint();
+                    }
 
     function squircle(){
         var ctx = getContext("2d");

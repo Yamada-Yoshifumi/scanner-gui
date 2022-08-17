@@ -289,11 +289,11 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gtest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="ros_srv_genpy">
+			<Target title="geometry_msgs_generate_messages_cpp">
 				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_genpy"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 geometry_msgs_generate_messages_cpp"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
@@ -309,151 +309,11 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="ros_srv_generate_messages_nodejs">
+			<Target title="geometry_msgs_generate_messages_py">
 				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages_nodejs"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ros_srv_generate_messages_lisp">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages_lisp"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ros_srv_generate_messages_eus">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages_eus"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="std_msgs_generate_messages_cpp">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 std_msgs_generate_messages_cpp"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ros_srv_genlisp">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_genlisp"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="std_msgs_generate_messages_lisp">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 std_msgs_generate_messages_lisp"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="std_msgs_generate_messages_nodejs">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 std_msgs_generate_messages_nodejs"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="std_msgs_generate_messages_py">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 std_msgs_generate_messages_py"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ros_srv_geneus">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_geneus"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ros_srv_gencpp">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_gencpp"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ros_srv_generate_messages_cpp">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages_cpp"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ros_srv_generate_messages_py">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages_py"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="geometry_msgs_generate_messages_eus">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 geometry_msgs_generate_messages_eus"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="_ros_srv_generate_messages_check_deps_VelodyneSwitch">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 _ros_srv_generate_messages_check_deps_VelodyneSwitch"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="std_msgs_generate_messages_eus">
-				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 std_msgs_generate_messages_eus"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 geometry_msgs_generate_messages_py"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
@@ -469,21 +329,111 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="geometry_msgs_generate_messages_py">
+			<Target title="std_msgs_generate_messages_eus">
 				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 geometry_msgs_generate_messages_py"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 std_msgs_generate_messages_eus"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="geometry_msgs_generate_messages_cpp">
+			<Target title="ros_srv_generate_messages_py">
 				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 geometry_msgs_generate_messages_cpp"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages_py"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ros_srv_generate_messages">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="std_msgs_generate_messages_py">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 std_msgs_generate_messages_py"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="_ros_srv_generate_messages_check_deps_ImuSwitch">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 _ros_srv_generate_messages_check_deps_ImuSwitch"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="std_msgs_generate_messages_lisp">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 std_msgs_generate_messages_lisp"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="_ros_srv_generate_messages_check_deps_VelodyneSwitch">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 _ros_srv_generate_messages_check_deps_VelodyneSwitch"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="geometry_msgs_generate_messages_eus">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 geometry_msgs_generate_messages_eus"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="std_msgs_generate_messages_nodejs">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 std_msgs_generate_messages_nodejs"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ros_srv_genlisp">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_genlisp"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="std_msgs_generate_messages_cpp">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 std_msgs_generate_messages_cpp"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
@@ -499,11 +449,71 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="ros_srv_generate_messages">
+			<Target title="ros_srv_generate_messages_cpp">
 				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages"/>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages_cpp"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ros_srv_gencpp">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_gencpp"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ros_srv_generate_messages_eus">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages_eus"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ros_srv_generate_messages_lisp">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages_lisp"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ros_srv_geneus">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_geneus"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ros_srv_generate_messages_nodejs">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_generate_messages_nodejs"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ros_srv_genpy">
+				<Option working_dir="/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 ros_srv_genpy"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/ros_srv/Makefile&quot;  VERBOSE=1 clean"/>

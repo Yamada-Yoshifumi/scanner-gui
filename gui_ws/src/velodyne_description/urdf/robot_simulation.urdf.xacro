@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="velodyne_example">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_simulation">
   <xacro:arg name="gpu" default="false"/>
   <xacro:property name="gpu" value="$(arg gpu)" />
   <xacro:arg name="organize_cloud" default="false"/>
@@ -162,9 +162,11 @@
     <gazebo>
       <plugin name="velodyne_controller" filename="libgazebo_ros_diff_drive.so">
         <commandTopic>cmd_vel</commandTopic>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
         <odometryTopic>odom</odometryTopic>
         <odometryFrame>odom</odometryFrame>
-        <odometrySource>world</odometrySource>
+        <odometrySource>1</odometrySource>
+        <publishOdom>true</publishOdom>
         <publishOdomTF>true</publishOdomTF>
         <robotBaseFrame>base_footprint</robotBaseFrame>
         <publishWheelTF>true</publishWheelTF>
@@ -183,13 +185,8 @@
     </gazebo>
 
   <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
-  <xacro:include filename="$(find velodyne_description)/urdf/imu.urdf.xacro"/>
   <xacro:VLP-16 parent="base_link" name="velodyne" topic="/velodyne_points" organize_cloud="${organize_cloud}" hz="10" samples="440" gpu="${gpu}">
     <origin xyz="0 0 0.4" rpy="0 0 0" />
   </xacro:VLP-16>
-  <xacro:imu_sensor xyz="-0.1 0 ${0.04 + 0.01}"
-                    rpy="0 0 0"
-                    parent="base_link">
-      </xacro:imu_sensor>
 
 </robot>

@@ -163,16 +163,20 @@ Rectangle{
                 id: lidar_status
                 objectName: "lidar_status"
                 colour: "red"
-                onPaint: squircle();
+                onPaint: {
+                    squircle();
+                    lidar_status_text.text = colour == "red"? "offline" : "online";
+                }
             }
 
             Rectangle {
-                id: lidar_status_text
+
                 Layout.fillWidth: true
                 Layout.preferredHeight: parent.height*0.20
                 Layout.maximumHeight: parent.height*0.20
 
                 Text {
+                    id: lidar_status_text
                     anchors.fill: parent
                     text: "online"
                     horizontalAlignment: Text.AlignHCenter
@@ -217,16 +221,20 @@ Rectangle{
                 id: imu_status
                 objectName: "imu_status"
                 colour: "red"
-                onPaint: squircle();
+                onPaint: {
+                    squircle();
+                    imu_status_text.text = colour == "red"? "offline" : "online";
+                }
             }
 
             Rectangle {
-                id: imu_status_text
+
                 Layout.fillWidth: true
                 Layout.preferredHeight: parent.height*0.20
                 Layout.maximumHeight: parent.height*0.20
 
                 Text {
+                    id: imu_status_text
                     anchors.fill: parent
                     text: "online"
                     horizontalAlignment: Text.AlignHCenter
@@ -269,16 +277,20 @@ Rectangle{
                 Layout.preferredHeight: parent.height*0.30
                 id: camera_status
                 colour: "red"
-                onPaint: squircle();
+                onPaint: {
+                    squircle();
+                    camera_status_text.text = colour == "red"? "offline" : "online";
+                }
             }
 
             Rectangle {
-                id: camera_status_text
+
                 Layout.fillWidth: true
                 Layout.preferredHeight: parent.height*0.20
                 Layout.maximumHeight: parent.height*0.20
 
                 Text {
+                    id: camera_status_text
                     anchors.fill: parent
                     text: "offline"
                     horizontalAlignment: Text.AlignHCenter
@@ -337,6 +349,7 @@ Rectangle{
         y: 0
         width: parent.width - x
         height: (parent.height - 10) / 2
+        /*
         Camera {
                 id: camera
 
@@ -365,6 +378,7 @@ Rectangle{
             Image {
                 id: photoPreview
             }
+            */
     }
 
     Rectangle {
