@@ -28,6 +28,6 @@ void VideoStreamer::openVideoCamera(QString path)
     else
     cap.open(path.toStdString());
 
-    double fps = cap.get(cv::CAP_PROP_FPS);
+    double fps = 20.0;
     tUpdate.start(1000/fps);
 }

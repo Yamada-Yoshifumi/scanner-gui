@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     qmlView = new QQuickView();
     videoStreamer = new VideoStreamer();
-    videoStreamer->openVideoCamera("0");
+
 
     liveimageprovider = new OpencvImageProvider();
     //mainwindow->qmlView->engine()->rootContext()->setContextProperty("VideoStreamer",videoStreamer);
@@ -105,22 +105,28 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 void MainWindow::createRVizEvent()
 {
+    ROS_INFO("1");
     myviz->setHidden(false);
+    videoStreamer->openVideoCamera("0");
     QObject *item = qmlView->rootObject();
     while(power_button == nullptr)
         power_button = item->findChild<QObject*>("power_button");
     while(opencv_image == nullptr)
         opencv_image = item->findChild<QObject*>("opencvImage");
+    ROS_INFO("1");
     connect(
         power_button,
         SIGNAL(powerSignal(QString)),
         this,
         SLOT(powerClickedEmit()));
+    ROS_INFO("1");
     connect(liveimageprovider,
             SIGNAL(imageChanged()),
             this,
             SLOT(imageReload()));
+    ROS_INFO("1");
     opencv_image->setProperty("visible", true);
+    ROS_INFO("1");
 }
 
 void MainWindow::powerClickedEmit(){
