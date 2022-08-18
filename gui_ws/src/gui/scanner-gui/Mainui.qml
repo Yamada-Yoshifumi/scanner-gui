@@ -349,36 +349,60 @@ Rectangle{
         y: 0
         width: parent.width - x
         height: (parent.height - 10) / 2
-        /*
-        Camera {
-                id: camera
-
-                imageProcessing.whiteBalanceMode: CameraImageProcessing.WhiteBalanceFlash
-
-                exposure {
-                    exposureCompensation: -1.0
-                    exposureMode: Camera.ExposurePortrait
-                }
-
-                flash.mode: Camera.FlashRedEyeReduction
-
-                imageCapture {
-                    onImageCaptured: {
-                        photoPreview.source = preview  // Show the preview in an Image
+        Image{
+                    id: opencvImage
+                    objectName: "opencvImage"
+                    anchors.fill: parent
+                    fillMode: Image.PreserveAspectFit
+                    property bool counter: false
+                    visible: false
+                    source: "image://live/image"
+                    asynchronous: false
+                    cache: false
+        }
+                    /*
+                    function reload()
+                    {
+                        counter = !counter
+                        source = "image://live/image?id=" + counter
                     }
+
                 }
+
+            Button{
+                id: startButton
+                x: videoOutput.x/2 - startButton.width/2
+                y: videoOutput.height/6 + videoOutput.y
+                text: "Open"
+
+                onClicked: {
+                    VideoStreamer.openVideoCamera(videoPath.text)
+                    opencvImage.visible = true
+                }
+
+
             }
 
-            VideoOutput {
-                source: camera
-                anchors.fill: parent
-                focus : visible // to receive focus and capture key events when visible
+            TextField{
+                id:videoPath
+                x: parent.x
+                y: parent.y
+                placeholderText: "0"
+                cursorVisible: true
+
+                width: parent.wdith/3
             }
 
-            Image {
-                id: photoPreview
-            }
-            */
+            Connections{
+                target: LiveImageProvider
+
+                function onImageChanged()
+                {
+                    opencvImage.reload()
+                }
+
+            }*/
+
     }
 
     Rectangle {

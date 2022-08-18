@@ -33,6 +33,7 @@ bool velodyneSwitch(ros_srv::VelodyneSwitch::Request &req, ros_srv::VelodyneSwit
             system("rosnode kill joint_state_publisher");
             system("rosnode kill robot_state_publisher");
             system("rosnode kill gazebo");
+            system("rosnode kill usb_cam");
             system("killall -9 gzserver");
             ros_launch_manager.stop(hardware_launcher, SIGINT);
         }

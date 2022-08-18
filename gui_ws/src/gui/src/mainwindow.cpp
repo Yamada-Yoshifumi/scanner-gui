@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "qnamespace.h"
 #include "ui_mainwindow.h"
+#include "opencvimageprovider.h"
+#include "videostreamer.h"
 #include <QQuickView>
 #include <QQuickItem>
 #include <QHBoxLayout>
@@ -18,6 +20,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
     qmlView = new QQuickView();
+    videoStreamer = new VideoStreamer();
+    videoStreamer->openVideoCamera("0");
+
+    liveimageprovider = new OpencvImageProvider();
+    //mainwindow->qmlView->engine()->rootContext()->setContextProperty("VideoStreamer",videoStreamer);
+    //mainwindow->qmlView->engine()->rootContext()->setContextProperty("LiveImageProvider",liveImageProvider);
+    qmlView->engine()->addImageProvider("live",liveimageprovider);
     qmlView->setSource(QUrl(QStringLiteral("qrc:/qml/App.qml")));
 
     container = QWidget::createWindowContainer(qmlView, this);
@@ -67,6 +76,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
     connect( myviz->fullscreen_button, &QPushButton::clicked, this, &MainWindow::fullscreenToggle);
     connect( reboot_button, SIGNAL(rvizRenderSignal(QString)), this, SLOT(createRVizEvent()));
+    connect(videoStreamer,&VideoStreamer::newImage,liveimageprovider,&OpencvImageProvider::updateImage);
 }
 
 MainWindow::~MainWindow()
@@ -99,11 +109,18 @@ void MainWindow::createRVizEvent()
     QObject *item = qmlView->rootObject();
     while(power_button == nullptr)
         power_button = item->findChild<QObject*>("power_button");
+    while(opencv_image == nullptr)
+        opencv_image = item->findChild<QObject*>("opencvImage");
     connect(
         power_button,
         SIGNAL(powerSignal(QString)),
         this,
         SLOT(powerClickedEmit()));
+    connect(liveimageprovider,
+            SIGNAL(imageChanged()),
+            this,
+            SLOT(imageReload()));
+    opencv_image->setProperty("visible", true);
 }
 
 void MainWindow::powerClickedEmit(){
@@ -132,6 +149,18 @@ void MainWindow::resetImuStatus(){
     imu_status = 0;
     if(power_button_bg != nullptr)
         paintStatus();
+}
+
+void MainWindow::imageReload(){
+    bool counter = opencv_image->property("counter").toBool();
+    opencv_image->setProperty("counter", !counter);
+    if(counter){
+        opencv_image->setProperty("source", "image://live/image?id=1");
+    }
+    else
+    {
+        opencv_image->setProperty("source", "image://live/image?id=0");
+    }
 }
 
 void MainWindow::paintStatus(){

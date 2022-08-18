@@ -197,87 +197,6 @@ qt_gui_autogen/fast:
 	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui_autogen.dir/build.make gui/CMakeFiles/qt_gui_autogen.dir/build
 .PHONY : qt_gui_autogen/fast
 
-main.o: main.cpp.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/main.cpp.s
-.PHONY : main.cpp.s
-
-mainwindow.o: mainwindow.cpp.o
-
-.PHONY : mainwindow.o
-
-# target to build an object file
-mainwindow.cpp.o:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/mainwindow.cpp.o
-.PHONY : mainwindow.cpp.o
-
-mainwindow.i: mainwindow.cpp.i
-
-.PHONY : mainwindow.i
-
-# target to preprocess a source file
-mainwindow.cpp.i:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/mainwindow.cpp.i
-.PHONY : mainwindow.cpp.i
-
-mainwindow.s: mainwindow.cpp.s
-
-.PHONY : mainwindow.s
-
-# target to generate assembly for a file
-mainwindow.cpp.s:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/mainwindow.cpp.s
-.PHONY : mainwindow.cpp.s
-
-myviz.o: myviz.cpp.o
-
-.PHONY : myviz.o
-
-# target to build an object file
-myviz.cpp.o:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/myviz.cpp.o
-.PHONY : myviz.cpp.o
-
-myviz.i: myviz.cpp.i
-
-.PHONY : myviz.i
-
-# target to preprocess a source file
-myviz.cpp.i:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/myviz.cpp.i
-.PHONY : myviz.cpp.i
-
-myviz.s: myviz.cpp.s
-
-.PHONY : myviz.s
-
-# target to generate assembly for a file
-myviz.cpp.s:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/myviz.cpp.s
-.PHONY : myviz.cpp.s
-
 qt_gui_autogen/ACDZA3JY2K/qrc_Resource.o: qt_gui_autogen/ACDZA3JY2K/qrc_Resource.cpp.o
 
 .PHONY : qt_gui_autogen/ACDZA3JY2K/qrc_Resource.o
@@ -332,32 +251,167 @@ qt_gui_autogen/mocs_compilation.cpp.s:
 	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/qt_gui_autogen/mocs_compilation.cpp.s
 .PHONY : qt_gui_autogen/mocs_compilation.cpp.s
 
-roshandler.o: roshandler.cpp.o
+src/main.o: src/main.cpp.o
 
-.PHONY : roshandler.o
+.PHONY : src/main.o
 
 # target to build an object file
-roshandler.cpp.o:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/roshandler.cpp.o
-.PHONY : roshandler.cpp.o
+src/main.cpp.o:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-roshandler.i: roshandler.cpp.i
+src/main.i: src/main.cpp.i
 
-.PHONY : roshandler.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-roshandler.cpp.i:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/roshandler.cpp.i
-.PHONY : roshandler.cpp.i
+src/main.cpp.i:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-roshandler.s: roshandler.cpp.s
+src/main.s: src/main.cpp.s
 
-.PHONY : roshandler.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-roshandler.cpp.s:
-	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/roshandler.cpp.s
-.PHONY : roshandler.cpp.s
+src/main.cpp.s:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/mainwindow.o: src/mainwindow.cpp.o
+
+.PHONY : src/mainwindow.o
+
+# target to build an object file
+src/mainwindow.cpp.o:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/mainwindow.cpp.o
+.PHONY : src/mainwindow.cpp.o
+
+src/mainwindow.i: src/mainwindow.cpp.i
+
+.PHONY : src/mainwindow.i
+
+# target to preprocess a source file
+src/mainwindow.cpp.i:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/mainwindow.cpp.i
+.PHONY : src/mainwindow.cpp.i
+
+src/mainwindow.s: src/mainwindow.cpp.s
+
+.PHONY : src/mainwindow.s
+
+# target to generate assembly for a file
+src/mainwindow.cpp.s:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/mainwindow.cpp.s
+.PHONY : src/mainwindow.cpp.s
+
+src/myviz.o: src/myviz.cpp.o
+
+.PHONY : src/myviz.o
+
+# target to build an object file
+src/myviz.cpp.o:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/myviz.cpp.o
+.PHONY : src/myviz.cpp.o
+
+src/myviz.i: src/myviz.cpp.i
+
+.PHONY : src/myviz.i
+
+# target to preprocess a source file
+src/myviz.cpp.i:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/myviz.cpp.i
+.PHONY : src/myviz.cpp.i
+
+src/myviz.s: src/myviz.cpp.s
+
+.PHONY : src/myviz.s
+
+# target to generate assembly for a file
+src/myviz.cpp.s:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/myviz.cpp.s
+.PHONY : src/myviz.cpp.s
+
+src/opencvimageprovider.o: src/opencvimageprovider.cpp.o
+
+.PHONY : src/opencvimageprovider.o
+
+# target to build an object file
+src/opencvimageprovider.cpp.o:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/opencvimageprovider.cpp.o
+.PHONY : src/opencvimageprovider.cpp.o
+
+src/opencvimageprovider.i: src/opencvimageprovider.cpp.i
+
+.PHONY : src/opencvimageprovider.i
+
+# target to preprocess a source file
+src/opencvimageprovider.cpp.i:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/opencvimageprovider.cpp.i
+.PHONY : src/opencvimageprovider.cpp.i
+
+src/opencvimageprovider.s: src/opencvimageprovider.cpp.s
+
+.PHONY : src/opencvimageprovider.s
+
+# target to generate assembly for a file
+src/opencvimageprovider.cpp.s:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/opencvimageprovider.cpp.s
+.PHONY : src/opencvimageprovider.cpp.s
+
+src/roshandler.o: src/roshandler.cpp.o
+
+.PHONY : src/roshandler.o
+
+# target to build an object file
+src/roshandler.cpp.o:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/roshandler.cpp.o
+.PHONY : src/roshandler.cpp.o
+
+src/roshandler.i: src/roshandler.cpp.i
+
+.PHONY : src/roshandler.i
+
+# target to preprocess a source file
+src/roshandler.cpp.i:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/roshandler.cpp.i
+.PHONY : src/roshandler.cpp.i
+
+src/roshandler.s: src/roshandler.cpp.s
+
+.PHONY : src/roshandler.s
+
+# target to generate assembly for a file
+src/roshandler.cpp.s:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/roshandler.cpp.s
+.PHONY : src/roshandler.cpp.s
+
+src/videostreamer.o: src/videostreamer.cpp.o
+
+.PHONY : src/videostreamer.o
+
+# target to build an object file
+src/videostreamer.cpp.o:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/videostreamer.cpp.o
+.PHONY : src/videostreamer.cpp.o
+
+src/videostreamer.i: src/videostreamer.cpp.i
+
+.PHONY : src/videostreamer.i
+
+# target to preprocess a source file
+src/videostreamer.cpp.i:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/videostreamer.cpp.i
+.PHONY : src/videostreamer.cpp.i
+
+src/videostreamer.s: src/videostreamer.cpp.s
+
+.PHONY : src/videostreamer.s
+
+# target to generate assembly for a file
+src/videostreamer.cpp.s:
+	cd /home/ameyasu/QTProjects/scanner-gui/gui_ws/build && $(MAKE) -f gui/CMakeFiles/qt_gui.dir/build.make gui/CMakeFiles/qt_gui.dir/src/videostreamer.cpp.s
+.PHONY : src/videostreamer.cpp.s
 
 # Help Target
 help:
@@ -374,24 +428,30 @@ help:
 	@echo "... test"
 	@echo "... qt_gui"
 	@echo "... qt_gui_autogen"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... mainwindow.o"
-	@echo "... mainwindow.i"
-	@echo "... mainwindow.s"
-	@echo "... myviz.o"
-	@echo "... myviz.i"
-	@echo "... myviz.s"
 	@echo "... qt_gui_autogen/ACDZA3JY2K/qrc_Resource.o"
 	@echo "... qt_gui_autogen/ACDZA3JY2K/qrc_Resource.i"
 	@echo "... qt_gui_autogen/ACDZA3JY2K/qrc_Resource.s"
 	@echo "... qt_gui_autogen/mocs_compilation.o"
 	@echo "... qt_gui_autogen/mocs_compilation.i"
 	@echo "... qt_gui_autogen/mocs_compilation.s"
-	@echo "... roshandler.o"
-	@echo "... roshandler.i"
-	@echo "... roshandler.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/mainwindow.o"
+	@echo "... src/mainwindow.i"
+	@echo "... src/mainwindow.s"
+	@echo "... src/myviz.o"
+	@echo "... src/myviz.i"
+	@echo "... src/myviz.s"
+	@echo "... src/opencvimageprovider.o"
+	@echo "... src/opencvimageprovider.i"
+	@echo "... src/opencvimageprovider.s"
+	@echo "... src/roshandler.o"
+	@echo "... src/roshandler.i"
+	@echo "... src/roshandler.s"
+	@echo "... src/videostreamer.o"
+	@echo "... src/videostreamer.i"
+	@echo "... src/videostreamer.s"
 .PHONY : help
 
 

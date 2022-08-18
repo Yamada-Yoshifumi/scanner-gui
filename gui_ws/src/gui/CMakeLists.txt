@@ -12,7 +12,12 @@ list(APPEND CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64")
 
 find_package(catkin COMPONENTS rviz roscpp std_msgs velodyne_description ros_srv REQUIRED)
 catkin_package( CATKIN_DEPENDS std_msgs roscpp velodyne_description ros_srv)
-include_directories(${catkin_INCLUDE_DIRS})
+find_package(OpenCV REQUIRED PATHS ~/opencv-4.5.0/build NO_DEFAULT_PATH) # manual specification of the OpenCVConfig.cmake path is necessary since otherwise, cmake assigns /opt/local a higher priority and ocv2.4 will be used
+include_directories(
+    ${OpenCV_INCLUDE_DIRS}
+    ${catkin_INCLUDE_DIRS}
+    include
+)
 link_directories(${catkin_LIBRARY_DIRS})
 
 find_package(Qt5 REQUIRED Qml Quick Gui Core Widgets QuickWidgets)
@@ -44,15 +49,19 @@ find_package(Qt5 REQUIRED Qml Quick Gui Core Widgets QuickWidgets)
 #target_compile_definitions(scanner_gui
 #    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 add_executable(qt_gui
-    main.cpp
-    mainwindow.ui
-    mainwindow.h
-    mainwindow.cpp
-    myviz.h
-    myviz.cpp
-    roshandler.h
-    roshandler.cpp
+    src/main.cpp
+    src/mainwindow.ui
+    include/mainwindow.h
+    src/mainwindow.cpp
+    include/myviz.h
+    src/myviz.cpp
+    include/roshandler.h
+    src/roshandler.cpp
     scanner-gui/Resource.qrc
+    src/videostreamer.cpp
+    include/videostreamer.h
+    src/opencvimageprovider.cpp
+    include/opencvimageprovider.h
 )
 
 #set_target_properties(scanner_gui PROPERTIES
@@ -62,7 +71,7 @@ add_executable(qt_gui
 
 #target_compile_definitions(scanner_gui
 #    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(qt_gui Qt5::Qml Qt5::Widgets Qt5::Gui Qt5::Quick Qt5::QuickWidgets ${catkin_LIBRARIES})
+target_link_libraries(qt_gui Qt5::Qml Qt5::Widgets Qt5::Gui Qt5::Quick Qt5::QuickWidgets ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 #add_qml_module(MyRviz
 #    URI MyRviz

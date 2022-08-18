@@ -8,19 +8,29 @@
 	"HEADERS" : 
 	[
 		[
-			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/mainwindow.h",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/include/mainwindow.h",
 			"MU",
-			"EWIEGA46WW/moc_mainwindow.cpp"
+			"6YEA5652QU/moc_mainwindow.cpp"
 		],
 		[
-			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/myviz.h",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/include/myviz.h",
 			"MU",
-			"EWIEGA46WW/moc_myviz.cpp"
+			"6YEA5652QU/moc_myviz.cpp"
 		],
 		[
-			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/roshandler.h",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/include/opencvimageprovider.h",
 			"MU",
-			"EWIEGA46WW/moc_roshandler.cpp"
+			"6YEA5652QU/moc_opencvimageprovider.cpp"
+		],
+		[
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/include/roshandler.h",
+			"MU",
+			"6YEA5652QU/moc_roshandler.cpp"
+		],
+		[
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/include/videostreamer.h",
+			"MU",
+			"6YEA5652QU/moc_videostreamer.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -56,6 +66,25 @@
 		"/usr/include/eigen3",
 		"/usr/include/OGRE/Overlay",
 		"/usr/include/OGRE",
+		"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/include",
+		"/home/ameyasu/opencv-4.5.0/build",
+		"/home/ameyasu/opencv-4.5.0/include",
+		"/home/ameyasu/opencv-4.5.0/modules/core/include",
+		"/home/ameyasu/opencv-4.5.0/modules/flann/include",
+		"/home/ameyasu/opencv-4.5.0/modules/imgproc/include",
+		"/home/ameyasu/opencv-4.5.0/modules/ml/include",
+		"/home/ameyasu/opencv-4.5.0/modules/photo/include",
+		"/home/ameyasu/opencv-4.5.0/modules/dnn/include",
+		"/home/ameyasu/opencv-4.5.0/modules/features2d/include",
+		"/home/ameyasu/opencv-4.5.0/modules/imgcodecs/include",
+		"/home/ameyasu/opencv-4.5.0/modules/videoio/include",
+		"/home/ameyasu/opencv-4.5.0/modules/calib3d/include",
+		"/home/ameyasu/opencv-4.5.0/modules/highgui/include",
+		"/home/ameyasu/opencv-4.5.0/modules/objdetect/include",
+		"/home/ameyasu/opencv-4.5.0/modules/stitching/include",
+		"/home/ameyasu/opencv-4.5.0/modules/ts/include",
+		"/home/ameyasu/opencv-4.5.0/modules/video/include",
+		"/home/ameyasu/opencv-4.5.0/modules/gapi/include",
 		"/home/ameyasu/Qt/5.15.2/gcc_64/include",
 		"/home/ameyasu/Qt/5.15.2/gcc_64/include/QtQml",
 		"/home/ameyasu/Qt/5.15.2/gcc_64/include/QtNetwork",
@@ -97,14 +126,28 @@
 	"SETTINGS_FILE" : "/home/ameyasu/QTProjects/scanner-gui/gui_ws/build/gui/CMakeFiles/qt_gui_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/main.cpp", "MU" ],
 		[
-			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/mainwindow.cpp",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/src/main.cpp",
 			"MU"
 		],
-		[ "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/myviz.cpp", "MU" ],
 		[
-			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/roshandler.cpp",
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/src/mainwindow.cpp",
+			"MU"
+		],
+		[
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/src/myviz.cpp",
+			"MU"
+		],
+		[
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/src/opencvimageprovider.cpp",
+			"MU"
+		],
+		[
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/src/roshandler.cpp",
+			"MU"
+		],
+		[
+			"/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/src/videostreamer.cpp",
 			"MU"
 		]
 	],

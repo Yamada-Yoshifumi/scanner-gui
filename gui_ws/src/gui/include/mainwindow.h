@@ -8,6 +8,8 @@
 #include <ros/ros.h>
 #include "sensor_msgs/PointCloud2.h"
 #include "nav_msgs/Odometry.h"
+#include "videostreamer.h"
+#include "opencvimageprovider.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +33,8 @@ private:
     ros::NodeHandlePtr n_;
     ros::Subscriber velodynesub;
     ros::Subscriber imusub;
+    VideoStreamer *videoStreamer;
+    OpencvImageProvider *liveimageprovider;
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -47,6 +51,7 @@ public:
     QObject *imu_indicator;
     QObject *lidar_canvas;
     QObject *imu_canvas;
+    QObject *opencv_image;
     QWidget *container;
     int velodyne_status = 0;
     int imu_status = 0;
@@ -60,6 +65,7 @@ public Q_SLOTS:
     void resetVelodyneStatus();
     void resetImuStatus();
     void spinOnce();
+    void imageReload();
     void powerClickedEmit();
     //void systemOn();
 

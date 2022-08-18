@@ -20,6 +20,7 @@
   <depend>roscpp</depend>
   <depend>std_msgs</depend>
   <depend>rviz</depend>
+  <depend>OpenCV</depend>
   <depend>velodyne_description</depend>
   <depend>ros_srv</depend>
 
