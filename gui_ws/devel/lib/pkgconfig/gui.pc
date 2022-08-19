@@ -5,4 +5,4 @@ Description: Description of gui
 Version: 0.0.0
 Cflags: 
 Libs: -L${prefix}/lib 
-Requires: std_msgs roscpp velodyne_description ros_srv
+Requires: std_msgs sensor_msgs cv_bridge image_transport roscpp velodyne_description ros_srv

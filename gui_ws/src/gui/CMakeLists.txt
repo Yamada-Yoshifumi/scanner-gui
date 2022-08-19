@@ -10,8 +10,8 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 list(APPEND CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64")
 
-find_package(catkin COMPONENTS rviz roscpp std_msgs velodyne_description ros_srv REQUIRED)
-catkin_package( CATKIN_DEPENDS std_msgs roscpp velodyne_description ros_srv)
+find_package(catkin COMPONENTS rviz roscpp std_msgs sensor_msgs cv_bridge image_transport velodyne_description ros_srv REQUIRED)
+catkin_package( CATKIN_DEPENDS std_msgs sensor_msgs cv_bridge image_transport roscpp velodyne_description ros_srv)
 find_package(OpenCV REQUIRED PATHS ~/opencv-4.5.0/build NO_DEFAULT_PATH) # manual specification of the OpenCVConfig.cmake path is necessary since otherwise, cmake assigns /opt/local a higher priority and ocv2.4 will be used
 include_directories(
     ${OpenCV_INCLUDE_DIRS}

@@ -40,6 +40,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/eigen3"
   "/usr/include/OGRE/Overlay"
   "/usr/include/OGRE"
+  "/usr/include/opencv4"
   "/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/include"
   "/home/ameyasu/opencv-4.5.0/build"
   "/home/ameyasu/opencv-4.5.0/include"

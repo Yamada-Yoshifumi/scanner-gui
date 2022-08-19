@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_VideoStreamer_t {
-    QByteArrayData data[8];
-    char stringdata0[70];
+    QByteArrayData data[7];
+    char stringdata0[61];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,13 +37,12 @@ QT_MOC_LITERAL(1, 14, 11), // "QML.Element"
 QT_MOC_LITERAL(2, 26, 4), // "auto"
 QT_MOC_LITERAL(3, 31, 8), // "newImage"
 QT_MOC_LITERAL(4, 40, 0), // ""
-QT_MOC_LITERAL(5, 41, 7), // "QImage&"
-QT_MOC_LITERAL(6, 49, 15), // "openVideoCamera"
-QT_MOC_LITERAL(7, 65, 4) // "path"
+QT_MOC_LITERAL(5, 41, 3), // "img"
+QT_MOC_LITERAL(6, 45, 15) // "openVideoCamera"
 
     },
     "VideoStreamer\0QML.Element\0auto\0newImage\0"
-    "\0QImage&\0openVideoCamera\0path"
+    "\0img\0openVideoCamera"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,13 +66,13 @@ static const uint qt_meta_data_VideoStreamer[] = {
        3,    1,   26,    4, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   29,    4, 0x0a /* Public */,
+       6,    0,   29,    4, 0x0a /* Public */,
 
  // signals: parameters
-    QMetaType::Void, 0x80000000 | 5,    4,
+    QMetaType::Void, QMetaType::QImage,    5,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QString,    7,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -85,13 +84,13 @@ void VideoStreamer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->newImage((*reinterpret_cast< QImage(*)>(_a[1]))); break;
-        case 1: _t->openVideoCamera((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: _t->openVideoCamera(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (VideoStreamer::*)(QImage & );
+            using _t = void (VideoStreamer::*)(QImage );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&VideoStreamer::newImage)) {
                 *result = 0;
                 return;
@@ -141,7 +140,7 @@ int VideoStreamer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void VideoStreamer::newImage(QImage & _t1)
+void VideoStreamer::newImage(QImage _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

@@ -71,6 +71,7 @@ int main(int argc, char **argv)
 
     app.exec();
     system("rosnode kill gazebo");
+    system("rosnode kill usb_cam");
     system("killall -9 gzserver");
     delete mainwindow;
     delete power_thread;

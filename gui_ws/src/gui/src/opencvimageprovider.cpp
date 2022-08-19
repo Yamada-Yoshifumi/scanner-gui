@@ -1,4 +1,5 @@
 #include "opencvimageprovider.h"
+#include <ros/ros.h>
 
 OpencvImageProvider::OpencvImageProvider(QObject *parent) : QObject(parent), QQuickImageProvider(QQuickImageProvider::Image)
 {
@@ -22,6 +23,7 @@ QImage OpencvImageProvider::requestImage(const QString &id, QSize *size, const Q
 
 void OpencvImageProvider::updateImage(const QImage &image)
 {
+    //ROS_INFO("156575");
     if(!image.isNull() && this->image != image) {
         this->image = image;
         emit imageChanged();

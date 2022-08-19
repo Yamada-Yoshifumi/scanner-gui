@@ -7,6 +7,7 @@
 #include <qtimer.h>
 #include <ros/ros.h>
 #include "sensor_msgs/PointCloud2.h"
+#include "sensor_msgs/Image.h"
 #include "nav_msgs/Odometry.h"
 #include "videostreamer.h"
 #include "opencvimageprovider.h"
@@ -33,6 +34,7 @@ private:
     ros::NodeHandlePtr n_;
     ros::Subscriber velodynesub;
     ros::Subscriber imusub;
+    ros::Subscriber camerasub;
     VideoStreamer *videoStreamer;
     OpencvImageProvider *liveimageprovider;
 

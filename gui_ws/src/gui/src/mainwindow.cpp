@@ -11,7 +11,8 @@
 #include <QGraphicsOpacityEffect>
 #include <QColor>
 #include <sensor_msgs/PointCloud2.h>
-
+#include <thread>
+#include <unistd.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -21,7 +22,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     qmlView = new QQuickView();
     videoStreamer = new VideoStreamer();
-
 
     liveimageprovider = new OpencvImageProvider();
     //mainwindow->qmlView->engine()->rootContext()->setContextProperty("VideoStreamer",videoStreamer);
@@ -58,16 +58,20 @@ MainWindow::MainWindow(QWidget *parent) :
     imu_timer = new QTimer();
     imu_timer->start(500);
     ros_timer = new QTimer();
-    ros_timer->start(100);
+    ros_timer->start(50);
     n_.reset(new ros::NodeHandle("status"));
 
     std::string velodyne_points;
     n_->param<std::string>("velodyne_points", velodyne_points, "/velodyne_points");
     std::string imu_odom;
     n_->param<std::string>("imu_odom", imu_odom, "/odom");
+    std::string camera_stream;
+    n_->param<std::string>("camera_stream", camera_stream, "/usb_cam/image_raw");
+
 
     velodynesub = n_->subscribe<sensor_msgs::PointCloud2>(velodyne_points, 1, &MainWindow::updateVelodyneStatus, this);
     imusub = n_->subscribe<nav_msgs::Odometry>(imu_odom, 1, &MainWindow::updateImuStatus, this);
+    camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &VideoStreamer::convertROSImage, videoStreamer);
 
     connect(imu_timer, SIGNAL(timeout()), this, SLOT(resetImuStatus()));
 
@@ -105,31 +109,34 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 void MainWindow::createRVizEvent()
 {
-    ROS_INFO("1");
+
     myviz->setHidden(false);
-    videoStreamer->openVideoCamera("0");
+
+    videoStreamer->openVideoCamera();
+
     QObject *item = qmlView->rootObject();
     while(power_button == nullptr)
         power_button = item->findChild<QObject*>("power_button");
     while(opencv_image == nullptr)
         opencv_image = item->findChild<QObject*>("opencvImage");
-    ROS_INFO("1");
+
     connect(
         power_button,
         SIGNAL(powerSignal(QString)),
         this,
         SLOT(powerClickedEmit()));
-    ROS_INFO("1");
     connect(liveimageprovider,
             SIGNAL(imageChanged()),
             this,
             SLOT(imageReload()));
-    ROS_INFO("1");
+    //ROS_INFO("connections done");
+    unsigned int tenthmicrosecond = 100000;
+    usleep(3 * tenthmicrosecond);
     opencv_image->setProperty("visible", true);
-    ROS_INFO("1");
 }
 
 void MainWindow::powerClickedEmit(){
+
     emit powerButtonPressed();
 }
 
@@ -158,6 +165,7 @@ void MainWindow::resetImuStatus(){
 }
 
 void MainWindow::imageReload(){
+
     bool counter = opencv_image->property("counter").toBool();
     opencv_image->setProperty("counter", !counter);
     if(counter){
@@ -216,3 +224,5 @@ void MainWindow::fullscreenToggle()
         myviz->fullscreen_button->setIcon(QIcon(":/qml/images/fullscreen.svg"));
     }
 }
+
+
