@@ -276,6 +276,7 @@ Rectangle{
                 Layout.fillWidth: true
                 Layout.preferredHeight: parent.height*0.30
                 id: camera_status
+                objectName: "camera_status"
                 colour: "red"
                 onPaint: {
                     squircle();

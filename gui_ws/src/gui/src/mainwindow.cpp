@@ -57,6 +57,8 @@ MainWindow::MainWindow(QWidget *parent) :
     velodyne_timer->start(500);
     imu_timer = new QTimer();
     imu_timer->start(500);
+    camera_timer = new QTimer();
+    camera_timer->start(500);
     ros_timer = new QTimer();
     ros_timer->start(50);
     n_.reset(new ros::NodeHandle("status"));
@@ -71,10 +73,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     velodynesub = n_->subscribe<sensor_msgs::PointCloud2>(velodyne_points, 1, &MainWindow::updateVelodyneStatus, this);
     imusub = n_->subscribe<nav_msgs::Odometry>(imu_odom, 1, &MainWindow::updateImuStatus, this);
-    camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &VideoStreamer::convertROSImage, videoStreamer);
+    //camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &VideoStreamer::convertROSImage, videoStreamer);
+    camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &MainWindow::updateCameraStatus, this);
 
     connect(imu_timer, SIGNAL(timeout()), this, SLOT(resetImuStatus()));
-
+    connect(camera_timer, SIGNAL(timeout()), this, SLOT(resetCameraStatus()));
     connect(velodyne_timer, SIGNAL(timeout()), this, SLOT(resetVelodyneStatus()));
 
     connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
@@ -131,7 +134,7 @@ void MainWindow::createRVizEvent()
             SLOT(imageReload()));
     //ROS_INFO("connections done");
     unsigned int tenthmicrosecond = 100000;
-    usleep(3 * tenthmicrosecond);
+    usleep(5 * tenthmicrosecond);
     opencv_image->setProperty("visible", true);
 }
 
@@ -152,6 +155,13 @@ void MainWindow::updateImuStatus(const nav_msgs::OdometryConstPtr &msg){
     paintStatus();
 }
 
+void MainWindow::updateCameraStatus(const sensor_msgs::ImageConstPtr &msg){
+    videoStreamer->convertROSImage(msg);
+    camera_timer->start(500);
+    camera_status = 1;
+    paintStatus();
+}
+
 void MainWindow::resetVelodyneStatus(){
     velodyne_status = 0;
     if(power_button_bg != nullptr)
@@ -160,6 +170,12 @@ void MainWindow::resetVelodyneStatus(){
 
 void MainWindow::resetImuStatus(){
     imu_status = 0;
+    if(power_button_bg != nullptr)
+        paintStatus();
+}
+
+void MainWindow::resetCameraStatus(){
+    camera_status = 0;
     if(power_button_bg != nullptr)
         paintStatus();
 }
@@ -182,11 +198,12 @@ void MainWindow::paintStatus(){
     power_button_bg = item->findChild<QObject*>("power_button_bg");
     lidar_canvas = item->findChild<QObject*>("lidar_status");
     imu_canvas = item->findChild<QObject*>("imu_status");
-    if(velodyne_status == 1 && imu_status == 1){
+    camera_canvas = item->findChild<QObject*>("camera_status");
+    if(velodyne_status == 1 && imu_status == 1 && camera_status == 1){
         QColor color(Qt::green);
         power_button_bg -> setProperty("color", color);
     }
-    else if(velodyne_status == 1 || imu_status == 1)
+    else if(velodyne_status == 1 || imu_status == 1 || camera_status == 1)
     {
         QColor color(Qt::yellow);
         power_button_bg -> setProperty("color", color);
@@ -205,6 +222,11 @@ void MainWindow::paintStatus(){
     }
     else
         imu_canvas -> setProperty("colour", "red");
+    if(camera_status == 1){
+        camera_canvas -> setProperty("colour", "green");
+    }
+    else
+        camera_canvas -> setProperty("colour", "red");
 }
 
 void MainWindow::fullscreenToggle()

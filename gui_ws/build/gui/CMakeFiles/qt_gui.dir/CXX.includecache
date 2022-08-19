@@ -102,18 +102,6 @@ thread
 unistd.h
 -
 
-/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/src/opencvimageprovider.cpp
-opencvimageprovider.h
-/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/src/opencvimageprovider.h
-ros/ros.h
--
-
-/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/src/videostreamer.cpp
-videostreamer.h
-/home/ameyasu/QTProjects/scanner-gui/gui_ws/src/gui/src/videostreamer.h
-ros/ros.h
--
-
 /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/QByteArray
 qbytearray.h
 /home/ameyasu/Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h

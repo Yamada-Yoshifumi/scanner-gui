@@ -45,6 +45,7 @@ public:
     void paintStatus();
     void updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg);
     void updateImuStatus(const nav_msgs::OdometryConstPtr &msg);
+    void updateCameraStatus(const sensor_msgs::ImageConstPtr &msg);
     QQuickView *qmlView;
     QGridLayout* central_widget_layout;
     QObject *power_button;
@@ -53,10 +54,12 @@ public:
     QObject *imu_indicator;
     QObject *lidar_canvas;
     QObject *imu_canvas;
+    QObject *camera_canvas;
     QObject *opencv_image;
     QWidget *container;
     int velodyne_status = 0;
     int imu_status = 0;
+    int camera_status = 0;
     MyViz* myviz;
     //ROSHandler* roshandler;
     bool power_toggled = false;
@@ -66,6 +69,7 @@ public Q_SLOTS:
     void fullscreenToggle();
     void resetVelodyneStatus();
     void resetImuStatus();
+    void resetCameraStatus();
     void spinOnce();
     void imageReload();
     void powerClickedEmit();
