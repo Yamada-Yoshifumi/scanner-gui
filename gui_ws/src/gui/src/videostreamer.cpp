@@ -5,11 +5,6 @@
 VideoStreamer::VideoStreamer()
 {
     //nh_.reset(new ros::NodeHandle("status"));
-    QImage image = QImage(200,200,QImage::Format_BGR888).rgbSwapped();
-    image.fill(QColor("purple"));
-    ROS_INFO("bg");
-
-    emit newImage(image);
     connect(&tUpdate,&QTimer::timeout,this,&VideoStreamer::streamVideo);
     //connect(&rostimer,&QTimer::timeout,this,&VideoStreamer::spinOnce);
     //std::string camera_stream;
@@ -45,6 +40,11 @@ void VideoStreamer::streamVideo()
 
 void VideoStreamer::openVideoCamera()
 {
+    QImage image = QImage(200,200,QImage::Format_BGR888).rgbSwapped();
+    image.fill(QColor("purple"));
+    ROS_INFO("bg");
+
+    emit newImage(image);
     double fps = 20.0;
     tUpdate.start(1000/fps);
     //rostimer.start(1000/fps);

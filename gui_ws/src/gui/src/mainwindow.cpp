@@ -133,9 +133,7 @@ void MainWindow::createRVizEvent()
             this,
             SLOT(imageReload()));
     //ROS_INFO("connections done");
-    unsigned int tenthmicrosecond = 100000;
-    usleep(5 * tenthmicrosecond);
-    opencv_image->setProperty("visible", true);
+
 }
 
 void MainWindow::powerClickedEmit(){
@@ -191,6 +189,13 @@ void MainWindow::imageReload(){
     {
         opencv_image->setProperty("source", "image://live/image?id=0");
     }
+    unsigned int tenthmicrosecond = 100000;
+    while (opencv_image->property("source").toString() == QString("image://live/image")){
+        usleep(1*tenthmicrosecond);
+        ROS_INFO("waiting");
+    }
+
+    opencv_image->setProperty("visible", true);
 }
 
 void MainWindow::paintStatus(){
