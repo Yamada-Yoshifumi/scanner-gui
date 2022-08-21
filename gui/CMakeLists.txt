@@ -1,6 +1,4 @@
 cmake_minimum_required(VERSION 3.16)
-
-<<<<<<< HEAD
 project(gui)
 
 add_compile_options(-std=c++17)
@@ -92,37 +90,3 @@ target_link_libraries(qt_gui Qt5::Qml Qt5::Widgets Qt5::Gui Qt5::Quick Qt5::Quic
 #    BUNDLE DESTINATION "${INSTALL_EXAMPLEDIR}"
 #    LIBRARY DESTINATION "${INSTALL_EXAMPLEDIR}"
 #)
-=======
-project(gui VERSION 0.1 LANGUAGES CXX)
-
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
-
-qt_add_executable(appgui
-    main.cpp
-)
-
-qt_add_qml_module(appgui
-    URI gui
-    VERSION 1.0
-    QML_FILES
-        content
-)
-
-set_target_properties(appgui PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-)
-
-target_link_libraries(appgui
-    PRIVATE Qt6::Quick)
-
-install(TARGETS appgui
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
->>>>>>> 4490c18de80ab048835170fa036662db0abc5323

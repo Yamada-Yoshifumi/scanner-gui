@@ -26,9 +26,6 @@ Canvas {
         var ctx = getContext("2d");
         ctx.reset();
 
-        ctx.fillStyle = "#343434";
-        ctx.fillRect(0, 0, mycanvas.width, mycanvas.height);
-
         var x = mycanvas.width/2,
             y = mycanvas.height/2,
             // Radii of the white glow.

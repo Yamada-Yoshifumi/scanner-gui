@@ -20,5 +20,6 @@
         <file>images/gyro.jpg</file>
         <file>images/gyro.png</file>
         <file>images/lidar.png</file>
+        <file>images/panel_top.png</file>
     </qresource>
 </RCC>

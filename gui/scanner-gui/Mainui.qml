@@ -10,10 +10,10 @@ import QtGraphicalEffects 1.0
 Rectangle{
 
 id: ui_page
-width: parent.width
-height: parent.height
 x: 0
 y: 0
+width: parent.width
+height: parent.height
 color: "#442e5d"
 
 Rectangle{
@@ -24,72 +24,6 @@ Rectangle{
         height: parent.height * 2 / 3
         color: "#00000000"
         border.color: "#00000000"
-        /*
-        NumberAnimation {
-                    id: fullscreen_animation_x
-                    target: rviz_window
-                    property: "width"
-                    from: rviz_window.width
-                    to: ui_page.width
-                    duration: 300
-                    easing.type: Easing.InExpo
-                }
-        NumberAnimation {
-                    id: fullscreen_animation_y
-                    target: rviz_window
-                    property: "height"
-                    from: rviz_window.height
-                    to: ui_page.height
-                    duration: 300
-                    easing.type: Easing.InExpo
-                }
-        NumberAnimation {
-                    id: exit_fullscreen_animation_x
-                    target: rviz_window
-                    property: "width"
-                    from: ui_page.width
-                    to: ui_page.width * 2 / 3
-                    duration: 300
-                    easing.type: Easing.InExpo
-                }
-        NumberAnimation {
-                    id: exit_fullscreen_animation_y
-                    target: rviz_window
-                    property: "height"
-                    from: ui_page.height
-                    to: ui_page.height * 2 / 3
-                    duration: 300
-                    easing.type: Easing.InExpo
-                }
-                */
-        /*
-        Button {
-                    id: fullscreen_toggle_button
-                    anchors{
-                        right: parent.right
-                        bottom: parent.bottom
-                    }
-                    icon.name: "fullscreen_toggle"
-                    icon.source: "./images/fullscreen.svg"
-                    icon.color: "#620b66"
-                    icon.width: 64* root.width/ 2560
-                    icon.height: 64* root.height/ 1600
-
-
-                    onClicked: {
-                        fullscreen_animation_x.running = true;
-                        fullscreen_animation_y.running = true;
-                    }
-
-                    background: Rectangle {
-                        id: fullscreen_button_bg
-                        color: parent.down? "#b1b1b1" : "#00fbfbfb"
-                        radius: 10
-                        border.color: "#3afbfbfb"
-
-                    }
-        }
-        */
      }
 
     Rectangle{
@@ -133,6 +67,7 @@ Rectangle{
         }
     }
 
+
     RowLayout {
 
         id: status_power
@@ -153,7 +88,7 @@ Rectangle{
                     end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
                     gradient: Gradient {
                         GradientStop { position: 0.0; color: "white" }
-                        GradientStop { position: 1.0; color: "#343434" }
+                        GradientStop { position: 1.0; color: "#b617cf" }
                     }
                 }
 
@@ -165,6 +100,12 @@ Rectangle{
             Layout.maximumHeight: parent.height
             spacing: 5
 
+            Rectangle{
+                color: "#00000000"
+                width: 150* ui_page.width/ 2560
+                Layout.preferredHeight: parent.height*0.1
+                Image { source: "./images/panel_top.png"; anchors.fill: parent; fillMode: Image.PreserveAspectFit; opacity: 1 }
+            }
             Rectangle {
                 Layout.fillWidth: true
                 id: lidar_rect
@@ -214,14 +155,42 @@ Rectangle{
                     color: "#948e8e"
                 }
 
-                color: "#343434"
-                border.color: "#343434"
+                color: "#00000000"
+                border.color: "#00000000"
+            }
+
+
+        }
+
+        Image {
+            id: lidar_status_picture
+            objectName: "lidar_status_picture"
+            source: "./images/lidar.png"
+            x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2;
+            opacity: 1
+
+            RotationAnimator on rotation {
+                    id: rotateLidarPhoto;
+                    loops: Animation.Infinite;
+                    from: 0;
+                    to: 360;
+                    duration: 3000;
+                    running: false;
+                }
+
+            ColorOverlay{
+                anchors.fill: parent
+                source: parent
+                id: lidar_status_overlay
+                objectName: "lidar_status_overlay"
+                color: "#00000000"
+                onColorChanged: rotateLidarPhoto.running = !rotateLidarPhoto.running;
             }
 
         }
-        Image { objectName: "lidar_status_picture"; source: "./images/lidar.png"; x:0; y:parent.height/2; width:parent.width/2; height:parent.height/2; opacity: 0.3 }
-        /*<a href="https://www.flaticon.com/free-icons/radar" title="radar icons">Radar icons created by Icongeek26 - Flaticon</a>*/
-        }
+            /*https://icon-icons.com/icon/radar-sweep/38952*/
+
+    }
         Rectangle{
             radius: 10
             Layout.preferredHeight: parent.height * 19 / 20
@@ -233,7 +202,7 @@ Rectangle{
                     end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
                     gradient: Gradient {
                         GradientStop { position: 0.0; color: "white" }
-                        GradientStop { position: 1.0; color: "#343434" }
+                        GradientStop { position: 1.0; color: "#9613ab" }
                     }
                 }
         ColumnLayout{
@@ -243,6 +212,13 @@ Rectangle{
             height: parent.height
             Layout.maximumHeight: parent.height
             spacing: 5
+
+            Rectangle{
+                color: "#00000000"
+                width: 150* ui_page.width/ 2560
+                Layout.preferredHeight: parent.height*0.1
+                Image { source: "./images/panel_top.png"; anchors.fill: parent; fillMode: Image.PreserveAspectFit; opacity: 1 }
+            }
 
             Rectangle {
                 Layout.fillWidth: true
@@ -291,12 +267,12 @@ Rectangle{
                     color: "#948e8e"
                 }
 
-                color: "#343434"
-                border.color: "#343434"
+                color: "#00000000"
+                border.color: "#00000000"
             }
 
         }
-        Image {objectName: "gyro_status_picture"; source: "./images/gyro.png"; x:0; y:parent.height/2; width:parent.width/2; height:parent.height/2; opacity: 0.3 }
+        Image {objectName: "gyro_status_picture"; source: "./images/gyro.png"; x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2; opacity: 0.3 }
         /*<a href="https://www.flaticon.com/free-icons/axis" title="axis icons">Axis icons created by Freepik - Flaticon</a>*/
 
         }
@@ -312,7 +288,7 @@ Rectangle{
                     end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
                     gradient: Gradient {
                         GradientStop { position: 0.0; color: "white" }
-                        GradientStop { position: 1.0; color: "#343434" }
+                        GradientStop { position: 1.0; color: "#710a82" }
                     }
                 }
 
@@ -323,6 +299,14 @@ Rectangle{
             height: parent.height
             Layout.maximumHeight: parent.height
             spacing: 5
+
+            Rectangle{
+                id: panel_top
+                color: "#00000000"
+                width: 150* ui_page.width/ 2560
+                Layout.preferredHeight: parent.height*0.1
+                Image { source: "./images/panel_top.png"; anchors.fill: parent; fillMode: Image.PreserveAspectFit; opacity: 1 }
+            }
 
             Rectangle {
                 Layout.fillWidth: true
@@ -381,12 +365,12 @@ Rectangle{
                     color: "#948e8e"
                 }
 
-                color: "#343434"
-                border.color: "#343434"
+                color: "#00000000"
+                border.color: "#00000000"
             }
 
         }
-        Image { objectName: "camera_status_picture"; source: "./images/camera.png"; x:0; y:parent.height/2; width:parent.width/2; height:parent.height/2; opacity: 0.3 }
+        Image { objectName: "camera_status_picture"; source: "./images/camera.png"; x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2; opacity: 0.3 }
         /*<a href="https://www.flaticon.com/free-icons/camera" title="camera icons">Camera icons created by Good Ware - Flaticon</a>*/
 
     }
@@ -396,6 +380,8 @@ Rectangle{
         Layout.preferredWidth:  parent.width / 4.1
         radius: 10
 
+
+
         LinearGradient {
                 anchors.fill: parent
                 source: parent
@@ -403,9 +389,10 @@ Rectangle{
                 end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
                 gradient: Gradient {
                     GradientStop { position: 0.0; color: "white" }
-                    GradientStop { position: 1.0; color: "#343434" }
+                    GradientStop { position: 1.0; color: "#470452" }
                 }
             }
+        Image { source: "./images/panel_top.png"; anchors.topMargin: 0; anchors.leftMargin: 0; height: panel_top.height; width: panel_top.width; fillMode: Image.PreserveAspectFit; opacity: 1 }
 
         Button {
             id: power_button

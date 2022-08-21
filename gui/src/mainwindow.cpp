@@ -202,7 +202,7 @@ void MainWindow::paintStatus(){
     lidar_status_text = item->findChild<QObject*>("lidar_status_text");
     imu_status_text = item->findChild<QObject*>("imu_status_text");
     camera_status_text = item->findChild<QObject*>("camera_status_text");
-
+    QObject *lidar_status_pic = item->findChild<QObject*>("lidar_status_overlay");
     if(velodyne_status == 1 && imu_status == 1 && camera_status == 1){
         QColor color(Qt::green);
         power_button_bg -> setProperty("color", color);
@@ -219,6 +219,7 @@ void MainWindow::paintStatus(){
     if(velodyne_status == 1){
         lidar_canvas -> setProperty("colour", "green");
         lidar_status_text -> setProperty("color", "green");
+        lidar_status_pic -> setProperty("color", "green");
     }
     else{
         lidar_canvas -> setProperty("colour", "red");
