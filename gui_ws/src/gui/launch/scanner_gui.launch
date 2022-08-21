@@ -1,9 +1,0 @@
-<launch>
-    <node
-        name="scanner_gui"
-        pkg="gui"
-        type="scanner_gui"
-        output="screen"
-        cwd="node"
-    />
-</launch>

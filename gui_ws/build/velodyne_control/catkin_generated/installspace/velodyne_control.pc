@@ -1,8 +1,0 @@
-prefix=/home/ameyasu/QTprojects/scanner-gui/gui_ws/install
-
-Name: velodyne_control
-Description: Description of velodyne_control
-Version: 1.2.6
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: rospy geometry_msgs

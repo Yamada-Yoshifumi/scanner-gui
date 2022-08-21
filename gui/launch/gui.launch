@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<launch>
+    <node
+        name="qt_gui"
+        pkg="gui"
+        type="qt_gui"
+        output="screen"
+        cwd="node"
+    />
+    <include file="$(find velodyne_description)/launch/hardware_interface.launch" >
+    </include>
+</launch>
