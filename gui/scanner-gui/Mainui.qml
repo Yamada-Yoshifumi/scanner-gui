@@ -22,7 +22,7 @@ Rectangle{
         y: 0
         width: parent.width * 2 / 3
         height: parent.height * 2 / 3
-        color: "#00000000"
+        color: "transparent"
         border.color: "#00000000"
      }
 
@@ -43,7 +43,6 @@ Rectangle{
         y: status_section.y + 5
         width: status_section.width - 10
         height: status_section.height/6
-        color: "#343434"
         border.color: "#00000000"
         radius: 10
         LinearGradient {
@@ -53,8 +52,8 @@ Rectangle{
                 start: Qt.point(0, 0)
                 end: Qt.point(100 * ui_page.width/ 2560, 20 * ui_page.width/ 2560)
                 gradient: Gradient {
-                    GradientStop { position: 0.0; color: "white" }
-                    GradientStop { position: 1.0; color: "#343434" }
+                    GradientStop { position: 0.0; color: "#c98cf5" }
+                    GradientStop { position: 1.0; color: "#b452fa" }
                 }
             }
         Text{
@@ -85,9 +84,9 @@ Rectangle{
                     anchors.fill: parent
                     source: parent
                     start: Qt.point(0, 0)
-                    end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
+                    end: Qt.point(0, parent.height/2)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: "white" }
+                        GradientStop { position: 0.0; color: "#b452fa" }
                         GradientStop { position: 1.0; color: "#b617cf" }
                     }
                 }
@@ -126,18 +125,7 @@ Rectangle{
 
             }
 
-            IndicatorLED{
-                Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.30
-                Layout.maximumHeight: parent.height*0.30
-                id: lidar_status
-                objectName: "lidar_status"
-                colour: "red"
-                onPaint: {
-                    squircle();
-                    lidar_status_text.text = colour == "red"? "offline" : "online";
-                }
-            }
+
 
             Rectangle {
 
@@ -149,7 +137,7 @@ Rectangle{
                     objectName: "lidar_status_text"
                     id: lidar_status_text
                     text: "online"
-                    x: parent.width * 2 / 3
+                    x: parent.width * 7 / 9
                     verticalAlignment: Text.AlignVCenter
                     font.pointSize: 15* ui_page.width/ 2560
                     color: "#948e8e"
@@ -162,20 +150,35 @@ Rectangle{
 
         }
 
+        IndicatorLED{
+            x: parent.width/3
+            y: parent.height/4
+            width:parent.width
+            height: parent.height*0.30
+            id: lidar_status
+            objectName: "lidar_status"
+            colour: "red"
+            onPaint: {
+                squircle();
+                lidar_status_text.text = colour == "red"? "offline" : "online";
+            }
+        }
+
         Image {
             id: lidar_status_picture
             objectName: "lidar_status_picture"
             source: "./images/lidar.png"
             x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2;
-            opacity: 1
+            opacity: 0.8
 
-            RotationAnimator on rotation {
+            RotationAnimation on rotation {
                     id: rotateLidarPhoto;
                     loops: Animation.Infinite;
                     from: 0;
                     to: 360;
                     duration: 3000;
                     running: false;
+                    paused: false;
                 }
 
             ColorOverlay{
@@ -184,7 +187,18 @@ Rectangle{
                 id: lidar_status_overlay
                 objectName: "lidar_status_overlay"
                 color: "#00000000"
-                onColorChanged: rotateLidarPhoto.running = !rotateLidarPhoto.running;
+                onColorChanged: {
+                    //rotateLidarPhoto.running =!rotateLidarPhoto.running;
+
+                    if(!rotateLidarPhoto.running)
+                        rotateLidarPhoto.running = true;
+                    else{
+                        if(rotateLidarPhoto.paused)
+                            rotateLidarPhoto.resume();
+                        else
+                            rotateLidarPhoto.pause();
+                }
+                }
             }
 
         }
@@ -199,9 +213,9 @@ Rectangle{
                     anchors.fill: parent
                     source: parent
                     start: Qt.point(0, 0)
-                    end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
+                    end: Qt.point(0, parent.height/2)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: "white" }
+                        GradientStop { position: 0.0; color: "#b452fa" }
                         GradientStop { position: 1.0; color: "#9613ab" }
                     }
                 }
@@ -239,17 +253,7 @@ Rectangle{
 
             }
 
-            IndicatorLED{
-                Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.30
-                id: imu_status
-                objectName: "imu_status"
-                colour: "red"
-                onPaint: {
-                    squircle();
-                    imu_status_text.text = colour == "red"? "offline" : "online";
-                }
-            }
+
 
             Rectangle {
 
@@ -272,7 +276,28 @@ Rectangle{
             }
 
         }
-        Image {objectName: "gyro_status_picture"; source: "./images/gyro.png"; x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2; opacity: 0.3 }
+        IndicatorLED{
+            x: parent.width/3
+            y: parent.height/4
+            width:parent.width
+            height: parent.height*0.30
+            id: imu_status
+            objectName: "imu_status"
+            colour: "red"
+            onPaint: {
+                squircle();
+                imu_status_text.text = colour == "red"? "offline" : "online";
+            }
+        }
+        Image {objectName: "gyro_status_picture"; source: "./images/gyro.png"; x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2; opacity: 0.8
+            ColorOverlay{
+                anchors.fill: parent
+                source: parent
+                id: gyro_status_overlay
+                objectName: "gyro_status_overlay"
+                color: "#00000000"
+            }
+        }
         /*<a href="https://www.flaticon.com/free-icons/axis" title="axis icons">Axis icons created by Freepik - Flaticon</a>*/
 
         }
@@ -285,9 +310,9 @@ Rectangle{
                     anchors.fill: parent
                     source: parent
                     start: Qt.point(0, 0)
-                    end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
+                    end: Qt.point(0, parent.height/2)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: "white" }
+                        GradientStop { position: 0.0; color: "#b452fa" }
                         GradientStop { position: 1.0; color: "#710a82" }
                     }
                 }
@@ -315,17 +340,6 @@ Rectangle{
                 color: "#00000000"
                 border.color: "#00000000"
 
-                LinearGradient {
-                        anchors.fill: parent
-                        source: parent
-                        start: Qt.point(0, 0)
-                        end: Qt.point(50 * ui_page.width/ 2560, 50 * ui_page.width/ 2560)
-                        gradient: Gradient {
-                            GradientStop { position: 0.0; color: "white" }
-                            GradientStop { position: 1.0; color: "#343434" }
-                        }
-                    }
-
                 Text {
                     anchors.fill: parent
                     text: "Camera"
@@ -337,17 +351,7 @@ Rectangle{
 
             }
 
-            IndicatorLED{
-                Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.30
-                id: camera_status
-                objectName: "camera_status"
-                colour: "red"
-                onPaint: {
-                    squircle();
-                    camera_status_text.text = colour == "red"? "offline" : "online";
-                }
-            }
+
 
             Rectangle {
 
@@ -370,7 +374,28 @@ Rectangle{
             }
 
         }
-        Image { objectName: "camera_status_picture"; source: "./images/camera.png"; x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2; opacity: 0.3 }
+        IndicatorLED{
+            x: parent.width/3
+            y: parent.height/4
+            width:parent.width
+            height: parent.height*0.30
+            id: camera_status
+            objectName: "camera_status"
+            colour: "red"
+            onPaint: {
+                squircle();
+                camera_status_text.text = colour == "red"? "offline" : "online";
+            }
+        }
+        Image { objectName: "camera_status_picture"; source: "./images/camera.png"; x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2; opacity: 0.8
+            ColorOverlay{
+                anchors.fill: parent
+                source: parent
+                id: camera_status_overlay
+                objectName: "camera_status_overlay"
+                color: "#00000000"
+            }
+        }
         /*<a href="https://www.flaticon.com/free-icons/camera" title="camera icons">Camera icons created by Good Ware - Flaticon</a>*/
 
     }
@@ -386,9 +411,9 @@ Rectangle{
                 anchors.fill: parent
                 source: parent
                 start: Qt.point(0, 0)
-                end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
+                end: Qt.point(0, parent.height/2)
                 gradient: Gradient {
-                    GradientStop { position: 0.0; color: "white" }
+                    GradientStop { position: 0.0; color: "#b452fa" }
                     GradientStop { position: 1.0; color: "#470452" }
                 }
             }
@@ -419,55 +444,30 @@ Rectangle{
         }
     }
 
-    Item {
-        id: videoOutput
-        x: rviz_window.width + 5
-        y: 5
-        width: parent.width - x - 5
-        height: (parent.height - status_section.height) - 5
-        ColumnLayout
-        {
-            spacing: 5
-            width: parent.width
-            height: parent.height
-            Layout.maximumHeight: parent.height
-            ComboBox {
-                Layout.maximumWidth: parent.width
-
-                currentIndex: 2
-                model: [ "Banana", "Apple", "Coconut" ]
-                width: 200
-                onCurrentIndexChanged: console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).color)
-            }
-            Image{
-                        id: opencvImage
-                        Layout.preferredHeight: parent.width * 1600 / 2560
-                        Layout.maximumWidth: parent.width
-                        Layout.preferredWidth: parent.width
-                        objectName: "opencvImage"
-                        property bool counter: false
-                        visible: true
-                        source: "./images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg"
-                        asynchronous: false
-                        cache: false
-            }
-        }
-    }
-
     Rectangle {
-        id: log_terminal
+        id: videoOutput
         x: rviz_window.width + 5
         y: rviz_window.height + 5
         width: parent.width - x
         height: status_power.height + status_topbar.height
-        color: "#000000"
-        border.color: "#ffffff"
-        Text{
-            text: "This is going to be a ros log terminal"
-            font.styleName: "Regular"
-            width: parent.width
-            height: parent.height
-            color: "#ffffff"
+        color: "black"
+        Image{
+                    id: opencvImage
+                    objectName: "opencvImage"
+                    anchors.fill:parent
+                    fillMode: Image.PreserveAspectFit
+                    property bool counter: false
+                    visible: true
+                    source: "./images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg"
+                    asynchronous: true
+                    cache: true
+        }
+        ComboBox {
+            currentIndex: 2
+            model: [ "Banana", "Apple", "Coconut" ]
+            width: 200* ui_page.width/2560
+            height: 80* ui_page.width/2560
+            onCurrentIndexChanged: console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).color)
         }
     }
 }

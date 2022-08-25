@@ -26,6 +26,7 @@ void VideoStreamer::convertROSImage(const sensor_msgs::ImageConstPtr &msg){
 
 void VideoStreamer::streamVideo()
 {
+    /*
     if(init && current_frame_ptr){
         QImage img = QImage(current_frame_ptr->image.data,current_frame_ptr->image.cols,current_frame_ptr->image.rows,QImage::Format_BGR888).rgbSwapped();
         emit newImage(img);
@@ -35,11 +36,17 @@ void VideoStreamer::streamVideo()
         //ROS_INFO("bg");
 
         emit newImage(image);
+    }*/
+    if(current_frame_ptr != nullptr && init){
+        //ROS_INFO("UPdated");
+        QImage img = QImage(current_frame_ptr->image.data,current_frame_ptr->image.cols,current_frame_ptr->image.rows,QImage::Format_BGR888).rgbSwapped();
+        emit newImage(img);
     }
 }
 
 void VideoStreamer::openVideoCamera()
 {
+    //ROS_INFO("openned");
     double fps = 20.0;
     tUpdate.start(1000/fps);
     //rostimer.start(1000/fps);

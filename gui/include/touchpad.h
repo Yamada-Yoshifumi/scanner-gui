@@ -1,0 +1,37 @@
+#ifndef TOUCHPAD_H
+#define TOUCHPAD_H
+
+#include <QWidget>
+#include <QGridLayout>
+#include <QtQml>
+#include <QPushButton>
+#include <QWheelEvent>
+#include <QTextEdit>
+#include <QPainter>
+
+// BEGIN_TUTORIAL
+// Class "TouchPad" implements the top level widget for this example.
+class TouchPad: public QWidget
+{
+    QML_ELEMENT
+    public:
+        TouchPad( QWidget* parent = 0 );
+        QWidget* panel;
+        QPushButton* zoomin_button;
+        QPushButton* zoomout_button;
+
+    virtual ~TouchPad();
+    private:
+        QPointF pos_1;
+        QPointF pos_2;
+        QPointF pos_3;
+        QPointF _pos_1;
+        QPointF _pos_2;
+        QPointF _pos_3;
+        double previous_spacing;
+    protected:
+        bool eventFilter(QObject * p_obj, QEvent * p_event);
+        bool event(QEvent *event);
+};
+// END_TUTORIAL
+#endif // TOUCHPAD_H

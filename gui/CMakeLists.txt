@@ -61,6 +61,8 @@ add_executable(qt_gui
     include/videostreamer.h
     src/opencvimageprovider.cpp
     include/opencvimageprovider.h
+    src/touchpad.cpp
+    include/touchpad.h
 )
 
 #set_target_properties(scanner_gui PROPERTIES

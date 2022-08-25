@@ -58,6 +58,9 @@ public:
     QObject *lidar_status_text;
     QObject *imu_status_text;
     QObject *camera_status_text;
+    QObject *lidar_status_pic;
+    QObject *imu_status_pic;
+    QObject *camera_status_pic;
 
     QObject *opencv_image;
     QWidget *container;

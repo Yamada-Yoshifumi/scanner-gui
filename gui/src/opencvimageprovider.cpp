@@ -3,8 +3,6 @@
 
 OpencvImageProvider::OpencvImageProvider(QObject *parent) : QObject(parent), QQuickImageProvider(QQuickImageProvider::Image)
 {
-    image = QImage(200,200,QImage::Format_RGB32);
-    image.fill(QColor("black"));
 }
 
 QImage OpencvImageProvider::requestImage(const QString &id, QSize *size, const QSize &requestedSize)
@@ -23,9 +21,10 @@ QImage OpencvImageProvider::requestImage(const QString &id, QSize *size, const Q
 
 void OpencvImageProvider::updateImage(const QImage &image)
 {
-    //ROS_INFO("156575");
+
     if(!image.isNull() && this->image != image) {
         this->image = image;
+        //ROS_INFO("156575");
         emit imageChanged();
     }
 }

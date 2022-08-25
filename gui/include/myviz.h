@@ -32,6 +32,9 @@
 #include <QWidget>
 #include <QtQml>
 #include <QPushButton>
+#include <QWheelEvent>
+#include <QTextEdit>
+#include "touchpad.h"
 
 namespace rviz
 {
@@ -48,6 +51,11 @@ class MyViz: public QWidget
 public:
     MyViz( QWidget* parent = 0 );
     QPushButton* fullscreen_button;
+    TouchPad* touchpad;
+    QGridLayout* main_layout;
+    rviz::VisualizationManager* manager_;
+    rviz::RenderPanel* render_panel_;
+    rviz::Display* grid_, * pointcloud_, *tf_;
 
     virtual ~MyViz();
 
@@ -56,9 +64,16 @@ private Q_SLOTS:
     void setCellSize( int cell_size_percent );
 
 private:
-    rviz::VisualizationManager* manager_;
-    rviz::RenderPanel* render_panel_;
-    rviz::Display* grid_, * pointcloud_, *tf_;
+    QPoint previous_touchp;
+    double current_pitch;
+    double current_yaw;
+    double current_f_distance;
+    double current_f_point_x;
+    double current_f_point_y;
+    double current_f_point_z;
+
+protected:
+    bool eventFilter(QObject * p_obj, QEvent * p_event);
 };
 // END_TUTORIAL
 #endif // MYVIZ_H

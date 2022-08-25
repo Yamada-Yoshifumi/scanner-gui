@@ -21,5 +21,7 @@
         <file>images/gyro.png</file>
         <file>images/lidar.png</file>
         <file>images/panel_top.png</file>
+        <file>images/zoom_in.png</file>
+        <file>images/zoom_out.png</file>
     </qresource>
 </RCC>
