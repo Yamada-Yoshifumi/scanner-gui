@@ -74,6 +74,7 @@ private:
 
 protected:
     bool eventFilter(QObject * p_obj, QEvent * p_event);
+    bool focus_on_wheel = false;
 };
 // END_TUTORIAL
 #endif // MYVIZ_H

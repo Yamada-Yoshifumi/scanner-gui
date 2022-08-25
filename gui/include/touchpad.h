@@ -28,7 +28,7 @@ class TouchPad: public QWidget
         QPointF _pos_1;
         QPointF _pos_2;
         QPointF _pos_3;
-        double previous_spacing;
+        double previous_spacing = 0;
     protected:
         bool eventFilter(QObject * p_obj, QEvent * p_event);
         bool event(QEvent *event);

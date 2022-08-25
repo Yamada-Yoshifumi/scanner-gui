@@ -8,6 +8,7 @@
 #include <QtQml>
 #include <QtWidgets/QPushButton>
 #include <QtCore>
+#include <QPinchGesture>
 #include <ros/ros.h>
 
 #include "qapplication.h"
@@ -71,7 +72,7 @@ bool TouchPad::event(QEvent* event){
             QPointF _win_pos_1 = _global_pos + _pos_1;
             QPointF _win_pos_2 = _global_pos + _pos_2;
 
-            ROS_INFO("2 detected");
+            //ROS_INFO("2 detected");
             QPointF _trunc_pos = QPointF(trunc((_pos_1.x() + _pos_2.x())/2), trunc((_pos_1.y() + _pos_2.y())/2));
             QPoint _int_win_pos = QPoint(int((_win_pos_1.x() + _win_pos_2.x()+10)/2), int((_win_pos_1.y() + _win_pos_2.y()+10)/2));
             if(event->type() == QEvent::TouchUpdate){
@@ -81,9 +82,29 @@ bool TouchPad::event(QEvent* event){
                     previous_spacing = _current_spacing;
                     return true;
                 }
-                if (abs(_current_spacing - previous_spacing) < 20){
+                if (abs(_current_spacing - previous_spacing) < 5){
                     QMouseEvent event(QEvent::MouseMove, _trunc_pos, _trunc_pos, _int_win_pos, Qt::NoButton, Qt::MiddleButton, Qt::NoModifier);
                     this->parentWidget()->eventFilter(this->parentWidget(), &event);
+                    previous_spacing = _current_spacing;
+                }
+
+                else if (abs(_current_spacing - previous_spacing) >= 20){
+                    QPoint pixelDelta;
+                    QPoint angleDelta;
+                    if(abs(_current_spacing - previous_spacing) > 40){
+                        pixelDelta = QPoint(0, 0);
+                        angleDelta = QPoint(0, trunc((_current_spacing - previous_spacing)/8));
+                    }
+                    else{
+                        pixelDelta = QPoint(0, -int((_current_spacing - previous_spacing)));
+                        angleDelta = QPoint(0, -int((_current_spacing - previous_spacing)/8));
+                    }
+                    QWheelEvent wheel_pre_event(_trunc_pos, _int_win_pos, pixelDelta, angleDelta, Qt::NoButton, Qt::NoModifier, Qt::ScrollBegin, false, Qt::MouseEventNotSynthesized);
+                    QWheelEvent event(_trunc_pos, _int_win_pos, pixelDelta, angleDelta, Qt::NoButton, Qt::NoModifier, Qt::ScrollUpdate, false, Qt::MouseEventNotSynthesized);
+
+                    this->parentWidget()->eventFilter(this->parentWidget(), &wheel_pre_event);
+                    this->parentWidget()->eventFilter(this->parentWidget(), &event);
+
                     previous_spacing = _current_spacing;
                 }
             }
@@ -94,8 +115,10 @@ bool TouchPad::event(QEvent* event){
             }
             else if(event->type() == QEvent::TouchEnd){
                 previous_spacing = 0;
+                //QWheelEvent wheel_end_event(_trunc_pos, _int_win_pos, QPoint(0,0), QPoint(0,0), Qt::NoButton, Qt::NoModifier, Qt::ScrollEnd, false, Qt::MouseEventNotSynthesized);
                 QMouseEvent event(QEvent::MouseButtonRelease, _trunc_pos, _trunc_pos, _int_win_pos, Qt::MiddleButton, Qt::NoButton, Qt::NoModifier);
                 this->parentWidget()->eventFilter(this->parentWidget(), &event);
+                //this->parentWidget()->eventFilter(this->parentWidget(), &wheel_end_event);
             }
         }
         else if(touchPoints.count() == 1){
@@ -119,6 +142,28 @@ bool TouchPad::event(QEvent* event){
             }
     }
     }
+    /*
+    else if(event->type() == QEvent::Gesture){
+        QGestureEvent* pinch = static_cast<QGestureEvent*>(event);
+        int i = 0;
+        for(int j = 0; j < pinch->gestures().count(); j++){
+            if (pinch->gestures()[i]->gestureType() == Qt::PinchGesture){
+                i = j;
+                break;
+            }
+            if(j == pinch->gestures().count() - 1)
+                return true;
+        }
+        QPinchGesture* pinch_gesture = static_cast<QPinchGesture*>(pinch->gestures()[i]);
+        double scale_factor = pinch_gesture->scaleFactor();
+        QPoint pixelDelta = QPoint(0, log(scale_factor));
+        QPoint angleDelta = QPoint(0, log(scale_factor)/8);
+        QWheelEvent wheel_pre_event(QPointF(0,0), QPoint(0,0), pixelDelta, angleDelta, Qt::NoButton, Qt::NoModifier, Qt::ScrollBegin, false, Qt::MouseEventNotSynthesized);
+        QWheelEvent event(QPointF(0,0), QPoint(0,0), pixelDelta, angleDelta, Qt::NoButton, Qt::NoModifier, Qt::ScrollUpdate, false, Qt::MouseEventNotSynthesized);
+
+        this->parentWidget()->eventFilter(this->parentWidget(), &wheel_pre_event);
+        this->parentWidget()->eventFilter(this->parentWidget(), &event);
+    }*/
     return true;
 }
 

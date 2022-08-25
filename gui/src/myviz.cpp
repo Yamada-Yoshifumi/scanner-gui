@@ -217,14 +217,14 @@ bool MyViz::eventFilter(QObject * p_obj, QEvent * p_event)
             else{
                 if((pMouseEvent->globalPos().x() - previous_touchp.x()) > 5){
                     current_yaw += 0.05;
-                    ROS_INFO("Yaw: %f", current_yaw);
+                    //ROS_INFO("Yaw: %f", current_yaw);
                     manager_->getViewManager()->getCurrent()->subProp("Yaw")->setValue( current_yaw );
                     previous_touchp = pMouseEvent->globalPos();
 
                 }
                 else if(pMouseEvent->globalPos().x() - previous_touchp.x() < -5){
                     current_yaw -= 0.05;
-                    ROS_INFO("Yaw: %f", current_yaw);
+                    //ROS_INFO("Yaw: %f", current_yaw);
                     manager_->getViewManager()->getCurrent()->subProp("Yaw")->setValue( current_yaw );
                     previous_touchp = pMouseEvent->globalPos();
                 }
@@ -268,7 +268,24 @@ bool MyViz::eventFilter(QObject * p_obj, QEvent * p_event)
         previous_touchp = QPoint(0,0);
         return true;
     }
-
+    else if(p_event->type() == QEvent::Wheel)
+    {
+        QWheelEvent* pWheelEvent = dynamic_cast<QWheelEvent*>(p_event);
+        if(pWheelEvent->source() == Qt::MouseEventSource::MouseEventSynthesizedBySystem)
+        {
+            p_event->ignore();
+            pWheelEvent->ignore();
+            return true;
+        }
+        else{
+            ROS_INFO("%d", pWheelEvent->pixelDelta().y());
+            current_f_distance += pWheelEvent->pixelDelta().y()/10;
+            manager_->getViewManager()->getCurrent()->subProp("Distance")->setValue( current_f_distance );
+        }
+        p_event->ignore();
+        pWheelEvent->ignore();
+        return true;
+    }
     else{
         qDebug() << "handling an event" << p_event;
 
