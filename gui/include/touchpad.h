@@ -17,8 +17,6 @@ class TouchPad: public QWidget
     public:
         TouchPad( QWidget* parent = 0 );
         QWidget* panel;
-        QPushButton* zoomin_button;
-        QPushButton* zoomout_button;
 
     virtual ~TouchPad();
     private:

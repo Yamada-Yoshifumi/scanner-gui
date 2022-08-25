@@ -71,13 +71,36 @@ MyViz::MyViz( QWidget* parent )
 
     touchpad = new TouchPad(render_panel_);
     touchpad->setStyleSheet("background-color: rgba(10,10,10,0.8);");
+
     fullscreen_button = new QPushButton(this);
     fullscreen_button->setObjectName(QStringLiteral("fullscreen_button"));
     fullscreen_button->setIcon(QIcon(":/qml/images/fullscreen.svg"));
     fullscreen_button->setStyleSheet("background-color:gray;");
+
+    zoomin_button = new QPushButton(this);
+    zoomin_button->setObjectName(QStringLiteral("zoomin_button"));
+    zoomin_button->setIcon(QIcon(":/qml/images/zoom_in.png"));
+    zoomin_button->setStyleSheet("background-color:gray;");
+    //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
+
+    zoomout_button = new QPushButton(this);
+    zoomout_button->setObjectName(QStringLiteral("zoomout_button"));
+    zoomout_button->setIcon(QIcon(":/qml/images/zoom_out.png"));
+    zoomout_button->setStyleSheet("background-color:gray;");
+    //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
+
+    reset_button = new QPushButton(this);
+    reset_button->setObjectName(QStringLiteral("reset_button"));
+    reset_button->setIcon(QIcon(":/qml/images/reset_rviz.png"));
+    reset_button->setStyleSheet("background-color:gray;");
+    //<a href="https://www.flaticon.com/free-icons/axis" title="axis icons">Axis icons created by Smashicons - Flaticon</a>
+
     main_layout = new QGridLayout;
     main_layout->setContentsMargins(5,5,5,5);
-    main_layout->addWidget( touchpad, 0, 30, 10, 15);
+    main_layout->addWidget( touchpad, 0, 30, 9, 15);
+    main_layout->addWidget(zoomin_button, 9, 30, 1, 5);
+    main_layout->addWidget(zoomout_button, 9, 35, 1, 5);
+    main_layout->addWidget(reset_button, 9, 40, 1, 5);
     main_layout->addWidget( render_panel_, 0, 0, 10, 30 );
     main_layout->addWidget( fullscreen_button, 9, 29, 1, 1 );
 
@@ -125,6 +148,13 @@ MyViz::MyViz( QWidget* parent )
     current_f_point_y = manager_->getViewManager()->getCurrent()->subProp("Focal Point")->subProp( "Y" )->getValue().toDouble();
     current_f_point_z = manager_->getViewManager()->getCurrent()->subProp("Focal Point")->subProp( "Z" )->getValue().toDouble();
     previous_touchp = QPoint(0,0);
+
+    zoomin_button->setAutoRepeat(true);
+    zoomout_button->setAutoRepeat(true);
+
+    connect(reset_button, &QPushButton::clicked, this, &MyViz::resetView);
+    connect(zoomin_button, &QPushButton::pressed, this, &MyViz::manualZoomIn);
+    connect(zoomout_button, &QPushButton::pressed, this, &MyViz::manualZoomOut);
 }
 
 // Destructor.
@@ -150,6 +180,28 @@ void MyViz::setCellSize( int cell_size_percent )
     {
         grid_->subProp( "Cell Size" )->setValue( cell_size_percent / 10.0f );
     }
+}
+
+void MyViz::resetView()
+{
+    manager_->getViewManager()->getCurrent()->subProp("Pitch")->setValue(1.57);
+    manager_->getViewManager()->getCurrent()->subProp("Yaw")->setValue(0);
+    manager_->getViewManager()->getCurrent()->subProp("Distance")->setValue(10);
+    manager_->getViewManager()->getCurrent()->subProp("Focal Point")->subProp( "X" )->setValue(0);
+    manager_->getViewManager()->getCurrent()->subProp("Focal Point")->subProp( "Y" )->setValue(0);
+    manager_->getViewManager()->getCurrent()->subProp("Focal Point")->subProp( "Z" )->setValue(0);
+}
+
+void MyViz::manualZoomOut()
+{
+        current_f_distance += 0.5;
+        manager_->getViewManager()->getCurrent()->subProp("Distance")->setValue( current_f_distance );
+}
+
+void MyViz::manualZoomIn()
+{
+        current_f_distance -= 0.5;
+        manager_->getViewManager()->getCurrent()->subProp("Distance")->setValue( current_f_distance );
 }
 
 bool MyViz::eventFilter(QObject * p_obj, QEvent * p_event)

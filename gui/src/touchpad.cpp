@@ -27,25 +27,9 @@ TouchPad::TouchPad( QWidget* parent )
     panel = new QWidget(this);
     panel->setStyleSheet("background-color:#473f4d;");
 
-    zoomin_button = new QPushButton(this);
-    zoomin_button->setObjectName(QStringLiteral("zoomin_button"));
-    zoomin_button->setIcon(QIcon(":/qml/images/zoom_in.png"));
-    //zoomin_button->resize(this->width()*7/15, this->height()/5);
-    zoomin_button->setStyleSheet("background-color:gray;");
-    //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
-
-    zoomout_button = new QPushButton(this);
-    zoomout_button->setObjectName(QStringLiteral("zoomout_button"));
-    zoomout_button->setIcon(QIcon(":/qml/images/zoom_out.png"));
-    //zoomout_button->resize(this->width()*7/15, this->height()/5);
-    zoomout_button->setStyleSheet("background-color:gray;");
-    //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
-
     QGridLayout* gridlayout = new QGridLayout();
     gridlayout->setContentsMargins(3,3,3,3);
     gridlayout->addWidget(panel, 0, 0, 9, 2);
-    gridlayout->addWidget(zoomin_button, 9, 0, 1, 1);
-    gridlayout->addWidget(zoomout_button, 9, 1, 1, 1);
     setLayout(gridlayout);
 }
 
@@ -93,7 +77,7 @@ bool TouchPad::event(QEvent* event){
                     QPoint angleDelta;
                     if(abs(_current_spacing - previous_spacing) > 40){
                         pixelDelta = QPoint(0, 0);
-                        angleDelta = QPoint(0, trunc((_current_spacing - previous_spacing)/8));
+                        angleDelta = QPoint(0, 0);
                     }
                     else{
                         pixelDelta = QPoint(0, -int((_current_spacing - previous_spacing)));

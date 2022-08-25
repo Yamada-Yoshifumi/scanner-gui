@@ -23,5 +23,6 @@
         <file>images/panel_top.png</file>
         <file>images/zoom_in.png</file>
         <file>images/zoom_out.png</file>
+        <file>images/reset_rviz.png</file>
     </qresource>
 </RCC>

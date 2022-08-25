@@ -47,6 +47,7 @@ class VisualizationManager;
 // Class "MyViz" implements the top level widget for this example.
 class MyViz: public QWidget
 {
+    Q_OBJECT
     QML_ELEMENT
 public:
     MyViz( QWidget* parent = 0 );
@@ -56,8 +57,15 @@ public:
     rviz::VisualizationManager* manager_;
     rviz::RenderPanel* render_panel_;
     rviz::Display* grid_, * pointcloud_, *tf_;
+    QPushButton* zoomin_button;
+    QPushButton* zoomout_button;
+    QPushButton* reset_button;
 
     virtual ~MyViz();
+public Q_SLOTS:
+    void resetView();
+    void manualZoomIn();
+    void manualZoomOut();
 
 private Q_SLOTS:
     void setThickness( int thickness_percent );
