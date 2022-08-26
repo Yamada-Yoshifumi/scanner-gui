@@ -35,6 +35,7 @@
 #include <QWheelEvent>
 #include <QTextEdit>
 #include "touchpad.h"
+#include <QComboBox>
 
 namespace rviz
 {
@@ -60,6 +61,7 @@ public:
     QPushButton* zoomin_button;
     QPushButton* zoomout_button;
     QPushButton* reset_button;
+    QComboBox* combo;
 
     virtual ~MyViz();
 public Q_SLOTS:
@@ -70,6 +72,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void setThickness( int thickness_percent );
     void setCellSize( int cell_size_percent );
+    void colourPatternChanged();
 
 private:
     QPoint previous_touchp;
@@ -79,7 +82,7 @@ private:
     double current_f_point_x;
     double current_f_point_y;
     double current_f_point_z;
-
+    QString current_pointcloud_pattern;
 protected:
     bool eventFilter(QObject * p_obj, QEvent * p_event);
     bool focus_on_wheel = false;

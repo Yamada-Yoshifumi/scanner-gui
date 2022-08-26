@@ -95,6 +95,10 @@ MyViz::MyViz( QWidget* parent )
     reset_button->setStyleSheet("background-color:gray;");
     //<a href="https://www.flaticon.com/free-icons/axis" title="axis icons">Axis icons created by Smashicons - Flaticon</a>
 
+    QStringList commands = { "Intensity", "AxisColor", "Uncertainty", "FlatColor" };
+    combo = new QComboBox(this);
+    combo->addItems(commands);
+
     main_layout = new QGridLayout;
     main_layout->setContentsMargins(5,5,5,5);
     main_layout->addWidget( touchpad, 0, 30, 9, 15);
@@ -103,6 +107,7 @@ MyViz::MyViz( QWidget* parent )
     main_layout->addWidget(reset_button, 9, 40, 1, 5);
     main_layout->addWidget( render_panel_, 0, 0, 10, 30 );
     main_layout->addWidget( fullscreen_button, 9, 29, 1, 1 );
+    main_layout->addWidget(combo, 0, 25, 1, 5);
 
     setLayout(main_layout);
     // Next we initialize the main RViz classes.
@@ -132,8 +137,9 @@ MyViz::MyViz( QWidget* parent )
     pointcloud_->subProp("Topic")->setValue("velodyne_points");
     pointcloud_->subProp("Style")->setValue("Points");
     pointcloud_->subProp("Size (Pixels)")->setValue("2");
-    pointcloud_->subProp("Color Transformer")->setValue("AxisColor");
-    pointcloud_->subProp("Invert Rainbow")->setValue("true");
+    pointcloud_->subProp("Channel Name")->setValue("ring");
+    pointcloud_->subProp("Color Transformer")->setValue("Intensity");
+    //pointcloud_->subProp("Invert Rainbow")->setValue("true");
 
     /**E.g. For TF **/
     tf_ = manager_->createDisplay("rviz/RobotModel","lidar tf", true);
@@ -147,6 +153,8 @@ MyViz::MyViz( QWidget* parent )
     current_f_point_x = manager_->getViewManager()->getCurrent()->subProp("Focal Point")->subProp( "X" )->getValue().toDouble();
     current_f_point_y = manager_->getViewManager()->getCurrent()->subProp("Focal Point")->subProp( "Y" )->getValue().toDouble();
     current_f_point_z = manager_->getViewManager()->getCurrent()->subProp("Focal Point")->subProp( "Z" )->getValue().toDouble();
+    current_pointcloud_pattern = pointcloud_->subProp("Color Transformer")->getValue().toString();
+
     previous_touchp = QPoint(0,0);
 
     zoomin_button->setAutoRepeat(true);
@@ -155,6 +163,7 @@ MyViz::MyViz( QWidget* parent )
     connect(reset_button, &QPushButton::clicked, this, &MyViz::resetView);
     connect(zoomin_button, &QPushButton::pressed, this, &MyViz::manualZoomIn);
     connect(zoomout_button, &QPushButton::pressed, this, &MyViz::manualZoomOut);
+    connect( combo, &QComboBox::currentTextChanged, this, &MyViz::colourPatternChanged);
 }
 
 // Destructor.
@@ -202,6 +211,12 @@ void MyViz::manualZoomIn()
 {
         current_f_distance -= 0.5;
         manager_->getViewManager()->getCurrent()->subProp("Distance")->setValue( current_f_distance );
+}
+
+void MyViz::colourPatternChanged()
+{
+    QString current_selection = combo->currentText();
+    pointcloud_->subProp("Color Transformer")->setValue(current_selection);
 }
 
 bool MyViz::eventFilter(QObject * p_obj, QEvent * p_event)
