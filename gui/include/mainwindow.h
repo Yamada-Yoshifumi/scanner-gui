@@ -12,6 +12,9 @@
 #include "nav_msgs/Odometry.h"
 #include "videostreamer.h"
 #include "opencvimageprovider.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sqlite3.h>
 
 namespace Ui {
 class MainWindow;

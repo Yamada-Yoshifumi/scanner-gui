@@ -21,7 +21,6 @@ link_directories(${catkin_LIBRARY_DIRS})
 
 find_package(Qt5 REQUIRED Qml Quick Gui Core Widgets QuickWidgets)
 
-
 #qt6_add_qml_module(gui
 #    URI gui
 #    VERSION 1.0
@@ -72,7 +71,7 @@ add_executable(qt_gui
 
 #target_compile_definitions(scanner_gui
 #    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(qt_gui Qt5::Qml Qt5::Widgets Qt5::Gui Qt5::Quick Qt5::QuickWidgets ${catkin_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(qt_gui sqlite3 Qt5::Qml Qt5::Widgets Qt5::Gui Qt5::Quick Qt5::QuickWidgets ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 #add_qml_module(MyRviz
 #    URI MyRviz

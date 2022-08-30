@@ -3,6 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.LocalStorage 2.15
 
 Rectangle {
+    id: init
     visible: true
     color: "#442e5d"
     border.color: "#442e5d"
@@ -41,18 +42,9 @@ Rectangle {
                             // Create the database if it doesn't already exist
                             tx.executeSql('CREATE TABLE IF NOT EXISTS BooleanSettings(name TEXT, value INTEGER, UNIQUE(name))');
 
-                            // Add (another) greeting row
-                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Display Reconstruction", 0 ]);
+                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Reconstruction", 0 ]);
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Daylight Mode", 0 ]);
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Exposure Time(ms)", 20 ]);
-
-                            // Show all added greetings
-                            //var rs = tx.executeSql('SELECT * FROM Greeting');
-                            //var r = ""
-                            //for (var i = 0; i < rs.rows.length; i++) {
-                            //    r += rs.rows.item(i).salutation + ", " + rs.rows.item(i).salutee + "\n"
-                            //}
-                            //text = r
                         }
                     )
                 }

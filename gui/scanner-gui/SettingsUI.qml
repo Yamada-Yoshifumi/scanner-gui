@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.LocalStorage 2.15
 import "model_handler.js" as JS
 
 Rectangle {
@@ -8,7 +9,34 @@ Rectangle {
     height: parent.height
     color: "#442e5d"
     border.color: "#442e5d"
+    property string textcolor: "#ffffff"
+    Timer {
+            interval: 100; running: true; repeat: true
+            onTriggered: {
+                var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
 
+                db.transaction(
+                    function(tx) {
+                        var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
+                        var daylight_mode = rs.rows.item(0).value;
+                        if (daylight_mode){
+                            color = "#f5f55b";
+                            border.color = "#f5f55b";
+                            settings_header.color = "black";
+                            listview.color = "#f7f78d";
+                            textcolor = "black";
+                        }
+                        else{
+                            color = "#442e5d";
+                            border.color = "#442e5d";
+                            settings_header.color = "#ffffff";
+                            listview.color = "#442e5d";
+                            textcolor = "#ffffff";
+                        }
+                    }
+                )
+            }
+        }
     Text {
         id: settings_header
         x: parent.x
@@ -16,7 +44,7 @@ Rectangle {
         width: parent.width
         height: parent.width / 5
 
-        color: "#ffffff"
+        color: settings_ui.textcolor
         text: "Settings"
         horizontalAlignment: Text.AlignHCenter
         font.pointSize: 100 * parent.width/ 2560
@@ -67,7 +95,7 @@ Rectangle {
                     text: name
                     width: settings_header.width
                     height: settings_header.width/ 5
-                    color: "#d4d4d4"
+                    color: settings_ui.textcolor
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: 100 * parent.width/ 2560
                     MouseArea {
@@ -99,6 +127,7 @@ Rectangle {
         // 3. ListView - this displays the rows as a list.
         Rectangle {
             // Put the ListView inside a rectangle for more layout control
+            id: listview
             color: "#442e5d"
 
             anchors.top: settings_header.bottom

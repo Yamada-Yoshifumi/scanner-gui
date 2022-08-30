@@ -29,12 +29,34 @@ Timer {
                     if (daylight_mode){
                         status_topbar.startColor = "white";
                         status_topbar.stopColor = "#fafaa2";
-                        status_topbar_text.color = "white";
+                        status_topbar_text.color = "black";
+                        status_lidar_rect.startColor = "white";
+                        status_lidar_rect.stopColor = "#fafaa2";
+                        status_lidar_text.color = "black";
+                        status_imu_rect.startColor = "white";
+                        status_imu_rect.stopColor = "#fafaa2";
+                        status_imu_text.color = "black";
+                        status_camera_rect.startColor = "white";
+                        status_camera_rect.stopColor = "#fafaa2";
+                        status_camera_text.color = "black";
+                        power_button_bg.startColor = "white";
+                        power_button_bg.stopColor = "#fafaa2";
                     }
                     else{
                         status_topbar.startColor = "#c98cf5";
                         status_topbar.stopColor = "#b452fa";
                         status_topbar_text.color = "#d4d4d4";
+                        status_lidar_rect.startColor = "#b452fa";
+                        status_lidar_rect.stopColor = "#b617cf";
+                        status_lidar_text.color = "#d4d4d4";
+                        status_imu_rect.startColor = "#b452fa";
+                        status_imu_rect.stopColor = "#9613ab";
+                        status_imu_text.color = "#d4d4d4";
+                        status_camera_rect.startColor = "#b452fa";
+                        status_camera_rect.stopColor = "#710a82";
+                        status_camera_text.color = "#d4d4d4";
+                        power_button_bg.startColor = "#b452fa";
+                        power_button_bg.stopColor = "#470452";
                     }
                 }
             )
@@ -105,17 +127,20 @@ Rectangle{
         spacing: 5
 
         Rectangle{
+            id: status_lidar_rect
             radius: 10
             Layout.preferredHeight: parent.height * 19 / 20
             Layout.preferredWidth:  parent.width / 4.1
+            property string startColor: "#b452fa"
+            property string stopColor: "#b617cf"
             LinearGradient {
                     anchors.fill: parent
                     source: parent
                     start: Qt.point(0, 0)
                     end: Qt.point(0, parent.height/2)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: "#b452fa" }
-                        GradientStop { position: 1.0; color: "#b617cf" }
+                        GradientStop { position: 0.0; color: status_lidar_rect.startColor }
+                        GradientStop { position: 1.0; color: status_lidar_rect.stopColor }
                     }
                 }
 
@@ -143,6 +168,7 @@ Rectangle{
                 border.color: "#00000000"
 
                 Text {
+                    id: status_lidar_text
                     anchors.fill: parent
                     text: "Lidar"
                     horizontalAlignment: Text.AlignHCenter
@@ -234,17 +260,21 @@ Rectangle{
 
     }
         Rectangle{
+            id: status_imu_rect
             radius: 10
             Layout.preferredHeight: parent.height * 19 / 20
             Layout.preferredWidth:  parent.width / 4.1
+            property string startColor: "#b452fa"
+            property string stopColor: "#9613ab"
+
             LinearGradient {
                     anchors.fill: parent
                     source: parent
                     start: Qt.point(0, 0)
                     end: Qt.point(0, parent.height/2)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: "#b452fa" }
-                        GradientStop { position: 1.0; color: "#9613ab" }
+                        GradientStop { position: 0.0; color: status_imu_rect.startColor }
+                        GradientStop { position: 1.0; color: status_imu_rect.stopColor }
                     }
                 }
         ColumnLayout{
@@ -271,6 +301,7 @@ Rectangle{
 
 
                 Text {
+                    id: status_imu_text
                     anchors.fill: parent
                     text: "IMU"
                     horizontalAlignment: Text.AlignHCenter
@@ -330,9 +361,12 @@ Rectangle{
 
         }
         Rectangle{
+            id: status_camera_rect
             radius: 10
             Layout.preferredHeight: parent.height * 19 / 20
             Layout.preferredWidth:  parent.width / 4.1
+            property string startColor: "#b452fa"
+            property string stopColor: "#710a82"
             LinearGradient {
                 id: linearGradient1
                     anchors.fill: parent
@@ -340,8 +374,8 @@ Rectangle{
                     start: Qt.point(0, 0)
                     end: Qt.point(0, parent.height/2)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: "#b452fa" }
-                        GradientStop { position: 1.0; color: "#710a82" }
+                        GradientStop { position: 0.0; color: status_camera_rect.startColor }
+                        GradientStop { position: 1.0; color: status_camera_rect.stopColor }
                     }
                 }
 
@@ -369,6 +403,7 @@ Rectangle{
                 border.color: "#00000000"
 
                 Text {
+                    id: status_camera_text
                     anchors.fill: parent
                     text: "Camera"
                     horizontalAlignment: Text.AlignHCenter
@@ -432,8 +467,8 @@ Rectangle{
         Layout.preferredHeight: parent.height * 19 / 20
         Layout.preferredWidth:  parent.width / 4.1
         radius: 10
-
-
+        property string startColor: "#b452fa"
+        property string stopColor: "#470452"
 
         LinearGradient {
                 anchors.fill: parent
@@ -441,8 +476,8 @@ Rectangle{
                 start: Qt.point(0, 0)
                 end: Qt.point(0, parent.height/2)
                 gradient: Gradient {
-                    GradientStop { position: 0.0; color: "#b452fa" }
-                    GradientStop { position: 1.0; color: "#470452" }
+                    GradientStop { position: 0.0; color: power_button_bg.startColor }
+                    GradientStop { position: 1.0; color: power_button_bg.stopColor}
                 }
             }
         Image { source: "./images/panel_top.png"; anchors.topMargin: 0; anchors.leftMargin: 0; height: panel_top.height; width: panel_top.width; fillMode: Image.PreserveAspectFit; opacity: 1 }
@@ -543,7 +578,7 @@ Rectangle{
                     objectName: "opencv_image"
                     anchors.fill:parent
                     fillMode: Image.PreserveAspectFit
-                    property bool counter: false
+                    property bool counter: true
                     visible: true
                     source: "./images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg"
                     asynchronous: false

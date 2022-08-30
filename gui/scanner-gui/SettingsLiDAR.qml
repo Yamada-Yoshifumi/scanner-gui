@@ -9,7 +9,34 @@ Rectangle {
     height: parent.height
     color: "#442e5d"
     border.color: "#442e5d"
+    property string textcolor: "#ffffff"
+    Timer {
+            interval: 100; running: true; repeat: true
+            onTriggered: {
+                var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
 
+                db.transaction(
+                    function(tx) {
+                        var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
+                        var daylight_mode = rs.rows.item(0).value;
+                        if (daylight_mode){
+                            color = "#f5f55b";
+                            border.color = "#f5f55b";
+                            settings_lidar_header.color = "black";
+                            lidar_listview.color = "#f7f78d";
+                            textcolor = "black";
+                        }
+                        else{
+                            color = "#442e5d";
+                            border.color = "#442e5d";
+                            settings_lidar_header.color = "#ffffff";
+                            lidar_listview.color = "#442e5d";
+                            textcolor = "#ffffff";
+                        }
+                    }
+                )
+            }
+        }
     Text {
         id: settings_lidar_header
         x: parent.x
@@ -17,7 +44,7 @@ Rectangle {
         width: parent.width
         height: parent.width / 5
 
-        color: "#ffffff"
+        color: settings_lidar.textcolor
         text: "LiDAR"
         horizontalAlignment: Text.AlignHCenter
         font.pointSize: 100 * parent.width/ 2560
@@ -37,7 +64,7 @@ Rectangle {
             */
             property bool completed: false
             Component.onCompleted: {
-                append({name: "Display Reconstruction", value: mvc_lidar_model.display_reconstruction_value});
+                append({name: "Reconstruction", value: mvc_lidar_model.display_reconstruction_value});
                 completed = true;
             }
 
@@ -56,7 +83,7 @@ Rectangle {
                     text: name
                     width: settings_lidar_header.width/2
                     height: settings_lidar_header.width/ 5
-                    color: "#d4d4d4"
+                    color: settings_lidar.textcolor
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: 100 * parent.width/ 2560
                     MouseArea {
@@ -81,7 +108,7 @@ Rectangle {
                             var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
                             db.transaction(
                                 function(tx) {
-                                    tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Display Reconstruction"', value);
+                                    tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Reconstruction"', value);
                                 }
                             )
                         }
@@ -94,6 +121,7 @@ Rectangle {
         // 3. ListView - this displays the rows as a list.
         Rectangle {
             // Put the ListView inside a rectangle for more layout control
+            id: lidar_listview
             color: "#442e5d"
 
             anchors.top: settings_lidar_header.bottom
@@ -157,7 +185,7 @@ Rectangle {
             var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
             db.transaction(
                 function(tx) {
-                    var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Display Reconstruction"');
+                    var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Reconstruction"');
                     mvc_lidar_model.display_reconstruction_value = rs.rows.item(0).value;
                 }
             )

@@ -101,7 +101,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     settings_show_button = settingsqmlView->rootObject()->findChild<QObject*>("settings_open_button");
     connect(settings_show_button, SIGNAL(settingsInvoke(QString)), this, SLOT(showSettings()));
-
 }
 
 MainWindow::~MainWindow()
@@ -270,11 +269,14 @@ void MainWindow::imageReload(){
 
     if(videoStreamer->init && videoStreamer->current_frame_ptr != nullptr)
     {
+        ROS_INFO("1");
         if(counter){
+            ROS_INFO("2");
             opencv_image->setProperty("source", "image://live/image?id=1");
         }
         else
         {
+            ROS_INFO("2");
             opencv_image->setProperty("source", "image://live/image?id=0");
         }
         counter = !counter;

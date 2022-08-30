@@ -9,6 +9,34 @@ Rectangle {
     height: parent.height
     color: "#442e5d"
     border.color: "#442e5d"
+    property string textcolor: "#ffffff"
+    Timer {
+            interval: 100; running: true; repeat: true
+            onTriggered: {
+                var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+
+                db.transaction(
+                    function(tx) {
+                        var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
+                        var daylight_mode = rs.rows.item(0).value;
+                        if (daylight_mode){
+                            color = "#f5f55b";
+                            border.color = "#f5f55b";
+                            settings_camera_header.color = "black";
+                            camera_listview.color = "#f7f78d";
+                            textcolor = "black";
+                        }
+                        else{
+                            color = "#442e5d";
+                            border.color = "#442e5d";
+                            settings_camera_header.color = "#ffffff";
+                            camera_listview.color = "#442e5d";
+                            textcolor = "#ffffff";
+                        }
+                    }
+                )
+            }
+        }
 
     Text {
         id: settings_camera_header
@@ -17,8 +45,8 @@ Rectangle {
         width: parent.width
         height: parent.width / 5
 
-        color: "#ffffff"
-        text: "camera"
+        color: settings_camera.textcolor
+        text: "Camera"
         horizontalAlignment: Text.AlignHCenter
         font.pointSize: 100 * parent.width/ 2560
         font.styleName: "Bold"
@@ -56,7 +84,7 @@ Rectangle {
                     text: name
                     width: settings_camera_header.width/2
                     height: settings_camera_header.width/ 5
-                    color: "#d4d4d4"
+                    color: settings_camera.textcolor
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: 100 * parent.width/ 2560
                     MouseArea {
@@ -90,6 +118,7 @@ Rectangle {
         // 3. ListView - this displays the rows as a list.
         Rectangle {
             // Put the ListView inside a rectangle for more layout control
+            id: camera_listview
             color: "#442e5d"
 
             anchors.top: settings_camera_header.bottom
