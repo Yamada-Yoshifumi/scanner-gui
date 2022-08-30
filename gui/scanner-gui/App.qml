@@ -11,12 +11,7 @@ Rectangle {
 
     Loader {
             id: mainLoader
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                bottom: parent.bottom
-            }
+            anchors.fill: parent
             source: "StackViewPage.qml"
 
             NumberAnimation {
@@ -57,7 +52,7 @@ Rectangle {
                     }
 
     }
-
+    /*
     Loader {
         id: settingsLoader
         anchors{
@@ -69,7 +64,7 @@ Rectangle {
         }
         source: "StackViewSettings.qml"
     }
-
+    */
 }
 
 

@@ -6,6 +6,7 @@ import QtQuick.Controls.Universal 2.15
 import QtQuick.Window 2.15
 import QtMultimedia 5.15
 import QtGraphicalEffects 1.0
+import QtQuick.LocalStorage 2.15
 
 Rectangle{
 
@@ -15,6 +16,30 @@ y: 0
 width: parent.width
 height: parent.height
 color: "#442e5d"
+
+Timer {
+        interval: 1000; running: true; repeat: true
+        onTriggered: {
+            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+
+            db.transaction(
+                function(tx) {
+                    var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
+                    var daylight_mode = rs.rows.item(0).value;
+                    if (daylight_mode){
+                        status_topbar.startColor = "white";
+                        status_topbar.stopColor = "#fafaa2";
+                        status_topbar_text.color = "white";
+                    }
+                    else{
+                        status_topbar.startColor = "#c98cf5";
+                        status_topbar.stopColor = "#b452fa";
+                        status_topbar_text.color = "#d4d4d4";
+                    }
+                }
+            )
+        }
+    }
 
 Rectangle{
     id: rviz_window
@@ -45,18 +70,21 @@ Rectangle{
         height: status_section.height/6
         border.color: "#00000000"
         radius: 10
+        property string startColor: "#c98cf5"
+        property string stopColor: "#b452fa"
         LinearGradient {
-            id: linearGradient
+            id: statusTopbarLinearGradient
                 anchors.fill: parent
                 source: parent
                 start: Qt.point(0, 0)
                 end: Qt.point(100 * ui_page.width/ 2560, 20 * ui_page.width/ 2560)
                 gradient: Gradient {
-                    GradientStop { position: 0.0; color: "#c98cf5" }
-                    GradientStop { position: 1.0; color: "#b452fa" }
+                    GradientStop { position: 0.0; color: status_topbar.startColor }
+                    GradientStop { position: 1.0; color: status_topbar.stopColor }
                 }
             }
         Text{
+            id: status_topbar_text
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             color: "#d4d4d4"
@@ -419,29 +447,88 @@ Rectangle{
             }
         Image { source: "./images/panel_top.png"; anchors.topMargin: 0; anchors.leftMargin: 0; height: panel_top.height; width: panel_top.width; fillMode: Image.PreserveAspectFit; opacity: 1 }
 
-        Button {
-            id: power_button
-            objectName: "power_button"
-            icon.name: "power-button"
+        ColumnLayout{
 
-            icon.source: "./images/power-button.png"
-            icon.color: "#620b66"
-            icon.width: 180* ui_page.width/ 2560
-            icon.height: 180* ui_page.height/ 1600
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter: parent.horizontalCenter
-            signal powerSignal(string obj)
-            onClicked:{
-                power_button.powerSignal("system power on command");
-            }
-            background: Rectangle {
-                                    objectName: "power_button_bg"
-                                    radius: 10
-                                    color: power_button.down? "#b1b1b1" : "#343434"
-                                    border.color: "#b1b1b1"
-                                }
+            x: 0
+            y: panel_top.height
+            width: parent.width
+            height: parent.height - panel_top.height
+            spacing: 10
+
+            Button {
+                id: power_button
+                objectName: "power_button"
+                icon.name: "power-button"
+
+                icon.source: "./images/power-button.png"
+                icon.color: "#620b66"
+
+                Layout.preferredHeight: parent.height/2.5
+                Layout.preferredWidth: parent.height/2.5
+                Layout.maximumHeight: parent.height/2.5
+                Layout.maximumWidth: parent.width/2.5
+                Layout.alignment: Qt.AlignHCenter
+
+                icon.width: parent.height/2.5
+                icon.height: parent.height/2.5
+
+                signal powerSignal(string obj)
+                onClicked:{
+                    power_button.powerSignal("system power on command");
+                }
+                background: Rectangle {
+                                        objectName: "power_button_bg"
+                                        radius: 10
+                                        color: power_button.down? "#b1b1b1" : "#343434"
+                                        border.color: "#b1b1b1"
+                                    }
+                }
+            Button {
+                id: scan_button
+                objectName: "scan_button"
+
+                Layout.preferredHeight: parent.height/3
+                Layout.preferredWidth: parent.width/1.5
+                Layout.maximumHeight: parent.height/3
+                Layout.maximumWidth: parent.width/1.5
+                anchors.rightMargin: 0
+                Layout.alignment: Qt.AlignHCenter
+                property bool scanning: false
+
+                signal scanSignal(string obj)
+                onClicked:{
+                    scan_button.scanSignal("toggle scanning");
+                }
+
+                onScanningChanged: {
+                    if(scanning){
+                        scanning_button_text.text = "Stop Scanning";
+                    }
+                    else{
+                        scanning_button_text.text = "Start Scanning";
+                    }
+                }
+
+                Text {
+                    anchors.fill: parent
+                    id: scanning_button_text
+                    text: "Start Scanning"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    font.pointSize: 30* ui_page.width / 2560
+                    color: "#d4d4d4"
+                }
+
+                background: Rectangle {
+                                        objectName: "scan_button_bg"
+                                        radius: 10
+                                        color: power_button.down? "#b1b1b1" : "#343434"
+                                        border.color: "#b1b1b1"
+                                    }
+                }
             }
         }
+
     }
 
     Rectangle {
@@ -453,14 +540,15 @@ Rectangle{
         color: "black"
         Image{
                     id: opencvImage
-                    objectName: "opencvImage"
+                    objectName: "opencv_image"
                     anchors.fill:parent
                     fillMode: Image.PreserveAspectFit
                     property bool counter: false
                     visible: true
                     source: "./images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg"
-                    asynchronous: true
-                    cache: true
+                    asynchronous: false
+                    cache: false
+                    onSourceChanged: counter = !counter;
         }
         ComboBox {
             currentIndex: 2

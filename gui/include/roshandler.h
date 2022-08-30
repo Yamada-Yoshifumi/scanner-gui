@@ -29,6 +29,7 @@ class ROSHandler: public QObject
 
     public Q_SLOTS:
         void systemPowerToggle();
+        void scanToggle();
         //void resetVelodyneStatus();
         void spinOnce();
 

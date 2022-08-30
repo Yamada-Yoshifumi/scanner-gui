@@ -33,13 +33,19 @@ MainWindow::MainWindow(QWidget *parent) :
     QSizePolicy sp_retain = myviz->sizePolicy();
     sp_retain.setRetainSizeWhenHidden(true);
     myviz->setSizePolicy(sp_retain);
-
     myviz->setHidden(true);
+
+    countdown_widget = new QLabel(this);
+    countdown_widget -> setStyleSheet("background-color: rgba(10,10,10,1);color : white;font-weight: bold; font-size: 200px; qproperty-alignment: AlignCenter;");
+    countdown_widget -> setNum(3);
+    countdown_widget -> setVisible(false);
 
     central_widget_layout = new QGridLayout();
     central_widget_layout->setContentsMargins(0, 0, 0, 0);
     central_widget_layout->addWidget(container, 0, 0, 3, 3);
     central_widget_layout->addWidget(myviz, 0, 0, 2, 3);
+    //central_widget_layout->addWidget(settings_container, 0, 2, 3, 1);
+    //central_widget_layout->addWidget(countdown_widget, 0, 0, 3, 3);
 
     central_widget_layout->setSpacing(0);
     ui->centralwidget->setLayout(central_widget_layout);
@@ -50,6 +56,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject *reboot_button = item->findChild<QObject*>("continue");
     power_button = item->findChild<QObject*>("power_button");
     power_button_bg = item->findChild<QObject*>("power_button_bg");
+    scan_button = item->findChild<QObject*>("scan_button");
+    scan_button_bg = item->findChild<QObject*>("scan_button_bg");
     velodyne_timer = new QTimer();
     velodyne_timer->start(1000);
     imu_timer = new QTimer();
@@ -65,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent) :
     std::string imu_odom;
     n_->param<std::string>("imu_odom", imu_odom, "/odom");
     std::string camera_stream;
-    n_->param<std::string>("camera_stream", camera_stream, "/usb_cam/image_raw");
+    n_->param<std::string>("camera_stream", camera_stream, "/rrbot/camera1/image_raw");
 
 
     velodynesub = n_->subscribe<sensor_msgs::PointCloud2>(velodyne_points, 1, &MainWindow::updateVelodyneStatus, this);
@@ -79,6 +87,20 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
     connect( myviz->fullscreen_button, &QPushButton::clicked, this, &MainWindow::fullscreenToggle);
     connect( reboot_button, SIGNAL(rvizRenderSignal(QString)), this, SLOT(createRVizEvent()));
+
+
+    settingsqmlView = new QQuickView();
+    settingsqmlView->setSource(QUrl(QStringLiteral("qrc:/qml/Settings.qml")));
+    auto offlineStoragePath = QUrl::fromLocalFile(settingsqmlView->engine()->offlineStoragePath());
+    settingsqmlView->engine()->rootContext()->setContextProperty("offlineStoragePath", offlineStoragePath);
+    settings_container = QWidget::createWindowContainer(settingsqmlView, this);
+    settings_container->setMinimumSize(480, 720);
+    settings_container->move(QPoint(this->width() * 9/10, 5));
+    settings_container->adjustSize();
+    settings_container->raise();
+
+    settings_show_button = settingsqmlView->rootObject()->findChild<QObject*>("settings_open_button");
+    connect(settings_show_button, SIGNAL(settingsInvoke(QString)), this, SLOT(showSettings()));
 
 }
 
@@ -104,11 +126,12 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     QSize newSize = event->size();
     if(rootObject) rootObject->setProperty("width",QVariant::fromValue(newSize.width()));
     if(rootObject) rootObject->setProperty("height",QVariant::fromValue(newSize.height()));
+    settings_container->move(QPoint(this->width() - 50, 0));
+    settings_container->adjustSize();
 }
 
 void MainWindow::createRVizEvent()
 {
-
     //ROS_INFO("0");
     myviz->setHidden(false);
     //ROS_INFO("1");
@@ -116,9 +139,11 @@ void MainWindow::createRVizEvent()
     //ROS_INFO("1");
     while(power_button == nullptr)
         power_button = item->findChild<QObject*>("power_button");
+    while(scan_button == nullptr)
+        scan_button = item->findChild<QObject*>("scan_button");
     while(opencv_image == nullptr)
-        opencv_image = item->findChild<QObject*>("opencvImage");
-    //ROS_INFO("2");
+        opencv_image = item->findChild<QObject*>("opencv_image");
+    ROS_INFO("2");
     //unsigned int microsecond = 100000;
 
     //ROS_INFO("2.5");
@@ -137,6 +162,11 @@ void MainWindow::createRVizEvent()
         SIGNAL(powerSignal(QString)),
         this,
         SLOT(powerClickedEmit()));
+    connect(
+        scan_button,
+        SIGNAL(scanSignal(QString)),
+        this,
+        SLOT(scanClickedEmit()));
     connect(videoStreamer,&VideoStreamer::newImage,liveimageprovider,&OpencvImageProvider::updateImage);
     connect(liveimageprovider,
             SIGNAL(imageChanged()),
@@ -146,12 +176,56 @@ void MainWindow::createRVizEvent()
     //ROS_INFO("5");
     videoStreamer->openVideoCamera();
     qmlView->engine()->addImageProvider("live",liveimageprovider);
-
+    counter = false;
 }
 
 void MainWindow::powerClickedEmit(){
 
     emit powerButtonPressed();
+}
+
+void MainWindow::scanClickedEmit(){
+    if (!scan_button->property("scanning").toBool())
+    {
+        countdown_widget -> setVisible(true);
+        central_widget_layout->addWidget(countdown_widget, 0, 0, 3, 3);
+        emit scanButtonPressed();
+        scan_countdown_timer = new QTimer(this);
+        scan_countdown_timer->start(1000);
+        connect(scan_countdown_timer, SIGNAL(timeout()), this, SLOT(updateCountDownNum()));
+    }
+    else{
+        scan_button->setProperty("scanning", false);
+    }
+}
+
+void MainWindow::updateCountDownNum(){
+    int current_number = countdown_widget->text().toInt();
+    if(current_number == 0){
+        central_widget_layout->removeWidget(countdown_widget);
+        countdown_widget ->setVisible(false);
+        countdown_widget ->setNum(3);
+        scan_countdown_timer -> stop();
+        myviz->fullscreen_button->click();
+        scan_button->setProperty("scanning", true);
+    }
+    else{
+        current_number -= 1;
+        countdown_widget->clear();
+        countdown_widget->setNum(current_number);
+    }
+}
+
+void MainWindow::showSettings(){
+    settings_container->move(QPoint(this->width() - 400, 0));
+    settings_container->adjustSize();
+    settings_close_button = settingsqmlView->rootObject()->findChild<QObject*>("settings_close_button");
+    connect(settings_close_button, SIGNAL(settingsClose(QString)), this, SLOT(closeSettings()));
+}
+
+void MainWindow::closeSettings(){
+    settings_container->move(QPoint(this->width() - 50, 0));
+    settings_container->adjustSize();
 }
 
 void MainWindow::updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg){
@@ -193,11 +267,7 @@ void MainWindow::resetCameraStatus(){
 }
 
 void MainWindow::imageReload(){
-    //ROS_INFO("6");
-    bool counter = opencv_image->property("counter").toBool();
-    //ROS_INFO("7");
-    opencv_image->setProperty("counter", !counter);
-    //ROS_INFO("8");
+
     if(videoStreamer->init && videoStreamer->current_frame_ptr != nullptr)
     {
         if(counter){
@@ -207,7 +277,7 @@ void MainWindow::imageReload(){
         {
             opencv_image->setProperty("source", "image://live/image?id=0");
         }
-        opencv_image->setProperty("counter", !counter);
+        counter = !counter;
     }
 }
 

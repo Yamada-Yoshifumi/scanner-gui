@@ -5,7 +5,12 @@ Item {
     anchors.fill: parent
     StackView {
         id: stackview
-        anchors.fill: parent
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
         initialItem: "Bootpage.qml"
     }
 }

@@ -48,6 +48,7 @@ class PowerThread: public QThread{
             roshandler = new ROSHandler();
 
             connect(mainwindow, &MainWindow::powerButtonPressed, roshandler, &ROSHandler::systemPowerToggle, Qt::QueuedConnection);
+            connect(mainwindow, &MainWindow::scanButtonPressed, roshandler, &ROSHandler::scanToggle, Qt::QueuedConnection);
             connect(thread_timer, &QTimer::timeout, this, &PowerThread::spinThreadOnce);
             exec();
         }
@@ -62,7 +63,6 @@ int main(int argc, char **argv)
     QApplication app( argc, argv );
 
     MainWindow* mainwindow = new MainWindow();
-
 
     mainwindow->setStyleSheet("background-color : #442e5d");
     mainwindow->show();

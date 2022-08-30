@@ -1,23 +1,24 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.LocalStorage 2.15
 import "model_handler.js" as JS
 
 Rectangle {
-    id: settings_ui
+    id: settings_camera
     width: parent.width
     height: parent.height
     color: "#442e5d"
     border.color: "#442e5d"
 
     Text {
-        id: settings_header
+        id: settings_camera_header
         x: parent.x
         y: parent.y
         width: parent.width
         height: parent.width / 5
 
         color: "#ffffff"
-        text: "Settings"
+        text: "camera"
         horizontalAlignment: Text.AlignHCenter
         font.pointSize: 100 * parent.width/ 2560
         font.styleName: "Bold"
@@ -25,71 +26,61 @@ Rectangle {
     }
 
     ListModel {
-            id: mvc_model
+            id: mvc_camera_model
+            property int exposure_time: 20
+            /*
             ListElement {
-                name: "LiDAR"
+                name: "Display Reconstruction"
+                value: mvc_camera_model.display_reconstruction_value
                 cache: true
             }
-            ListElement {
-                name: "IMU"
-                cache: true
+            */
+            property bool completed: false
+            Component.onCompleted: {
+                append({name: "Exposure Time(ms)", value: mvc_camera_model.exposure_time});
+                completed = true;
             }
-            ListElement {
-                name: "Camera"
-                cache: true
-            }
-            ListElement{
-                name: "General"
-                cache: true
+
+            // 2. Update the list model:
+            onExposure_timeChanged: {
+                if(completed) setProperty(0, "value", mvc_camera_model.exposure_time);
             }
         }
 
         // 2. Delegate - this describes how to handle each row of data
         Component {
-            id: mvc_delegate
+            id: mvc_camera_delegate
             Row {
-                /*
                 Text {
-                    id: mvc_name
-                    text: qsTr("Name: ") + name
-                    width: 250
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            mvc_listview.currentIndex = index
-                            console.debug("Clicked on name")
-                        }
-                    }
-                }
-                */
-                Text {
-                    id: mvc_level_0
+                    id: mvc_camera_level_1
                     text: name
-                    width: settings_header.width
-                    height: settings_header.width/ 5
+                    width: settings_camera_header.width/2
+                    height: settings_camera_header.width/ 5
                     color: "#d4d4d4"
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: 100 * parent.width/ 2560
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            if(index === 0){
-                                stackview_settings.push("./SettingsLiDAR.qml");
-                            }
-                            else if(index === 1){
-
-                            }
-                            else if(index === 2){
-                                stackview_settings.push("./SettingsCamera.qml");
-                            }
-                            else if(index === 3){
-                                stackview_settings.push("./SettingsGeneral.qml");
-                            }
-
-                            mvc_listview.currentIndex = index
+                            mvc_camera_listview.currentIndex = index
                             console.debug("Clicked on age")
                             JS.doSomething()  // Javascript from file
                         }
+                    }
+                }
+                ComboBox {
+                    currentIndex: value/10
+                    width: settings_camera_header.width/2
+                    height: settings_camera_header.width/ 5
+                    model: [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 ]
+                    onCurrentIndexChanged:{
+                        value = model[currentIndex];
+                        var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+                        db.transaction(
+                            function(tx) {
+                                tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Exposure Time(ms)"', value);
+                            }
+                        )
                     }
                 }
             }
@@ -101,21 +92,21 @@ Rectangle {
             // Put the ListView inside a rectangle for more layout control
             color: "#442e5d"
 
-            anchors.top: settings_header.bottom
-            anchors.bottom: settings_ui.bottom
-            width: settings_ui.width
+            anchors.top: settings_camera_header.bottom
+            anchors.bottom: settings_camera.bottom
+            width: settings_camera.width
             ListView {
-                id: mvc_listview
+                id: mvc_camera_listview
                 anchors.fill: parent
-                model: mvc_model
-                delegate: mvc_delegate
+                model: mvc_camera_model
+                delegate: mvc_camera_delegate
                 highlight: Rectangle {
                     color: "lightsteelblue"
-                    width: mvc_listview.width
+                    width: mvc_camera_listview.width
                     radius: 5
                 }
                 focus: true
-
+                cacheBuffer: 10000
             }
 
 
@@ -158,4 +149,13 @@ Rectangle {
         }
     }
 }
+        Component.onCompleted: {
+            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+            db.transaction(
+                function(tx) {
+                    var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Exposure Time(ms)"');
+                    mvc_camera_model.exposure_time = rs.rows.item(0).value;
+                }
+            )
+        }
 }

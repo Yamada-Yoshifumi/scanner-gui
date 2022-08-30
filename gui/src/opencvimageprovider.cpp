@@ -3,6 +3,8 @@
 
 OpencvImageProvider::OpencvImageProvider(QObject *parent) : QObject(parent), QQuickImageProvider(QQuickImageProvider::Image)
 {
+    image = QImage(200,200,QImage::Format_RGB32);
+    image.fill(QColor("black"));
 }
 
 QImage OpencvImageProvider::requestImage(const QString &id, QSize *size, const QSize &requestedSize)

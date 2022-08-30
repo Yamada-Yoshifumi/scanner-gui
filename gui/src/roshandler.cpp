@@ -39,6 +39,10 @@ void ROSHandler::systemPowerToggle(){
     }
 }
 
+void ROSHandler::scanToggle(){
+    //do nothing yet
+}
+
 void ROSHandler::velodyneOn(){
     velodynePowerSrv.request.command = 1;
 
