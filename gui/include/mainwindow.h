@@ -15,6 +15,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
+using std::stringstream;
+#include <stdio.h>
+#include <string>
+using std::string;
+#include <sstream>
 
 namespace Ui {
 class MainWindow;
@@ -44,7 +49,9 @@ private:
     ros::Subscriber camerasub;
     VideoStreamer *videoStreamer;
     OpencvImageProvider *liveimageprovider;
-    bool counter;
+    QSize newSize;
+    bool settings_shown = false;
+    bool changeInDatabaseResponse();
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -85,6 +92,7 @@ public:
     QLabel* countdown_widget;
     //ROSHandler* roshandler;
     bool power_toggled = false;
+    bool counter;
 
 public Q_SLOTS:
     void createRVizEvent();

@@ -95,12 +95,13 @@ MainWindow::MainWindow(QWidget *parent) :
     settingsqmlView->engine()->rootContext()->setContextProperty("offlineStoragePath", offlineStoragePath);
     settings_container = QWidget::createWindowContainer(settingsqmlView, this);
     settings_container->setMinimumSize(480, 720);
-    settings_container->move(QPoint(this->width() * 9/10, 5));
     settings_container->adjustSize();
+    settings_container->move(QPoint(this->width()*3/2, 0));
     settings_container->raise();
 
     settings_show_button = settingsqmlView->rootObject()->findChild<QObject*>("settings_open_button");
     connect(settings_show_button, SIGNAL(settingsInvoke(QString)), this, SLOT(showSettings()));
+    ROS_INFO("%s", settingsqmlView->engine()->offlineStoragePath().toStdString().c_str());
 }
 
 MainWindow::~MainWindow()
@@ -112,47 +113,94 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::spinOnce(){
+    //this->changeInDatabaseResponse();
     if(ros::ok()){
         ros::spinOnce();
     }
     else
         QApplication::quit();
 }
+/*Moved to main.cpp, the thread there calls methods in ROSHandler
+bool MainWindow::changeInDatabaseResponse(){
+    stringstream ss1;
+    if(sqlite3_open((settingsqmlView->engine()->offlineStoragePath().toStdString() + "/Databases/0f77255fc0fdc1559526d7eca42b4253.sqlite").c_str(), &db) != SQLITE_OK) {
+        printf("ERROR: can't open database: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        return false;
+    }
 
+    //Callback service for day/night light mode toggle
+    ss1 << "SELECT * FROM BooleanSettings where name = \"Daylight Mode\" LIMIT 1;";
+    string sql(ss1.str());
+    if(sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
+        printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        sqlite3_finalize(stmt);
+        return false;
+    }
+
+    if((sqlite3_step(stmt)) == SQLITE_ROW) {
+        if(sqlite3_column_int(stmt, 1) == 1){
+            setStyleSheet("background-color: white;");
+        }
+        else{
+            setStyleSheet("background-color: #442e5d;");
+        }
+    }
+
+    //Callback service for camera_exposure time
+    stringstream ss2;
+    ss2 << "SELECT * FROM BooleanSettings where name = \"Exposure Time(ms)\" LIMIT 1;";
+    string sql2(ss2.str());
+    if(sqlite3_prepare_v2(db, sql2.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
+        printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        sqlite3_finalize(stmt);
+        return false;
+    }
+
+    if((sqlite3_step(stmt)) == SQLITE_ROW) {
+        if(sqlite3_column_int(stmt, 1) != database_camera_exposure_t){
+            database_camera_exposure_t = sqlite3_column_int(stmt, 1);
+            ROS_INFO("camera_exposure changed");
+        }
+    }
+
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
+    return true;
+}
+*/
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
     QQuickItem* rootObject =  qmlView->rootObject();
-    QSize newSize = event->size();
+    newSize = event->size();
     if(rootObject) rootObject->setProperty("width",QVariant::fromValue(newSize.width()));
     if(rootObject) rootObject->setProperty("height",QVariant::fromValue(newSize.height()));
-    settings_container->move(QPoint(this->width() - 50, 0));
-    settings_container->adjustSize();
+
+    rootObject =  settingsqmlView->rootObject();
+    if(rootObject) rootObject->setProperty("height",QVariant::fromValue(newSize.height()));
+    if(!settings_shown){
+        settings_container->resize(settings_container->width(), newSize.height());
+        settings_container->move(QPoint(newSize.width() - 50, 0));
+    }
+    else{
+        settings_container->resize(settings_container->width(), newSize.height());
+        settings_container->move(QPoint(newSize.width() - settings_container->width(), 0));
+    }
 }
 
 void MainWindow::createRVizEvent()
 {
-    //ROS_INFO("0");
     myviz->setHidden(false);
-    //ROS_INFO("1");
     QObject *item = qmlView->rootObject();
-    //ROS_INFO("1");
     while(power_button == nullptr)
         power_button = item->findChild<QObject*>("power_button");
     while(scan_button == nullptr)
         scan_button = item->findChild<QObject*>("scan_button");
     while(opencv_image == nullptr)
         opencv_image = item->findChild<QObject*>("opencv_image");
-    ROS_INFO("2");
-    //unsigned int microsecond = 100000;
 
-    //ROS_INFO("2.5");
-
-    //while(opencv_image->property("source") ==  QString("./images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg"))
-    //{
-    //   usleep(3 * microsecond);
-    //}
-    //    opencv_image->setProperty("visible", true);
-    //ROS_INFO("4");
     videoStreamer = new VideoStreamer();
 
     liveimageprovider = new OpencvImageProvider();
@@ -171,8 +219,6 @@ void MainWindow::createRVizEvent()
             SIGNAL(imageChanged()),
             this,
             SLOT(imageReload()));
-    //ROS_INFO("connections done");
-    //ROS_INFO("5");
     videoStreamer->openVideoCamera();
     qmlView->engine()->addImageProvider("live",liveimageprovider);
     counter = false;
@@ -216,15 +262,19 @@ void MainWindow::updateCountDownNum(){
 }
 
 void MainWindow::showSettings(){
-    settings_container->move(QPoint(this->width() - 400, 0));
+
+    settings_container->move(QPoint(newSize.width() - settings_container->width(), 0));
     settings_container->adjustSize();
     settings_close_button = settingsqmlView->rootObject()->findChild<QObject*>("settings_close_button");
     connect(settings_close_button, SIGNAL(settingsClose(QString)), this, SLOT(closeSettings()));
+    settings_shown = true;
 }
 
 void MainWindow::closeSettings(){
-    settings_container->move(QPoint(this->width() - 50, 0));
+    settings_container->move(QPoint(newSize.width() - 50, 0));
     settings_container->adjustSize();
+    settings_container->adjustSize();
+    settings_shown = false;
 }
 
 void MainWindow::updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg){
@@ -266,7 +316,8 @@ void MainWindow::resetCameraStatus(){
 }
 
 void MainWindow::imageReload(){
-
+    QObject *item = qmlView->rootObject();
+    opencv_image = item->findChild<QObject*>("opencv_image");
     if(videoStreamer->init && videoStreamer->current_frame_ptr != nullptr)
     {
         ROS_INFO("1");

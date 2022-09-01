@@ -4,13 +4,7 @@
 
 VideoStreamer::VideoStreamer()
 {
-    //nh_.reset(new ros::NodeHandle("status"));
     connect(&tUpdate,&QTimer::timeout,this,&VideoStreamer::streamVideo);
-    //connect(&rostimer,&QTimer::timeout,this,&VideoStreamer::spinOnce);
-    //std::string camera_stream;
-    //nh_->param<std::string>("camera_stream", camera_stream, "/usb_cam/image_raw");
-
-    //camerasub = nh_->subscribe(camera_stream, 1, &VideoStreamer::convertROSImage, this);
 
 }
 

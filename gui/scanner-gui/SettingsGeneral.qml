@@ -10,9 +10,8 @@ Rectangle {
     color: "#442e5d"
     border.color: "#442e5d"
     property string textcolor: "#ffffff"
-    Timer {
-            interval: 100; running: true; repeat: true
-            onTriggered: {
+    signal daylightModeChanged(string str)
+    function daylightModeChange(){
                 var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
 
                 db.transaction(
@@ -35,7 +34,6 @@ Rectangle {
                         }
                     }
                 )
-            }
         }
     Text {
         id: settings_general_header
@@ -100,6 +98,7 @@ Rectangle {
                     checked: value
                     width: settings_general_header.width/2
                     height: settings_general_header.width/ 5
+
                     property bool init: false
                     MouseArea {
                         anchors.fill: parent
@@ -109,6 +108,7 @@ Rectangle {
                             db.transaction(
                                 function(tx) {
                                     tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Daylight Mode"', value);
+                                    settings_general.daylightModeChanged("daylight mode toggled");
                                 }
                             )
                         }
@@ -172,6 +172,7 @@ Rectangle {
                     //animation_right_reverse.running = true;
                     //animation_bottom_reverse.running = true;
                     settings_close_button.settingsClose("Show settings panel");
+                    stackview_settings.pagePopedPushed("reload color");
                     }
         background: Rectangle {
             id: power_button_bg
@@ -182,11 +183,28 @@ Rectangle {
     }
 }
         Component.onCompleted: {
+            settings_general.daylightModeChanged.connect(settings_general.daylightModeChange);
             var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
             db.transaction(
                 function(tx) {
                     var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     mvc_general_model.daylight_mode = rs.rows.item(0).value;
+                    rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
+                    var daylight_mode = rs.rows.item(0).value;
+                    if (daylight_mode){
+                        color = "#f5f55b";
+                        border.color = "#f5f55b";
+                        settings_general_header.color = "black";
+                        general_listview.color = "#f7f78d";
+                        textcolor = "black";
+                    }
+                    else{
+                        color = "#442e5d";
+                        border.color = "#442e5d";
+                        settings_general_header.color = "#ffffff";
+                        general_listview.color = "#442e5d";
+                        textcolor = "#ffffff";
+                    }
                 }
             )
         }

@@ -10,33 +10,31 @@ Rectangle {
     color: "#442e5d"
     border.color: "#442e5d"
     property string textcolor: "#ffffff"
-    Timer {
-            interval: 100; running: true; repeat: true
-            onTriggered: {
-                var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+    function daylightModeChange(){
+        var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
 
-                db.transaction(
-                    function(tx) {
-                        var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
-                        var daylight_mode = rs.rows.item(0).value;
-                        if (daylight_mode){
-                            color = "#f5f55b";
-                            border.color = "#f5f55b";
-                            settings_header.color = "black";
-                            listview.color = "#f7f78d";
-                            textcolor = "black";
-                        }
-                        else{
-                            color = "#442e5d";
-                            border.color = "#442e5d";
-                            settings_header.color = "#ffffff";
-                            listview.color = "#442e5d";
-                            textcolor = "#ffffff";
-                        }
-                    }
-                )
+        db.transaction(
+            function(tx) {
+                var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
+                var daylight_mode = rs.rows.item(0).value;
+                if (daylight_mode){
+                    color = "#f5f55b";
+                    border.color = "#f5f55b";
+                    settings_header.color = "black";
+                    listview.color = "#f7f78d";
+                    textcolor = "black";
+                }
+                else{
+                    color = "#442e5d";
+                    border.color = "#442e5d";
+                    settings_header.color = "#ffffff";
+                    listview.color = "#442e5d";
+                    textcolor = "#ffffff";
+                }
             }
-        }
+        )
+    }
+
     Text {
         id: settings_header
         x: parent.x
@@ -187,4 +185,29 @@ Rectangle {
         }
     }
 }
+        Component.onCompleted:  {
+                    stackview_settings.pagePopedPushed.connect(settings_ui.daylightModeChange);
+                    var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+
+                    db.transaction(
+                        function(tx) {
+                            var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
+                            var daylight_mode = rs.rows.item(0).value;
+                            if (daylight_mode){
+                                color = "#f5f55b";
+                                border.color = "#f5f55b";
+                                settings_header.color = "black";
+                                listview.color = "#f7f78d";
+                                textcolor = "black";
+                            }
+                            else{
+                                color = "#442e5d";
+                                border.color = "#442e5d";
+                                settings_header.color = "#ffffff";
+                                listview.color = "#442e5d";
+                                textcolor = "#ffffff";
+                            }
+                        }
+                    )
+                }
 }

@@ -2,11 +2,9 @@
 #include "qapplication.h"
 #include "roshandler.h"
 #include "ros_srv/VelodyneSwitch.h"
-#include "ros_srv/ImuSwitch.h"
 #include <QQuickView>
 #include <QQuickItem>
 #include <QtQml>
-#include <sensor_msgs/PointCloud2.h>
 
 
 ROSHandler::ROSHandler()
@@ -19,6 +17,7 @@ ROSHandler::ROSHandler()
     n_.reset(new ros::NodeHandle("ros_handler"));
 
     velodyneSwitchClient = n_->serviceClient<ros_srv::VelodyneSwitch>("/hardware_signal/velodyneSwitch");
+    cameraExposureUpdateClient = n_->serviceClient<ros_srv::CameraExposure>("/hardware_signal/cameraExposureUpdate");
     connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
 }
 
@@ -54,13 +53,9 @@ void ROSHandler::velodyneOff(){
 
     velodyneSwitchClient.call(velodynePowerSrv);
 }
-/*
-void ROSHandler::updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg){
-    velodyne_timer->start(1000);
-    velodyneCmd = 1;
+void ROSHandler::cameraExposureUpdate(int database_camera_exposure_t){
+    cameraExposureUpdateSrv.request.command = database_camera_exposure_t;
+    if(cameraExposureUpdateClient.call(cameraExposureUpdateSrv)){
+        ROS_INFO("camera exposure time change requested");
+    }
 }
-
-void ROSHandler::resetVelodyneStatus(){
-    velodyneCmd = 0;
-}
-*/

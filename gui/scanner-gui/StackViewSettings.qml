@@ -7,6 +7,7 @@ Item {
         id: stackview_settings
         anchors.fill: parent
         initialItem: "SettingsInit.qml"
+        signal pagePopedPushed(string str)
 
         pushEnter: Transition {
 

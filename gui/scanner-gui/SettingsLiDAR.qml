@@ -10,33 +10,7 @@ Rectangle {
     color: "#442e5d"
     border.color: "#442e5d"
     property string textcolor: "#ffffff"
-    Timer {
-            interval: 100; running: true; repeat: true
-            onTriggered: {
-                var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
 
-                db.transaction(
-                    function(tx) {
-                        var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
-                        var daylight_mode = rs.rows.item(0).value;
-                        if (daylight_mode){
-                            color = "#f5f55b";
-                            border.color = "#f5f55b";
-                            settings_lidar_header.color = "black";
-                            lidar_listview.color = "#f7f78d";
-                            textcolor = "black";
-                        }
-                        else{
-                            color = "#442e5d";
-                            border.color = "#442e5d";
-                            settings_lidar_header.color = "#ffffff";
-                            lidar_listview.color = "#442e5d";
-                            textcolor = "#ffffff";
-                        }
-                    }
-                )
-            }
-        }
     Text {
         id: settings_lidar_header
         x: parent.x
@@ -187,6 +161,22 @@ Rectangle {
                 function(tx) {
                     var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Reconstruction"');
                     mvc_lidar_model.display_reconstruction_value = rs.rows.item(0).value;
+                    rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
+                    var daylight_mode = rs.rows.item(0).value;
+                    if (daylight_mode){
+                        color = "#f5f55b";
+                        border.color = "#f5f55b";
+                        settings_lidar_header.color = "black";
+                        lidar_listview.color = "#f7f78d";
+                        textcolor = "black";
+                    }
+                    else{
+                        color = "#442e5d";
+                        border.color = "#442e5d";
+                        settings_lidar_header.color = "#ffffff";
+                        lidar_listview.color = "#442e5d";
+                        textcolor = "#ffffff";
+                    }
                 }
             )
         }

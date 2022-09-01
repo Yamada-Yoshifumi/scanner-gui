@@ -203,14 +203,24 @@ void MyViz::resetView()
 
 void MyViz::manualZoomOut()
 {
+    if (current_f_distance >= 50)
+    {
+    }
+    else{
         current_f_distance += 0.5;
         manager_->getViewManager()->getCurrent()->subProp("Distance")->setValue( current_f_distance );
+    }
 }
 
 void MyViz::manualZoomIn()
 {
+    if (current_f_distance <= 1)
+    {
+    }
+    else{
         current_f_distance -= 0.5;
         manager_->getViewManager()->getCurrent()->subProp("Distance")->setValue( current_f_distance );
+    }
 }
 
 void MyViz::colourPatternChanged()
@@ -346,6 +356,10 @@ bool MyViz::eventFilter(QObject * p_obj, QEvent * p_event)
         }
         else{
             ROS_INFO("%d", pWheelEvent->pixelDelta().y());
+
+            if ((current_f_distance >= 50 && pWheelEvent->pixelDelta().y() > 0) || (current_f_distance <= 1 && pWheelEvent->pixelDelta().y() < 0))
+                return true;
+
             current_f_distance += pWheelEvent->pixelDelta().y()/10;
             manager_->getViewManager()->getCurrent()->subProp("Distance")->setValue( current_f_distance );
         }
@@ -354,7 +368,7 @@ bool MyViz::eventFilter(QObject * p_obj, QEvent * p_event)
         return true;
     }
     else{
-        qDebug() << "handling an event" << p_event;
+        //qDebug() << "handling an event" << p_event;
 
     }
     return false;
