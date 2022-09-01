@@ -45,6 +45,7 @@ Rectangle {
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Reconstruction", 0 ]);
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Daylight Mode", 0 ]);
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Exposure Time(ms)", 20 ]);
+                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Debug Mode", 0 ]);
                         }
                     )
                 }
@@ -57,8 +58,6 @@ Rectangle {
                     settings_open_button.settingsInvoke("Show settings panel");
                     createDb();
                     //mainLoader.anchors.bottomMargin = settingsLoader.width * root.height/ root.width;
-
-
                  }
 
         background: Rectangle {

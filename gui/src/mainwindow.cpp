@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
     countdown_widget -> setVisible(false);
 
     central_widget_layout = new QGridLayout();
-    central_widget_layout->setContentsMargins(0, 0, 0, 0);
+    central_widget_layout->setContentsMargins(0, 0, 50, 0);
     central_widget_layout->addWidget(container, 0, 0, 3, 3);
     central_widget_layout->addWidget(myviz, 0, 0, 2, 3);
     //central_widget_layout->addWidget(settings_container, 0, 2, 3, 1);
@@ -49,7 +49,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     central_widget_layout->setSpacing(0);
     ui->centralwidget->setLayout(central_widget_layout);
-    centralWidget()->layout()->setContentsMargins(0, 0, 0, 0);
     statusBar()->hide();
 
     QObject *item = qmlView->rootObject();

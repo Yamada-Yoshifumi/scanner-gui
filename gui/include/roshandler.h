@@ -31,6 +31,9 @@ class ROSHandler: public QObject
         void cameraExposureUpdate(int database_camera_exposure_t);
         //void updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg);
 
+    signals:
+        void cameraExposureUpdatedSignal(QString);
+
     public Q_SLOTS:
         void systemPowerToggle();
         void scanToggle();

@@ -69,6 +69,12 @@ MyViz::MyViz( QWidget* parent )
     render_panel_ = new rviz::RenderPanel(this);
     render_panel_->installEventFilter(this);
 
+    logterminal = new LogTerminal(render_panel_);
+    QSizePolicy sp_retain = logterminal->sizePolicy();
+    sp_retain.setRetainSizeWhenHidden(true);
+    logterminal->setSizePolicy(sp_retain);
+    logterminal->setHidden(true);
+
     touchpad = new TouchPad(render_panel_);
     touchpad->setStyleSheet("background-color: rgba(10,10,10,0.8);");
 
@@ -102,6 +108,7 @@ MyViz::MyViz( QWidget* parent )
     main_layout = new QGridLayout;
     main_layout->setContentsMargins(5,5,5,5);
     main_layout->addWidget( touchpad, 0, 30, 9, 15);
+    main_layout->addWidget( logterminal, 0, 30, 9, 15);
     main_layout->addWidget(zoomin_button, 9, 30, 1, 5);
     main_layout->addWidget(zoomout_button, 9, 35, 1, 5);
     main_layout->addWidget(reset_button, 9, 40, 1, 5);

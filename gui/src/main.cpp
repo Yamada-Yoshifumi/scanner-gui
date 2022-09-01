@@ -2,7 +2,6 @@
 #include <QApplication>
 #include <QQuickWidget>
 #include "mainwindow.h"
-
 #include <ros/ros.h>
 #include "roshandler.h"
 #include <QQuickView>
@@ -12,9 +11,9 @@
 #include <QtQml>
 #include <QThread>
 #include <QTimer>
-#include <chrono>
 #include <thread>
-
+#include <chrono>
+#include <ctime>
 
 class PowerThread: public QThread{
     ROSHandler* roshandler;
@@ -26,6 +25,8 @@ class PowerThread: public QThread{
         sqlite3* db;
         sqlite3_stmt* stmt;
         int database_camera_exposure_t = 20;
+        int database_debug_mode = 0;
+        std::string debug_text;
 
     public:
 
@@ -47,19 +48,31 @@ class PowerThread: public QThread{
         void run() override{
 
             thread_timer = new QTimer();
-            thread_timer->start(100);
+            thread_timer->start(1000);
 
             roshandler = new ROSHandler();
 
             connect(mainwindow, &MainWindow::powerButtonPressed, roshandler, &ROSHandler::systemPowerToggle, Qt::QueuedConnection);
             connect(mainwindow, &MainWindow::scanButtonPressed, roshandler, &ROSHandler::scanToggle, Qt::QueuedConnection);
             connect(thread_timer, &QTimer::timeout, this, &PowerThread::spinThreadOnce);
+            connect(roshandler, &ROSHandler::cameraExposureUpdatedSignal, this, &PowerThread::updateCameraExposureDebugText);
             exec();
+        }
+
+        void updateCameraExposureDebugText(){
+
+            std::chrono::system_clock::time_point end = std::chrono::system_clock::now();
+            std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+            debug_text.append(std::ctime(&end_time));
+            debug_text.append(": Camera Exposure Update Query Sent!\n");
         }
 
         bool changeInDatabaseResponse(){
             stringstream ss1;
-            if(sqlite3_open((mainwindow->settingsqmlView->engine()->offlineStoragePath().toStdString() + "/Databases/0f77255fc0fdc1559526d7eca42b4253.sqlite").c_str(), &db) != SQLITE_OK) {
+            QByteArray array = QCryptographicHash::hash("ScannerSettingsDB", QCryptographicHash::Md5);
+            if(sqlite3_open((mainwindow->settingsqmlView->engine()->offlineStoragePath().toStdString() + "/Databases/" + array.toHex().toStdString()
+                              + ".sqlite").c_str(), &db) != SQLITE_OK) {
                 printf("ERROR: can't open database: %s\n", sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return false;
@@ -101,6 +114,33 @@ class PowerThread: public QThread{
                     ROS_INFO("camera_exposure changed");
                     roshandler->cameraExposureUpdate(database_camera_exposure_t);
                 }
+            }
+
+            //Callback service for debug mode
+            stringstream ss3;
+            ss3 << "SELECT * FROM BooleanSettings where name = \"Debug Mode\" LIMIT 1;";
+            string sql3(ss3.str());
+            if(sqlite3_prepare_v2(db, sql3.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
+                printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
+                sqlite3_close(db);
+                sqlite3_finalize(stmt);
+                return false;
+            }
+
+            if((sqlite3_step(stmt)) == SQLITE_ROW) {
+                if(sqlite3_column_int(stmt, 1) != database_debug_mode){
+                    database_debug_mode = sqlite3_column_int(stmt, 1);
+                    ROS_INFO("debug mode toggled");
+                }
+            }
+            if(database_debug_mode == 1){
+                mainwindow->myviz->logterminal->text_box->setPlainText(QString(debug_text.c_str()));
+                mainwindow->myviz->logterminal->setHidden(false);
+            }
+            else{
+                mainwindow->myviz->logterminal->setHidden(true);
+                mainwindow->myviz->logterminal->text_box->setPlainText(QString(""));
+                debug_text = "";
             }
 
             sqlite3_finalize(stmt);

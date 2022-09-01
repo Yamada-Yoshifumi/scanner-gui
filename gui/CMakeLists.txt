@@ -62,6 +62,8 @@ add_executable(qt_gui
     include/opencvimageprovider.h
     src/touchpad.cpp
     include/touchpad.h
+    src/logterminal.cpp
+    include/logterminal.h
 )
 
 #set_target_properties(scanner_gui PROPERTIES

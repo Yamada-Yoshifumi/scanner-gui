@@ -56,6 +56,7 @@ void ROSHandler::velodyneOff(){
 void ROSHandler::cameraExposureUpdate(int database_camera_exposure_t){
     cameraExposureUpdateSrv.request.command = database_camera_exposure_t;
     if(cameraExposureUpdateClient.call(cameraExposureUpdateSrv)){
-        ROS_INFO("camera exposure time change requested");
+        ROS_INFO("camera update request received");
+        emit cameraExposureUpdatedSignal("updated");
     }
 }

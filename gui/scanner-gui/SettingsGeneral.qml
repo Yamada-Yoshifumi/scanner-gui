@@ -53,6 +53,7 @@ Rectangle {
     ListModel {
             id: mvc_general_model
             property int daylight_mode: 0
+            property int debug_mode: 0
             /*
             ListElement {
                 name: "Display Reconstruction"
@@ -63,12 +64,16 @@ Rectangle {
             property bool completed: false
             Component.onCompleted: {
                 append({name: "Daylight Mode", value: mvc_general_model.daylight_mode});
+                append({name: "Debug Mode", value: mvc_general_model.debug_mode});
                 completed = true;
             }
 
             // 2. Update the list model:
             onDaylight_modeChanged: {
                 if(completed) setProperty(0, "value", mvc_general_model.daylight_mode);
+            }
+            onDebug_modeChanged: {
+                if(completed) setProperty(1, "value", mvc_general_model.debug_mode);
             }
         }
 
@@ -107,8 +112,13 @@ Rectangle {
                             var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
                             db.transaction(
                                 function(tx) {
-                                    tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Daylight Mode"', value);
-                                    settings_general.daylightModeChanged("daylight mode toggled");
+                                    if(name === "Daylight Mode"){
+                                        tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Daylight Mode"', value);
+                                        settings_general.daylightModeChanged("daylight mode toggled");
+                                    }
+                                    else if(name === "Debug Mode"){
+                                        tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Debug Mode"', value);
+                                    }
                                 }
                             )
                         }
@@ -189,7 +199,6 @@ Rectangle {
                 function(tx) {
                     var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     mvc_general_model.daylight_mode = rs.rows.item(0).value;
-                    rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     var daylight_mode = rs.rows.item(0).value;
                     if (daylight_mode){
                         color = "#f5f55b";
@@ -205,6 +214,8 @@ Rectangle {
                         general_listview.color = "#442e5d";
                         textcolor = "#ffffff";
                     }
+                    rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Debug Mode"');
+                    mvc_general_model.debug_mode = rs.rows.item(0).value;
                 }
             )
         }

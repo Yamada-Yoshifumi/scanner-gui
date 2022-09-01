@@ -35,6 +35,7 @@
 #include <QWheelEvent>
 #include <QTextEdit>
 #include "touchpad.h"
+#include "logterminal.h"
 #include <QComboBox>
 
 namespace rviz
@@ -54,6 +55,7 @@ public:
     MyViz( QWidget* parent = 0 );
     QPushButton* fullscreen_button;
     TouchPad* touchpad;
+    LogTerminal* logterminal;
     QGridLayout* main_layout;
     rviz::VisualizationManager* manager_;
     rviz::RenderPanel* render_panel_;
