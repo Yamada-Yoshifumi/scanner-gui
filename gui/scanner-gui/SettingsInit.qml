@@ -46,6 +46,7 @@ Rectangle {
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Daylight Mode", 0 ]);
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Exposure Time(ms)", 20 ]);
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Debug Mode", 0 ]);
+                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Default Colour Pattern", 0 ]);
                         }
                     )
                 }

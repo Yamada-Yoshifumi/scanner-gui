@@ -11,6 +11,7 @@
 #include <QtQml>
 #include <QThread>
 #include <QTimer>
+#include <QScrollBar>
 #include <thread>
 #include <chrono>
 #include <ctime>
@@ -26,7 +27,11 @@ class PowerThread: public QThread{
         sqlite3_stmt* stmt;
         int database_camera_exposure_t = 20;
         int database_debug_mode = 0;
+        int database_reconstruction = 0;
         std::string debug_text;
+        std::string previous_time_stamp;
+        std::string this_time_stamp;
+        QTextEdit* debug_text_box;
 
     public:
 
@@ -55,17 +60,21 @@ class PowerThread: public QThread{
             connect(mainwindow, &MainWindow::powerButtonPressed, roshandler, &ROSHandler::systemPowerToggle, Qt::QueuedConnection);
             connect(mainwindow, &MainWindow::scanButtonPressed, roshandler, &ROSHandler::scanToggle, Qt::QueuedConnection);
             connect(thread_timer, &QTimer::timeout, this, &PowerThread::spinThreadOnce);
-            connect(roshandler, &ROSHandler::cameraExposureUpdatedSignal, this, &PowerThread::updateCameraExposureDebugText);
+            connect(roshandler, &ROSHandler::hardwareOnSignal, this, &PowerThread::updateDebugText);
+            connect(roshandler, &ROSHandler::hardwareOffSignal, this, &PowerThread::updateDebugText);
+            connect(roshandler, &ROSHandler::cameraExposureUpdatedSignal, this, &PowerThread::updateDebugText);
+            connect(roshandler, &ROSHandler::reconstructionUpdatedSignal, this, &PowerThread::updateDebugText);
             exec();
         }
 
-        void updateCameraExposureDebugText(){
+        void updateDebugText(const QString &s){
 
             std::chrono::system_clock::time_point end = std::chrono::system_clock::now();
             std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
+            this_time_stamp = std::ctime(&end_time);
             debug_text.append(std::ctime(&end_time));
-            debug_text.append(": Camera Exposure Update Query Sent!\n");
+            debug_text.append(s.toStdString() + "\n");
         }
 
         bool changeInDatabaseResponse(){
@@ -116,11 +125,30 @@ class PowerThread: public QThread{
                 }
             }
 
-            //Callback service for debug mode
+            //Callback service for reconstruction
             stringstream ss3;
-            ss3 << "SELECT * FROM BooleanSettings where name = \"Debug Mode\" LIMIT 1;";
+            ss3 << "SELECT * FROM BooleanSettings where name = \"Reconstruction\" LIMIT 1;";
             string sql3(ss3.str());
             if(sqlite3_prepare_v2(db, sql3.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
+                printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
+                sqlite3_close(db);
+                sqlite3_finalize(stmt);
+                return false;
+            }
+
+            if((sqlite3_step(stmt)) == SQLITE_ROW) {
+                if(sqlite3_column_int(stmt, 1) != database_reconstruction){
+                    database_reconstruction = sqlite3_column_int(stmt, 1);
+                    ROS_INFO("Reconstruction status changed");
+                    roshandler->reconstructionUpdate(database_reconstruction);
+                }
+            }
+
+            //Callback service for debug mode
+            stringstream ss_d;
+            ss_d << "SELECT * FROM BooleanSettings where name = \"Debug Mode\" LIMIT 1;";
+            string sql_d(ss_d.str());
+            if(sqlite3_prepare_v2(db, sql_d.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
                 printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
                 sqlite3_close(db);
                 sqlite3_finalize(stmt);
@@ -133,15 +161,24 @@ class PowerThread: public QThread{
                     ROS_INFO("debug mode toggled");
                 }
             }
+
+            debug_text_box = mainwindow->myviz->logterminal->text_box;
+
             if(database_debug_mode == 1){
-                mainwindow->myviz->logterminal->text_box->setPlainText(QString(debug_text.c_str()));
-                mainwindow->myviz->logterminal->setHidden(false);
+                if(this_time_stamp != previous_time_stamp){
+                    debug_text_box->setPlainText(QString(debug_text.c_str()));
+                    debug_text_box->verticalScrollBar()->setValue(debug_text_box->verticalScrollBar()->maximum());
+                    mainwindow->myviz->logterminal->setHidden(false);
+                    previous_time_stamp = this_time_stamp;
+                }
             }
             else{
                 mainwindow->myviz->logterminal->setHidden(true);
-                mainwindow->myviz->logterminal->text_box->setPlainText(QString(""));
+                debug_text_box->setPlainText(QString(""));
                 debug_text = "";
             }
+
+
 
             sqlite3_finalize(stmt);
             sqlite3_close(db);

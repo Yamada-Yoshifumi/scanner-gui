@@ -46,17 +46,23 @@ void ROSHandler::velodyneOn(){
     velodynePowerSrv.request.command = 1;
 
     velodyneSwitchClient.call(velodynePowerSrv);
+    emit hardwareOnSignal("Hardware on requested");
 }
 
 void ROSHandler::velodyneOff(){
     velodynePowerSrv.request.command = 0;
 
     velodyneSwitchClient.call(velodynePowerSrv);
+    emit hardwareOffSignal("Hardware off requested");
 }
 void ROSHandler::cameraExposureUpdate(int database_camera_exposure_t){
     cameraExposureUpdateSrv.request.command = database_camera_exposure_t;
     if(cameraExposureUpdateClient.call(cameraExposureUpdateSrv)){
         ROS_INFO("camera update request received");
-        emit cameraExposureUpdatedSignal("updated");
+        emit cameraExposureUpdatedSignal("Camera exposure time update requested");
     }
+}
+
+void ROSHandler::reconstructionUpdate(int database_reconstruction){
+    emit reconstructionUpdatedSignal("Reconstruction status update requested");
 }

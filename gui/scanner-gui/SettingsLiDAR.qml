@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.LocalStorage 2.15
+import Qt.labs.qmlmodels 1.0
 import "model_handler.js" as JS
 
 Rectangle {
@@ -29,6 +30,7 @@ Rectangle {
     ListModel {
             id: mvc_lidar_model
             property int display_reconstruction_value: 0
+            property int default_colour_pattern: 0
             /*
             ListElement {
                 name: "Display Reconstruction"
@@ -39,15 +41,19 @@ Rectangle {
             property bool completed: false
             Component.onCompleted: {
                 append({name: "Reconstruction", value: mvc_lidar_model.display_reconstruction_value});
+                append({name: "Default Colour Pattern", value: mvc_lidar_model.default_colour_pattern});
                 completed = true;
             }
 
             // 2. Update the list model:
             onDisplay_reconstruction_valueChanged:  {
-                if(completed) setProperty(0, "value", mvc_lidar_model.display_reconstruction_value);
+                if(completed) {
+                    setProperty(0, "value", mvc_lidar_model.display_reconstruction_value);
+                    setProperty(1, "value", mvc_lidar_model.default_colour_pattern);
+                }
             }
         }
-
+/*
         // 2. Delegate - this describes how to handle each row of data
         Component {
             id: mvc_lidar_delegate
@@ -89,8 +95,130 @@ Rectangle {
                     }
                 }
             }
-        }
+        }*/
+/*
+            // 2. Delegate - this describes how to handle each row of data
+            Component {
+                id: mvc_lidar_delegate_combobox
+                Row {
+                    Text {
+                        id: mvc_lidar_combobox_level_1
+                        text: name
+                        width: settings_lidar_header.width/2
+                        height: settings_lidar_header.width/ 5
+                        color: settings_lidar.textcolor
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pointSize: 100 * parent.width/ 2560
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                mvc_lidar_listview.currentIndex = index
+                                console.debug("Clicked on age")
+                                JS.doSomething()  // Javascript from file
+                            }
+                        }
+                    }
+                    ComboBox {
+                        currentIndex: value
+                        width: settings_lidar_header.width/2
+                        height: settings_lidar_header.width/ 5
+                        model: ["Intensity", "AxisColor", "Uncertainty", "FlatColor"]
+                        onCurrentIndexChanged:{
+                            value = currentIndex;
+                            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+                            db.transaction(
+                                function(tx) {
+                                    tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Default Colour Pattern"', currentIndex);
+                                }
+                            )
+                        }
+                    }
+                }
+            }
+*/
+            DelegateChooser {
+                    id: chooser
+                    role: "name"
+                    DelegateChoice { roleValue: "Reconstruction";         Component {
+                            id: mvc_lidar_delegate
+                            Row {
+                                Text {
+                                    id: mvc_lidar_level_1
+                                    text: name
+                                    width: settings_lidar_header.width/2
+                                    height: settings_lidar_header.width/ 5
+                                    color: settings_lidar.textcolor
+                                    horizontalAlignment: Text.AlignHCenter
+                                    font.pointSize: 100 * parent.width/ 2560
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: {
+                                            mvc_lidar_listview.currentIndex = index
+                                            console.debug("Clicked on age")
+                                            JS.doSomething()  // Javascript from file
+                                        }
+                                    }
+                                }
+                                Switch {
+                                    position: value
+                                    checked: value
+                                    width: settings_lidar_header.width/2
+                                    height: settings_lidar_header.width/ 5
+                                    property bool init: false
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: {
+                                            value = value === 0? 1: 0;
+                                            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+                                            db.transaction(
+                                                function(tx) {
+                                                    tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Reconstruction"', value);
+                                                }
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                        }}
 
+                    DelegateChoice { roleValue: "Default Colour Pattern";             Component {
+                            id: mvc_lidar_delegate_combobox
+                            Row {
+                                Text {
+                                    id: mvc_lidar_combobox_level_1
+                                    text: name
+                                    width: settings_lidar_header.width/2
+                                    height: settings_lidar_header.width/ 5
+                                    color: settings_lidar.textcolor
+                                    horizontalAlignment: Text.AlignHCenter
+                                    font.pointSize: 100 * parent.width/ 2560
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: {
+                                            mvc_lidar_listview.currentIndex = index
+                                            console.debug("Clicked on age")
+                                            JS.doSomething()  // Javascript from file
+                                        }
+                                    }
+                                }
+                                ComboBox {
+                                    currentIndex: value
+                                    width: settings_lidar_header.width/2
+                                    height: settings_lidar_header.width/ 5
+                                    model: ["Intensity", "AxisColor", "Uncertainty", "FlatColor"]
+                                    onCurrentIndexChanged:{
+                                        value = currentIndex;
+                                        var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+                                        db.transaction(
+                                            function(tx) {
+                                                tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Default Colour Pattern"', currentIndex);
+                                            }
+                                        )
+                                    }
+                                }
+                            }
+                        } }
+                }
 
         // 3. ListView - this displays the rows as a list.
         Rectangle {
@@ -105,7 +233,8 @@ Rectangle {
                 id: mvc_lidar_listview
                 anchors.fill: parent
                 model: mvc_lidar_model
-                delegate: mvc_lidar_delegate
+                delegate: chooser
+
                 highlight: Rectangle {
                     color: "lightsteelblue"
                     width: mvc_lidar_listview.width
@@ -114,6 +243,7 @@ Rectangle {
                 focus: true
                 cacheBuffer: 10000
             }
+        }
 
 
     Button {
@@ -154,13 +284,15 @@ Rectangle {
             border.color: "#3afbfbfb"
         }
     }
-}
+
         Component.onCompleted: {
             var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
             db.transaction(
                 function(tx) {
                     var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Reconstruction"');
                     mvc_lidar_model.display_reconstruction_value = rs.rows.item(0).value;
+                    rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Default Colour Pattern"');
+                    mvc_lidar_model.default_colour_pattern = rs.rows.item(0).value;
                     rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     var daylight_mode = rs.rows.item(0).value;
                     if (daylight_mode){

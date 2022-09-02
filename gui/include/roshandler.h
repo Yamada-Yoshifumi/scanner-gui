@@ -29,10 +29,14 @@ class ROSHandler: public QObject
         void velodyneOn();
         void velodyneOff();
         void cameraExposureUpdate(int database_camera_exposure_t);
+        void reconstructionUpdate(int database_reconstruction);
         //void updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg);
 
     signals:
         void cameraExposureUpdatedSignal(QString);
+        void hardwareOnSignal(QString);
+        void hardwareOffSignal(QString);
+        void reconstructionUpdatedSignal(QString);
 
     public Q_SLOTS:
         void systemPowerToggle();
