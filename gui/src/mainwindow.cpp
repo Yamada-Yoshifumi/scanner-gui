@@ -100,6 +100,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     settings_show_button = settingsqmlView->rootObject()->findChild<QObject*>("settings_open_button");
     connect(settings_show_button, SIGNAL(settingsInvoke(QString)), this, SLOT(showSettings()));
+
     ROS_INFO("%s", settingsqmlView->engine()->offlineStoragePath().toStdString().c_str());
 }
 
@@ -189,18 +190,16 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     }
 }
 
-void MainWindow::switchVideoSource(){
-    if(camera_source == 0){
-        std::string camera_stream;
-        n_->param<std::string>("camera_stream", camera_stream, "/rrbot/camera2/image_raw");
-        camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &MainWindow::updateCameraStatus, this);
-        camera_source = 1;
-    }
-    else if(camera_source == 1){
+void MainWindow::switchVideoSource(int source){
+    if(source == 0){
         std::string camera_stream;
         n_->param<std::string>("camera_stream", camera_stream, "/rrbot/camera1/image_raw");
         camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &MainWindow::updateCameraStatus, this);
-        camera_source = 0;
+    }
+    else if(source == 1){
+        std::string camera_stream;
+        n_->param<std::string>("camera_stream", camera_stream, "/rrbot/camera2/image_raw");
+        camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &MainWindow::updateCameraStatus, this);
     }
 }
 
@@ -216,9 +215,11 @@ void MainWindow::createRVizEvent()
         opencv_image = item->findChild<QObject*>("opencv_image");
     while(camera_selection == nullptr)
         camera_selection = item->findChild<QObject*>("video_selection");
+
     videoStreamer = new VideoStreamer();
 
     liveimageprovider = new OpencvImageProvider();
+
     connect(
         power_button,
         SIGNAL(powerSignal(QString)),
@@ -234,10 +235,6 @@ void MainWindow::createRVizEvent()
             SIGNAL(imageChanged()),
             this,
             SLOT(imageReload()));
-    connect(camera_selection,
-            SIGNAL(sourceChangeSignal(QString)),
-            this,
-            SLOT(switchVideoSource()));
     videoStreamer->openVideoCamera();
     qmlView->engine()->addImageProvider("live",liveimageprovider);
     counter = false;

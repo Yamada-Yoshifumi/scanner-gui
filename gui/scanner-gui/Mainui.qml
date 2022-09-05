@@ -585,18 +585,34 @@ Rectangle{
                     cache: false
                     onSourceChanged: counter = !counter;
         }
-        ComboBox {
-            id: video_selection
-            objectName: "video_selection"
-            currentIndex: 0
-            signal sourceChangeSignal(string obj)
-            model: [ "Camera 1", "Camera 2"]
-            onCurrentIndexChanged: {
-                video_selection.sourceChangeSignal("index changed");
-            }
 
-            width: 300* ui_page.width/2560
-            height: 80* ui_page.width/2560
+    }
+    ComboBox {
+        id: video_selection
+        objectName: "video_selection"
+        x:videoOutput.x
+        y:videoOutput.y
+        width: 300* ui_page.width/2560
+        height: 80* ui_page.width/2560
+        currentIndex: 0
+        signal sourceChangeSignal(string obj)
+        model: [ "Camera 1", "Camera 2"]
+        onCurrentIndexChanged: {
+            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+            db.transaction(
+                function(tx) {
+                    tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Video Source"', currentIndex);
+                }
+            )
+        }
+        Component.onCompleted: {
+            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+            db.transaction(
+                function(tx) {
+                    var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Video Source" LIMIT 1');
+                    currentIndex = rs.rows.item(0).value;
+                }
+            )
         }
     }
 }

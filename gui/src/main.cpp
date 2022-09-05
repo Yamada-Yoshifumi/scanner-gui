@@ -30,6 +30,7 @@ class PowerThread: public QThread{
         int database_debug_mode = 0;
         int database_reconstruction = 0;
         int database_colour_pattern = 0;
+        int database_current_camera = 0;
         std::string debug_text = "";
         std::string previous_time_stamp = "0";
         std::string this_time_stamp = "0";
@@ -171,6 +172,25 @@ class PowerThread: public QThread{
                     database_colour_pattern = sqlite3_column_int(stmt, 1);
                     ROS_INFO("Default colour pattern changed");
                     mainwindow->myviz->combo->setCurrentIndex(database_colour_pattern);
+                }
+            }
+
+            //Callback service for default lidar colour pattern
+            stringstream ss5;
+            ss5 << "SELECT * FROM BooleanSettings where name = \"Video Source\" LIMIT 1;";
+            string sql5(ss5.str());
+            if(sqlite3_prepare_v2(db, sql5.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
+                printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
+                sqlite3_close(db);
+                sqlite3_finalize(stmt);
+                return false;
+            }
+
+            if((sqlite3_step(stmt)) == SQLITE_ROW) {
+                if(sqlite3_column_int(stmt, 1) != database_current_camera){
+                    database_current_camera = sqlite3_column_int(stmt, 1);
+                    ROS_INFO("camera changed");
+                    mainwindow->switchVideoSource(database_current_camera);
                 }
             }
 

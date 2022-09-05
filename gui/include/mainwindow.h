@@ -62,6 +62,7 @@ public:
     void updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg);
     void updateImuStatus(const nav_msgs::OdometryConstPtr &msg);
     void updateCameraStatus(const sensor_msgs::ImageConstPtr &msg);
+    void switchVideoSource(int source);
     QQuickView *qmlView;
     QQuickView *settingsqmlView;
     QGridLayout* central_widget_layout;
@@ -95,7 +96,6 @@ public:
     //ROSHandler* roshandler;
     bool power_toggled = false;
     bool counter;
-    int camera_source = 0;
 
 public Q_SLOTS:
     void createRVizEvent();
@@ -110,7 +110,6 @@ public Q_SLOTS:
     void updateCountDownNum();
     void showSettings();
     void closeSettings();
-    void switchVideoSource();
     //void systemOn();
 };
 
