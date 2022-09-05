@@ -189,6 +189,21 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     }
 }
 
+void MainWindow::switchVideoSource(){
+    if(camera_source == 0){
+        std::string camera_stream;
+        n_->param<std::string>("camera_stream", camera_stream, "/rrbot/camera2/image_raw");
+        camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &MainWindow::updateCameraStatus, this);
+        camera_source = 1;
+    }
+    else if(camera_source == 1){
+        std::string camera_stream;
+        n_->param<std::string>("camera_stream", camera_stream, "/rrbot/camera1/image_raw");
+        camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &MainWindow::updateCameraStatus, this);
+        camera_source = 0;
+    }
+}
+
 void MainWindow::createRVizEvent()
 {
     myviz->setHidden(false);
@@ -199,7 +214,8 @@ void MainWindow::createRVizEvent()
         scan_button = item->findChild<QObject*>("scan_button");
     while(opencv_image == nullptr)
         opencv_image = item->findChild<QObject*>("opencv_image");
-
+    while(camera_selection == nullptr)
+        camera_selection = item->findChild<QObject*>("video_selection");
     videoStreamer = new VideoStreamer();
 
     liveimageprovider = new OpencvImageProvider();
@@ -218,9 +234,14 @@ void MainWindow::createRVizEvent()
             SIGNAL(imageChanged()),
             this,
             SLOT(imageReload()));
+    connect(camera_selection,
+            SIGNAL(sourceChangeSignal(QString)),
+            this,
+            SLOT(switchVideoSource()));
     videoStreamer->openVideoCamera();
     qmlView->engine()->addImageProvider("live",liveimageprovider);
     counter = false;
+
 }
 
 void MainWindow::powerClickedEmit(){

@@ -94,6 +94,7 @@ Rectangle {
                     height: settings_header.width/ 5
                     color: settings_ui.textcolor
                     horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                     font.pointSize: 100 * parent.width/ 2560
                     MouseArea {
                         anchors.fill: parent

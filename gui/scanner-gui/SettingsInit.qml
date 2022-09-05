@@ -20,8 +20,8 @@ Rectangle {
         icon.name: "settings"
         icon.source: "./images/settings-17-128.gif"
         icon.color: "#620b66"
-        icon.width: 50
-        icon.height: 50
+        icon.width: 40
+        icon.height: 40
         signal settingsInvoke(string obj)
         /*
         OpacityAnimator {

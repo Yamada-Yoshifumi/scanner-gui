@@ -88,7 +88,6 @@ class PowerThread: public QThread{
                 sqlite3_close(db);
                 return false;
             }
-
             //Callback service for day/night light mode toggle
             ss1 << "SELECT * FROM BooleanSettings where name = \"Daylight Mode\" LIMIT 1;";
             string sql(ss1.str());
@@ -103,10 +102,18 @@ class PowerThread: public QThread{
                 if(sqlite3_column_int(stmt, 1) == 1){
                     mainwindow->setStyleSheet("background-color: white;");
                     mainwindow->myviz->logterminal->text_box->setStyleSheet("background-color: white; color: black; font-size: 20px");
+                    mainwindow->myviz->reset_button->setStyleSheet("background-color: #fafaa2;");
+                    mainwindow->myviz->fullscreen_button->setStyleSheet("background-color: #fafaa2;");
+                    mainwindow->myviz->zoomin_button->setStyleSheet("background-color: #fafaa2;");
+                    mainwindow->myviz->zoomout_button->setStyleSheet("background-color: #fafaa2;");
                 }
                 else{
                     mainwindow->setStyleSheet("background-color: #442e5d;");
                     mainwindow->myviz->logterminal->text_box->setStyleSheet("background-color: black; color: white; font-size: 20px");
+                    mainwindow->myviz->reset_button->setStyleSheet("background-color: #442e5d;");
+                    mainwindow->myviz->fullscreen_button->setStyleSheet("background-color: #442e5d;");
+                    mainwindow->myviz->zoomin_button->setStyleSheet("background-color: #442e5d;");
+                    mainwindow->myviz->zoomout_button->setStyleSheet("background-color: #442e5d;");
                 }
             }
 
@@ -204,8 +211,6 @@ class PowerThread: public QThread{
                 debug_text_box->setPlainText(QString(""));
                 debug_text = "";
             }
-
-
 
             sqlite3_finalize(stmt);
             sqlite3_close(db);

@@ -148,6 +148,7 @@ Rectangle {
                                     height: settings_lidar_header.width/ 5
                                     color: settings_lidar.textcolor
                                     horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
                                     font.pointSize: 100 * parent.width/ 2560
                                     MouseArea {
                                         anchors.fill: parent
@@ -189,6 +190,7 @@ Rectangle {
                                     height: settings_lidar_header.width/ 5
                                     color: settings_lidar.textcolor
                                     horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
                                     font.pointSize: 100 * parent.width/ 2560
                                     MouseArea {
                                         anchors.fill: parent

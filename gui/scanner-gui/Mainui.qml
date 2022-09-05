@@ -557,7 +557,7 @@ Rectangle{
                 background: Rectangle {
                                         objectName: "scan_button_bg"
                                         radius: 10
-                                        color: power_button.down? "#b1b1b1" : "#343434"
+                                        color: scan_button.down? "#b1b1b1" : "#343434"
                                         border.color: "#b1b1b1"
                                     }
                 }
@@ -586,11 +586,17 @@ Rectangle{
                     onSourceChanged: counter = !counter;
         }
         ComboBox {
-            currentIndex: 2
-            model: [ "Banana", "Apple", "Coconut" ]
-            width: 200* ui_page.width/2560
+            id: video_selection
+            objectName: "video_selection"
+            currentIndex: 0
+            signal sourceChangeSignal(string obj)
+            model: [ "Camera 1", "Camera 2"]
+            onCurrentIndexChanged: {
+                video_selection.sourceChangeSignal("index changed");
+            }
+
+            width: 300* ui_page.width/2560
             height: 80* ui_page.width/2560
-            onCurrentIndexChanged: console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).color)
         }
     }
 }

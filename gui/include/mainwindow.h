@@ -84,6 +84,7 @@ public:
     QObject *camera_status_pic;
 
     QObject *opencv_image;
+    QObject *camera_selection;
     QWidget *container;
     QWidget *settings_container;
     int velodyne_status = 0;
@@ -94,6 +95,7 @@ public:
     //ROSHandler* roshandler;
     bool power_toggled = false;
     bool counter;
+    int camera_source = 0;
 
 public Q_SLOTS:
     void createRVizEvent();
@@ -108,8 +110,8 @@ public Q_SLOTS:
     void updateCountDownNum();
     void showSettings();
     void closeSettings();
+    void switchVideoSource();
     //void systemOn();
-
 };
 
 #endif // MAINWINDOW_H

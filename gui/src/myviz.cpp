@@ -81,12 +81,14 @@ MyViz::MyViz( QWidget* parent )
     fullscreen_button = new QPushButton(this);
     fullscreen_button->setObjectName(QStringLiteral("fullscreen_button"));
     fullscreen_button->setIcon(QIcon(":/qml/images/fullscreen.svg"));
-    fullscreen_button->setStyleSheet("background-color:gray;");
+    fullscreen_button->setStyleSheet("background-color:#442e5d;");
+    //fullscreen_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
+    fullscreen_button->setIconSize(QSize(32,32));
 
     zoomin_button = new QPushButton(this);
     zoomin_button->setObjectName(QStringLiteral("zoomin_button"));
     zoomin_button->setIcon(QIcon(":/qml/images/zoom_in.png"));
-    zoomin_button->setStyleSheet("background-color:gray;");
+    zoomin_button->setStyleSheet("background-color:#442e5d;");
     zoomin_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
     zoomin_button->setIconSize(QSize(64,64));
     //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
@@ -94,7 +96,7 @@ MyViz::MyViz( QWidget* parent )
     zoomout_button = new QPushButton(this);
     zoomout_button->setObjectName(QStringLiteral("zoomout_button"));
     zoomout_button->setIcon(QIcon(":/qml/images/zoom_out.png"));
-    zoomout_button->setStyleSheet("background-color:gray;");
+    zoomout_button->setStyleSheet("background-color:#442e5d;");
     zoomout_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
     zoomout_button->setIconSize(QSize(64,64));
     //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
@@ -102,7 +104,7 @@ MyViz::MyViz( QWidget* parent )
     reset_button = new QPushButton(this);
     reset_button->setObjectName(QStringLiteral("reset_button"));
     reset_button->setIcon(QIcon(":/qml/images/reset_rviz.png"));
-    reset_button->setStyleSheet("background-color:gray;");
+    reset_button->setStyleSheet("background-color:#442e5d;");
     reset_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
     reset_button->setIconSize(QSize(64,64));
     //<a href="https://www.flaticon.com/free-icons/axis" title="axis icons">Axis icons created by Smashicons - Flaticon</a>
