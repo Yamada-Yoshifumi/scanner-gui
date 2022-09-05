@@ -1,7 +1,6 @@
 #include <ros/ros.h>
 #include "qapplication.h"
 #include "roshandler.h"
-#include "ros_srv/VelodyneSwitch.h"
 #include <QQuickView>
 #include <QQuickItem>
 #include <QtQml>
@@ -18,6 +17,7 @@ ROSHandler::ROSHandler()
 
     velodyneSwitchClient = n_->serviceClient<ros_srv::VelodyneSwitch>("/hardware_signal/velodyneSwitch");
     cameraExposureUpdateClient = n_->serviceClient<ros_srv::CameraExposure>("/hardware_signal/cameraExposureUpdate");
+    reconstructionUpdateClient = n_->serviceClient<ros_srv::Reconstruction>("/hardware_signal/reconstructionUpdate");
     connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
 }
 
@@ -64,5 +64,7 @@ void ROSHandler::cameraExposureUpdate(int database_camera_exposure_t){
 }
 
 void ROSHandler::reconstructionUpdate(int database_reconstruction){
+    reconstructionUpdateSrv.request.command = database_reconstruction;
+    reconstructionUpdateClient.call(reconstructionUpdateSrv);
     emit reconstructionUpdatedSignal("Reconstruction status update requested");
 }

@@ -35,6 +35,7 @@ signals:
     void scanButtonPressed();
     void powerSignal(QString);
     void scanSignal(QString);
+    void reconstructionToggled(int);
 
 private:
     Ui::MainWindow *ui;

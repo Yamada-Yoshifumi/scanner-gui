@@ -15,8 +15,7 @@ Rectangle {
         objectName: "settings_open_button"
         anchors{
             left: parent.left
-            top: parent.top
-            topMargin: parent.height/2 + 25
+            bottom: parent.bottom
         }
         icon.name: "settings"
         icon.source: "./images/settings-17-128.gif"
@@ -46,7 +45,7 @@ Rectangle {
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Daylight Mode", 0 ]);
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Exposure Time(ms)", 20 ]);
                             tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Debug Mode", 0 ]);
-                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Default Colour Pattern", 0 ]);
+                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Default Colour", 0 ]);
                         }
                     )
                 }

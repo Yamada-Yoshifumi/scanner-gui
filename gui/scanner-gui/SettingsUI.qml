@@ -1,7 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.LocalStorage 2.15
-import "model_handler.js" as JS
 
 Rectangle {
     id: settings_ui
@@ -114,7 +113,6 @@ Rectangle {
 
                             mvc_listview.currentIndex = index
                             console.debug("Clicked on age")
-                            JS.doSomething()  // Javascript from file
                         }
                     }
                 }
@@ -151,8 +149,7 @@ Rectangle {
         objectName: "settings_close_button"
         anchors{
             left: parent.left
-            top: parent.top
-            topMargin: parent.height/2 + 25
+            bottom: parent.bottom
         }
         icon.name: "settings"
         icon.source: "./images/close-window-128.gif"

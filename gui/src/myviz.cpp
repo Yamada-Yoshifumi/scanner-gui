@@ -87,18 +87,24 @@ MyViz::MyViz( QWidget* parent )
     zoomin_button->setObjectName(QStringLiteral("zoomin_button"));
     zoomin_button->setIcon(QIcon(":/qml/images/zoom_in.png"));
     zoomin_button->setStyleSheet("background-color:gray;");
+    zoomin_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
+    zoomin_button->setIconSize(QSize(64,64));
     //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
 
     zoomout_button = new QPushButton(this);
     zoomout_button->setObjectName(QStringLiteral("zoomout_button"));
     zoomout_button->setIcon(QIcon(":/qml/images/zoom_out.png"));
     zoomout_button->setStyleSheet("background-color:gray;");
+    zoomout_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
+    zoomout_button->setIconSize(QSize(64,64));
     //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
 
     reset_button = new QPushButton(this);
     reset_button->setObjectName(QStringLiteral("reset_button"));
     reset_button->setIcon(QIcon(":/qml/images/reset_rviz.png"));
     reset_button->setStyleSheet("background-color:gray;");
+    reset_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
+    reset_button->setIconSize(QSize(64,64));
     //<a href="https://www.flaticon.com/free-icons/axis" title="axis icons">Axis icons created by Smashicons - Flaticon</a>
 
     QStringList commands = { "Intensity", "AxisColor", "Uncertainty", "FlatColor" };
@@ -107,11 +113,11 @@ MyViz::MyViz( QWidget* parent )
 
     main_layout = new QGridLayout;
     main_layout->setContentsMargins(5,5,5,5);
-    main_layout->addWidget( touchpad, 0, 30, 9, 15);
-    main_layout->addWidget( logterminal, 0, 30, 9, 15);
-    main_layout->addWidget(zoomin_button, 9, 30, 1, 5);
-    main_layout->addWidget(zoomout_button, 9, 35, 1, 5);
-    main_layout->addWidget(reset_button, 9, 40, 1, 5);
+    main_layout->addWidget( touchpad, 0, 30, 8, 15);
+    main_layout->addWidget( logterminal, 0, 30, 8, 15);
+    main_layout->addWidget(zoomin_button, 8, 30, 2, 5);
+    main_layout->addWidget(zoomout_button, 8, 35, 2, 5);
+    main_layout->addWidget(reset_button, 8, 40, 2, 5);
     main_layout->addWidget( render_panel_, 0, 0, 10, 30 );
     main_layout->addWidget( fullscreen_button, 9, 29, 1, 1 );
     main_layout->addWidget(combo, 0, 25, 1, 5);
@@ -254,11 +260,12 @@ bool MyViz::eventFilter(QObject * p_obj, QEvent * p_event)
 
     if(p_event->type() == QEvent::MouseMove){
         QMouseEvent* pMouseEvent = dynamic_cast<QMouseEvent*>(p_event);
-        if(pMouseEvent->source() == Qt::MouseEventSource::MouseEventSynthesizedBySystem){
+        if(pMouseEvent->source() == Qt::MouseEventSource::MouseEventSynthesizedBySystem || wheel_e_inprogress){
             p_event->ignore();
             pMouseEvent->ignore();
             return true;
         }
+
         p_event->ignore();
         pMouseEvent->ignore();
         if(pMouseEvent->button() == Qt::MiddleButton ||pMouseEvent->buttons() == Qt::MiddleButton){
@@ -350,11 +357,13 @@ bool MyViz::eventFilter(QObject * p_obj, QEvent * p_event)
         p_event->ignore();
         pMouseEvent->ignore();
         previous_touchp = QPoint(0,0);
+        wheel_e_inprogress = false;
         return true;
     }
     else if(p_event->type() == QEvent::Wheel)
     {
         QWheelEvent* pWheelEvent = dynamic_cast<QWheelEvent*>(p_event);
+        wheel_e_inprogress = true;
         if(pWheelEvent->source() == Qt::MouseEventSource::MouseEventSynthesizedBySystem)
         {
             p_event->ignore();

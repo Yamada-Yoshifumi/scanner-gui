@@ -6,7 +6,7 @@ LogTerminal::LogTerminal(QWidget* parent)
     setAttribute(Qt::WA_NoSystemBackground);
 
     text_box = new QTextEdit(this);
-    text_box->setStyleSheet("background-color: black; color: white;");
+    text_box->setStyleSheet("background-color: black; color: white; font-size: 20px");
     text_box->setAcceptRichText(true);
 
     top_label = new QLabel( "ROS Log Terminal" );

@@ -37,6 +37,7 @@
 #include "touchpad.h"
 #include "logterminal.h"
 #include <QComboBox>
+#include <QtCore>
 
 namespace rviz
 {
@@ -64,6 +65,7 @@ public:
     QPushButton* zoomout_button;
     QPushButton* reset_button;
     QComboBox* combo;
+    bool focus_on_wheel = false;
 
     virtual ~MyViz();
 public Q_SLOTS:
@@ -84,10 +86,14 @@ private:
     double current_f_point_x;
     double current_f_point_y;
     double current_f_point_z;
+    double fixed_f_point_x;
+    double fixed_f_point_y;
+    double fixed_f_point_z;
+    bool wheel_e_inprogress;
     QString current_pointcloud_pattern;
 protected:
     bool eventFilter(QObject * p_obj, QEvent * p_event);
-    bool focus_on_wheel = false;
+
 };
 // END_TUTORIAL
 #endif // MYVIZ_H

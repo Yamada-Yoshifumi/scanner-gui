@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.LocalStorage 2.15
 import Qt.labs.qmlmodels 1.0
-import "model_handler.js" as JS
 
 Rectangle {
     id: settings_lidar
@@ -41,7 +40,7 @@ Rectangle {
             property bool completed: false
             Component.onCompleted: {
                 append({name: "Reconstruction", value: mvc_lidar_model.display_reconstruction_value});
-                append({name: "Default Colour Pattern", value: mvc_lidar_model.default_colour_pattern});
+                append({name: "Default Colour", value: mvc_lidar_model.default_colour_pattern});
                 completed = true;
             }
 
@@ -155,7 +154,6 @@ Rectangle {
                                         onClicked: {
                                             mvc_lidar_listview.currentIndex = index
                                             console.debug("Clicked on age")
-                                            JS.doSomething()  // Javascript from file
                                         }
                                     }
                                 }
@@ -181,7 +179,7 @@ Rectangle {
                             }
                         }}
 
-                    DelegateChoice { roleValue: "Default Colour Pattern";             Component {
+                    DelegateChoice { roleValue: "Default Colour";             Component {
                             id: mvc_lidar_delegate_combobox
                             Row {
                                 Text {
@@ -197,7 +195,6 @@ Rectangle {
                                         onClicked: {
                                             mvc_lidar_listview.currentIndex = index
                                             console.debug("Clicked on age")
-                                            JS.doSomething()  // Javascript from file
                                         }
                                     }
                                 }
@@ -211,7 +208,7 @@ Rectangle {
                                         var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
                                         db.transaction(
                                             function(tx) {
-                                                tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Default Colour Pattern"', currentIndex);
+                                                tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Default Colour"', currentIndex);
                                             }
                                         )
                                     }
@@ -251,8 +248,7 @@ Rectangle {
         objectName: "settings_close_button"
         anchors{
             left: parent.left
-            top: parent.top
-            topMargin: parent.height/2 + 25
+            bottom: parent.bottom
         }
         icon.name: "settings"
         icon.source: "./images/close-window-128.gif"
@@ -291,7 +287,7 @@ Rectangle {
                 function(tx) {
                     var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Reconstruction"');
                     mvc_lidar_model.display_reconstruction_value = rs.rows.item(0).value;
-                    rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Default Colour Pattern"');
+                    rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Default Colour"');
                     mvc_lidar_model.default_colour_pattern = rs.rows.item(0).value;
                     rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     var daylight_mode = rs.rows.item(0).value;

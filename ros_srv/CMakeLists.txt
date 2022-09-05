@@ -20,6 +20,7 @@ add_service_files(
         VelodyneSwitch.srv
         ImuSwitch.srv
         CameraExposure.srv
+        Reconstruction.srv
 )
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)
 

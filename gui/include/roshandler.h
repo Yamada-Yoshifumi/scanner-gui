@@ -4,6 +4,7 @@
 #include <QQuickView>
 #include <QMainWindow>
 #include "ros_srv/VelodyneSwitch.h"
+#include "ros_srv/Reconstruction.h"
 #include "ros_srv/CameraExposure.h"
 #include "mainwindow.h"
 #include "sensor_msgs/PointCloud2.h"
@@ -17,6 +18,8 @@ class ROSHandler: public QObject
         ros_srv::VelodyneSwitch velodynePowerSrv;
         ros::ServiceClient cameraExposureUpdateClient;
         ros_srv::CameraExposure cameraExposureUpdateSrv;
+        ros::ServiceClient reconstructionUpdateClient;
+        ros_srv::Reconstruction reconstructionUpdateSrv;
         //ros::Subscriber velodynesub;
         QTimer *ros_timer;
         //QTimer *velodyne_timer;

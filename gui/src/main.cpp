@@ -19,6 +19,7 @@
 class PowerThread: public QThread{
     ROSHandler* roshandler;
     MainWindow *mainwindow;
+
     private:
         QTimer *thread_timer;
         int current_velodyne_status = 0;
@@ -28,13 +29,13 @@ class PowerThread: public QThread{
         int database_camera_exposure_t = 20;
         int database_debug_mode = 0;
         int database_reconstruction = 0;
-        std::string debug_text;
-        std::string previous_time_stamp;
-        std::string this_time_stamp;
+        int database_colour_pattern = 0;
+        std::string debug_text = "";
+        std::string previous_time_stamp = "0";
+        std::string this_time_stamp = "0";
         QTextEdit* debug_text_box;
 
     public:
-
         explicit PowerThread(MainWindow *mainwindow_)
             : QThread(), mainwindow(mainwindow_) {}
 
@@ -59,11 +60,12 @@ class PowerThread: public QThread{
 
             connect(mainwindow, &MainWindow::powerButtonPressed, roshandler, &ROSHandler::systemPowerToggle, Qt::QueuedConnection);
             connect(mainwindow, &MainWindow::scanButtonPressed, roshandler, &ROSHandler::scanToggle, Qt::QueuedConnection);
+
             connect(thread_timer, &QTimer::timeout, this, &PowerThread::spinThreadOnce);
-            connect(roshandler, &ROSHandler::hardwareOnSignal, this, &PowerThread::updateDebugText);
-            connect(roshandler, &ROSHandler::hardwareOffSignal, this, &PowerThread::updateDebugText);
-            connect(roshandler, &ROSHandler::cameraExposureUpdatedSignal, this, &PowerThread::updateDebugText);
-            connect(roshandler, &ROSHandler::reconstructionUpdatedSignal, this, &PowerThread::updateDebugText);
+            connect(roshandler, &ROSHandler::hardwareOnSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
+            connect(roshandler, &ROSHandler::hardwareOffSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
+            connect(roshandler, &ROSHandler::cameraExposureUpdatedSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
+            connect(roshandler, &ROSHandler::reconstructionUpdatedSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
             exec();
         }
 
@@ -100,9 +102,11 @@ class PowerThread: public QThread{
             if((sqlite3_step(stmt)) == SQLITE_ROW) {
                 if(sqlite3_column_int(stmt, 1) == 1){
                     mainwindow->setStyleSheet("background-color: white;");
+                    mainwindow->myviz->logterminal->text_box->setStyleSheet("background-color: white; color: black; font-size: 20px");
                 }
                 else{
                     mainwindow->setStyleSheet("background-color: #442e5d;");
+                    mainwindow->myviz->logterminal->text_box->setStyleSheet("background-color: black; color: white; font-size: 20px");
                 }
             }
 
@@ -144,6 +148,25 @@ class PowerThread: public QThread{
                 }
             }
 
+            //Callback service for default lidar colour pattern
+            stringstream ss4;
+            ss4 << "SELECT * FROM BooleanSettings where name = \"Default Colour\" LIMIT 1;";
+            string sql4(ss4.str());
+            if(sqlite3_prepare_v2(db, sql4.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
+                printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
+                sqlite3_close(db);
+                sqlite3_finalize(stmt);
+                return false;
+            }
+
+            if((sqlite3_step(stmt)) == SQLITE_ROW) {
+                if(sqlite3_column_int(stmt, 1) != database_colour_pattern){
+                    database_colour_pattern = sqlite3_column_int(stmt, 1);
+                    ROS_INFO("Default colour pattern changed");
+                    mainwindow->myviz->combo->setCurrentIndex(database_colour_pattern);
+                }
+            }
+
             //Callback service for debug mode
             stringstream ss_d;
             ss_d << "SELECT * FROM BooleanSettings where name = \"Debug Mode\" LIMIT 1;";
@@ -162,17 +185,21 @@ class PowerThread: public QThread{
                 }
             }
 
-            debug_text_box = mainwindow->myviz->logterminal->text_box;
-
             if(database_debug_mode == 1){
+                mainwindow->myviz->logterminal->setHidden(false);
+                debug_text_box = mainwindow->myviz->logterminal->text_box;
+
                 if(this_time_stamp != previous_time_stamp){
-                    debug_text_box->setPlainText(QString(debug_text.c_str()));
-                    debug_text_box->verticalScrollBar()->setValue(debug_text_box->verticalScrollBar()->maximum());
-                    mainwindow->myviz->logterminal->setHidden(false);
-                    previous_time_stamp = this_time_stamp;
+                        debug_text_box->moveCursor (QTextCursor::End);
+                        debug_text_box->insertPlainText(QString(debug_text.c_str()));
+                        debug_text_box->verticalScrollBar()->setValue(debug_text_box->verticalScrollBar()->maximum());
+                        previous_time_stamp = this_time_stamp;
+                        debug_text = "";
+
                 }
             }
             else{
+                debug_text_box = mainwindow->myviz->logterminal->text_box;
                 mainwindow->myviz->logterminal->setHidden(true);
                 debug_text_box->setPlainText(QString(""));
                 debug_text = "";
