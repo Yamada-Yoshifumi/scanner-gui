@@ -48,93 +48,16 @@ Rectangle {
             onDisplay_reconstruction_valueChanged:  {
                 if(completed) {
                     setProperty(0, "value", mvc_lidar_model.display_reconstruction_value);
+
+                }
+            }
+            onDefault_colour_patternChanged: {
+                if(completed){
                     setProperty(1, "value", mvc_lidar_model.default_colour_pattern);
                 }
             }
         }
-/*
-        // 2. Delegate - this describes how to handle each row of data
-        Component {
-            id: mvc_lidar_delegate
-            Row {
-                Text {
-                    id: mvc_lidar_level_1
-                    text: name
-                    width: settings_lidar_header.width/2
-                    height: settings_lidar_header.width/ 5
-                    color: settings_lidar.textcolor
-                    horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: 100 * parent.width/ 2560
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            mvc_lidar_listview.currentIndex = index
-                            console.debug("Clicked on age")
-                            JS.doSomething()  // Javascript from file
-                        }
-                    }
-                }
-                Switch {
-                    position: value
-                    checked: value
-                    width: settings_lidar_header.width/2
-                    height: settings_lidar_header.width/ 5
-                    property bool init: false
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            value = value === 0? 1: 0;
-                            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
-                            db.transaction(
-                                function(tx) {
-                                    tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Reconstruction"', value);
-                                }
-                            )
-                        }
-                    }
-                }
-            }
-        }*/
-/*
-            // 2. Delegate - this describes how to handle each row of data
-            Component {
-                id: mvc_lidar_delegate_combobox
-                Row {
-                    Text {
-                        id: mvc_lidar_combobox_level_1
-                        text: name
-                        width: settings_lidar_header.width/2
-                        height: settings_lidar_header.width/ 5
-                        color: settings_lidar.textcolor
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 100 * parent.width/ 2560
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                mvc_lidar_listview.currentIndex = index
-                                console.debug("Clicked on age")
-                                JS.doSomething()  // Javascript from file
-                            }
-                        }
-                    }
-                    ComboBox {
-                        currentIndex: value
-                        width: settings_lidar_header.width/2
-                        height: settings_lidar_header.width/ 5
-                        model: ["Intensity", "AxisColor", "Uncertainty", "FlatColor"]
-                        onCurrentIndexChanged:{
-                            value = currentIndex;
-                            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
-                            db.transaction(
-                                function(tx) {
-                                    tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Default Colour Pattern"', currentIndex);
-                                }
-                            )
-                        }
-                    }
-                }
-            }
-*/
+
             DelegateChooser {
                     id: chooser
                     role: "name"
@@ -296,9 +219,9 @@ Rectangle {
                     rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     var daylight_mode = rs.rows.item(0).value;
                     if (daylight_mode){
-                        color = "#f7f78d";
-                        border.color = "#f7f78d";
-                        lidar_listview.color = "#f7f78d";
+                        color = "#d2f2fc";
+                        border.color = "#d2f2fc";
+                        lidar_listview.color = "#d2f2fc";
                         textcolor = "black";
                     }
                     else{

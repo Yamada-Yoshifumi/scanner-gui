@@ -22,6 +22,8 @@ add_service_files(
         CameraExposure.srv
         Reconstruction.srv
         ScanToggle.srv
+        RecordToggle.srv
+        SLAMModeSwitch.srv
 )
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)
 

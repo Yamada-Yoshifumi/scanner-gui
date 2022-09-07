@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent) :
     power_button = item->findChild<QObject*>("power_button");
     power_button_bg = item->findChild<QObject*>("power_button_bg");
     scan_button = item->findChild<QObject*>("scan_button");
-    scan_button_bg = item->findChild<QObject*>("scan_button_bg");
+    record_button = item->findChild<QObject*>("record_button");
     velodyne_timer = new QTimer();
     velodyne_timer->start(1000);
     imu_timer = new QTimer();
@@ -108,9 +108,28 @@ MainWindow::MainWindow(QWidget *parent) :
     settings_container->adjustSize();
     settings_container->move(QPoint(this->width()*3/2, 0));
     settings_container->raise();
+    QObject *settingsItem = settingsqmlView->rootObject();
 
-    settings_show_button = settingsqmlView->rootObject()->findChild<QObject*>("settings_open_button");
-    connect(settings_show_button, SIGNAL(settingsInvoke(QString)), this, SLOT(showSettings()));
+    settings_toggle_button = settingsItem->findChild<QObject*>("settings_toggle_button");
+    connect(settings_toggle_button, SIGNAL(settingsToggle(QString)), this, SLOT(toggleSettings()));
+
+    
+    while(scan_button == nullptr)
+        scan_button = settingsItem->findChild<QObject*>("scan_button");
+    while(record_button == nullptr)
+        record_button = settingsItem->findChild<QObject*>("record_button");
+
+    connect(
+        scan_button,
+        SIGNAL(scanSignal(QString)),
+        this,
+        SLOT(scanClickedEmit()));
+
+    connect(
+        record_button,
+        SIGNAL(recordSignal(QString)),
+        this,
+        SLOT(recordClickedEmit()));
 
     ROS_INFO("%s", settingsqmlView->engine()->offlineStoragePath().toStdString().c_str());
 }
@@ -131,57 +150,7 @@ void MainWindow::spinOnce(){
     else
         QApplication::quit();
 }
-/*Moved to main.cpp, the thread there calls methods in ROSHandler
-bool MainWindow::changeInDatabaseResponse(){
-    stringstream ss1;
-    if(sqlite3_open((settingsqmlView->engine()->offlineStoragePath().toStdString() + "/Databases/0f77255fc0fdc1559526d7eca42b4253.sqlite").c_str(), &db) != SQLITE_OK) {
-        printf("ERROR: can't open database: %s\n", sqlite3_errmsg(db));
-        sqlite3_close(db);
-        return false;
-    }
 
-    //Callback service for day/night light mode toggle
-    ss1 << "SELECT * FROM BooleanSettings where name = \"Daylight Mode\" LIMIT 1;";
-    string sql(ss1.str());
-    if(sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
-        printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
-        sqlite3_close(db);
-        sqlite3_finalize(stmt);
-        return false;
-    }
-
-    if((sqlite3_step(stmt)) == SQLITE_ROW) {
-        if(sqlite3_column_int(stmt, 1) == 1){
-            setStyleSheet("background-color: white;");
-        }
-        else{
-            setStyleSheet("background-color: #442e5d;");
-        }
-    }
-
-    //Callback service for camera_exposure time
-    stringstream ss2;
-    ss2 << "SELECT * FROM BooleanSettings where name = \"Exposure Time(ms)\" LIMIT 1;";
-    string sql2(ss2.str());
-    if(sqlite3_prepare_v2(db, sql2.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
-        printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
-        sqlite3_close(db);
-        sqlite3_finalize(stmt);
-        return false;
-    }
-
-    if((sqlite3_step(stmt)) == SQLITE_ROW) {
-        if(sqlite3_column_int(stmt, 1) != database_camera_exposure_t){
-            database_camera_exposure_t = sqlite3_column_int(stmt, 1);
-            ROS_INFO("camera_exposure changed");
-        }
-    }
-
-    sqlite3_finalize(stmt);
-    sqlite3_close(db);
-    return true;
-}
-*/
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
     QQuickItem* rootObject =  qmlView->rootObject();
@@ -221,8 +190,7 @@ void MainWindow::createRVizEvent()
     QObject *item = qmlView->rootObject();
     while(power_button == nullptr)
         power_button = item->findChild<QObject*>("power_button");
-    while(scan_button == nullptr)
-        scan_button = item->findChild<QObject*>("scan_button");
+    
     while(opencv_image == nullptr)
         opencv_image = item->findChild<QObject*>("opencv_image");
 
@@ -235,11 +203,6 @@ void MainWindow::createRVizEvent()
         SIGNAL(powerSignal(QString)),
         this,
         SLOT(powerClickedEmit()));
-    connect(
-        scan_button,
-        SIGNAL(scanSignal(QString)),
-        this,
-        SLOT(scanClickedEmit()));
     connect(videoStreamer,&VideoStreamer::newImage,liveimageprovider,&OpencvImageProvider::updateImage);
     connect(liveimageprovider,
             SIGNAL(imageChanged()),
@@ -265,12 +228,26 @@ void MainWindow::scanClickedEmit(){
         scan_countdown_timer = new QTimer(this);
         scan_countdown_timer->start(1000);
         connect(scan_countdown_timer, SIGNAL(timeout()), this, SLOT(updateCountDownNum()));
+        scan_button->setProperty("scanning", true);
     }
     else{
         emit scanButtonPressed();
         scan_button->setProperty("scanning", false);
     }
     scan_status = scan_status == 0 ? 1: 0;
+}
+
+void MainWindow::recordClickedEmit(){
+    if (!record_button->property("recording").toBool())
+    {
+        emit recordButtonPressed();
+        record_button->setProperty("recording", true);
+    }
+    else{
+        emit recordButtonPressed();
+        record_button->setProperty("recording", false);
+    }
+    record_status = record_status == 0 ? 1: 0;
 }
 
 void MainWindow::updateCountDownNum(){
@@ -290,20 +267,18 @@ void MainWindow::updateCountDownNum(){
     }
 }
 
-void MainWindow::showSettings(){
+void MainWindow::toggleSettings(){
 
-    settings_container->move(QPoint(newSize.width() - settings_container->width(), 0));
-    settings_container->adjustSize();
-    settings_close_button = settingsqmlView->rootObject()->findChild<QObject*>("settings_close_button");
-    connect(settings_close_button, SIGNAL(settingsClose(QString)), this, SLOT(closeSettings()));
-    settings_shown = true;
-}
-
-void MainWindow::closeSettings(){
-    settings_container->move(QPoint(newSize.width() - 50, 0));
-    settings_container->adjustSize();
-    settings_container->adjustSize();
-    settings_shown = false;
+    if (settings_shown){
+        settings_container->move(QPoint(newSize.width() - 50, 0));
+        settings_container->adjustSize();
+        settings_shown = false;
+    }
+    else{
+        settings_container->move(QPoint(newSize.width() - settings_container->width(), 0));
+        settings_container->adjustSize();
+        settings_shown = true;
+    }
 }
 
 void MainWindow::updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg){

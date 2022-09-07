@@ -9,19 +9,18 @@ Rectangle {
     color: "#442e5d"
     border.color: "#442e5d"
     property string textcolor: "#ffffff"
+    property var db
     signal daylightModeChanged(string str)
     function daylightModeChange(){
-                var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
-
                 db.transaction(
                     function(tx) {
                         var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                         var daylight_mode = rs.rows.item(0).value;
                         if (daylight_mode){
-                            color = "#f7f78d";
-                            border.color = "#f7f78d";
+                            color = "#d2f2fc";
+                            border.color = "#d2f2fc";
                             settings_general_header.color = "black";
-                            general_listview.color = "#f7f78d";
+                            general_listview.color = "#d2f2fc";
                             textcolor = "black";
                         }
                         else{
@@ -195,16 +194,16 @@ Rectangle {
 
         Component.onCompleted: {
             settings_general.daylightModeChanged.connect(settings_general.daylightModeChange);
-            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+            db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
             db.transaction(
                 function(tx) {
                     var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     mvc_general_model.daylight_mode = rs.rows.item(0).value;
                     var daylight_mode = rs.rows.item(0).value;
                     if (daylight_mode){
-                        color = "#f7f78d";
-                        border.color = "#f7f78d";
-                        general_listview.color = "#f7f78d";
+                        color = "#d2f2fc";
+                        border.color = "#d2f2fc";
+                        general_listview.color = "#d2f2fc";
                         textcolor = "black";
                     }
                     else{

@@ -21,6 +21,8 @@ ROSHandler::ROSHandler()
     cameraExposureUpdateClient = n_->serviceClient<ros_srv::CameraExposure>("/hardware_signal/cameraExposureUpdate");
     reconstructionUpdateClient = n_->serviceClient<ros_srv::Reconstruction>("/hardware_signal/reconstructionUpdate");
     scanToggleClient = n_->serviceClient<ros_srv::ScanToggle>("/hardware_signal/scanToggle");
+    recordToggleClient = n_->serviceClient<ros_srv::RecordToggle>("/hardware_signal/recordToggle");
+    slamModeSwitchClient = n_->serviceClient<ros_srv::SLAMModeSwitch>("/hardware_signal/slamModeSwitch");
     connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
 }
 
@@ -51,6 +53,16 @@ void ROSHandler::scanToggle(){
         emit scanToggledSignal("Scanning Off");
 }
 
+void ROSHandler::recordToggle(){
+    recordToggleSrv.request.command = recordCmd;
+
+    recordToggleClient.call(recordToggleSrv);
+    if(recordCmd == 1)
+        emit recordToggledSignal("Recording On");
+    else if(recordCmd == 0)
+        emit recordToggledSignal("Recording Off");
+}
+
 void ROSHandler::velodyneOn(){
     velodynePowerSrv.request.command = 1;
 
@@ -76,4 +88,10 @@ void ROSHandler::reconstructionUpdate(int database_reconstruction){
     reconstructionUpdateSrv.request.command = database_reconstruction;
     reconstructionUpdateClient.call(reconstructionUpdateSrv);
     emit reconstructionUpdatedSignal("Reconstruction status update requested");
+}
+
+void ROSHandler::slamModeUpdate(int database_current_slam_mode){
+    slamModeSwitchSrv.request.command = database_current_slam_mode;
+    slamModeSwitchClient.call(slamModeSwitchSrv);
+    emit slamModeSwitchedSignal("slam mode changed");
 }

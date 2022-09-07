@@ -33,8 +33,10 @@ signals:
     void rvizRenderSignal(QString);
     void powerButtonPressed();
     void scanButtonPressed();
+    void recordButtonPressed();
     void powerSignal(QString);
     void scanSignal(QString);
+    void recordSignal(QString);
     void reconstructionToggled(int);
 
 private:
@@ -69,9 +71,8 @@ public:
     QObject *power_button;
     QObject *power_button_bg;
     QObject *scan_button;
-    QObject *scan_button_bg;
-    QObject *settings_show_button;
-    QObject *settings_close_button;
+    QObject *record_button;
+    QObject *settings_toggle_button;
     QObject *velodyne_indicator;
     QObject *imu_indicator;
     QObject *lidar_canvas;
@@ -91,6 +92,7 @@ public:
     int imu_status = 0;
     int camera_status = 0;
     int scan_status = 0;
+    int record_status = 0;
     MyViz* myviz;
     QLabel* countdown_widget;
     //ROSHandler* roshandler;
@@ -107,9 +109,9 @@ public Q_SLOTS:
     void imageReload();
     void powerClickedEmit();
     void scanClickedEmit();
+    void recordClickedEmit();
     void updateCountDownNum();
-    void showSettings();
-    void closeSettings();
+    void toggleSettings();
     //void systemOn();
 };
 

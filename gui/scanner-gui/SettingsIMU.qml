@@ -69,8 +69,8 @@ Rectangle {
                     var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     var daylight_mode = rs.rows.item(0).value;
                     if (daylight_mode){
-                        settings_imu.color = "#f7f78d";
-                        settings_imu.border.color = "#f7f78d";
+                        settings_imu.color = "#d2f2fc";
+                        settings_imu.border.color = "#d2f2fc";
                         settings_imu.textcolor = "black";
                     }
                     else{

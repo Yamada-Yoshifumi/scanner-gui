@@ -38,12 +38,14 @@ class PowerThread: public QThread{
         int current_imu_status = 0;
         int current_camera_status = 0;
         int current_scan_status = 0;
+        int current_record_status = 0;
         int database_camera_exposure_t = 20;
         int database_daylight_mode = 0;
         int database_debug_mode = 0;
         int database_reconstruction = 0;
         int database_colour_pattern = 0;
         int database_current_camera = 0;
+        int database_current_slam_mode = 1;
         std::string debug_text = "";
         std::string previous_time_stamp = "0";
         std::string this_time_stamp = "0";
@@ -71,6 +73,10 @@ class PowerThread: public QThread{
                 current_scan_status = mainwindow->scan_status;
                 roshandler->scanCmd = (current_scan_status == 1) ? 0 : 1;
             }
+            if (current_record_status != mainwindow->record_status){
+                current_record_status = mainwindow->record_status;
+                roshandler->recordCmd = (current_record_status == 1) ? 0 : 1;
+            }
             changeInDatabaseResponse();
         }
 
@@ -94,6 +100,7 @@ class PowerThread: public QThread{
 
             connect(mainwindow, &MainWindow::powerButtonPressed, roshandler, &ROSHandler::systemPowerToggle, Qt::QueuedConnection);
             connect(mainwindow, &MainWindow::scanButtonPressed, roshandler, &ROSHandler::scanToggle, Qt::QueuedConnection);
+            connect(mainwindow, &MainWindow::recordButtonPressed, roshandler, &ROSHandler::recordToggle, Qt::QueuedConnection);
 
             connect(thread_timer, &QTimer::timeout, this, &PowerThread::spinThreadOnce);
             connect(roshandler, &ROSHandler::hardwareOnSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
@@ -101,6 +108,8 @@ class PowerThread: public QThread{
             connect(roshandler, &ROSHandler::cameraExposureUpdatedSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
             connect(roshandler, &ROSHandler::reconstructionUpdatedSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
             connect(roshandler, &ROSHandler::scanToggledSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
+            connect(roshandler, &ROSHandler::recordToggledSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
+            connect(roshandler, &ROSHandler::slamModeSwitchedSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
             exec();
         }
 
@@ -135,11 +144,11 @@ class PowerThread: public QThread{
                 if(sqlite3_column_int(stmt, 1) != database_daylight_mode){
                     if(sqlite3_column_int(stmt, 1) == 1){
                         mainwindow->setStyleSheet("background-color: white;");
-                        mainwindow->myviz->logterminal->text_box->setStyleSheet("background-color: #ffffbd; color: black; font-size: 20px");
-                        mainwindow->myviz->reset_button->setStyleSheet("background-color:#fafaa2; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
-                        mainwindow->myviz->fullscreen_button->setStyleSheet("background-color: #fafaa2;");
-                        mainwindow->myviz->zoomin_button->setStyleSheet("background-color:#fafaa2; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
-                        mainwindow->myviz->zoomout_button->setStyleSheet("background-color:#fafaa2; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
+                        mainwindow->myviz->logterminal->text_box->setStyleSheet("background-color: #e1f2f7; color: black; font-size: 20px");
+                        mainwindow->myviz->reset_button->setStyleSheet("background-color:#b5cef7; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
+                        mainwindow->myviz->fullscreen_button->setStyleSheet("background-color: #b5cef7;");
+                        mainwindow->myviz->zoomin_button->setStyleSheet("background-color:#b5cef7; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
+                        mainwindow->myviz->zoomout_button->setStyleSheet("background-color:#b5cef7; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
                     }
                     else{
                         mainwindow->setStyleSheet("background-color: #442e5d;");
@@ -230,6 +239,26 @@ class PowerThread: public QThread{
                     database_current_camera = sqlite3_column_int(stmt, 1);
                     ROS_INFO("camera changed");
                     mainwindow->switchVideoSource(database_current_camera);
+                }
+            }
+
+            //Callback service for SLAM Mode
+            sqlite3_reset(stmt);
+            stringstream ss6;
+            ss6 << "SELECT * FROM BooleanSettings where name = \"SLAM Options\" LIMIT 1;";
+            string sql6(ss6.str());
+            if(sqlite3_prepare_v2(db, sql6.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
+                printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
+                sqlite3_close(db);
+                sqlite3_reset(stmt);
+                return false;
+            }
+
+            if((sqlite3_step(stmt)) == SQLITE_ROW) {
+                if(sqlite3_column_int(stmt, 1) != database_current_slam_mode - 1){
+                    database_current_slam_mode = sqlite3_column_int(stmt, 1) + 1;
+                    ROS_INFO("slam changed");
+                    roshandler->slamModeUpdate(database_current_slam_mode);
                 }
             }
 

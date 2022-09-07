@@ -16,11 +16,11 @@ y: 0
 width: parent.width
 height: parent.height
 color: "#442e5d"
+property var db
 
 Timer {
-        interval: 1000; running: true; repeat: true
+        interval: 1000; running: true; repeat: true;
         onTriggered: {
-            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
 
             db.transaction(
                 function(tx) {
@@ -28,19 +28,20 @@ Timer {
                     var daylight_mode = rs.rows.item(0).value;
                     if (daylight_mode){
                         status_topbar.startColor = "white";
-                        status_topbar.stopColor = "#fafaa2";
+                        status_topbar.stopColor = "#b5cef7";
                         status_topbar_text.color = "black";
                         status_lidar_rect.startColor = "white";
-                        status_lidar_rect.stopColor = "#fafaa2";
+                        status_lidar_rect.stopColor = "#b5cef7";
                         status_lidar_text.color = "black";
                         status_imu_rect.startColor = "white";
-                        status_imu_rect.stopColor = "#fafaa2";
+                        status_imu_rect.stopColor = "#b5cef7";
                         status_imu_text.color = "black";
                         status_camera_rect.startColor = "white";
-                        status_camera_rect.stopColor = "#fafaa2";
+                        status_camera_rect.stopColor = "#b5cef7";
                         status_camera_text.color = "black";
                         power_button_bg.startColor = "white";
-                        power_button_bg.stopColor = "#fafaa2";
+                        power_button_bg.stopColor = "#b5cef7";
+                        power_button.icon.color = "#b5cef7";
                         ui_page.color = "white";
                         status_section.color = "white";
                     }
@@ -59,6 +60,7 @@ Timer {
                         status_camera_text.color = "#d4d4d4";
                         power_button_bg.startColor = "#b452fa";
                         power_button_bg.stopColor = "#470452";
+                        power_button.icon.color = "#620b66";
                         ui_page.color = "#442e5d";
                         status_section.color = "#442e5d";
                     }
@@ -521,50 +523,8 @@ Rectangle{
                                         border.color: "#b1b1b1"
                                     }
                 }
-            Button {
-                id: scan_button
-                objectName: "scan_button"
+        }
 
-                Layout.preferredHeight: parent.height/3
-                Layout.preferredWidth: parent.width/1.5
-                Layout.maximumHeight: parent.height/3
-                Layout.maximumWidth: parent.width/1.5
-                anchors.rightMargin: 0
-                Layout.alignment: Qt.AlignHCenter
-                property bool scanning: false
-
-                signal scanSignal(string obj)
-                onClicked:{
-                    scan_button.scanSignal("toggle scanning");
-                }
-
-                onScanningChanged: {
-                    if(scanning){
-                        scanning_button_text.text = "Stop Scanning";
-                    }
-                    else{
-                        scanning_button_text.text = "Start Scanning";
-                    }
-                }
-
-                Text {
-                    anchors.fill: parent
-                    id: scanning_button_text
-                    text: "Start Scanning"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 30* ui_page.width / 2560
-                    color: "#d4d4d4"
-                }
-
-                background: Rectangle {
-                                        objectName: "scan_button_bg"
-                                        radius: 10
-                                        color: scan_button.down? "#b1b1b1" : "#343434"
-                                        border.color: "#b1b1b1"
-                                    }
-                }
-            }
         }
 
     }
@@ -610,7 +570,7 @@ Rectangle{
             )
         }
         Component.onCompleted: {
-            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+            db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
             db.transaction(
                 function(tx) {
                     var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Video Source" LIMIT 1');

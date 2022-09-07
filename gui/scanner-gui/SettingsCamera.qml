@@ -161,9 +161,9 @@ Rectangle {
                     rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     var daylight_mode = rs.rows.item(0).value;
                     if (daylight_mode){
-                        color = "#f7f78d";
-                        border.color = "#f7f78d";
-                        camera_listview.color = "#f7f78d";
+                        color = "#d2f2fc";
+                        border.color = "#d2f2fc";
+                        camera_listview.color = "#d2f2fc";
                         textcolor = "black";
                     }
                     else{
