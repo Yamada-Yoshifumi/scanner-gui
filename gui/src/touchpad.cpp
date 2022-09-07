@@ -16,7 +16,7 @@
 
 
 // BEGIN_TUTORIAL
-// Constructor for TouchPad.  This does most of the work of the class.
+// Touch pad reads touchevents, and "maps" the touchevents to corresponding mouse/wheel events, and sends to RViz
 TouchPad::TouchPad( QWidget* parent )
     : QWidget( parent )
 {

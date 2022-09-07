@@ -64,6 +64,8 @@ add_executable(qt_gui
     include/touchpad.h
     src/logterminal.cpp
     include/logterminal.h
+    src/roundedbutton.cpp
+    include/roundedbutton.h
 )
 
 #set_target_properties(scanner_gui PROPERTIES

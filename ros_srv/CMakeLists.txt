@@ -21,6 +21,7 @@ add_service_files(
         ImuSwitch.srv
         CameraExposure.srv
         Reconstruction.srv
+        ScanToggle.srv
 )
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)
 

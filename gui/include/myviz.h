@@ -36,6 +36,7 @@
 #include <QTextEdit>
 #include "touchpad.h"
 #include "logterminal.h"
+#include "roundedbutton.h"
 #include <QComboBox>
 #include <QtCore>
 
@@ -61,10 +62,13 @@ public:
     rviz::VisualizationManager* manager_;
     rviz::RenderPanel* render_panel_;
     rviz::Display* grid_, * pointcloud_, *tf_;
-    QPushButton* zoomin_button;
-    QPushButton* zoomout_button;
-    QPushButton* reset_button;
+    RoundedButton* zoomin_button;
+    RoundedButton* zoomout_button;
+    RoundedButton* reset_button;
     QComboBox* combo;
+    QRect* rect_1;
+    QRect* rect_2;
+    QRect* rect_3;
     bool focus_on_wheel = false;
 
     virtual ~MyViz();

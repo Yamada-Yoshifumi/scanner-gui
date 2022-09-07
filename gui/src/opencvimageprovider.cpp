@@ -1,6 +1,8 @@
 #include "opencvimageprovider.h"
 #include <ros/ros.h>
 
+//Image provider for qml
+
 OpencvImageProvider::OpencvImageProvider(QObject *parent) : QObject(parent), QQuickImageProvider(QQuickImageProvider::Image)
 {
     image = QImage(200,200,QImage::Format_RGB32);

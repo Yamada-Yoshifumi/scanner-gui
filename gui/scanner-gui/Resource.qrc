@@ -28,5 +28,9 @@
         <file>SettingsLiDAR.qml</file>
         <file>SettingsGeneral.qml</file>
         <file>SettingsCamera.qml</file>
+        <file>images/forward_arrow.png</file>
+        <file>images/back_arrow.png</file>
+        <file>SettingsIMU.qml</file>
+        <file>SettingsAbout.qml</file>
     </qresource>
 </RCC>

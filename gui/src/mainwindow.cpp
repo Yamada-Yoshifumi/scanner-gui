@@ -14,6 +14,17 @@
 #include <thread>
 #include <unistd.h>
 
+/*
+The MainWindow class:
+    Initialises the RViz window
+    Wraps qml code in a container and initialises it
+    Set layout
+    Identifies and wraps useful QQuick Objects in the qml code, executes methods, or may as well transmit signals to other C++ objects upon detecting signals
+    Subscribes to ROS topics to which hardware packages publish, in order to determine if certain hardware is online
+    Calls methods in VideoStreamer to stream ROS sensor_msgs/Image
+    Change color/shape/status of various indicators in the qml frontend when hardware status changes
+*/
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -180,6 +191,7 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
     rootObject =  settingsqmlView->rootObject();
     if(rootObject) rootObject->setProperty("height",QVariant::fromValue(newSize.height()));
+
     if(!settings_shown){
         settings_container->resize(settings_container->width(), newSize.height());
         settings_container->move(QPoint(newSize.width() - 50, 0));
@@ -213,8 +225,6 @@ void MainWindow::createRVizEvent()
         scan_button = item->findChild<QObject*>("scan_button");
     while(opencv_image == nullptr)
         opencv_image = item->findChild<QObject*>("opencv_image");
-    while(camera_selection == nullptr)
-        camera_selection = item->findChild<QObject*>("video_selection");
 
     videoStreamer = new VideoStreamer();
 
@@ -257,8 +267,10 @@ void MainWindow::scanClickedEmit(){
         connect(scan_countdown_timer, SIGNAL(timeout()), this, SLOT(updateCountDownNum()));
     }
     else{
+        emit scanButtonPressed();
         scan_button->setProperty("scanning", false);
     }
+    scan_status = scan_status == 0 ? 1: 0;
 }
 
 void MainWindow::updateCountDownNum(){

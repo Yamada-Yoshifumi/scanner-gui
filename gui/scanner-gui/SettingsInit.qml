@@ -5,8 +5,8 @@ import QtQuick.LocalStorage 2.15
 Rectangle {
     id: init
     visible: true
-    color: "#442e5d"
-    border.color: "#442e5d"
+    color: "black"
+    border.color: "black"
     width: parent.width
     height: parent.height
 
@@ -16,12 +16,14 @@ Rectangle {
         anchors{
             left: parent.left
             bottom: parent.bottom
+            bottomMargin: parent.height/2 - height/2
         }
         icon.name: "settings"
-        icon.source: "./images/settings-17-128.gif"
-        icon.color: "#620b66"
+        icon.color: "white"
+        icon.source: "./images/back_arrow.png"
+        //icon.color: "#620b66"
         icon.width: 40
-        icon.height: 40
+        icon.height: 80
         signal settingsInvoke(string obj)
         /*
         OpacityAnimator {
@@ -41,12 +43,12 @@ Rectangle {
                             // Create the database if it doesn't already exist
                             tx.executeSql('CREATE TABLE IF NOT EXISTS BooleanSettings(name TEXT, value INTEGER, UNIQUE(name))');
 
-                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Reconstruction", 0 ]);
-                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Video Source", 0 ]);
-                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Daylight Mode", 0 ]);
-                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Exposure Time(ms)", 20 ]);
-                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Debug Mode", 0 ]);
-                            tx.executeSql('INSERT INTO BooleanSettings VALUES(?, ?)', [ "Default Colour", 0 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Reconstruction", 0 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Video Source", 0 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Daylight Mode", 0 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Exposure Time(ms)", 20 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Debug Mode", 0 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Default Colour", 0 ]);
                         }
                     )
                 }
@@ -65,7 +67,6 @@ Rectangle {
             id: power_button_bg
             color: parent.down? "#b1b1b1" : "#00fbfbfb"
             radius: 10
-            border.color: "#3afbfbfb"
 
         }
 

@@ -1,6 +1,7 @@
 #include "videostreamer.h"
 #include <ros/ros.h>
 
+//Convert ROS Images to opencv copy, and emit a signal for OpencvImageProvider to update the stream
 
 VideoStreamer::VideoStreamer()
 {

@@ -41,6 +41,8 @@ Timer {
                         status_camera_text.color = "black";
                         power_button_bg.startColor = "white";
                         power_button_bg.stopColor = "#fafaa2";
+                        ui_page.color = "white";
+                        status_section.color = "white";
                     }
                     else{
                         status_topbar.startColor = "#c98cf5";
@@ -57,6 +59,8 @@ Timer {
                         status_camera_text.color = "#d4d4d4";
                         power_button_bg.startColor = "#b452fa";
                         power_button_bg.stopColor = "#470452";
+                        ui_page.color = "#442e5d";
+                        status_section.color = "#442e5d";
                     }
                 }
             )
@@ -79,7 +83,6 @@ Rectangle{
         y: rviz_window.height + 5
         width: rviz_window.width- 10
         color: "#442e5d"
-        border.color: "#442e5d"
         height: (parent.height - rviz_window.height - 10)
         radius: 10
     }
@@ -99,7 +102,7 @@ Rectangle{
                 anchors.fill: parent
                 source: parent
                 start: Qt.point(0, 0)
-                end: Qt.point(100 * ui_page.width/ 2560, 20 * ui_page.width/ 2560)
+                end: Qt.point(0, parent.height/2)
                 gradient: Gradient {
                     GradientStop { position: 0.0; color: status_topbar.startColor }
                     GradientStop { position: 1.0; color: status_topbar.stopColor }
@@ -480,7 +483,7 @@ Rectangle{
                     GradientStop { position: 1.0; color: power_button_bg.stopColor}
                 }
             }
-        Image { source: "./images/panel_top.png"; anchors.topMargin: 0; anchors.leftMargin: 0; height: panel_top.height; width: panel_top.width; fillMode: Image.PreserveAspectFit; opacity: 1 }
+        Image { source: "./images/panel_top.png"; anchors.topMargin: 5; anchors.leftMargin: 0; height: panel_top.height; width: panel_top.width; fillMode: Image.PreserveAspectFit; opacity: 1 }
 
         ColumnLayout{
 
@@ -595,6 +598,7 @@ Rectangle{
         width: 300* ui_page.width/2560
         height: 80* ui_page.width/2560
         currentIndex: 0
+        opacity: 0.7
         signal sourceChangeSignal(string obj)
         model: [ "Camera 1", "Camera 2"]
         onCurrentIndexChanged: {

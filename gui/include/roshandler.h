@@ -6,6 +6,7 @@
 #include "ros_srv/VelodyneSwitch.h"
 #include "ros_srv/Reconstruction.h"
 #include "ros_srv/CameraExposure.h"
+#include "ros_srv/ScanToggle.h"
 #include "mainwindow.h"
 #include "sensor_msgs/PointCloud2.h"
 
@@ -20,6 +21,8 @@ class ROSHandler: public QObject
         ros_srv::CameraExposure cameraExposureUpdateSrv;
         ros::ServiceClient reconstructionUpdateClient;
         ros_srv::Reconstruction reconstructionUpdateSrv;
+        ros::ServiceClient scanToggleClient;
+        ros_srv::ScanToggle scanToggleSrv;
         //ros::Subscriber velodynesub;
         QTimer *ros_timer;
         //QTimer *velodyne_timer;
@@ -29,6 +32,8 @@ class ROSHandler: public QObject
         ROSHandler();
         int velodyneCmd = 1;
         int imuCmd = 1;
+        int cameraCmd = 1;
+        int scanCmd = 1;
         void velodyneOn();
         void velodyneOff();
         void cameraExposureUpdate(int database_camera_exposure_t);
@@ -40,6 +45,7 @@ class ROSHandler: public QObject
         void hardwareOnSignal(QString);
         void hardwareOffSignal(QString);
         void reconstructionUpdatedSignal(QString);
+        void scanToggledSignal(QString);
 
     public Q_SLOTS:
         void systemPowerToggle();

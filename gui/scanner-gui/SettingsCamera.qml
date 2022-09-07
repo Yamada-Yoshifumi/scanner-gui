@@ -12,9 +12,9 @@ Rectangle {
 
     Text {
         id: settings_camera_header
-        x: parent.x
+        x: parent.x + 50
         y: parent.y
-        width: parent.width
+        width: parent.width - 50
         height: parent.width / 5
 
         color: settings_camera.textcolor
@@ -95,7 +95,10 @@ Rectangle {
 
             anchors.top: settings_camera_header.bottom
             anchors.bottom: settings_camera.bottom
-            width: settings_camera.width
+            anchors.left: settings_camera.left
+            anchors.leftMargin: 50
+            width: settings_camera.width - 50
+
             ListView {
                 id: mvc_camera_listview
                 anchors.fill: parent
@@ -110,19 +113,20 @@ Rectangle {
                 cacheBuffer: 10000
             }
 
-
+    }
     Button {
         id: settings_close_button
         objectName: "settings_close_button"
         anchors{
             left: parent.left
             bottom: parent.bottom
+            bottomMargin: parent.height/2 - height/2
         }
         icon.name: "settings"
-        icon.source: "./images/close-window-128.gif"
-        icon.color: "#620b66"
-        icon.width: 50
-        icon.height: 50
+        icon.source: "./images/forward_arrow.png"
+        icon.color: "white"
+        icon.width: 40
+        icon.height: 80
         signal settingsClose(string obj);
         /*
         OpacityAnimator {
@@ -145,10 +149,9 @@ Rectangle {
             id: power_button_bg
             color: parent.down? "#b1b1b1" : "#00fbfbfb"
             radius: 10
-            border.color: "#3afbfbfb"
         }
     }
-}
+
         Component.onCompleted: {
             var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
             db.transaction(
@@ -158,16 +161,14 @@ Rectangle {
                     rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     var daylight_mode = rs.rows.item(0).value;
                     if (daylight_mode){
-                        color = "#f5f55b";
-                        border.color = "#f5f55b";
-                        settings_camera_header.color = "black";
+                        color = "#f7f78d";
+                        border.color = "#f7f78d";
                         camera_listview.color = "#f7f78d";
                         textcolor = "black";
                     }
                     else{
                         color = "#442e5d";
                         border.color = "#442e5d";
-                        settings_camera_header.color = "#ffffff";
                         camera_listview.color = "#442e5d";
                         textcolor = "#ffffff";
                     }

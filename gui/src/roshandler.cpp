@@ -5,6 +5,8 @@
 #include <QQuickItem>
 #include <QtQml>
 
+/* Send service calls to the backend
+*/
 
 ROSHandler::ROSHandler()
 
@@ -18,6 +20,7 @@ ROSHandler::ROSHandler()
     velodyneSwitchClient = n_->serviceClient<ros_srv::VelodyneSwitch>("/hardware_signal/velodyneSwitch");
     cameraExposureUpdateClient = n_->serviceClient<ros_srv::CameraExposure>("/hardware_signal/cameraExposureUpdate");
     reconstructionUpdateClient = n_->serviceClient<ros_srv::Reconstruction>("/hardware_signal/reconstructionUpdate");
+    scanToggleClient = n_->serviceClient<ros_srv::ScanToggle>("/hardware_signal/scanToggle");
     connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
 }
 
@@ -30,7 +33,7 @@ void ROSHandler::spinOnce(){
 }
 
 void ROSHandler::systemPowerToggle(){
-    if (velodyneCmd == 1 && imuCmd == 1){
+    if (velodyneCmd == 1 && imuCmd == 1 && cameraCmd == 1){
         velodyneOn();
     }
     else{
@@ -39,7 +42,13 @@ void ROSHandler::systemPowerToggle(){
 }
 
 void ROSHandler::scanToggle(){
-    //do nothing yet
+    scanToggleSrv.request.command = scanCmd;
+
+    scanToggleClient.call(scanToggleSrv);
+    if(scanCmd == 1)
+        emit scanToggledSignal("Scanning On");
+    else if(scanCmd == 0)
+        emit scanToggledSignal("Scanning Off");
 }
 
 void ROSHandler::velodyneOn(){

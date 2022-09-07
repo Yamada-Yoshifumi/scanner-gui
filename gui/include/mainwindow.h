@@ -85,12 +85,12 @@ public:
     QObject *camera_status_pic;
 
     QObject *opencv_image;
-    QObject *camera_selection;
     QWidget *container;
     QWidget *settings_container;
     int velodyne_status = 0;
     int imu_status = 0;
     int camera_status = 0;
+    int scan_status = 0;
     MyViz* myviz;
     QLabel* countdown_widget;
     //ROSHandler* roshandler;

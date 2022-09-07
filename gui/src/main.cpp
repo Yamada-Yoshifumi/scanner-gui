@@ -16,17 +16,30 @@
 #include <chrono>
 #include <ctime>
 
+/*
+This main script boots up the qt window, and calls a thread --PowerThread to take care of communication with the qml frontend via an sqlite3 database.
+
+The PowerThread spins once every second, checking if any of the settings in the database have been updated by the qml frontend. Upon some change in settings, the thread calls methods
+in the ROSHandler class which subsequently call some ROS services.
+
+For some events and settings that require fast response speed and don't need to be stored locally, connections joining signals in MainWindow and methods in ROSHandler are declared. Those signals
+in MainWindow are emitted when signals from qml are detected in MainWindow.
+*/
+
 class PowerThread: public QThread{
     ROSHandler* roshandler;
     MainWindow *mainwindow;
-
+    public:
+        sqlite3* db;
+        sqlite3_stmt* stmt;
     private:
         QTimer *thread_timer;
         int current_velodyne_status = 0;
         int current_imu_status = 0;
-        sqlite3* db;
-        sqlite3_stmt* stmt;
+        int current_camera_status = 0;
+        int current_scan_status = 0;
         int database_camera_exposure_t = 20;
+        int database_daylight_mode = 0;
         int database_debug_mode = 0;
         int database_reconstruction = 0;
         int database_colour_pattern = 0;
@@ -35,6 +48,7 @@ class PowerThread: public QThread{
         std::string previous_time_stamp = "0";
         std::string this_time_stamp = "0";
         QTextEdit* debug_text_box;
+        QByteArray array = QCryptographicHash::hash("ScannerSettingsDB", QCryptographicHash::Md5);
 
     public:
         explicit PowerThread(MainWindow *mainwindow_)
@@ -43,11 +57,19 @@ class PowerThread: public QThread{
         void spinThreadOnce(){
             if (current_velodyne_status != mainwindow->velodyne_status){
                 current_velodyne_status = mainwindow->velodyne_status;
-                roshandler->velodyneCmd = (mainwindow->velodyne_status == 1) ? 0 : 1;
+                roshandler->velodyneCmd = (current_velodyne_status == 1) ? 0 : 1;
             }
             if (current_imu_status != mainwindow->imu_status){
                 current_imu_status = mainwindow->imu_status;
-                roshandler->imuCmd = (mainwindow->imu_status == 1) ? 0 : 1;
+                roshandler->imuCmd = (current_imu_status == 1) ? 0 : 1;
+            }
+            if (current_camera_status != mainwindow->camera_status){
+                current_camera_status = mainwindow->camera_status;
+                roshandler->cameraCmd = (current_camera_status == 1) ? 0 : 1;
+            }
+            if (current_scan_status != mainwindow->scan_status){
+                current_scan_status = mainwindow->scan_status;
+                roshandler->scanCmd = (current_scan_status == 1) ? 0 : 1;
             }
             changeInDatabaseResponse();
         }
@@ -59,6 +81,17 @@ class PowerThread: public QThread{
 
             roshandler = new ROSHandler();
 
+            bool opened = false;
+            while(!opened){
+                if(sqlite3_open_v2((mainwindow->settingsqmlView->engine()->offlineStoragePath().toStdString() + "/Databases/" + array.toHex().toStdString()
+                                  + ".sqlite").c_str(), &db, SQLITE_OPEN_READONLY, nullptr) != SQLITE_OK) {
+                    printf("ERROR: can't open database: %s\n", sqlite3_errmsg(db));
+                    sqlite3_close(db);
+                }
+                else
+                    opened = true;
+            }
+
             connect(mainwindow, &MainWindow::powerButtonPressed, roshandler, &ROSHandler::systemPowerToggle, Qt::QueuedConnection);
             connect(mainwindow, &MainWindow::scanButtonPressed, roshandler, &ROSHandler::scanToggle, Qt::QueuedConnection);
 
@@ -67,6 +100,7 @@ class PowerThread: public QThread{
             connect(roshandler, &ROSHandler::hardwareOffSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
             connect(roshandler, &ROSHandler::cameraExposureUpdatedSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
             connect(roshandler, &ROSHandler::reconstructionUpdatedSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
+            connect(roshandler, &ROSHandler::scanToggledSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
             exec();
         }
 
@@ -81,51 +115,53 @@ class PowerThread: public QThread{
         }
 
         bool changeInDatabaseResponse(){
-            stringstream ss1;
-            QByteArray array = QCryptographicHash::hash("ScannerSettingsDB", QCryptographicHash::Md5);
-            if(sqlite3_open((mainwindow->settingsqmlView->engine()->offlineStoragePath().toStdString() + "/Databases/" + array.toHex().toStdString()
-                              + ".sqlite").c_str(), &db) != SQLITE_OK) {
-                printf("ERROR: can't open database: %s\n", sqlite3_errmsg(db));
-                sqlite3_close(db);
-                return false;
-            }
             //Callback service for day/night light mode toggle
+            stringstream ss1;
             ss1 << "SELECT * FROM BooleanSettings where name = \"Daylight Mode\" LIMIT 1;";
             string sql(ss1.str());
             if(sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
                 printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
                 sqlite3_close(db);
-                sqlite3_finalize(stmt);
+                if(sqlite3_open_v2((mainwindow->settingsqmlView->engine()->offlineStoragePath().toStdString() + "/Databases/" + array.toHex().toStdString()
+                                     + ".sqlite").c_str(), &db, SQLITE_OPEN_READONLY, nullptr) != SQLITE_OK) {
+                    printf("ERROR: can't open database: %s\n", sqlite3_errmsg(db));
+                    sqlite3_reset(stmt);
+                    sqlite3_close(db);
+                }
                 return false;
             }
 
             if((sqlite3_step(stmt)) == SQLITE_ROW) {
-                if(sqlite3_column_int(stmt, 1) == 1){
-                    mainwindow->setStyleSheet("background-color: white;");
-                    mainwindow->myviz->logterminal->text_box->setStyleSheet("background-color: white; color: black; font-size: 20px");
-                    mainwindow->myviz->reset_button->setStyleSheet("background-color: #fafaa2;");
-                    mainwindow->myviz->fullscreen_button->setStyleSheet("background-color: #fafaa2;");
-                    mainwindow->myviz->zoomin_button->setStyleSheet("background-color: #fafaa2;");
-                    mainwindow->myviz->zoomout_button->setStyleSheet("background-color: #fafaa2;");
-                }
-                else{
-                    mainwindow->setStyleSheet("background-color: #442e5d;");
-                    mainwindow->myviz->logterminal->text_box->setStyleSheet("background-color: black; color: white; font-size: 20px");
-                    mainwindow->myviz->reset_button->setStyleSheet("background-color: #442e5d;");
-                    mainwindow->myviz->fullscreen_button->setStyleSheet("background-color: #442e5d;");
-                    mainwindow->myviz->zoomin_button->setStyleSheet("background-color: #442e5d;");
-                    mainwindow->myviz->zoomout_button->setStyleSheet("background-color: #442e5d;");
+                if(sqlite3_column_int(stmt, 1) != database_daylight_mode){
+                    if(sqlite3_column_int(stmt, 1) == 1){
+                        mainwindow->setStyleSheet("background-color: white;");
+                        mainwindow->myviz->logterminal->text_box->setStyleSheet("background-color: #ffffbd; color: black; font-size: 20px");
+                        mainwindow->myviz->reset_button->setStyleSheet("background-color:#fafaa2; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
+                        mainwindow->myviz->fullscreen_button->setStyleSheet("background-color: #fafaa2;");
+                        mainwindow->myviz->zoomin_button->setStyleSheet("background-color:#fafaa2; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
+                        mainwindow->myviz->zoomout_button->setStyleSheet("background-color:#fafaa2; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
+                    }
+                    else{
+                        mainwindow->setStyleSheet("background-color: #442e5d;");
+                        mainwindow->myviz->logterminal->text_box->setStyleSheet("background-color: black; color: white; font-size: 20px");
+                        mainwindow->myviz->reset_button->setStyleSheet("background-color:#b452fa; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
+                        mainwindow->myviz->fullscreen_button->setStyleSheet("background-color: #442e5d;");
+                        mainwindow->myviz->zoomin_button->setStyleSheet("background-color:#b452fa; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
+                        mainwindow->myviz->zoomout_button->setStyleSheet("background-color:#b452fa; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
+                    }
+                    database_daylight_mode = sqlite3_column_int(stmt, 1);
                 }
             }
 
             //Callback service for camera_exposure time
+            sqlite3_reset(stmt);
             stringstream ss2;
             ss2 << "SELECT * FROM BooleanSettings where name = \"Exposure Time(ms)\" LIMIT 1;";
             string sql2(ss2.str());
             if(sqlite3_prepare_v2(db, sql2.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
                 printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
                 sqlite3_close(db);
-                sqlite3_finalize(stmt);
+                sqlite3_reset(stmt);
                 return false;
             }
 
@@ -138,13 +174,14 @@ class PowerThread: public QThread{
             }
 
             //Callback service for reconstruction
+            sqlite3_reset(stmt);
             stringstream ss3;
             ss3 << "SELECT * FROM BooleanSettings where name = \"Reconstruction\" LIMIT 1;";
             string sql3(ss3.str());
             if(sqlite3_prepare_v2(db, sql3.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
                 printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
                 sqlite3_close(db);
-                sqlite3_finalize(stmt);
+                sqlite3_reset(stmt);
                 return false;
             }
 
@@ -157,13 +194,14 @@ class PowerThread: public QThread{
             }
 
             //Callback service for default lidar colour pattern
+            sqlite3_reset(stmt);
             stringstream ss4;
             ss4 << "SELECT * FROM BooleanSettings where name = \"Default Colour\" LIMIT 1;";
             string sql4(ss4.str());
             if(sqlite3_prepare_v2(db, sql4.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
                 printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
                 sqlite3_close(db);
-                sqlite3_finalize(stmt);
+                sqlite3_reset(stmt);
                 return false;
             }
 
@@ -176,13 +214,14 @@ class PowerThread: public QThread{
             }
 
             //Callback service for default lidar colour pattern
+            sqlite3_reset(stmt);
             stringstream ss5;
             ss5 << "SELECT * FROM BooleanSettings where name = \"Video Source\" LIMIT 1;";
             string sql5(ss5.str());
             if(sqlite3_prepare_v2(db, sql5.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
                 printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
                 sqlite3_close(db);
-                sqlite3_finalize(stmt);
+                sqlite3_reset(stmt);
                 return false;
             }
 
@@ -195,13 +234,14 @@ class PowerThread: public QThread{
             }
 
             //Callback service for debug mode
+            sqlite3_reset(stmt);
             stringstream ss_d;
             ss_d << "SELECT * FROM BooleanSettings where name = \"Debug Mode\" LIMIT 1;";
             string sql_d(ss_d.str());
             if(sqlite3_prepare_v2(db, sql_d.c_str(), -1, &stmt, NULL) != SQLITE_OK) {
                 printf("ERROR: while compiling sql: %s\n", sqlite3_errmsg(db));
                 sqlite3_close(db);
-                sqlite3_finalize(stmt);
+                sqlite3_reset(stmt);
                 return false;
             }
 
@@ -231,9 +271,7 @@ class PowerThread: public QThread{
                 debug_text_box->setPlainText(QString(""));
                 debug_text = "";
             }
-
-            sqlite3_finalize(stmt);
-            sqlite3_close(db);
+            sqlite3_reset(stmt);
             return true;
         }
 };
@@ -257,6 +295,8 @@ int main(int argc, char **argv)
     system("rosnode kill gazebo");
     system("rosnode kill usb_cam");
     system("killall -9 gzserver");
+    sqlite3_close(power_thread->db);
+    sqlite3_finalize(power_thread->stmt);
     delete mainwindow;
     delete power_thread;
 }

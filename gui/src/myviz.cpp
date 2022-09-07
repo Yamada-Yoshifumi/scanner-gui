@@ -44,6 +44,11 @@
 #include <QMetaEnum>
 #include <QDebug>
 
+/*
+Create RViz window by utilising the rviz libraries included above
+EventFilter method receives converted events from the TouchPad object, to bypass the Ogre application multi-touch problem
+*/
+
 /// Gives human-readable event type information.
 QDebug operator<<(QDebug str, const QEvent * ev) {
     static int eventEnumIndex = QEvent::staticMetaObject
@@ -59,7 +64,6 @@ QDebug operator<<(QDebug str, const QEvent * ev) {
     return str.maybeSpace();
 }
 
-// BEGIN_TUTORIAL
 // Constructor for MyViz.  This does most of the work of the class.
 MyViz::MyViz( QWidget* parent )
     : QWidget( parent )
@@ -85,33 +89,40 @@ MyViz::MyViz( QWidget* parent )
     //fullscreen_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
     fullscreen_button->setIconSize(QSize(32,32));
 
-    zoomin_button = new QPushButton(this);
+    zoomin_button = new RoundedButton(this);
     zoomin_button->setObjectName(QStringLiteral("zoomin_button"));
     zoomin_button->setIcon(QIcon(":/qml/images/zoom_in.png"));
-    zoomin_button->setStyleSheet("background-color:#442e5d;");
-    zoomin_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
     zoomin_button->setIconSize(QSize(64,64));
     //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
 
-    zoomout_button = new QPushButton(this);
+    zoomout_button = new RoundedButton(this);
     zoomout_button->setObjectName(QStringLiteral("zoomout_button"));
     zoomout_button->setIcon(QIcon(":/qml/images/zoom_out.png"));
-    zoomout_button->setStyleSheet("background-color:#442e5d;");
-    zoomout_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
     zoomout_button->setIconSize(QSize(64,64));
     //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
 
-    reset_button = new QPushButton(this);
+    reset_button = new RoundedButton(this);
     reset_button->setObjectName(QStringLiteral("reset_button"));
     reset_button->setIcon(QIcon(":/qml/images/reset_rviz.png"));
-    reset_button->setStyleSheet("background-color:#442e5d;");
-    reset_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
     reset_button->setIconSize(QSize(64,64));
     //<a href="https://www.flaticon.com/free-icons/axis" title="axis icons">Axis icons created by Smashicons - Flaticon</a>
+
+    //Round the corners of buttons
+    //rect_1 = new QRect(0,0,zoomin_button->size().width() - 10,zoomin_button->size().height() - 10);
+    //rect_2 = new QRect(0,0,zoomout_button->size().width() - 10,zoomout_button->size().height() - 10);
+    //rect_3 = new QRect(0,0,reset_button->size().width() - 10,reset_button->size().height() - 10);
+    //QRegion region_1(*rect_1, QRegion::Ellipse);
+    //QRegion region_2(*rect_2, QRegion::Ellipse);
+    //QRegion region_3(*rect_3, QRegion::Ellipse);
+    //zoomin_button->setMask(region);
+    //zoomout_button->setMask(region);
+    //reset_button->setMask(region);
 
     QStringList commands = { "Intensity", "AxisColor", "Uncertainty", "FlatColor" };
     combo = new QComboBox(this);
     combo->addItems(commands);
+    combo->setStyleSheet("font-size: 30px;selection-background-color: #111;selection-color: yellow;color: white;background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);");
+    //combo->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
 
     main_layout = new QGridLayout;
     main_layout->setContentsMargins(5,5,5,5);
@@ -125,6 +136,7 @@ MyViz::MyViz( QWidget* parent )
     main_layout->addWidget(combo, 0, 25, 1, 5);
 
     setLayout(main_layout);
+
     // Next we initialize the main RViz classes.
     //
     // The VisualizationManager is the container for Display objects,
@@ -243,7 +255,7 @@ void MyViz::colourPatternChanged()
     QString current_selection = combo->currentText();
     pointcloud_->subProp("Color Transformer")->setValue(current_selection);
 }
-
+//EventFilter blocks some direct mouse events, and accepts Non-Synthesized events sent from a TouchPad object
 bool MyViz::eventFilter(QObject * p_obj, QEvent * p_event)
 {
     /*

@@ -8,7 +8,7 @@ Item {
         anchors.fill: parent
         initialItem: "SettingsInit.qml"
         signal pagePopedPushed(string str)
-
+/*
         pushEnter: Transition {
 
             PropertyAnimation {
@@ -19,6 +19,7 @@ Item {
             }
 
         }
+
         pushExit: Transition {
             PropertyAnimation {
                 property: "opacity"
@@ -45,6 +46,8 @@ Item {
                 duration: 300
             }
         }
+        */
+
     }
 }
 

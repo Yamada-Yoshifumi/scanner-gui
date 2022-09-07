@@ -13,9 +13,9 @@ Rectangle {
 
     Text {
         id: settings_lidar_header
-        x: parent.x
+        x: parent.x + 50
         y: parent.y
-        width: parent.width
+        width: parent.width - 50
         height: parent.width / 5
 
         color: settings_lidar.textcolor
@@ -227,7 +227,9 @@ Rectangle {
 
             anchors.top: settings_lidar_header.bottom
             anchors.bottom: settings_lidar.bottom
-            width: settings_lidar.width
+            anchors.left: settings_lidar.left
+            anchors.leftMargin: 50
+            width: settings_lidar.width - 50
             ListView {
                 id: mvc_lidar_listview
                 anchors.fill: parent
@@ -251,12 +253,13 @@ Rectangle {
         anchors{
             left: parent.left
             bottom: parent.bottom
+            bottomMargin: parent.height/2 - height/2
         }
         icon.name: "settings"
-        icon.source: "./images/close-window-128.gif"
-        icon.color: "#620b66"
-        icon.width: 50
-        icon.height: 50
+        icon.source: "./images/forward_arrow.png"
+        icon.color: "white"
+        icon.width: 40
+        icon.height: 80
         signal settingsClose(string obj);
         /*
         OpacityAnimator {
@@ -279,7 +282,6 @@ Rectangle {
             id: power_button_bg
             color: parent.down? "#b1b1b1" : "#00fbfbfb"
             radius: 10
-            border.color: "#3afbfbfb"
         }
     }
 
@@ -294,16 +296,14 @@ Rectangle {
                     rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
                     var daylight_mode = rs.rows.item(0).value;
                     if (daylight_mode){
-                        color = "#f5f55b";
-                        border.color = "#f5f55b";
-                        settings_lidar_header.color = "black";
+                        color = "#f7f78d";
+                        border.color = "#f7f78d";
                         lidar_listview.color = "#f7f78d";
                         textcolor = "black";
                     }
                     else{
                         color = "#442e5d";
                         border.color = "#442e5d";
-                        settings_lidar_header.color = "#ffffff";
                         lidar_listview.color = "#442e5d";
                         textcolor = "#ffffff";
                     }
