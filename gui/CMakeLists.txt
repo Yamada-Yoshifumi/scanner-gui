@@ -66,6 +66,8 @@ add_executable(qt_gui
     include/logterminal.h
     src/roundedbutton.cpp
     include/roundedbutton.h
+    include/animatedgridlayout.h
+    src/animatedgridlayout.cpp
 )
 
 #set_target_properties(scanner_gui PROPERTIES

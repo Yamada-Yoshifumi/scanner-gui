@@ -49,7 +49,7 @@ Create RViz window by utilising the rviz libraries included above
 EventFilter method receives converted events from the TouchPad object, to bypass the Ogre application multi-touch problem
 */
 
-/// Gives human-readable event type information.
+// Gives human-readable event type information.
 QDebug operator<<(QDebug str, const QEvent * ev) {
     static int eventEnumIndex = QEvent::staticMetaObject
                                     .indexOfEnumerator("Type");

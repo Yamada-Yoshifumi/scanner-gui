@@ -51,10 +51,11 @@ MainWindow::MainWindow(QWidget *parent) :
     countdown_widget -> setNum(3);
     countdown_widget -> setVisible(false);
 
-    central_widget_layout = new QGridLayout();
+    central_widget_layout = new AnimatedGridLayout();
     central_widget_layout->setContentsMargins(0, 0, 50, 0);
     central_widget_layout->addWidget(container, 0, 0, 3, 3);
     central_widget_layout->addWidget(myviz, 0, 0, 2, 3);
+
     //central_widget_layout->addWidget(settings_container, 0, 2, 3, 1);
     //central_widget_layout->addWidget(countdown_widget, 0, 0, 3, 3);
 
@@ -112,6 +113,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     settings_toggle_button = settingsItem->findChild<QObject*>("settings_toggle_button");
     connect(settings_toggle_button, SIGNAL(settingsToggle(QString)), this, SLOT(toggleSettings()));
+    connect(settings_toggle_button, SIGNAL(exit(QString)), this, SLOT(closeWindow()));
 
     
     while(scan_button == nullptr)
@@ -131,6 +133,8 @@ MainWindow::MainWindow(QWidget *parent) :
         this,
         SLOT(recordClickedEmit()));
 
+    QTimer::singleShot(0, this, SLOT(showFullScreen()));
+
     ROS_INFO("%s", settingsqmlView->engine()->offlineStoragePath().toStdString().c_str());
 }
 
@@ -140,6 +144,10 @@ MainWindow::~MainWindow()
     delete velodyne_timer;
     delete ros_timer;
     delete imu_timer;
+}
+
+void MainWindow::closeWindow(){
+    close();
 }
 
 void MainWindow::spinOnce(){
@@ -270,14 +278,58 @@ void MainWindow::updateCountDownNum(){
 void MainWindow::toggleSettings(){
 
     if (settings_shown){
-        settings_container->move(QPoint(newSize.width() - 50, 0));
+        //central_widget_layout->setContentsMargins(0, 0, 50, 0);
+        rviz_animation = new QPropertyAnimation(central_widget_layout, "intContentsMargins");
+
+        rviz_animation->setDuration(50);
+
+        int temp =central_widget_layout->readCM();
+        rviz_animation->setStartValue(QVariant(temp));
+
+        temp = 50;
+        rviz_animation->setEndValue(QVariant(temp));
+        rviz_animation->start();
+
+        QQuickItem* rootObject =  qmlView->rootObject();
+        if(rootObject) rootObject->setProperty("width",QVariant::fromValue(newSize.width()));
+
+        settings_animation = new QPropertyAnimation(settings_container, "pos");
+        settings_animation->setDuration(200);
+        settings_animation->setStartValue(settings_container->pos());
+        settings_animation->setEndValue(QPoint(newSize.width() - 50, 0));
+        settings_animation->start();
+        settings_shown = false;
+/*         settings_container->move(QPoint(newSize.width() - 50, 0));
         settings_container->adjustSize();
         settings_shown = false;
+*/
     }
     else{
+        QQuickItem* rootObject =  qmlView->rootObject();
+        if(rootObject) rootObject->setProperty("width",QVariant::fromValue(newSize.width() - settings_container->width()));
+
+        settings_animation = new QPropertyAnimation(settings_container, "pos");
+        settings_animation->setDuration(200);
+        settings_animation->setStartValue(settings_container->pos());
+        settings_animation->setEndValue(QPoint(newSize.width() - settings_container->width(), 0));
+        settings_animation->start();
+        settings_shown = true;
+
+        rviz_animation = new QPropertyAnimation(central_widget_layout, "intContentsMargins");
+
+        rviz_animation->setDuration(50);
+
+        int temp =central_widget_layout->readCM();
+        rviz_animation->setStartValue(QVariant(temp));
+
+        temp = settings_container->width();
+        rviz_animation->setEndValue(QVariant(temp));
+        rviz_animation->start();
+/*
         settings_container->move(QPoint(newSize.width() - settings_container->width(), 0));
         settings_container->adjustSize();
         settings_shown = true;
+*/
     }
 }
 

@@ -72,6 +72,7 @@ Rectangle {
                 append({name: "General", type:"text", cache: true});
                 append({name: "SLAM Options", type:"combo", value: mvc_model.slam_option});
                 append({name: "About", type:"text", cache: true});
+                append({name: "Exit", type:"exit_button", cache: true});
                 completed = true;
             }
 
@@ -113,7 +114,7 @@ Rectangle {
 
     DelegateChooser {
             id: chooser
-            role: "type"
+            role: "type"    
             DelegateChoice { roleValue: "text";                 Component {
                     id: mvc_delegate
                     Row {
@@ -131,6 +132,34 @@ Rectangle {
                                 anchors.fill: parent
                                 onClicked: {
                                     stackview_settings.push("./Settings"+name+".qml");
+
+                                    mvc_listview.currentIndex = index
+                                    console.debug("Clicked on age")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            DelegateChoice { roleValue: "exit_button";                 Component {
+                    id: mvc_delegate_exit
+                    Row {
+
+                        Text {
+                            id: mvc_level_0_exit
+                            text: name
+                            width: settings_header.width
+                            height: settings_header.width/ 5
+                            color: settings_ui.textcolor
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            font.pointSize: 100 * parent.width/ 2560
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    settings_toggle_button.exit("exit");
+
 
                                     mvc_listview.currentIndex = index
                                     console.debug("Clicked on age")
@@ -222,6 +251,7 @@ Rectangle {
         icon.color: "white"
         icon.width: 40
         icon.height: 80
+        signal exit(string obj)
         signal settingsToggle(string obj);
         /*
         OpacityAnimator {

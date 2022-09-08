@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
+#include "animatedgridlayout.h"
 using std::stringstream;
 #include <stdio.h>
 #include <string>
@@ -36,6 +37,7 @@ signals:
     void recordButtonPressed();
     void powerSignal(QString);
     void scanSignal(QString);
+    void exit(QString);
     void recordSignal(QString);
     void reconstructionToggled(int);
 
@@ -56,6 +58,10 @@ private:
     bool settings_shown = false;
     bool changeInDatabaseResponse();
 
+    QPropertyAnimation *settings_animation;
+    QPropertyAnimation *rviz_animation;
+    QPropertyAnimation *qml_animation;
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -67,7 +73,7 @@ public:
     void switchVideoSource(int source);
     QQuickView *qmlView;
     QQuickView *settingsqmlView;
-    QGridLayout* central_widget_layout;
+    AnimatedGridLayout* central_widget_layout;
     QObject *power_button;
     QObject *power_button_bg;
     QObject *scan_button;
@@ -99,6 +105,7 @@ public:
     bool power_toggled = false;
     bool counter;
 
+
 public Q_SLOTS:
     void createRVizEvent();
     void fullscreenToggle();
@@ -112,6 +119,7 @@ public Q_SLOTS:
     void recordClickedEmit();
     void updateCountDownNum();
     void toggleSettings();
+    void closeWindow();
     //void systemOn();
 };
 
