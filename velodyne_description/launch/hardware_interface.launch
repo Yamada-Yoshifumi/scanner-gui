@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-<launch>
-	<node
-            name="hardware_signal"
-	    pkg="velodyne_description"
-            type="hardware_signal"
-	  />
-</launch>

@@ -1,25 +1,20 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.16)
 project(ros_srv)
 
-find_package(catkin REQUIRED COMPONENTS
-    std_msgs
-    geometry_msgs
-    message_generation
+find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(builtin_interfaces REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces(ros_srv
+    "srv/VelodyneSwitch.srv"
+    "srv/ImuSwitch.srv"
+    "srv/CameraExposure.srv"
+    "srv/Reconstruction.srv"
+    "srv/ScanToggle.srv"
+    "srv/RecordToggle.srv"
+    "srv/SLAMModeSwitch.srv"
+    DEPENDENCIES geometry_msgs std_msgs builtin_interfaces
 )
 
-#add_message_files(
-#    FILES
-#        GripperVelocity.msg
-#        HardwareStatus.msg
-#        ManipulationStatus.msg
-#        NavigationStatus.msg
-#        TeleopStatus.msg
-#)
-add_service_files(
-    FILES
-        VelodyneSwitch.srv
-        ImuSwitch.srv
-)
-generate_messages(DEPENDENCIES std_msgs geometry_msgs)
-
-catkin_package(CATKIN_DEPENDS std_msgs geometry_msgs)
+ament_package()
