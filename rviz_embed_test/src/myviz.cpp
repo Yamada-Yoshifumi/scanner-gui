@@ -146,12 +146,12 @@ MyViz::MyViz(
   // Intialize the sliders
 
 
+
+   connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));*/
+  connect( fullscreen_button, &QPushButton::clicked, this, &MyViz::fullscreenToggle);
   connect(imu_timer, SIGNAL(timeout()), this, SLOT(resetImuStatus()));
   connect(camera_timer, SIGNAL(timeout()), this, SLOT(resetCameraStatus()));
   connect(velodyne_timer, SIGNAL(timeout()), this, SLOT(resetVelodyneStatus()));
-
-  */  connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
-  connect( fullscreen_button, &QPushButton::clicked, this, &MyViz::fullscreenToggle);
 
 
   settingsqmlView = new QQuickView();
@@ -288,15 +288,6 @@ void MyViz::closeEvent(QCloseEvent * event)
 
 void MyViz::closeWindow(){
     close();
-}
-
-void MyViz::spinOnce(){
-    //this->changeInDatabaseResponse();
-    if(rclcpp::ok()){
-        //rclcpp::spin_some(ros_message_detector);
-    }
-    else
-        QApplication::quit();
 }
 
 void MyViz::resizeEvent(QResizeEvent* event)

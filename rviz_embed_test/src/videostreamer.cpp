@@ -43,6 +43,6 @@ void VideoStreamer::openVideoCamera()
 {
     //ROS_INFO("openned");
     double fps = 30.0;
-    tUpdate.start(1000/fps);
+    tUpdate.start(30/fps);
     //rostimer.start(1000/fps);
 }

@@ -354,8 +354,8 @@ public:
     ROSMessageDetector()
         :Node("message_detector")
     {
-        rclcpp::QoS video_qos(30);
-        video_qos.keep_last(30);
+        rclcpp::QoS video_qos(1);
+        video_qos.keep_last(1);
         video_qos.best_effort();
         video_qos.durability_volatile();
         velodynesub = this->create_subscription<sensor_msgs::msg::PointCloud2>(

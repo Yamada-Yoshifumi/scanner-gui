@@ -189,7 +189,7 @@ private slots:
       void resetVelodyneStatus();
       void resetImuStatus();
       void resetCameraStatus();
-      void spinOnce();
+      //void spinOnce();
       void imageReload();
       void powerClickedEmit();
       void scanClickedEmit();
