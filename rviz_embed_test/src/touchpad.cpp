@@ -40,10 +40,7 @@ TouchPad::~TouchPad()
 }
 
 bool TouchPad::event(QEvent* event){
-    /*
-    QMouseEvent scrollevent(QEvent::MouseButtonPress, pos, 0, 0, 0);
-    QApplication::sendEvent(isWindow, &event);
-    */
+
     event->accept();
     if(event->type() == QEvent::TouchBegin ||
        event->type() == QEvent::TouchUpdate ||
@@ -56,8 +53,6 @@ bool TouchPad::event(QEvent* event){
             QPointF _global_pos = parentWidget()->mapToGlobal(QPoint(0,0));
             QPointF _win_pos_1 = _global_pos + _pos_1;
             QPointF _win_pos_2 = _global_pos + _pos_2;
-
-            printf("2 detected \n");
             QPointF _trunc_pos = QPointF(trunc((_pos_1.x() + _pos_2.x())/2), trunc((_pos_1.y() + _pos_2.y())/2));
             QPoint _int_win_pos = QPoint(int((_win_pos_1.x() + _win_pos_2.x()+10)/2), int((_win_pos_1.y() + _win_pos_2.y()+10)/2));
             if(event->type() == QEvent::TouchUpdate){
@@ -68,8 +63,6 @@ bool TouchPad::event(QEvent* event){
                     previous_mid_point = _int_win_pos;
                     return true;
                 }
-
-                //double mid_point_travel = sqrt(pow(previous_mid_point.x() - _int_win_pos.x(), 2) + pow(previous_mid_point.y() - _int_win_pos.y(), 2));
 
                 if (abs(_current_spacing - previous_spacing) < 10 ){
                     QMouseEvent event(QEvent::MouseMove, _trunc_pos, _trunc_pos, _int_win_pos, Qt::NoButton, Qt::MiddleButton, Qt::NoModifier);
@@ -114,16 +107,11 @@ bool TouchPad::event(QEvent* event){
                         pixelDelta = QPoint(0, -int((_current_spacing - previous_spacing)));
                         angleDelta = QPoint(0, -int((_current_spacing - previous_spacing)/8));
                     }
-                    //QWheelEvent wheel_pre_event(_trunc_pos, _int_win_pos, pixelDelta, angleDelta, Qt::NoButton, Qt::NoModifier, Qt::ScrollBegin, false, Qt::MouseEventNotSynthesized);
-                    //QWheelEvent event(_trunc_pos, _int_win_pos, pixelDelta, angleDelta, Qt::NoButton, Qt::NoModifier, Qt::ScrollUpdate, false, Qt::MouseEventNotSynthesized);
                     if ((mainWin->current_f_distance >= 50 && pixelDelta.y() > 0) || (mainWin->current_f_distance <= 1 && pixelDelta.y() < 0))
                         return true;
 
                     mainWin->current_f_distance += pixelDelta.y()/10;
                     mainWin->manager_->getViewManager()->getCurrent()->subProp("Distance")->setValue( mainWin->current_f_distance );
-                    //this->parentWidget()->eventFilter(this->parentWidget(), &wheel_pre_event);
-                    //this->parentWidget()->eventFilter(this->parentWidget(), &event);
-
                     previous_spacing = _current_spacing;
                 }
             }
@@ -136,10 +124,8 @@ bool TouchPad::event(QEvent* event){
             else if(event->type() == QEvent::TouchEnd){
                 previous_spacing = 0;
                 previous_mid_point = QPoint(0,0);
-                //QWheelEvent wheel_end_event(_trunc_pos, _int_win_pos, QPoint(0,0), QPoint(0,0), Qt::NoButton, Qt::NoModifier, Qt::ScrollEnd, false, Qt::MouseEventNotSynthesized);
                 QMouseEvent event(QEvent::MouseButtonRelease, _trunc_pos, _trunc_pos, _int_win_pos, Qt::MiddleButton, Qt::NoButton, Qt::NoModifier);
                 this->parentWidget()->eventFilter(this->parentWidget(), &event);
-                //this->parentWidget()->eventFilter(this->parentWidget(), &wheel_end_event);
             }
         }
         else if(touchPoints.count() == 1){
@@ -147,23 +133,17 @@ bool TouchPad::event(QEvent* event){
             _pos_1 = touchPoints[0].pos();
             QPointF _global_pos = parentWidget()->mapToGlobal(QPoint(0,0));
             QPointF _win_pos = _global_pos + _pos_1;
-            printf("%f \n", _pos_1.x());
             QPointF _trunc_pos_1 = QPointF(trunc(_pos_1.x()), trunc(_pos_1.y()));
             QPoint _int_win_pos = QPoint(int(_win_pos.x()) + 5, int(_win_pos.y()) + 5);
             if(event->type() == QEvent::TouchUpdate){
-                printf("processing \n");
-                //QMouseEvent event(QEvent::MouseMove, _trunc_pos_1, _trunc_pos_1, _int_win_pos, Qt::NoButton, Qt::LeftButton, Qt::NoModifier);
-                //this->parentWidget()->eventFilter(this->parentWidget(), &event);
                 if((_int_win_pos.x() - mainWin->previous_touchp.x()) > 5){
                     mainWin->current_yaw += 0.05;
-                    printf("Yaw: %f \n", mainWin->current_yaw);
                     mainWin->manager_->getViewManager()->getCurrent()->subProp("Yaw")->setValue( mainWin->current_yaw );
                     mainWin->previous_touchp = _int_win_pos;
 
                     }
                 else if(_int_win_pos.x() - mainWin->previous_touchp.x() < -5){
                     mainWin->current_yaw -= 0.05;
-                    printf("Yaw: %f  \n", mainWin->current_yaw);
                     mainWin->manager_->getViewManager()->getCurrent()->subProp("Yaw")->setValue( mainWin->current_yaw );
                     mainWin->previous_touchp = _int_win_pos;
                     }
@@ -180,44 +160,12 @@ bool TouchPad::event(QEvent* event){
                     }
                 }
             else if(event->type() == QEvent::TouchBegin){
-                //QMouseEvent event(QEvent::MouseButtonPress, _trunc_pos_1, _trunc_pos_1, _int_win_pos, Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
-                //mainWin->eventFilter(mainWin, &event);
                 mainWin->previous_touchp = _int_win_pos;
             }
             else if(event->type() == QEvent::TouchEnd){
                 mainWin->previous_touchp = QPoint(0,0);
-                //QMouseEvent event(QEvent::MouseButtonRelease, _trunc_pos_1, _trunc_pos_1, _int_win_pos, Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
-                //this->parentWidget()->eventFilter(this->parentWidget(), &event);
 
-            }/*
-            if(previous_touchp == QPoint(0,0))
-                return true;
-            else{
-                if((pMouseEvent->globalPos().x() - previous_touchp.x()) > 5){
-                    current_yaw += 0.05;
-                    printf("Yaw: %f \n", current_yaw);
-                    manager_->getViewManager()->getCurrent()->subProp("Yaw")->setValue( current_yaw );
-                    previous_touchp = pMouseEvent->globalPos();
-
-                }
-                else if(pMouseEvent->globalPos().x() - previous_touchp.x() < -5){
-                    current_yaw -= 0.05;
-                    printf("Yaw: %f  \n", current_yaw);
-                    manager_->getViewManager()->getCurrent()->subProp("Yaw")->setValue( current_yaw );
-                    previous_touchp = pMouseEvent->globalPos();
-                }
-                if(current_pitch < 1.57 && pMouseEvent->globalPos().y() - previous_touchp.y() > 5){
-                    current_pitch += 0.05;
-                    manager_->getViewManager()->getCurrent()->subProp("Pitch")->setValue( current_pitch );
-                    previous_touchp = pMouseEvent->globalPos();
-
-                }
-                else if(current_pitch > -1.57 && pMouseEvent->globalPos().y() - previous_touchp.y() < -5){
-                    current_pitch -= 0.05;
-                    manager_->getViewManager()->getCurrent()->subProp("Pitch")->setValue( current_pitch );
-                    previous_touchp = pMouseEvent->globalPos();
-                }
-            }*/
+            }
         }
     }
     return true;

@@ -16,7 +16,6 @@ class VideoStreamer: public QObject
 {
     Q_OBJECT
 
-
 public:
     VideoStreamer();
     ~VideoStreamer();
@@ -24,9 +23,7 @@ public:
 public:
     void streamVideo();
     void convertROSImage(const sensor_msgs::msg::Image &msg);
-    //ros::Subscriber camerasub;
     cv_bridge::CvImagePtr current_frame_ptr;
-    //ros::NodeHandlePtr nh_;
     bool init = false;
 
 
@@ -34,13 +31,7 @@ public slots:
     void openVideoCamera();
 
 private:
-    //void spinOnce();
-    //cv::Mat frame;
-    //cv::VideoCapture cap;
     QTimer tUpdate;
-    //QTimer rostimer;
-
-
 
 signals:
     void newImage(QImage img);

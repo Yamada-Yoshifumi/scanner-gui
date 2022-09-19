@@ -24,30 +24,22 @@ MyViz::MyViz(
     central_widget = new QWidget(this);
     secondary_widget = new QWidget(this);
     secondary_widget->setMinimumSize(1280, 480);
-    //tertiary_widget = new QWidget(central_widget);
     QSizePolicy sp_retain = secondary_widget->sizePolicy();
     sp_retain.setRetainSizeWhenHidden(true);
     secondary_widget->setSizePolicy(sp_retain);
+
     // QML Wrapper
-
-    qDebug() << "10";
     qmlView = new QQuickView();
-
     qmlView->setSource(QUrl(QStringLiteral("qrc:/qml/App.qml")));
 
     container = QWidget::createWindowContainer(qmlView, central_widget);
     container->setMinimumSize(1280, 240);
     container->adjustSize();
-    qDebug() << "9";
-    //Other stuff
+
     countdown_widget = new QLabel(secondary_widget);
     countdown_widget -> setStyleSheet("background-color: rgba(10,10,10,1);color : white;font-weight: bold; font-size: 200px; qproperty-alignment: AlignCenter;");
     countdown_widget -> setNum(3);
     countdown_widget -> setVisible(false);
-
-
-    qDebug() << "8";
-
     //timers
     QObject *item = qmlView->rootObject();
     QObject *reboot_button = item->findChild<QObject*>("continue");
@@ -67,54 +59,42 @@ MyViz::MyViz(
   // Add visualization
 
   // Initialize the classes we need from rviz
-  //secondary_widget = new QWidget(this);
   initializeRViz();
   DisplayGrid();
-  qDebug() << "2";
 
+  QStringList commands = { "Intensity", "AxisColor", "Uncertainty", "FlatColor" };
+  combo = new QComboBox(this);
+  combo->addItems(commands);
+  sp_retain = combo->sizePolicy();
+  sp_retain.setRetainSizeWhenHidden(true);
+  combo->setSizePolicy(sp_retain);
+  combo->setHidden(true);
   logterminal = new LogTerminal(render_panel_);
   sp_retain = logterminal->sizePolicy();
   sp_retain.setRetainSizeWhenHidden(true);
   logterminal->setSizePolicy(sp_retain);
   logterminal->setHidden(true);
   touchpad = new TouchPad(render_panel_);
-  fullscreen_button = new QPushButton(secondary_widget);
   zoomin_button = new RoundedButton(secondary_widget);
   zoomout_button = new RoundedButton(secondary_widget);
   reset_button = new RoundedButton(secondary_widget);
-  combo = new QComboBox(secondary_widget);
 
   touchpad->setStyleSheet("background-color: rgba(10,10,10,0.8);");
-
-  fullscreen_button->setObjectName(QStringLiteral("fullscreen_button"));
-  fullscreen_button->setIcon(QIcon(":/qml/images/fullscreen.svg"));
-  fullscreen_button->setStyleSheet("background-color:#442e5d;");
-  //fullscreen_button->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
-  fullscreen_button->setIconSize(QSize(32,32));
-  qDebug() << "3";
 
   zoomin_button->setObjectName(QStringLiteral("zoomin_button"));
   zoomin_button->setIcon(QIcon(":/qml/images/zoom_in.png"));
   zoomin_button->setIconSize(QSize(64,64));
   //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
 
-
   zoomout_button->setObjectName(QStringLiteral("zoomout_button"));
   zoomout_button->setIcon(QIcon(":/qml/images/zoom_out.png"));
   zoomout_button->setIconSize(QSize(64,64));
   //<a href="https://www.flaticon.com/free-icons/zoom-out" title="zoom out icons">Zoom out icons created by Freepik - Flaticon</a>
-  qDebug() << "2";
 
   reset_button->setObjectName(QStringLiteral("reset_button"));
   reset_button->setIcon(QIcon(":/qml/images/reset_rviz.png"));
   reset_button->setIconSize(QSize(64,64));
   //<a href="https://www.flaticon.com/free-icons/axis" title="axis icons">Axis icons created by Smashicons - Flaticon</a>
-
-  QStringList commands = { "Intensity", "AxisColor", "Uncertainty", "FlatColor" };
-
-  combo->addItems(commands);
-  combo->setStyleSheet("font-size: 30px;selection-background-color: #111;selection-color: yellow;color: white;background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);");
-  //combo->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding));
 
   secondary_layout = new QGridLayout(secondary_widget);
   secondary_layout->setContentsMargins(0,0,0,0);
@@ -124,11 +104,7 @@ MyViz::MyViz(
   secondary_layout->addWidget(zoomout_button, 8, 35, 2, 5);
   secondary_layout->addWidget(reset_button, 8, 40, 2, 5);
   secondary_layout->addWidget(render_panel_, 0, 0, 10, 30 );
-  //secondary_layout->addWidget(fullscreen_button, 9, 30, 1, 1 );
-  //secondary_layout->addWidget(combo, 0, 30, 1, 5);
   secondary_widget->setLayout(secondary_layout);
-
-
 
   central_widget_layout = new AnimatedGridLayout();
   central_widget_layout->setSpacing(0);
@@ -137,9 +113,6 @@ MyViz::MyViz(
   central_widget_layout->addWidget(secondary_widget, 0, 0, 2, 1);
   central_widget->setLayout(central_widget_layout);
   setCentralWidget(central_widget);
-
-  qDebug() << "1";
-
   // Signals
   /*
 
@@ -148,7 +121,7 @@ MyViz::MyViz(
 
 
    connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));*/
-  connect( fullscreen_button, &QPushButton::clicked, this, &MyViz::fullscreenToggle);
+
   connect(imu_timer, SIGNAL(timeout()), this, SLOT(resetImuStatus()));
   connect(camera_timer, SIGNAL(timeout()), this, SLOT(resetCameraStatus()));
   connect(velodyne_timer, SIGNAL(timeout()), this, SLOT(resetVelodyneStatus()));
@@ -168,21 +141,13 @@ MyViz::MyViz(
   settings_toggle_button = settingsItem->findChild<QObject*>("settings_toggle_button");
 
   connect(settings_toggle_button, SIGNAL(settingsToggle(QString)), this, SLOT(toggleSettings()));
-
   connect(settings_toggle_button, SIGNAL(exit(QString)), this, SLOT(closeWindow()));
-  /*
-    */
+  connect( combo, &QComboBox::currentTextChanged, this, &MyViz::colourPatternChanged);
 
-  //while(scan_button == nullptr)
-      scan_button = settingsItem->findChild<QObject*>("scan_button");
-  //while(record_button == nullptr)
-      record_button = settingsItem->findChild<QObject*>("record_button");
-  //while(power_button == nullptr)
-        power_button = item->findChild<QObject*>("power_button");
-
-  //while(opencv_image == nullptr)
-        opencv_image = item->findChild<QObject*>("opencv_image");
-
+  scan_button = settingsItem->findChild<QObject*>("scan_button");
+  record_button = settingsItem->findChild<QObject*>("record_button");
+  power_button = item->findChild<QObject*>("power_button");
+  opencv_image = item->findChild<QObject*>("opencv_image");
   connect(
       scan_button,
       SIGNAL(scanSignal(QString)),
@@ -217,14 +182,9 @@ MyViz::MyViz(
     connect(reset_button, &QPushButton::clicked, this, &MyViz::resetView);
     connect(zoomin_button, &QPushButton::pressed, this, &MyViz::manualZoomIn);
     connect(zoomout_button, &QPushButton::pressed, this, &MyViz::manualZoomOut);
-
   QTimer::singleShot(0, this, SLOT(showFullScreen()));
 }
-/*
-MyViz::~MyViz(){
 
-}
-*/
 QWidget *
 MyViz::getParentWindow()
 {
@@ -250,6 +210,15 @@ void MyViz::DisplayGrid()
   assert(grid_ != NULL);
   grid_->subProp("Line Style")->setValue("Billboards");
   grid_->subProp("Color")->setValue(QColor(Qt::white));
+
+  tf_ = manager_->createDisplay("rviz_default_plugins/RobotModel","lidar tf", true);
+
+  pointcloud_ = manager_->createDisplay("rviz_default_plugins/PointCloud2","PointCloudAir", true);
+  pointcloud_->subProp("Topic")->setValue("velodyne_points");
+  pointcloud_->subProp("Style")->setValue("Points");
+  pointcloud_->subProp("Size (Pixels)")->setValue("2");
+  pointcloud_->subProp("Channel Name")->setValue("ring");
+  pointcloud_->subProp("Color Transformer")->setValue("Intensity");
 }
 
 void MyViz::initializeRViz()
@@ -265,6 +234,12 @@ void MyViz::initializeRViz()
   manager_->initialize();
   manager_->startUpdate();
   //render_panel_->setHidden(true);
+}
+
+void MyViz::colourPatternChanged()
+{
+    QString current_selection = combo->currentText();
+    pointcloud_->subProp("Color Transformer")->setValue(current_selection);
 }
 
 void MyViz::setThickness(int thickness_percent)
@@ -300,8 +275,6 @@ void MyViz::resizeEvent(QResizeEvent* event)
     rootObject =  settingsqmlView->rootObject();
     if(rootObject) rootObject->setProperty("height",QVariant::fromValue(newSize.height()));
 
-    //secondary_widget->resize(newSize.width() - 60, newSize.height()*2/3 - 10);
-    //secondary_widget->raise();
     if(!settings_shown){
         settings_container->resize(settings_container->width(), newSize.height());
         settings_container->move(QPoint(newSize.width() - 50, 0));
@@ -312,49 +285,6 @@ void MyViz::resizeEvent(QResizeEvent* event)
     }
 }
 
-void MyViz::switchVideoSource(int source){
-    if(source == 0){
-        std::string camera_stream;
-        //ros_message_detector->camera_topic = "/rrbot/camera1/image_raw";
-        //camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &MainWindow::updateCameraStatus, this);
-    }
-    else if(source == 1){
-        std::string camera_stream;
-        //ros_message_detector->camera_topic = "/rrbot/camera2/image_raw";
-        //camerasub = n_->subscribe<sensor_msgs::Image>(camera_stream, 1, &MainWindow::updateCameraStatus, this);
-    }
-}
-/*
-void MyViz::createRVizEvent()
-{
-    logterminal->setHidden(true);
-    QObject *item = qmlView->rootObject();
-    while(power_button == nullptr)
-        power_button = item->findChild<QObject*>("power_button");
-
-    while(opencv_image == nullptr)
-        opencv_image = item->findChild<QObject*>("opencv_image");
-
-    //videoStreamer = new VideoStreamer();
-
-    //liveimageprovider = new OpencvImageProvider();
-
-    connect(
-        power_button,
-        SIGNAL(powerSignal(QString)),
-        this,
-        SLOT(powerClickedEmit()));
-    connect(videoStreamer,&VideoStreamer::newImage,liveimageprovider,&OpencvImageProvider::updateImage);
-    connect(liveimageprovider,
-            SIGNAL(imageChanged()),
-            this,
-            SLOT(imageReload()));
-    videoStreamer->openVideoCamera();
-    qmlView->engine()->addImageProvider("live",liveimageprovider);
-    counter = false;
-
-}
-*/
 void MyViz::powerClickedEmit(){
 
     emit powerButtonPressed();
@@ -415,7 +345,6 @@ void MyViz::updateCountDownNum(){
 void MyViz::toggleSettings(){
 
     if (settings_shown){
-        //central_widget_layout->setContentsMargins(0, 0, 50, 0);
         rviz_animation = new QPropertyAnimation(central_widget_layout, "intContentsMargins");
 
         rviz_animation->setDuration(50);
@@ -436,10 +365,7 @@ void MyViz::toggleSettings(){
         settings_animation->setEndValue(QPoint(newSize.width() - 50, 0));
         settings_animation->start();
         settings_shown = false;
-        /*         settings_container->move(QPoint(newSize.width() - 50, 0));
-        settings_container->adjustSize();
-        settings_shown = false;
-*/
+
     }
     else{
         QQuickItem* rootObject =  qmlView->rootObject();
@@ -462,37 +388,12 @@ void MyViz::toggleSettings(){
         temp = settings_container->width();
         rviz_animation->setEndValue(QVariant(temp));
         rviz_animation->start();
-        /*
-        settings_container->move(QPoint(newSize.width() - settings_container->width(), 0));
-        settings_container->adjustSize();
-        settings_shown = true;
-*/
+
     }
 }
 
-/*
-void MyViz::updateVelodyneStatus(const sensor_msgs::msg::PointCloud2::SharedPtr &msg){
-    velodyne_timer->start(1000);
-    velodyne_status = 1;
-    paintStatus();
-}
 
-void MyViz::updateImuStatus(const nav_msgs::msg::Odometry::SharedPtr &msg){
-    imu_timer->start(1000);
-    imu_status = 1;
-    //paintStatus();
-}
-
-void MyViz::updateCameraStatus(const sensor_msgs::msg::Image::SharedPtr &msg){
-    videoStreamer->convertROSImage(msg);
-    camera_timer->start(1000);
-    camera_status = 1;
-
-    //paintStatus();
-}
-*/
-
-    void MyViz::resetVelodyneStatus(){
+void MyViz::resetVelodyneStatus(){
     velodyne_status = 0;
     if(power_button_bg != nullptr)
         paintStatus();
@@ -500,14 +401,14 @@ void MyViz::updateCameraStatus(const sensor_msgs::msg::Image::SharedPtr &msg){
 
 void MyViz::resetImuStatus(){
     imu_status = 0;
-    //if(power_button_bg != nullptr)
-    //    paintStatus();
+    if(power_button_bg != nullptr)
+        paintStatus();
 }
 
 void MyViz::resetCameraStatus(){
     camera_status = 0;
-    //if(power_button_bg != nullptr)
-    //    paintStatus();
+    if(power_button_bg != nullptr)
+        paintStatus();
 }
 
 void MyViz::imageReload(){
@@ -515,14 +416,11 @@ void MyViz::imageReload(){
     opencv_image = item->findChild<QObject*>("opencv_image");
     if(videoStreamer->init && videoStreamer->current_frame_ptr != nullptr)
     {
-        //ROS_INFO("1");
         if(counter){
-            //ROS_INFO("2");
             opencv_image->setProperty("source", "image://live/image?id=1");
         }
         else
         {
-            //ROS_INFO("2");
             opencv_image->setProperty("source", "image://live/image?id=0");
         }
         counter = !counter;
@@ -606,19 +504,7 @@ void MyViz::fullscreenToggle()
 
 bool MyViz::eventFilter(QObject * p_obj, QEvent * p_event)
 {
-    /*
-    if (p_event->type() == QEvent::MouseButtonDblClick ||
-        p_event->type() == QEvent::GraphicsSceneMouseMove ||
-        p_event->type() == QEvent::GraphicsSceneMouseDoubleClick ||
-        p_event->type() == QEvent::GraphicsSceneMousePress ||
-        p_event->type() == QEvent::GraphicsSceneMouseRelease ||
-        p_event->type() == QEvent::NonClientAreaMouseButtonPress ||
-        p_event->type() == QEvent::NonClientAreaMouseButtonRelease ||
-        p_event->type() == QEvent::Wheel)
-    {
-        ROS_INFO("ignored something");
-        QMouseEvent* pMouseEvent = dynamic_cast<QMouseEvent*>(p_event);
-    }*/
+
 
     if(p_event->type() == QEvent::MouseMove){
         QMouseEvent* pMouseEvent = dynamic_cast<QMouseEvent*>(p_event);

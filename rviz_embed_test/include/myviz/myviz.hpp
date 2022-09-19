@@ -108,7 +108,7 @@ public:
   void updateVelodyneStatus(const sensor_msgs::msg::PointCloud2::SharedPtr &msg);
   void updateImuStatus(const nav_msgs::msg::Odometry::SharedPtr &msg);
   void updateCameraStatus(const sensor_msgs::msg::Image::SharedPtr &msg);
-  void switchVideoSource(int source);
+
   QQuickView *qmlView;
   QQuickView *settingsqmlView;
   AnimatedGridLayout* central_widget_layout;
@@ -129,6 +129,7 @@ public:
   QObject *lidar_status_pic;
   QObject *imu_status_pic;
   QObject *camera_status_pic;
+  QObject *video_combo;
 
   QObject *opencv_image;
   QWidget *container;
@@ -156,7 +157,6 @@ public:
   QGridLayout* secondary_layout;
   QGridLayout* tertiary_layout;
   QWidget* secondary_widget;
-  QWidget* tertiary_widget;
 
   QTimer *velodyne_timer;
   QTimer *imu_timer;
@@ -200,6 +200,7 @@ private slots:
       void resetView();
       void manualZoomIn();
       void manualZoomOut();
+      void colourPatternChanged();
       //void systemOn();
 private:
   //rclcpp::Node::SharedPtr ros_message_detector;
@@ -225,7 +226,7 @@ private:
   QPropertyAnimation *qml_animation;
 
   rviz_common::RenderPanel * render_panel_;
-  rviz_common::Display * grid_;
+  rviz_common::Display * grid_, * pointcloud_, *tf_;
 
   rviz_common::ros_integration::RosNodeAbstractionIface::WeakPtr rviz_ros_node_;
 

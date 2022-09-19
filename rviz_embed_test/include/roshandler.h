@@ -18,20 +18,12 @@ class ROSHandler: public QObject
     private:
 
         rclcpp::Client<ros_srv::srv::VelodyneSwitch>::SharedPtr velodyneSwitchClient;
-        //ros_srv::srv::VelodyneSwitch velodynePowerSrv;
         rclcpp::Client<ros_srv::srv::CameraExposure>::SharedPtr cameraExposureUpdateClient;
-        //ros_srv::srv::CameraExposure cameraExposureUpdateSrv;
         rclcpp::Client<ros_srv::srv::Reconstruction>::SharedPtr reconstructionUpdateClient;
-        //ros_srv::srv::Reconstruction reconstructionUpdateSrv;
         rclcpp::Client<ros_srv::srv::ScanToggle>::SharedPtr scanToggleClient;
-        //ros_srv::srv::ScanToggle scanToggleSrv;
         rclcpp::Client<ros_srv::srv::RecordToggle>::SharedPtr recordToggleClient;
-        //ros_srv::srv::RecordToggle recordToggleSrv;
         rclcpp::Client<ros_srv::srv::SLAMModeSwitch>::SharedPtr slamModeSwitchClient;
-        //ros_srv::srv::SLAMModeSwitch slamModeSwitchSrv;
-        //ros::Subscriber velodynesub;
         QTimer *ros_timer;
-        //QTimer *velodyne_timer;
         std::shared_ptr<rclcpp::Node> n_;
 
     public:
@@ -46,7 +38,6 @@ class ROSHandler: public QObject
         void cameraExposureUpdate(int database_camera_exposure_t);
         void reconstructionUpdate(int database_reconstruction);
         void slamModeUpdate(int database_current_slam_mode);
-        //void updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg);
 
     signals:
         void cameraExposureUpdatedSignal(QString);
@@ -61,8 +52,8 @@ class ROSHandler: public QObject
         void systemPowerToggle();
         void scanToggle();
         void recordToggle();
-        //void resetVelodyneStatus();
         void spinOnce();
+        void closeEvent(QCloseEvent * event);
 
 };
 

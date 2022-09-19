@@ -29,9 +29,100 @@ using namespace std::chrono_literals;
 
 std::shared_ptr<MyViz> myviz;
 
+class ROSMessageDetector : public rclcpp::Node
+{
+    //std::shared_ptr<MyViz> myviz;
+public:
+    ROSMessageDetector()
+        :Node("message_detector")
+    {
+        rclcpp::QoS video_qos(1);
+        video_qos.keep_last(1);
+        video_qos.best_effort();
+        video_qos.durability_volatile();
+        velodynesub = this->create_subscription<sensor_msgs::msg::PointCloud2>(
+            "/velodyne_points", video_qos, std::bind(&ROSMessageDetector::updateVelodyneStatus, this, _1));
+        imusub = this->create_subscription<nav_msgs::msg::Odometry>(
+            "/odom", video_qos, std::bind(&ROSMessageDetector::updateImuStatus, this, _1));
+        camerasub = this->create_subscription<sensor_msgs::msg::Image>(
+            "/image", video_qos, std::bind(&ROSMessageDetector::updateCameraStatus, this, _1));
+        //This is a publisher test
+        /*
+        publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
+        timer_ = this->create_wall_timer(
+            500ms, std::bind(&ROSMessageDetector::timer_callback, this));*/
+
+    }
+    void updateVideoSource(int source){
+        rclcpp::QoS video_qos(1);
+        video_qos.keep_last(1);
+        video_qos.best_effort();
+        video_qos.durability_volatile();
+        if (video_source != source){
+            if (source == 0){
+                camerasub = this->create_subscription<sensor_msgs::msg::Image>(
+                    "/image", video_qos, std::bind(&ROSMessageDetector::updateCameraStatus, this, _1));
+            }
+            else if(source == 1){
+                camerasub = this->create_subscription<sensor_msgs::msg::Image>(
+                    "/image1", video_qos, std::bind(&ROSMessageDetector::updateCameraStatus, this, _1));
+            }
+            video_source = source;
+        }
+    }
+    int video_source = 0;
+
+private:
+
+    rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr velodynesub;
+    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr imusub;
+    rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr camerasub;
+
+    void updateVelodyneStatus(const sensor_msgs::msg::PointCloud2 &msg) const
+    {
+
+        myviz->velodyne_timer->start(1000);
+        myviz->velodyne_status = 1;
+        myviz->paintStatus();
+    }
+
+    void updateImuStatus(const nav_msgs::msg::Odometry &msg) const
+    {
+
+        myviz->imu_timer->start(1000);
+        myviz->imu_status = 1;
+        myviz->paintStatus();
+    }
+
+    void updateCameraStatus(const sensor_msgs::msg::Image &msg) const
+    {
+
+        myviz->videoStreamer->convertROSImage(msg);
+        myviz->camera_timer->start(1000);
+        myviz->camera_status = 1;
+
+        myviz->paintStatus();
+    }
+
+    //This is a publisher test
+    /*
+    void timer_callback()
+    {
+        auto message = std_msgs::msg::String();
+        message.data = "Hello, world! " + std::to_string(count_++);
+        RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+        publisher_->publish(message);
+    }
+    rclcpp::TimerBase::SharedPtr timer_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+    size_t count_;*/
+
+};
+
 class PowerThread: public QThread{
     ROSHandler* roshandler;
     std::shared_ptr<MyViz> myviz;
+    std::shared_ptr<ROSMessageDetector> ros_message_detector;
 public:
     sqlite3* db;
     sqlite3_stmt* stmt;
@@ -63,20 +154,9 @@ signals:
     void scanSignal(QString);
     void recordSignal(QString);
 
-/*
-    void systemPowerToggle(){
-        roshandler->systemPowerToggle();
-    };
-    void scanToggle(){
-        roshandler->scanToggle();
-    };
-    void recordToggle(){
-        roshandler->recordToggle();
-    };
-    */
 public:
-    explicit PowerThread(std::shared_ptr<MyViz> myviz_)
-        : QThread(), myviz(myviz_) {}
+    explicit PowerThread(std::shared_ptr<MyViz> myviz_, std::shared_ptr<ROSMessageDetector> ros_message_detector_)
+        : QThread(), myviz(myviz_), ros_message_detector(ros_message_detector_) {}
 
     void spinThreadOnce(){
         if (current_velodyne_status != myviz->velodyne_status){
@@ -119,11 +199,7 @@ public:
             else
                 opened = true;
         }
-/*
-        connect(myviz, &MyViz::powerButtonPressed, roshandler, &ROSHandler::systemPowerToggle, Qt::QueuedConnection);
-        connect(myviz, &MyViz::scanButtonPressed, roshandler, &ROSHandler::scanToggle, Qt::QueuedConnection);
-        connect(myviz, &MyViz::recordButtonPressed, roshandler, &ROSHandler::recordToggle, Qt::QueuedConnection);
-*/
+
         connect(thread_timer, &QTimer::timeout, this, &PowerThread::spinThreadOnce);
         connect(roshandler, &ROSHandler::hardwareOnSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
         connect(roshandler, &ROSHandler::hardwareOffSignal, this, &PowerThread::updateDebugText, Qt::QueuedConnection);
@@ -135,12 +211,9 @@ public:
 
         QObject *settingsItem = myviz->settingsqmlView->rootObject();
         QObject *item = myviz->qmlView->rootObject();
-        //while(power_button==nullptr)
-            power_button = power_button = item->findChild<QObject*>("power_button");
-        //while(scan_button == nullptr)
-            scan_button = settingsItem->findChild<QObject*>("scan_button");
-        //while(record_button == nullptr)
-            record_button = settingsItem->findChild<QObject*>("record_button");
+        power_button = power_button = item->findChild<QObject*>("power_button");
+        scan_button = settingsItem->findChild<QObject*>("scan_button");
+        record_button = settingsItem->findChild<QObject*>("record_button");
 
         connect(power_button, SIGNAL(powerSignal(QString)), roshandler, SLOT(systemPowerToggle()), Qt::QueuedConnection);
         connect(scan_button, SIGNAL(scanSignal(QString)), roshandler, SLOT(scanToggle()), Qt::QueuedConnection);
@@ -182,7 +255,6 @@ public:
                     myviz->setStyleSheet("background-color: white;");
                     myviz->logterminal->text_box->setStyleSheet("background-color: #e1f2f7; color: black; font-size: 20px");
                     myviz->reset_button->setStyleSheet("background-color:#b5cef7; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
-                    myviz->fullscreen_button->setStyleSheet("background-color: #b5cef7;");
                     myviz->zoomin_button->setStyleSheet("background-color:#b5cef7; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
                     myviz->zoomout_button->setStyleSheet("background-color:#b5cef7; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
                 }
@@ -190,7 +262,6 @@ public:
                     myviz->setStyleSheet("background-color: #442e5d;");
                     myviz->logterminal->text_box->setStyleSheet("background-color: black; color: white; font-size: 20px");
                     myviz->reset_button->setStyleSheet("background-color:#b452fa; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
-                    myviz->fullscreen_button->setStyleSheet("background-color: #442e5d;");
                     myviz->zoomin_button->setStyleSheet("background-color:#b452fa; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
                     myviz->zoomout_button->setStyleSheet("background-color:#b452fa; border-top-right-radius: 10; border-top-left-radius: 10; border-bottom-right-radius: 10; border-bottom-left-radius: 10;");
                 }
@@ -259,7 +330,7 @@ public:
             }
         }
 
-        //Callback service for default lidar colour pattern
+        //Callback service for default camera source
         sqlite3_reset(stmt);
         std::stringstream ss5;
         ss5 << "SELECT * FROM BooleanSettings where name = \"Video Source\" LIMIT 1;";
@@ -277,7 +348,7 @@ public:
             if(sqlite3_column_int(stmt, 1) != database_current_camera){
                 database_current_camera = sqlite3_column_int(stmt, 1);
                 printf("camera changed");
-                myviz->switchVideoSource(database_current_camera);
+                ros_message_detector->updateVideoSource(database_current_camera);
             }
         }
 
@@ -346,75 +417,7 @@ public:
     }
 };
 
-class ROSMessageDetector : public rclcpp::Node
-{
-    //std::shared_ptr<MyViz> myviz;
 
-public:
-    ROSMessageDetector()
-        :Node("message_detector")
-    {
-        rclcpp::QoS video_qos(1);
-        video_qos.keep_last(1);
-        video_qos.best_effort();
-        video_qos.durability_volatile();
-        velodynesub = this->create_subscription<sensor_msgs::msg::PointCloud2>(
-            "/velodyne_points", video_qos, std::bind(&ROSMessageDetector::updateVelodyneStatus, this, _1));
-        imusub = this->create_subscription<nav_msgs::msg::Odometry>(
-            "/odom", video_qos, std::bind(&ROSMessageDetector::updateImuStatus, this, _1));
-        camerasub = this->create_subscription<sensor_msgs::msg::Image>(
-            "/image", video_qos, std::bind(&ROSMessageDetector::updateCameraStatus, this, _1));
-            /*
-        publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
-        timer_ = this->create_wall_timer(
-            500ms, std::bind(&ROSMessageDetector::timer_callback, this));*/
-    }
-
-private:
-
-    //std::string camera_topic = "/rrbot/camera1/image_raw";
-    rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr velodynesub;
-    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr imusub;
-    rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr camerasub;
-
-    void updateVelodyneStatus(const sensor_msgs::msg::PointCloud2 &msg) const 
-    {
-
-        myviz->velodyne_timer->start(1000);
-        myviz->velodyne_status = 1;
-        myviz->paintStatus();
-    }
-
-    void updateImuStatus(const nav_msgs::msg::Odometry &msg) const
-    {
-
-        myviz->imu_timer->start(1000);
-        myviz->imu_status = 1;
-        myviz->paintStatus();
-    }
-
-    void updateCameraStatus(const sensor_msgs::msg::Image &msg) const
-    {
-        
-        myviz->videoStreamer->convertROSImage(msg);
-        myviz->camera_timer->start(1000);
-        myviz->camera_status = 1;
-
-        myviz->paintStatus();
-    }
-    /*
-    void timer_callback()
-    {
-        auto message = std_msgs::msg::String();
-        message.data = "Hello, world! " + std::to_string(count_++);
-        RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
-        publisher_->publish(message);
-    }
-    rclcpp::TimerBase::SharedPtr timer_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
-    size_t count_;*/
-
-};
 
 int main(int argc, char ** argv)
 {
@@ -429,20 +432,17 @@ int main(int argc, char ** argv)
 
   std::shared_ptr<ROSMessageDetector> ros_message_detector = std::make_shared<ROSMessageDetector>();
 
-
-  PowerThread* power_thread = new PowerThread(myviz);
+  PowerThread* power_thread = new PowerThread(myviz, ros_message_detector);
   power_thread->start();
 
   rclcpp::Rate rate(60);
   while (rclcpp::ok()) {
     app.processEvents();
     rclcpp::spin_some(ros_message_detector);
+
     rate.sleep();
   }
   sqlite3_close(power_thread->db);
   sqlite3_finalize(power_thread->stmt);
-  system("rosnode kill gazebo");
-  system("rosnode kill usb_cam");
-  system("killall -9 gzserver");
   return 0;
 }

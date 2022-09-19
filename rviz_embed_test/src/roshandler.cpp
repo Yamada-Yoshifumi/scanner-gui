@@ -10,8 +10,6 @@
 ROSHandler::ROSHandler()
 
 {
-    //velodyne_timer = new QTimer();
-    //velodyne_timer->start(1000);
     n_ = rclcpp::Node::make_shared("ros_handler");
     ros_timer = new QTimer();
     ros_timer->start(100);
@@ -99,4 +97,9 @@ void ROSHandler::slamModeUpdate(int database_current_slam_mode){
     request->command = database_current_slam_mode;
     slamModeSwitchClient->async_send_request(request);
     emit slamModeSwitchedSignal("slam mode changed");
+}
+
+void ROSHandler::closeEvent(QCloseEvent * event)
+{
+    rclcpp::shutdown();
 }
