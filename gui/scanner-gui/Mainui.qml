@@ -1,12 +1,11 @@
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick 2.1
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Universal 2.15
-import QtQuick.Window 2.15
-import QtMultimedia 5.15
+import QtQuick.Window 2.1
+import QtMultimedia 5.0
 import QtGraphicalEffects 1.0
-import QtQuick.LocalStorage 2.15
+import QtQuick.LocalStorage 2.1
 
 Rectangle{
 

@@ -52,7 +52,6 @@ class VisualizationManager;
 class MyViz: public QWidget
 {
     Q_OBJECT
-    QML_ELEMENT
 public:
     MyViz( QWidget* parent = 0 );
     QPushButton* fullscreen_button;

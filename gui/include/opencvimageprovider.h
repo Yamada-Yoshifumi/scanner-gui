@@ -10,7 +10,6 @@
 class OpencvImageProvider : public QObject, public QQuickImageProvider
 {
     Q_OBJECT
-    QML_ELEMENT
 public:
     OpencvImageProvider(QObject *parent = nullptr);
 

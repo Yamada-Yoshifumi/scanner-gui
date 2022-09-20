@@ -1,8 +1,6 @@
 #include <ros/ros.h>
 #include <ros/callback_queue.h>
 #include "roslaunchmanager.h"
-#include "ros_srv/VelodyneSwitch.h"
-#include "ros_srv/CameraExposure.h"
 #include <thread>
 
 ROSLaunchManager ros_launch_manager;

@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     qmlView->setSource(QUrl(QStringLiteral("qrc:/qml/App.qml")));
 
     container = QWidget::createWindowContainer(qmlView, this);
-    container->setMinimumSize(1280, 720);
+    container->setMinimumSize(720, 480);
     container->adjustSize();
 
     myviz = new MyViz(this);
@@ -105,7 +105,7 @@ MainWindow::MainWindow(QWidget *parent) :
     auto offlineStoragePath = QUrl::fromLocalFile(settingsqmlView->engine()->offlineStoragePath());
     settingsqmlView->engine()->rootContext()->setContextProperty("offlineStoragePath", offlineStoragePath);
     settings_container = QWidget::createWindowContainer(settingsqmlView, this);
-    settings_container->setMinimumSize(480, 720);
+    settings_container->setMinimumSize(240, 480);
     settings_container->adjustSize();
     settings_container->move(QPoint(this->width()*3/2, 0));
     settings_container->raise();
@@ -133,7 +133,7 @@ MainWindow::MainWindow(QWidget *parent) :
         this,
         SLOT(recordClickedEmit()));
 
-    QTimer::singleShot(0, this, SLOT(showFullScreen()));
+    //QTimer::singleShot(0, this, SLOT(showFullScreen()));
 
     ROS_INFO("%s", settingsqmlView->engine()->offlineStoragePath().toStdString().c_str());
 }

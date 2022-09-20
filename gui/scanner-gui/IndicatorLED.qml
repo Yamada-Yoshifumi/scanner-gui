@@ -6,8 +6,8 @@ It is supposed to be strictly declarative and only uses a subset of QML. If you 
 this file manually, you might introduce QML code that is not supported by Qt Design Studio.
 Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on .ui.qml files.
 */
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick 2.1
+import QtQuick.Controls 2.1
 
 
 Canvas {

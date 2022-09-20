@@ -13,7 +13,7 @@
 // Class "TouchPad" implements the top level widget for this example.
 class TouchPad: public QWidget
 {
-    QML_ELEMENT
+    Q_OBJECT
     public:
         TouchPad( QWidget* parent = 0 );
         QWidget* panel;

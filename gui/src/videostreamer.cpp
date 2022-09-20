@@ -34,7 +34,7 @@ void VideoStreamer::streamVideo()
     }*/
     if(current_frame_ptr != nullptr && init){
         //ROS_INFO("UPdated");
-        QImage img = QImage(current_frame_ptr->image.data,current_frame_ptr->image.cols,current_frame_ptr->image.rows,QImage::Format_BGR888).rgbSwapped();
+        QImage img = QImage(current_frame_ptr->image.data,current_frame_ptr->image.cols,current_frame_ptr->image.rows,QImage::Format_RGB888);
         emit newImage(img);
     }
 }

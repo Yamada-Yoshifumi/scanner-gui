@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.LocalStorage 2.15
+import QtQuick 2.1
+import QtQuick.Controls 2.1
+import QtQuick.LocalStorage 2.1
 import Qt.labs.qmlmodels 1.0
 
 Rectangle {

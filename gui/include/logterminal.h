@@ -11,7 +11,6 @@
 class LogTerminal: public QWidget
 {
     Q_OBJECT
-    QML_ELEMENT
     public:
         LogTerminal( QWidget* parent = 0 );
         QTextEdit* text_box;

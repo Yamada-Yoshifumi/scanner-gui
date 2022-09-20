@@ -1,19 +1,11 @@
 import QmlProject
 
 Project {
-<<<<<<< HEAD
     mainFile: "scanner-gui/App.qml"
 
     /* Include .qml, .js, and image files from current directory and subdirectories */
     QmlFiles {
         directory: "scanner-gui"
-=======
-    mainFile: "content/App.qml"
-
-    /* Include .qml, .js, and image files from current directory and subdirectories */
-    QmlFiles {
-        directory: "content"
->>>>>>> 4490c18de80ab048835170fa036662db0abc5323
     }
 
     QmlFiles {
@@ -29,11 +21,7 @@ Project {
     }
 
     ImageFiles {
-<<<<<<< HEAD
         directory: "scanner-gui/images"
-=======
-        directory: "content/images"
->>>>>>> 4490c18de80ab048835170fa036662db0abc5323
     }
 
     Files {
@@ -107,11 +95,5 @@ Project {
     multilanguageSupport: true
     supportedLanguages: ["en"]
     primaryLanguage: "en"
-<<<<<<< HEAD
-=======
-
-
-    mainUiFile: "content/Mainui.qml"
->>>>>>> 4490c18de80ab048835170fa036662db0abc5323
 }
 
