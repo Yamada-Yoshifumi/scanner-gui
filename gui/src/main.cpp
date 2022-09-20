@@ -309,7 +309,6 @@ int main(int argc, char **argv)
 {
     ros::init( argc, argv, "qt_gui");
     ros::NodeHandlePtr n_;
-    n_.reset(new ros::NodeHandle("~"));
 
     QApplication app( argc, argv );
 
@@ -323,9 +322,17 @@ int main(int argc, char **argv)
     app.exec();
     system("rosnode kill gazebo");
     system("rosnode kill usb_cam");
+    system("rosnode kill qt_gui");
+    system("rosnode kill status");
+    system("rosnode kill ros_handler");
+    system("rosnode kill qt_gui-2");
+    system("rosnode kill hardware_signal");
     system("killall -9 gzserver");
-    sqlite3_close(power_thread->db);
-    sqlite3_finalize(power_thread->stmt);
+    system("rosnode kill rosout");
     delete mainwindow;
+    power_thread->exit();
     delete power_thread;
+    ros::shutdown();
+    sqlite3_close(power_thread->db);
+    sqlite3_finalize(power_thread->stmt); 
 }
