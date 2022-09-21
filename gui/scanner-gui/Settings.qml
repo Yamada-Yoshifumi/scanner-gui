@@ -3,8 +3,8 @@ import QtQuick.Controls 2.1
 import QtQuick.LocalStorage 2.1
 Rectangle {
     id: root
-    width: 240
-    height: 480
+    width: 480
+    height: 720
 
     visible: true
     color: "#000000"
