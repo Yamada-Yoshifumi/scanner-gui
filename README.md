@@ -10,9 +10,13 @@ or using ssh:
 
 <code>git clone -b gui git@github.com:Yamada-Yoshifumi/scanner-gui.git</code>
 
+In order for the Dockerfile to compile, we need to reset two environment variables:
+
 <code>export DOCKER_BUILDKIT=0</code>
 
 <code>export COMPOSE_DOCKER_CLI_BUILD=0</code>
+
+Then build the Image:
 
 <code>cd scanner-gui</code>
 
