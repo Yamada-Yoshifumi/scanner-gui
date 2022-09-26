@@ -73,6 +73,8 @@ sudo apt-get -y ros-noetic-cv-bridge
 ```
 
 <h1>Use</h1>
+  
+<code>source devel/setup.bash</code>
 
 <code>roslaunch gui gui.launch</code>
 
