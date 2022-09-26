@@ -151,7 +151,6 @@ void MainWindow::closeWindow(){
 }
 
 void MainWindow::spinOnce(){
-    //this->changeInDatabaseResponse();
     if(ros::ok()){
         ros::spinOnce();
     }
@@ -299,7 +298,7 @@ void MainWindow::toggleSettings(){
         settings_animation->setEndValue(QPoint(newSize.width() - 50, 0));
         settings_animation->start();
         settings_shown = false;
-/*         settings_container->move(QPoint(newSize.width() - 50, 0));
+/*      settings_container->move(QPoint(newSize.width() - 50, 0));
         settings_container->adjustSize();
         settings_shown = false;
 */
@@ -342,15 +341,14 @@ void MainWindow::updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &ms
 void MainWindow::updateImuStatus(const nav_msgs::OdometryConstPtr &msg){
     imu_timer->start(1000);
     imu_status = 1;
-    //paintStatus();
+    paintStatus();
 }
 
 void MainWindow::updateCameraStatus(const sensor_msgs::ImageConstPtr &msg){
     videoStreamer->convertROSImage(msg);
     camera_timer->start(1000);
     camera_status = 1;
-
-    //paintStatus();
+    paintStatus();
 }
 
 void MainWindow::resetVelodyneStatus(){
@@ -361,14 +359,14 @@ void MainWindow::resetVelodyneStatus(){
 
 void MainWindow::resetImuStatus(){
     imu_status = 0;
-    //if(power_button_bg != nullptr)
-    //    paintStatus();
+    if(power_button_bg != nullptr)
+        paintStatus();
 }
 
 void MainWindow::resetCameraStatus(){
     camera_status = 0;
-    //if(power_button_bg != nullptr)
-    //    paintStatus();
+    if(power_button_bg != nullptr)
+        paintStatus();
 }
 
 void MainWindow::imageReload(){

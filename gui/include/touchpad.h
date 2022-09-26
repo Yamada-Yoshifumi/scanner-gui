@@ -9,7 +9,6 @@
 #include <QTextEdit>
 #include <QPainter>
 
-// BEGIN_TUTORIAL
 // Class "TouchPad" implements the top level widget for this example.
 class TouchPad: public QWidget
 {
@@ -32,5 +31,4 @@ class TouchPad: public QWidget
         bool eventFilter(QObject * p_obj, QEvent * p_event);
         bool event(QEvent *event);
 };
-// END_TUTORIAL
 #endif // TOUCHPAD_H

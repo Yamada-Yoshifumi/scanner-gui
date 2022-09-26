@@ -320,19 +320,20 @@ int main(int argc, char **argv)
     power_thread->start();
 
     app.exec();
+    sqlite3_close(power_thread->db);
+    sqlite3_finalize(power_thread->stmt); 
+    power_thread->exit();
+    
     system("rosnode kill gazebo");
     system("rosnode kill usb_cam");
     system("rosnode kill qt_gui");
     system("rosnode kill status");
     system("rosnode kill ros_handler");
-    system("rosnode kill qt_gui-2");
     system("rosnode kill hardware_signal");
     system("killall -9 gzserver");
-    system("rosnode kill rosout");
-    delete mainwindow;
-    power_thread->exit();
-    delete power_thread;
+    system("rosnode kill --all");
     ros::shutdown();
-    sqlite3_close(power_thread->db);
-    sqlite3_finalize(power_thread->stmt); 
+
+    delete power_thread;
+    delete mainwindow;
 }

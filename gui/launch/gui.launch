@@ -6,6 +6,7 @@
         type="qt_gui"
         output="screen"
         cwd="node"
+        required="true"
     />
     <include file="$(find velodyne_description)/launch/hardware_interface.launch" >
     </include>
