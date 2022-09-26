@@ -255,12 +255,12 @@ void MyViz::setCellSize(int cell_size_percent)
     grid_->subProp("Cell Size")->setValue(cell_size_percent / 10.0f);
   }
 }
-
+/*
 void MyViz::closeEvent(QCloseEvent * event)
 {
   rclcpp::shutdown();
 }
-
+*/
 void MyViz::closeWindow(){
     close();
 }

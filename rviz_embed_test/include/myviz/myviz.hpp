@@ -181,7 +181,7 @@ public:
 private slots:
   void setThickness( int thickness_percent );
   void setCellSize( int cell_size_percent );
-  void closeEvent(QCloseEvent *event);
+  //void closeEvent(QCloseEvent *event);
 
   public Q_SLOTS:
       //void createRVizEvent();

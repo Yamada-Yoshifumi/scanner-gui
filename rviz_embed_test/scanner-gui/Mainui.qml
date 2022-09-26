@@ -2,7 +2,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Universal 2.1
 import QtQuick.Window 2.1
 import QtMultimedia 5.1
 import QtGraphicalEffects 1.0

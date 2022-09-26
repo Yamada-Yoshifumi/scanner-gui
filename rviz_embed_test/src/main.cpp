@@ -148,6 +148,7 @@ private:
     QObject *power_button;
     QObject *record_button;
     QObject *scan_button;
+    QObject *exit_button;
 
 signals:
     void powerSignal(QString);
@@ -214,10 +215,12 @@ public:
         power_button = power_button = item->findChild<QObject*>("power_button");
         scan_button = settingsItem->findChild<QObject*>("scan_button");
         record_button = settingsItem->findChild<QObject*>("record_button");
+        exit_button = myviz->settings_toggle_button;
 
         connect(power_button, SIGNAL(powerSignal(QString)), roshandler, SLOT(systemPowerToggle()), Qt::QueuedConnection);
         connect(scan_button, SIGNAL(scanSignal(QString)), roshandler, SLOT(scanToggle()), Qt::QueuedConnection);
         connect(record_button, SIGNAL(recordSignal(QString)), roshandler, SLOT(recordToggle()), Qt::QueuedConnection);
+        connect(exit_button, SIGNAL(exit(QString)), roshandler, SLOT(closeWindow()), Qt::QueuedConnection);
 
         exec();
     }
@@ -444,5 +447,6 @@ int main(int argc, char ** argv)
   }
   sqlite3_close(power_thread->db);
   sqlite3_finalize(power_thread->stmt);
+  delete power_thread;
   return 0;
 }

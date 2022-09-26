@@ -24,10 +24,12 @@ find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5QuickWidgets REQUIRED)
 find_package(cv_bridge_ros2 REQUIRED)
+find_package(lifecycle_msgs REQUIRED)
 
 find_package(rmw_implementation REQUIRED)
 
 set(THIS_PACKAGE_INCLUDE_DEPENDS
+  lifecycle_msgs
   rclcpp
   cv_bridge_ros2
   rclcpp_components
@@ -85,7 +87,7 @@ set(SRC_FILES
 )
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})
-ament_target_dependencies(${PROJECT_NAME} std_msgs
+ament_target_dependencies(${PROJECT_NAME} std_msgs lifecycle_msgs
     nav_msgs OpenCV ros_srv cv_bridge_ros2 rmw_implementation ${THIS_PACKAGE_INCLUDE_DEPENDS})
 
 target_link_libraries(${PROJECT_NAME}
