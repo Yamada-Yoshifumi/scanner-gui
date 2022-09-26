@@ -74,6 +74,8 @@ sudo apt-get -y ros-noetic-cv-bridge
 
 <h1>Use</h1>
 
+<code>roslaunch gui gui.launch</code>
+
 The GUI provides the following interactions with the back-end packages:
 
 - Power Button in the status panel, sends a service request to the velodyne_description package which then starts back-end ROS nodes.
