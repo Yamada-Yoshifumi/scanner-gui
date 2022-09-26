@@ -1,13 +1,14 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick 2.1
+import QtQuick.Controls 2.1
 
 Item {
     anchors.fill: parent
     StackView {
         id: stackview_settings
         anchors.fill: parent
-        initialItem: "SettingsInit.qml"
-
+        initialItem: "SettingsUI.qml"
+        signal pagePopedPushed(string str)
+/*
         pushEnter: Transition {
 
             PropertyAnimation {
@@ -16,8 +17,8 @@ Item {
                 to:1
                 duration: 300
             }
-
         }
+
         pushExit: Transition {
             PropertyAnimation {
                 property: "opacity"
@@ -44,6 +45,8 @@ Item {
                 duration: 300
             }
         }
+        */
+
     }
 }
 

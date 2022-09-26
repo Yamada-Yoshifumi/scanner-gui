@@ -1,6 +1,8 @@
 #include "opencvimageprovider.h"
 #include <ros/ros.h>
 
+//Image provider for qml
+
 OpencvImageProvider::OpencvImageProvider(QObject *parent) : QObject(parent), QQuickImageProvider(QQuickImageProvider::Image)
 {
     image = QImage(200,200,QImage::Format_RGB32);
@@ -23,9 +25,10 @@ QImage OpencvImageProvider::requestImage(const QString &id, QSize *size, const Q
 
 void OpencvImageProvider::updateImage(const QImage &image)
 {
-    //ROS_INFO("156575");
+
     if(!image.isNull() && this->image != image) {
         this->image = image;
+        //ROS_INFO("156575");
         emit imageChanged();
     }
 }

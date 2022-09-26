@@ -17,6 +17,9 @@
 #include "ros/console.h"
 #include "rospack/rospack.h"
 
+#include "ros_srv/VelodyneSwitch.h"
+#include "ros_srv/CameraExposure.h"
+
 class ROSLaunchManager 
 {
     std::vector<pid_t> m_pids;

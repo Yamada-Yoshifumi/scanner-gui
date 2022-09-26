@@ -32,6 +32,13 @@
 #include <QWidget>
 #include <QtQml>
 #include <QPushButton>
+#include <QWheelEvent>
+#include <QTextEdit>
+#include "touchpad.h"
+#include "logterminal.h"
+#include "roundedbutton.h"
+#include <QComboBox>
+#include <QtCore>
 
 namespace rviz
 {
@@ -44,21 +51,52 @@ class VisualizationManager;
 // Class "MyViz" implements the top level widget for this example.
 class MyViz: public QWidget
 {
-    QML_ELEMENT
+    Q_OBJECT
 public:
     MyViz( QWidget* parent = 0 );
     QPushButton* fullscreen_button;
+    TouchPad* touchpad;
+    LogTerminal* logterminal;
+    QGridLayout* main_layout;
+    rviz::VisualizationManager* manager_;
+    rviz::RenderPanel* render_panel_;
+    rviz::Display* grid_, * pointcloud_, *tf_;
+    RoundedButton* zoomin_button;
+    RoundedButton* zoomout_button;
+    RoundedButton* reset_button;
+    QComboBox* combo;
+    QRect* rect_1;
+    QRect* rect_2;
+    QRect* rect_3;
+    bool focus_on_wheel = false;
 
     virtual ~MyViz();
+public Q_SLOTS:
+    void resetView();
+    void manualZoomIn();
+    void manualZoomOut();
 
 private Q_SLOTS:
     void setThickness( int thickness_percent );
     void setCellSize( int cell_size_percent );
+    void colourPatternChanged();
 
 private:
-    rviz::VisualizationManager* manager_;
-    rviz::RenderPanel* render_panel_;
-    rviz::Display* grid_, * pointcloud_, *tf_;
+    QPoint previous_touchp;
+    double current_pitch;
+    double current_yaw;
+    double current_f_distance;
+    double current_f_point_x;
+    double current_f_point_y;
+    double current_f_point_z;
+    double fixed_f_point_x;
+    double fixed_f_point_y;
+    double fixed_f_point_z;
+    bool wheel_e_inprogress;
+    QString current_pointcloud_pattern;
+protected:
+    bool eventFilter(QObject * p_obj, QEvent * p_event);
+
 };
 // END_TUTORIAL
 #endif // MYVIZ_H

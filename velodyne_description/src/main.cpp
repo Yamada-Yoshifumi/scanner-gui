@@ -1,7 +1,6 @@
 #include <ros/ros.h>
 #include <ros/callback_queue.h>
 #include "roslaunchmanager.h"
-#include "ros_srv/VelodyneSwitch.h"
 #include <thread>
 
 ROSLaunchManager ros_launch_manager;
@@ -47,6 +46,12 @@ bool velodyneSwitch(ros_srv::VelodyneSwitch::Request &req, ros_srv::VelodyneSwit
     return true;
 }
 
+bool cameraExposureUpdate(ros_srv::CameraExposure::Request &req, ros_srv::CameraExposure::Response &res){
+    ROS_INFO("Got it! Camera Exposure Updated: %ld", req.command);
+    res.success = true;
+    return true;
+}
+
 int main(int argc, char **argv) {
     ros::init(argc, argv, "hardware_signal");
     ros::CallbackQueue callback_queue;
@@ -56,6 +61,7 @@ int main(int argc, char **argv) {
     callback_queue.callAvailable(ros::WallDuration());
 
     ros::ServiceServer velodyneSwitchService = n_->advertiseService("velodyneSwitch", velodyneSwitch);
+    ros::ServiceServer cameraExposureUpdateService = n_->advertiseService("cameraExposureUpdate", cameraExposureUpdate);
     ros::MultiThreadedSpinner spinner(4);
     spinner.spin(&callback_queue);
 

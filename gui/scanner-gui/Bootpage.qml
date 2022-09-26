@@ -27,12 +27,11 @@
 **
 ****************************************************************************/
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Controls.Universal 2.15
-import QtQuick.Window 2.15
+import QtQuick 2.1
+import QtQuick.Controls 2.1
+import QtQuick.Window 2.1
 
-
+/*
 Rectangle{
     id: boot_window
     x: 0
@@ -245,7 +244,35 @@ Rectangle{
     ]
 
 }
+*/
+Rectangle{
+    id: boot_window
+    x: 0
+    y: 0
+    width: parent.width
+    height: parent.height
+    color: "#000000"
+    border.color: "#ffffff"
+    Image {
+        id: lidar
+        x: 0
+        y: 0
+        width : parent.width
+        height: parent.height * 3/4
+        source: "./images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg"
+    }
 
+    Timer {
+        id: timer
+        objectName: "continue"
+        interval: 1000; running: true; repeat: false
+        signal rvizRenderSignal(string obj)
+        onTriggered:{
+            stackview.push( "Mainui.qml" );
+            timer.rvizRenderSignal("rviz ready to show");
+        }
+    }
+}
 
 
 

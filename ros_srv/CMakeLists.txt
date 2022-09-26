@@ -19,6 +19,11 @@ add_service_files(
     FILES
         VelodyneSwitch.srv
         ImuSwitch.srv
+        CameraExposure.srv
+        Reconstruction.srv
+        ScanToggle.srv
+        RecordToggle.srv
+        SLAMModeSwitch.srv
 )
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)
 

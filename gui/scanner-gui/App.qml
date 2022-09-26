@@ -1,5 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick 2.1
+import QtQuick.Controls 2.1
+import QtQuick.Window 2.1
 
 Rectangle {
     id: root
@@ -11,12 +12,7 @@ Rectangle {
 
     Loader {
             id: mainLoader
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                bottom: parent.bottom
-            }
+            anchors.fill: parent
             source: "StackViewPage.qml"
 
             NumberAnimation {
@@ -57,7 +53,7 @@ Rectangle {
                     }
 
     }
-
+    /*
     Loader {
         id: settingsLoader
         anchors{
@@ -69,7 +65,7 @@ Rectangle {
         }
         source: "StackViewSettings.qml"
     }
-
+    */
 }
 
 

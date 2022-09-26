@@ -1,13 +1,12 @@
 #include <ros/ros.h>
 #include "qapplication.h"
 #include "roshandler.h"
-#include "ros_srv/VelodyneSwitch.h"
-#include "ros_srv/ImuSwitch.h"
 #include <QQuickView>
 #include <QQuickItem>
 #include <QtQml>
-#include <sensor_msgs/PointCloud2.h>
 
+/* Send service calls to the backend
+*/
 
 ROSHandler::ROSHandler()
 
@@ -19,6 +18,11 @@ ROSHandler::ROSHandler()
     n_.reset(new ros::NodeHandle("ros_handler"));
 
     velodyneSwitchClient = n_->serviceClient<ros_srv::VelodyneSwitch>("/hardware_signal/velodyneSwitch");
+    cameraExposureUpdateClient = n_->serviceClient<ros_srv::CameraExposure>("/hardware_signal/cameraExposureUpdate");
+    reconstructionUpdateClient = n_->serviceClient<ros_srv::Reconstruction>("/hardware_signal/reconstructionUpdate");
+    scanToggleClient = n_->serviceClient<ros_srv::ScanToggle>("/hardware_signal/scanToggle");
+    recordToggleClient = n_->serviceClient<ros_srv::RecordToggle>("/hardware_signal/recordToggle");
+    slamModeSwitchClient = n_->serviceClient<ros_srv::SLAMModeSwitch>("/hardware_signal/slamModeSwitch");
     connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
 }
 
@@ -31,7 +35,7 @@ void ROSHandler::spinOnce(){
 }
 
 void ROSHandler::systemPowerToggle(){
-    if (velodyneCmd == 1 && imuCmd == 1){
+    if (velodyneCmd == 1 && imuCmd == 1 && cameraCmd == 1){
         velodyneOn();
     }
     else{
@@ -39,24 +43,55 @@ void ROSHandler::systemPowerToggle(){
     }
 }
 
+void ROSHandler::scanToggle(){
+    scanToggleSrv.request.command = scanCmd;
+
+    scanToggleClient.call(scanToggleSrv);
+    if(scanCmd == 1)
+        emit scanToggledSignal("Scanning On");
+    else if(scanCmd == 0)
+        emit scanToggledSignal("Scanning Off");
+}
+
+void ROSHandler::recordToggle(){
+    recordToggleSrv.request.command = recordCmd;
+
+    recordToggleClient.call(recordToggleSrv);
+    if(recordCmd == 1)
+        emit recordToggledSignal("Recording On");
+    else if(recordCmd == 0)
+        emit recordToggledSignal("Recording Off");
+}
+
 void ROSHandler::velodyneOn(){
     velodynePowerSrv.request.command = 1;
 
     velodyneSwitchClient.call(velodynePowerSrv);
+    emit hardwareOnSignal("Hardware on requested");
 }
 
 void ROSHandler::velodyneOff(){
     velodynePowerSrv.request.command = 0;
 
     velodyneSwitchClient.call(velodynePowerSrv);
+    emit hardwareOffSignal("Hardware off requested");
 }
-/*
-void ROSHandler::updateVelodyneStatus(const sensor_msgs::PointCloud2ConstPtr &msg){
-    velodyne_timer->start(1000);
-    velodyneCmd = 1;
+void ROSHandler::cameraExposureUpdate(int database_camera_exposure_t){
+    cameraExposureUpdateSrv.request.command = database_camera_exposure_t;
+    if(cameraExposureUpdateClient.call(cameraExposureUpdateSrv)){
+        ROS_INFO("camera update request received");
+        emit cameraExposureUpdatedSignal("Camera exposure time update requested");
+    }
 }
 
-void ROSHandler::resetVelodyneStatus(){
-    velodyneCmd = 0;
+void ROSHandler::reconstructionUpdate(int database_reconstruction){
+    reconstructionUpdateSrv.request.command = database_reconstruction;
+    reconstructionUpdateClient.call(reconstructionUpdateSrv);
+    emit reconstructionUpdatedSignal("Reconstruction status update requested");
 }
-*/
+
+void ROSHandler::slamModeUpdate(int database_current_slam_mode){
+    slamModeSwitchSrv.request.command = database_current_slam_mode;
+    slamModeSwitchClient.call(slamModeSwitchSrv);
+    emit slamModeSwitchedSignal("slam mode changed");
+}

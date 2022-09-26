@@ -1,25 +1,30 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick 2.1
+import QtQuick.Controls 2.1
+import QtQuick.LocalStorage 2.1
 
 Rectangle {
-    width: 800 * root.width / 2560
-    height: root.height
-    visible: false
-    color: "#00ffffff"
-    border.color: "#00ffffff"
+    id: init
+    visible: true
+    color: "black"
+    border.color: "black"
+    width: parent.width
+    height: parent.height
 
     Button {
         id: settings_open_button
+        objectName: "settings_open_button"
         anchors{
-            right: parent.right
-            top: parent.top
-            topMargin: parent.height/2 - 128 * root.height/ 1600
+            left: parent.left
+            bottom: parent.bottom
+            bottomMargin: parent.height/2 - height/2
         }
         icon.name: "settings"
-        icon.source: "./images/settings-17-128.gif"
-        icon.color: "#620b66"
-        icon.width: 64* root.width/ 2560
-        icon.height: 64* root.height/ 1600
+        icon.color: "white"
+        icon.source: "./images/back_arrow.png"
+        //icon.color: "#620b66"
+        icon.width: 40
+        icon.height: 80
+        signal settingsInvoke(string obj)
         /*
         OpacityAnimator {
                id: out_animator
@@ -30,21 +35,38 @@ Rectangle {
                running: false
            }
         */
+        function createDb() {
+                    var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+
+                    db.transaction(
+                        function(tx) {
+                            // Create the database if it doesn't already exist
+                            tx.executeSql('CREATE TABLE IF NOT EXISTS BooleanSettings(name TEXT, value INTEGER, UNIQUE(name))');
+
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Reconstruction", 0 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Video Source", 0 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Daylight Mode", 0 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Exposure Time(ms)", 20 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Debug Mode", 0 ]);
+                            tx.executeSql('INSERT OR IGNORE INTO BooleanSettings VALUES(?, ?)', [ "Default Colour", 0 ]);
+                        }
+                    )
+                }
 
         onClicked: {
                     //out_animator.running = true;
                     stackview_settings.push( "SettingsUI.qml" );
-                    animation_right.running = true;
-                    animation_bottom.running = true;
+                    //animation_right.running = true;
+                    //animation_bottom.running = true;
+                    settings_open_button.settingsInvoke("Show settings panel");
+                    createDb();
                     //mainLoader.anchors.bottomMargin = settingsLoader.width * root.height/ root.width;
-
                  }
 
         background: Rectangle {
             id: power_button_bg
             color: parent.down? "#b1b1b1" : "#00fbfbfb"
             radius: 10
-            border.color: "#3afbfbfb"
 
         }
 

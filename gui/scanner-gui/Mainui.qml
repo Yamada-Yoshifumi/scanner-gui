@@ -1,20 +1,72 @@
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick 2.1
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Universal 2.15
-import QtQuick.Window 2.15
-import QtMultimedia 5.15
+import QtQuick.Window 2.1
+import QtMultimedia 5.0
 import QtGraphicalEffects 1.0
+import QtQuick.LocalStorage 2.1
 
 Rectangle{
 
 id: ui_page
-width: parent.width
-height: parent.height
 x: 0
 y: 0
+width: parent.width
+height: parent.height
 color: "#442e5d"
+property var db
+
+Timer {
+        interval: 1000; running: true; repeat: true;
+        onTriggered: {
+
+            db.transaction(
+                function(tx) {
+                    var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Daylight Mode"');
+                    var daylight_mode = rs.rows.item(0).value;
+                    if (daylight_mode){
+                        status_topbar.startColor = "white";
+                        status_topbar.stopColor = "#b5cef7";
+                        status_topbar_text.color = "black";
+                        status_lidar_rect.startColor = "white";
+                        status_lidar_rect.stopColor = "#b5cef7";
+                        status_lidar_text.color = "black";
+                        status_imu_rect.startColor = "white";
+                        status_imu_rect.stopColor = "#b5cef7";
+                        status_imu_text.color = "black";
+                        status_camera_rect.startColor = "white";
+                        status_camera_rect.stopColor = "#b5cef7";
+                        status_camera_text.color = "black";
+                        power_button_bg.startColor = "white";
+                        power_button_bg.stopColor = "#b5cef7";
+                        power_button.icon.color = "#b5cef7";
+                        ui_page.color = "white";
+                        status_section.color = "white";
+                    }
+                    else{
+                        status_topbar.startColor = "#c98cf5";
+                        status_topbar.stopColor = "#b452fa";
+                        status_topbar_text.color = "#d4d4d4";
+                        status_lidar_rect.startColor = "#b452fa";
+                        status_lidar_rect.stopColor = "#b617cf";
+                        status_lidar_text.color = "#d4d4d4";
+                        status_imu_rect.startColor = "#b452fa";
+                        status_imu_rect.stopColor = "#9613ab";
+                        status_imu_text.color = "#d4d4d4";
+                        status_camera_rect.startColor = "#b452fa";
+                        status_camera_rect.stopColor = "#710a82";
+                        status_camera_text.color = "#d4d4d4";
+                        power_button_bg.startColor = "#b452fa";
+                        power_button_bg.stopColor = "#470452";
+                        power_button.icon.color = "#620b66";
+                        ui_page.color = "#442e5d";
+                        status_section.color = "#442e5d";
+                    }
+                }
+            )
+        }
+    }
 
 Rectangle{
     id: rviz_window
@@ -22,74 +74,8 @@ Rectangle{
         y: 0
         width: parent.width * 2 / 3
         height: parent.height * 2 / 3
-        color: "#00000000"
+        color: "transparent"
         border.color: "#00000000"
-        /*
-        NumberAnimation {
-                    id: fullscreen_animation_x
-                    target: rviz_window
-                    property: "width"
-                    from: rviz_window.width
-                    to: ui_page.width
-                    duration: 300
-                    easing.type: Easing.InExpo
-                }
-        NumberAnimation {
-                    id: fullscreen_animation_y
-                    target: rviz_window
-                    property: "height"
-                    from: rviz_window.height
-                    to: ui_page.height
-                    duration: 300
-                    easing.type: Easing.InExpo
-                }
-        NumberAnimation {
-                    id: exit_fullscreen_animation_x
-                    target: rviz_window
-                    property: "width"
-                    from: ui_page.width
-                    to: ui_page.width * 2 / 3
-                    duration: 300
-                    easing.type: Easing.InExpo
-                }
-        NumberAnimation {
-                    id: exit_fullscreen_animation_y
-                    target: rviz_window
-                    property: "height"
-                    from: ui_page.height
-                    to: ui_page.height * 2 / 3
-                    duration: 300
-                    easing.type: Easing.InExpo
-                }
-                */
-        /*
-        Button {
-                    id: fullscreen_toggle_button
-                    anchors{
-                        right: parent.right
-                        bottom: parent.bottom
-                    }
-                    icon.name: "fullscreen_toggle"
-                    icon.source: "./images/fullscreen.svg"
-                    icon.color: "#620b66"
-                    icon.width: 64* root.width/ 2560
-                    icon.height: 64* root.height/ 1600
-
-
-                    onClicked: {
-                        fullscreen_animation_x.running = true;
-                        fullscreen_animation_y.running = true;
-                    }
-
-                    background: Rectangle {
-                        id: fullscreen_button_bg
-                        color: parent.down? "#b1b1b1" : "#00fbfbfb"
-                        radius: 10
-                        border.color: "#3afbfbfb"
-
-                    }
-        }
-        */
      }
 
     Rectangle{
@@ -98,7 +84,6 @@ Rectangle{
         y: rviz_window.height + 5
         width: rviz_window.width- 10
         color: "#442e5d"
-        border.color: "#442e5d"
         height: (parent.height - rviz_window.height - 10)
         radius: 10
     }
@@ -109,21 +94,23 @@ Rectangle{
         y: status_section.y + 5
         width: status_section.width - 10
         height: status_section.height/6
-        color: "#343434"
         border.color: "#00000000"
         radius: 10
+        property string startColor: "#c98cf5"
+        property string stopColor: "#b452fa"
         LinearGradient {
-            id: linearGradient
+            id: statusTopbarLinearGradient
                 anchors.fill: parent
                 source: parent
                 start: Qt.point(0, 0)
-                end: Qt.point(100 * ui_page.width/ 2560, 20 * ui_page.width/ 2560)
+                end: Qt.point(0, parent.height/2)
                 gradient: Gradient {
-                    GradientStop { position: 0.0; color: "white" }
-                    GradientStop { position: 1.0; color: "#343434" }
+                    GradientStop { position: 0.0; color: status_topbar.startColor }
+                    GradientStop { position: 1.0; color: status_topbar.stopColor }
                 }
             }
         Text{
+            id: status_topbar_text
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             color: "#d4d4d4"
@@ -132,6 +119,7 @@ Rectangle{
             font.styleName: "Bold"
         }
     }
+
 
     RowLayout {
 
@@ -143,17 +131,20 @@ Rectangle{
         spacing: 5
 
         Rectangle{
+            id: status_lidar_rect
             radius: 10
             Layout.preferredHeight: parent.height * 19 / 20
             Layout.preferredWidth:  parent.width / 4.1
+            property string startColor: "#b452fa"
+            property string stopColor: "#b617cf"
             LinearGradient {
                     anchors.fill: parent
                     source: parent
                     start: Qt.point(0, 0)
-                    end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
+                    end: Qt.point(0, parent.height/2)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: "white" }
-                        GradientStop { position: 1.0; color: "#343434" }
+                        GradientStop { position: 0.0; color: status_lidar_rect.startColor }
+                        GradientStop { position: 1.0; color: status_lidar_rect.stopColor }
                     }
                 }
 
@@ -165,6 +156,12 @@ Rectangle{
             Layout.maximumHeight: parent.height
             spacing: 5
 
+            Rectangle{
+                color: "#00000000"
+                width: 150* ui_page.width/ 2560
+                Layout.preferredHeight: parent.height*0.1
+                Image { source: "./images/panel_top.png"; anchors.fill: parent; fillMode: Image.PreserveAspectFit; opacity: 1 }
+            }
             Rectangle {
                 Layout.fillWidth: true
                 id: lidar_rect
@@ -175,6 +172,7 @@ Rectangle{
                 border.color: "#00000000"
 
                 Text {
+                    id: status_lidar_text
                     anchors.fill: parent
                     text: "Lidar"
                     horizontalAlignment: Text.AlignHCenter
@@ -185,18 +183,7 @@ Rectangle{
 
             }
 
-            IndicatorLED{
-                Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.30
-                Layout.maximumHeight: parent.height*0.30
-                id: lidar_status
-                objectName: "lidar_status"
-                colour: "red"
-                onPaint: {
-                    squircle();
-                    lidar_status_text.text = colour == "red"? "offline" : "online";
-                }
-            }
+
 
             Rectangle {
 
@@ -208,32 +195,90 @@ Rectangle{
                     objectName: "lidar_status_text"
                     id: lidar_status_text
                     text: "online"
-                    x: parent.width * 2 / 3
+                    x: parent.width * 7 / 9
                     verticalAlignment: Text.AlignVCenter
                     font.pointSize: 15* ui_page.width/ 2560
                     color: "#948e8e"
                 }
 
-                color: "#343434"
-                border.color: "#343434"
+                color: "#00000000"
+                border.color: "#00000000"
+            }
+
+
+        }
+
+        IndicatorLED{
+            x: parent.width/3
+            y: parent.height/4
+            width:parent.width
+            height: parent.height*0.30
+            id: lidar_status
+            objectName: "lidar_status"
+            colour: "red"
+            onPaint: {
+                squircle();
+                lidar_status_text.text = colour == "red"? "offline" : "online";
+            }
+        }
+
+        Image {
+            id: lidar_status_picture
+            objectName: "lidar_status_picture"
+            source: "./images/lidar.png"
+            x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2;
+            opacity: 0.8
+
+            RotationAnimation on rotation {
+                    id: rotateLidarPhoto;
+                    loops: Animation.Infinite;
+                    from: 0;
+                    to: 360;
+                    duration: 3000;
+                    running: false;
+                    paused: false;
+                }
+
+            ColorOverlay{
+                anchors.fill: parent
+                source: parent
+                id: lidar_status_overlay
+                objectName: "lidar_status_overlay"
+                color: "#00000000"
+                onColorChanged: {
+                    //rotateLidarPhoto.running =!rotateLidarPhoto.running;
+
+                    if(!rotateLidarPhoto.running)
+                        rotateLidarPhoto.running = true;
+                    else{
+                        if(rotateLidarPhoto.paused)
+                            rotateLidarPhoto.resume();
+                        else
+                            rotateLidarPhoto.pause();
+                }
+                }
             }
 
         }
-        Image { objectName: "lidar_status_picture"; source: "./images/lidar.png"; x:0; y:parent.height/2; width:parent.width/2; height:parent.height/2; opacity: 0.3 }
-        /*<a href="https://www.flaticon.com/free-icons/radar" title="radar icons">Radar icons created by Icongeek26 - Flaticon</a>*/
-        }
+            /*https://icon-icons.com/icon/radar-sweep/38952*/
+
+    }
         Rectangle{
+            id: status_imu_rect
             radius: 10
             Layout.preferredHeight: parent.height * 19 / 20
             Layout.preferredWidth:  parent.width / 4.1
+            property string startColor: "#b452fa"
+            property string stopColor: "#9613ab"
+
             LinearGradient {
                     anchors.fill: parent
                     source: parent
                     start: Qt.point(0, 0)
-                    end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
+                    end: Qt.point(0, parent.height/2)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: "white" }
-                        GradientStop { position: 1.0; color: "#343434" }
+                        GradientStop { position: 0.0; color: status_imu_rect.startColor }
+                        GradientStop { position: 1.0; color: status_imu_rect.stopColor }
                     }
                 }
         ColumnLayout{
@@ -244,6 +289,13 @@ Rectangle{
             Layout.maximumHeight: parent.height
             spacing: 5
 
+            Rectangle{
+                color: "#00000000"
+                width: 150* ui_page.width/ 2560
+                Layout.preferredHeight: parent.height*0.1
+                Image { source: "./images/panel_top.png"; anchors.fill: parent; fillMode: Image.PreserveAspectFit; opacity: 1 }
+            }
+
             Rectangle {
                 Layout.fillWidth: true
                 Layout.preferredHeight: parent.height*0.30
@@ -253,6 +305,7 @@ Rectangle{
 
 
                 Text {
+                    id: status_imu_text
                     anchors.fill: parent
                     text: "IMU"
                     horizontalAlignment: Text.AlignHCenter
@@ -263,17 +316,7 @@ Rectangle{
 
             }
 
-            IndicatorLED{
-                Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.30
-                id: imu_status
-                objectName: "imu_status"
-                colour: "red"
-                onPaint: {
-                    squircle();
-                    imu_status_text.text = colour == "red"? "offline" : "online";
-                }
-            }
+
 
             Rectangle {
 
@@ -291,28 +334,52 @@ Rectangle{
                     color: "#948e8e"
                 }
 
-                color: "#343434"
-                border.color: "#343434"
+                color: "#00000000"
+                border.color: "#00000000"
             }
 
         }
-        Image {objectName: "gyro_status_picture"; source: "./images/gyro.png"; x:0; y:parent.height/2; width:parent.width/2; height:parent.height/2; opacity: 0.3 }
+        IndicatorLED{
+            x: parent.width/3
+            y: parent.height/4
+            width:parent.width
+            height: parent.height*0.30
+            id: imu_status
+            objectName: "imu_status"
+            colour: "red"
+            onPaint: {
+                squircle();
+                imu_status_text.text = colour == "red"? "offline" : "online";
+            }
+        }
+        Image {objectName: "gyro_status_picture"; source: "./images/gyro.png"; x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2; opacity: 0.8
+            ColorOverlay{
+                anchors.fill: parent
+                source: parent
+                id: gyro_status_overlay
+                objectName: "gyro_status_overlay"
+                color: "#00000000"
+            }
+        }
         /*<a href="https://www.flaticon.com/free-icons/axis" title="axis icons">Axis icons created by Freepik - Flaticon</a>*/
 
         }
         Rectangle{
+            id: status_camera_rect
             radius: 10
             Layout.preferredHeight: parent.height * 19 / 20
             Layout.preferredWidth:  parent.width / 4.1
+            property string startColor: "#b452fa"
+            property string stopColor: "#710a82"
             LinearGradient {
                 id: linearGradient1
                     anchors.fill: parent
                     source: parent
                     start: Qt.point(0, 0)
-                    end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
+                    end: Qt.point(0, parent.height/2)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: "white" }
-                        GradientStop { position: 1.0; color: "#343434" }
+                        GradientStop { position: 0.0; color: status_camera_rect.startColor }
+                        GradientStop { position: 1.0; color: status_camera_rect.stopColor }
                     }
                 }
 
@@ -324,6 +391,14 @@ Rectangle{
             Layout.maximumHeight: parent.height
             spacing: 5
 
+            Rectangle{
+                id: panel_top
+                color: "#00000000"
+                width: 150* ui_page.width/ 2560
+                Layout.preferredHeight: parent.height*0.1
+                Image { source: "./images/panel_top.png"; anchors.fill: parent; fillMode: Image.PreserveAspectFit; opacity: 1 }
+            }
+
             Rectangle {
                 Layout.fillWidth: true
                 Layout.preferredHeight: parent.height*0.30
@@ -331,18 +406,8 @@ Rectangle{
                 color: "#00000000"
                 border.color: "#00000000"
 
-                LinearGradient {
-                        anchors.fill: parent
-                        source: parent
-                        start: Qt.point(0, 0)
-                        end: Qt.point(50 * ui_page.width/ 2560, 50 * ui_page.width/ 2560)
-                        gradient: Gradient {
-                            GradientStop { position: 0.0; color: "white" }
-                            GradientStop { position: 1.0; color: "#343434" }
-                        }
-                    }
-
                 Text {
+                    id: status_camera_text
                     anchors.fill: parent
                     text: "Camera"
                     horizontalAlignment: Text.AlignHCenter
@@ -353,17 +418,7 @@ Rectangle{
 
             }
 
-            IndicatorLED{
-                Layout.fillWidth: true
-                Layout.preferredHeight: parent.height*0.30
-                id: camera_status
-                objectName: "camera_status"
-                colour: "red"
-                onPaint: {
-                    squircle();
-                    camera_status_text.text = colour == "red"? "offline" : "online";
-                }
-            }
+
 
             Rectangle {
 
@@ -381,12 +436,33 @@ Rectangle{
                     color: "#948e8e"
                 }
 
-                color: "#343434"
-                border.color: "#343434"
+                color: "#00000000"
+                border.color: "#00000000"
             }
 
         }
-        Image { objectName: "camera_status_picture"; source: "./images/camera.png"; x:0; y:parent.height/2; width:parent.width/2; height:parent.height/2; opacity: 0.3 }
+        IndicatorLED{
+            x: parent.width/3
+            y: parent.height/4
+            width:parent.width
+            height: parent.height*0.30
+            id: camera_status
+            objectName: "camera_status"
+            colour: "red"
+            onPaint: {
+                squircle();
+                camera_status_text.text = colour == "red"? "offline" : "online";
+            }
+        }
+        Image { objectName: "camera_status_picture"; source: "./images/camera.png"; x:0; y:parent.height/2; width:parent.height/2; height:parent.height/2; opacity: 0.8
+            ColorOverlay{
+                anchors.fill: parent
+                source: parent
+                id: camera_status_overlay
+                objectName: "camera_status_overlay"
+                color: "#00000000"
+            }
+        }
         /*<a href="https://www.flaticon.com/free-icons/camera" title="camera icons">Camera icons created by Good Ware - Flaticon</a>*/
 
     }
@@ -395,92 +471,111 @@ Rectangle{
         Layout.preferredHeight: parent.height * 19 / 20
         Layout.preferredWidth:  parent.width / 4.1
         radius: 10
+        property string startColor: "#b452fa"
+        property string stopColor: "#470452"
 
         LinearGradient {
                 anchors.fill: parent
                 source: parent
                 start: Qt.point(0, 0)
-                end: Qt.point(50 * ui_page.width/ 2560, 100 * ui_page.width/ 2560)
+                end: Qt.point(0, parent.height/2)
                 gradient: Gradient {
-                    GradientStop { position: 0.0; color: "white" }
-                    GradientStop { position: 1.0; color: "#343434" }
+                    GradientStop { position: 0.0; color: power_button_bg.startColor }
+                    GradientStop { position: 1.0; color: power_button_bg.stopColor}
                 }
             }
+        Image { source: "./images/panel_top.png"; anchors.topMargin: 5; anchors.leftMargin: 0; height: panel_top.height; width: panel_top.width; fillMode: Image.PreserveAspectFit; opacity: 1 }
 
-        Button {
-            id: power_button
-            objectName: "power_button"
-            icon.name: "power-button"
+        ColumnLayout{
 
-            icon.source: "./images/power-button.png"
-            icon.color: "#620b66"
-            icon.width: 180* ui_page.width/ 2560
-            icon.height: 180* ui_page.height/ 1600
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter: parent.horizontalCenter
-            signal powerSignal(string obj)
-            onClicked:{
-                power_button.powerSignal("system power on command");
-            }
-            background: Rectangle {
-                                    objectName: "power_button_bg"
-                                    radius: 10
-                                    color: power_button.down? "#b1b1b1" : "#343434"
-                                    border.color: "#b1b1b1"
-                                }
-            }
-        }
-    }
-
-    Item {
-        id: videoOutput
-        x: rviz_window.width + 5
-        y: 5
-        width: parent.width - x - 5
-        height: (parent.height - status_section.height) - 5
-        ColumnLayout
-        {
-            spacing: 5
+            x: 0
+            y: panel_top.height
             width: parent.width
-            height: parent.height
-            Layout.maximumHeight: parent.height
-            ComboBox {
-                Layout.maximumWidth: parent.width
+            height: parent.height - panel_top.height
+            spacing: 10
 
-                currentIndex: 2
-                model: [ "Banana", "Apple", "Coconut" ]
-                width: 200
-                onCurrentIndexChanged: console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).color)
-            }
-            Image{
-                        id: opencvImage
-                        Layout.preferredHeight: parent.width * 1600 / 2560
-                        Layout.maximumWidth: parent.width
-                        Layout.preferredWidth: parent.width
-                        objectName: "opencvImage"
-                        property bool counter: false
-                        visible: true
-                        source: "./images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg"
-                        asynchronous: false
-                        cache: false
-            }
+            Button {
+                id: power_button
+                objectName: "power_button"
+                icon.name: "power-button"
+
+                icon.source: "./images/power-button.png"
+                icon.color: "#620b66"
+
+                Layout.preferredHeight: parent.height/2.5
+                Layout.preferredWidth: parent.height/2.5
+                Layout.maximumHeight: parent.height/2.5
+                Layout.maximumWidth: parent.width/2.5
+                Layout.alignment: Qt.AlignHCenter
+
+                icon.width: parent.height/2.5
+                icon.height: parent.height/2.5
+
+                signal powerSignal(string obj)
+                onClicked:{
+                    power_button.powerSignal("system power on command");
+                }
+                background: Rectangle {
+                                        objectName: "power_button_bg"
+                                        radius: 10
+                                        color: power_button.down? "#b1b1b1" : "#343434"
+                                        border.color: "#b1b1b1"
+                                    }
+                }
         }
+
+        }
+
     }
 
     Rectangle {
-        id: log_terminal
+        id: videoOutput
         x: rviz_window.width + 5
         y: rviz_window.height + 5
         width: parent.width - x
         height: status_power.height + status_topbar.height
-        color: "#000000"
-        border.color: "#ffffff"
-        Text{
-            text: "This is going to be a ros log terminal"
-            font.styleName: "Regular"
-            width: parent.width
-            height: parent.height
-            color: "#ffffff"
+        color: "black"
+        Image{
+                    id: opencvImage
+                    objectName: "opencv_image"
+                    anchors.fill:parent
+                    fillMode: Image.PreserveAspectFit
+                    property bool counter: true
+                    visible: true
+                    source: "./images/IMA_BLO_CORP_lidar-photogrammetry_lidar_pointcloud.jpg"
+                    asynchronous: false
+                    cache: false
+                    onSourceChanged: counter = !counter;
+        }
+
+    }
+    ComboBox {
+        id: video_selection
+        objectName: "video_selection"
+        x:videoOutput.x
+        y:videoOutput.y
+        width: 300* ui_page.width/2560
+        height: 80* ui_page.width/2560
+        currentIndex: 0
+        opacity: 0.7
+        signal sourceChangeSignal(string obj)
+        model: [ "Camera 1", "Camera 2"]
+        onCurrentIndexChanged: {
+            var db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+            db.transaction(
+                function(tx) {
+                    tx.executeSql('UPDATE BooleanSettings SET value = ? WHERE name="Video Source"', currentIndex);
+                }
+            )
+        }
+        Component.onCompleted: {
+            db = LocalStorage.openDatabaseSync("ScannerSettingsDB", "1.0", "Your QML SQL", 1000000);
+            db.transaction(
+                function(tx) {
+                    var rs = tx.executeSql('SELECT * FROM BooleanSettings where name = "Video Source" LIMIT 1');
+                    currentIndex = rs.rows.item(0).value;
+                }
+            )
         }
     }
 }
