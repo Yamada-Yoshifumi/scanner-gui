@@ -51,4 +51,9 @@ sudo apt-get -y install qml-module-qt-labs-qmlmodels
 
 <h1>Use</h1>
 
+<code>source install/setup.bash</code>
+
+<code>ros2 run rviz_embed_test rviz_embed_test</code>
+
+
 The ROS2 Humble version has basically the same features as the ROS Noetic version. However, many of its features have not been properly tested.
