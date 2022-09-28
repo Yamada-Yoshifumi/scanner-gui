@@ -57,3 +57,5 @@ sudo apt-get -y install qml-module-qt-labs-qmlmodels
 
 
 The ROS2 Humble version has basically the same features as the ROS Noetic version. However, many of its features have not been properly tested.
+
+The Velodyne simulation packages under velodyne folder are not in working state. They were built for ROS2 Foxy, not Humble.
